@@ -1,5 +1,5 @@
 # GIAR
-A service designed wich interacts with a Document Database for the workgroup second task of the Large-Scale and Multi-Structured Databases course of the Artificial Intelligence and Data Engineering Master Degree at University of Pisa.
+A service which interacts with a Document Database for the workgroup second task of the Large-Scale and Multi-Structured Databases course of the Artificial Intelligence and Data Engineering Master Degree at University of Pisa.
 
 ## Project documentation
 
