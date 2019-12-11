@@ -16,7 +16,7 @@ GIAR (Games information and Ratings) is an application that collects information
 
 A user needs an account to access the platform. If a user already has an account, he will insert his Email and Password to access. Otherwise, he has to fill a form composed by Nickname, Email, Password and Country to create a new account. 
 
-After the log-in the user is redirected to the homepage.§
+After the log-in the user is redirected to the homepage.
 
 A user can search a game by name using the search bar on the top of the homepage.
 
