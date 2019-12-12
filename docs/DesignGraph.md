@@ -9,7 +9,7 @@
 
 
 # 1. Introduction
-The social network feature allow a player to follow and to be followed by other players. A player can see the Wishlist of the players they follow, in order to discover new games from players that share similar interests. A player who has a lot of interaction with the system can receive the PRO badge, as a reward of his interactivity with the platform.
+The social network feature allows a player to follow and to be followed by other players. A player can see the Wishlist of the players they follow, in order to discover new games from players that share similar interests. A player who has a lot of interaction with the system can receive the PRO badge, as a reward of his interactivity with the platform.
 
 # 2. Functional requirements
 This section defines the services that the system provides to the users. To every functional requirement is assigned a unique key `FNC-nnn` where *nnn* is a sequence number identifying the functional requirement. The following table lists all the functional requirements:
