@@ -54,10 +54,11 @@ FNC-009 | The `player` shall be able to see statistics regarding the top games p
 FNC-010 | The `player` shall be able to rate a videogame or change his previous rating.
 FNC-011 | The `player` user shall be able to add and remove a game from the MyGames list.
 FNC-012 | The `player` user shall be able to add and remove a game from the Wishlist.
-FNC-013 | The `administrator` shall be able to insert, modify and delete games from the system.
-FNC-014 | The `administrator` shall be able to see statistics about the distribution of the most added games in the MyGames list grouped by country.
-FNC-015 | The `administrator` shall be able to see statistics regarding how many users added a game in the Wishlists or Mygames lists.
-FNC-016 | The user shall be able to see the version of the data updated to his last interaction.
+FNC-013 | A game shall not be in a `player` Wishlist and MyGames list at the same time. 
+FNC-014 | The `administrator` shall be able to insert, modify and delete games from the system.
+FNC-015 | The `administrator` shall be able to see statistics about the distribution of the most added games in the MyGames list grouped by country.
+FNC-016 | The `administrator` shall be able to see statistics regarding how many users added a game in the Wishlists or Mygames lists.
+FNC-017 | The user shall be able to see the version of the data updated to his last interaction.
 
 ## 4. Non-functional requirements
 
