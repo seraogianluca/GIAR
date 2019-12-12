@@ -17,8 +17,8 @@ This section defines the services that the system provides to the users. To ever
 Functional Requirement | Description
 ------------ | -------------
 FNC-017 | A `player` shall be able to search for other players and follow or unfollow them.
-FNC-018 | A `player` shall be able to see the wishlist of the players they follow.
-FNC-019 | A `player` shall be able to see the PRO badge in the home page if they is a pro. 
+FNC-018 | A `player` shall be able to see the wishlist of the players he follows.
+FNC-019 | A `player` shall be able to see the PRO badge in the home page if he is a PRO. 
 FNC-020 | The system shall set as PRO a `player` who has an high centrality measure.
 
 # 3. Non-Functional requirements
@@ -37,13 +37,13 @@ The are no substantial differences with the classes diagram defined in [Design](
 ## 7.1 On-graph queries
 Domain-specific query | Graphic-centric query
 ----------------------|----------------------
-Which games has `player_nickname` in his wishlist? | Which vertixes with `has in: wishlist` edges are incident to `player_nickname` vertex?
+Which games has `player_nickname` in his Wishlist? | Which vertixes with `has in: wishlist` edges are incident to `player_nickname` vertex?
 How well connected is `player_nickname` in GIAR? | What is the centrality measure of `player_nickname` vertex?
 
 ## 7.2 CRUD operations
 Operation | Description
 ----------|------------
-Create | The system create a player vertex for each player registered to the application.
-Read | The system read if a player is a pro at the player log-in to show the PRO badge.
-Update | The system update the `has in:` relation if a player put a game from the Wishlist to MyGames. The system update the PRO property if a player become pro.
-Delete | If a player delete the profile, the system delete the player vertex. If an administrator delete a game, the system delete the game vertex. 
+Create | The system creates a player vertex for each player registered to the application.
+Read | The system reads if a player is a PRO at the player log-in to show the PRO badge.
+Update | The system updates the `has in:` relation if a player puts a game from the Wishlist to MyGames. The system updates the PRO property if a player becomes pro.
+Delete | If a player deletes the profile, the system deletes the player vertex. If an administrator deletes a game, the system deletes the game vertex. 
