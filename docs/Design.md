@@ -28,7 +28,7 @@ A user has two personal lists: MyGames and WishList. The first is referred to th
 
 Administrator is a special user who can insert, modify and delete games from the system. Administrator doesn't have the possibility to rate a game or have a list of personal games.
 
-Administrator can also see information about users' preferences grouped by country and how many users added a game in the Wishlists or in MyGames lists.
+Administrator can also see information about users' games preferences grouped by country and how many users added a game in the Wishlists or in MyGames lists.
 
 ## 2. Actors of the system
 
@@ -55,7 +55,7 @@ FNC-010 | The `player` shall be able to rate a videogame or change his previous 
 FNC-011 | The `player` user shall be able to add and remove a game from the MyGames list.
 FNC-012 | The `player` user shall be able to add and remove a game from the Wishlist.
 FNC-013 | The `administrator` shall be able to insert, modify and delete games from the system.
-FNC-014 | The `administrator` shall be able to see statistics about the distribution of the games genres grouped by country.
+FNC-014 | The `administrator` shall be able to see statistics about the distribution of the most added games in the MyGames list grouped by country.
 FNC-015 | The `administrator` shall be able to see statistics regarding how many users added a game in the Wishlists or Mygames lists.
 FNC-016 | The user shall be able to see the version of the data updated to his last interaction.
 
@@ -104,7 +104,7 @@ In the first schema there is the Use Case diagram for the player side, in the se
 
 ![Player Use Case](./resources/player-use-case-diagram.png)
 
-![Admin Use Case](./resources/admin-use-case-diagram.png)
+![Admin Use Case](./resources/admin-use-cases-diagram.png)
 
 ## 6. Analysis Classes Diagram
 
