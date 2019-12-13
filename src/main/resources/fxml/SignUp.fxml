@@ -22,7 +22,7 @@
                      <children>
                         <ImageView fitHeight="218.0" fitWidth="213.0" layoutX="99.0" layoutY="210.0">
                            <image>
-                              <Image url="@logoy.png" />
+                              <Image url="@../images/logoy.png" />
                            </image>
                         </ImageView>
                         <Text fill="#ffff0d" layoutX="121.0" layoutY="499.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GIAR" wrappingWidth="168.9296875">
