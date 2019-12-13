@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="577.0" prefWidth="971.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="577.0" prefWidth="971.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipi.giar.SignInController">
   <children>
     <AnchorPane prefHeight="561.0" prefWidth="640.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
          <children>
@@ -21,7 +21,7 @@
                      <children>
                         <ImageView fitHeight="218.0" fitWidth="213.0" layoutX="99.0" layoutY="135.0">
                            <image>
-                              <Image url="@logoy.png" />
+                              <Image url="@../images/logoy.png" />
                            </image>
                         </ImageView>
                         <Text fill="#ffff0d" layoutX="121.0" layoutY="424.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GIAR" wrappingWidth="168.9296875">

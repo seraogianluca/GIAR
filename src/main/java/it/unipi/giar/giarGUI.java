@@ -12,7 +12,7 @@ public class giarGUI extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-		 Parent root = FXMLLoader.load(getClass().getResource("/fxml/SignUp.fxml"));
+		 Parent root = FXMLLoader.load(getClass().getResource("/fxml/SignIn.fxml"));
 	        
 		 primaryStage.setTitle("GIAR");
 		 primaryStage.setScene(new Scene(root));
