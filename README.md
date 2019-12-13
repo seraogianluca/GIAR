@@ -9,10 +9,7 @@ A service which interacts with a Document Database for the workgroup second task
 4) [UML diagram of the Analysis Classes.](/docs/Design.md#6-analysis-classes-diagram)
 5) [Data model to be used in the document database.](/docs/Design.md#7-data-model)
 6) [Architecture of the overall platform and the frameworks to use for the implementation of the application and of the data base.](/docs/Design.md#8-software-architecture)
-7) [Design of a social network for the GIAR application](/docs/DesignGraph.md)
-<!-- 7) [Description of the application implementation.]()
-8) [Description of the performed tests.]()
-9) [Short manual of usage of the application.]() -->
+7) [Design of a social network for the GIAR application.](/docs/DesignGraph.md)
 
 
 ## Credits
