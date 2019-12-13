@@ -105,7 +105,7 @@ In the first schema there is the Use Case diagram for the player side, in the se
 
 ![Player Use Case](./resources/player-use-case-diagram.png)
 
-![Admin Use Case](./resources/admin-use-cases-diagram.png)
+![Admin Use Case](./resources/admin-use-case.png)
 
 ## 6. Analysis Classes Diagram
 
