@@ -13,7 +13,7 @@
 
 <VBox prefHeight="577.0" prefWidth="971.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipi.giar.SignInController">
   <children>
-    <AnchorPane prefHeight="561.0" prefWidth="640.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+    <AnchorPane fx:id="anchorRoot" prefHeight="561.0" prefWidth="640.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
          <children>
             <BorderPane prefHeight="614.0" prefWidth="971.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <left>

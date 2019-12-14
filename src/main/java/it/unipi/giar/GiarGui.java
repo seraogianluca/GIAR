@@ -17,6 +17,8 @@ public class GiarGui extends Application {
 		 primaryStage.setTitle("GIAR");
 		 primaryStage.setScene(new Scene(root));
 		 primaryStage.show();
+		 primaryStage.setResizable(false);
+
 	}
 
 	public static void main(String[] args) {

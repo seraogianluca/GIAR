@@ -54,7 +54,7 @@
                            <font>
                               <Font size="22.0" />
                            </font></JFXPasswordField>
-                        <JFXTextField fx:id="signUpEmail" alignment="CENTER" focusColor="#ffff0d" layoutX="110.0" layoutY="271.0" prefHeight="40.0" prefWidth="340.0" promptText="Nickname" text="Email" unFocusColor="BLACK">
+                        <JFXTextField fx:id="signUpEmail" alignment="CENTER" focusColor="#ffff0d" layoutX="110.0" layoutY="271.0" prefHeight="40.0" prefWidth="340.0" promptText="Email" unFocusColor="BLACK">
                            <font>
                               <Font size="22.0" />
                            </font>
@@ -64,7 +64,7 @@
                               <Font size="22.0" />
                            </font>
                         </JFXPasswordField>
-                        <JFXComboBox fx:id="signUpCountry" focusColor="#ffff0d" layoutX="105.0" layoutY="373.0" prefHeight="31.0" prefWidth="350.0" promptText="Country" style="-fx-font-size: 22px; -fx-line-alignment: center;" unFocusColor="BLACK" />
+                        <JFXComboBox fx:id="signUpCountry" focusColor="#ffff0d" layoutX="105.0" layoutY="373.0" prefHeight="31.0" prefWidth="350.0" promptText="Country" unFocusColor="BLACK" />
                      </children>
                   </AnchorPane>
                </center>

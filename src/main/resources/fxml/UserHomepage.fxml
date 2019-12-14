@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="669.0" prefWidth="971.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipi.giar.UserHomepageController">
+  <children>
+    <AnchorPane prefHeight="561.0" prefWidth="640.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+         <children>
+            <BorderPane prefHeight="598.0" prefWidth="727.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <left>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="568.0" prefWidth="240.0" style="-fx-background-color: A2A2A2;" BorderPane.alignment="CENTER">
+                     <children>
+                        <JFXButton layoutX="2.0" layoutY="74.0" prefHeight="70.0" prefWidth="232.0" text="AdminName" AnchorPane.bottomAnchor="545.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.0" />
+                        <JFXButton fx:id="wishlist" layoutY="60.0" onAction="#showWishlist" prefHeight="44.0" prefWidth="240.0" text="         WishList">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets left="-80.0" />
+                           </padding></JFXButton>
+                        <JFXButton fx:id="playerName" layoutY="16.0" onAction="#showPlayerProfile" prefHeight="44.0" prefWidth="240.0" text=" User001">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets left="-40.0" />
+                           </padding>
+                        </JFXButton>
+                        <JFXButton fx:id="topPerPlatform" layoutY="176.0" onAction="#showTopPerPlatform" prefHeight="44.0" prefWidth="240.0" text="  Top Per Platform">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </JFXButton>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="24.0" layoutY="25.0">
+                           <image>
+                              <Image url="@USERY.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="logOutButton" fitHeight="43.0" fitWidth="46.0" layoutX="97.0" layoutY="498.0" onDragDetected="#logOut">
+                           <image>
+                              <Image url="@LOGOUT%20(2).png" />
+                           </image>
+                        </ImageView>
+                        <JFXButton fx:id="myGames" layoutY="104.0" onAction="#showMyGames" prefHeight="44.0" prefWidth="240.0" text="            MyGames">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets left="-80.0" />
+                           </padding>
+                        </JFXButton>
+                        <JFXButton fx:id="insertNewGameButton1" layoutY="241.0" onAction="#InsertNewGame" prefHeight="44.0" prefWidth="240.0" text="Browse">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets left="-100.0" />
+                           </padding>
+                        </JFXButton>
+                        <ImageView fitHeight="25.0" fitWidth="35.0" layoutX="19.0" layoutY="186.0">
+                           <image>
+                              <Image url="@gamey.png" />
+                           </image>
+                        </ImageView>
+                        <JFXComboBox focusColor="BLACK" layoutX="65.0" layoutY="337.0" prefHeight="44.0" prefWidth="173.0" promptText="Years" />
+                        <JFXComboBox focusColor="BLACK" layoutX="65.0" layoutY="394.0" prefHeight="44.0" prefWidth="173.0" promptText="Genres" />
+                        <MenuButton layoutX="65.0" layoutY="299.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="164.0" text="Platforms">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="hghgk" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                            <MenuItem mnemonicParsing="false" text="jbkj" />
+                          </items>
+                        </MenuButton>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <top>
+                  <BorderPane prefHeight="81.0" prefWidth="971.0" BorderPane.alignment="CENTER">
+                     <left>
+                        <AnchorPane prefHeight="101.0" prefWidth="240.0" style="-fx-background-color: A2A2A2;" BorderPane.alignment="CENTER">
+                           <children>
+                              <Text fill="#ffff0d" layoutX="50.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GIAR" wrappingWidth="83.9296875" AnchorPane.leftAnchor="50.0">
+                                 <font>
+                                    <Font name="System Bold" size="26.0" />
+                                 </font>
+                              </Text>
+                              <ImageView fitHeight="48.0" fitWidth="50.0" layoutX="118.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@logoy.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </left>
+                     <center>
+                        <AnchorPane prefHeight="88.0" prefWidth="757.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <JFXTextField fx:id="SearchBar" focusColor="#e87461" layoutX="37.0" layoutY="27.0" onAction="#searchBar" prefHeight="40.0" prefWidth="650.0" promptText="Search" unFocusColor="BLACK">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </JFXTextField>
+                              <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="14.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="37.0" fitWidth="37.0" layoutX="655.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@search.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </center>
+                  </BorderPane>
+               </top>
+               <center>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="505.0" prefWidth="757.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER_LEFT" />
+               </center>
+            </BorderPane>
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>
