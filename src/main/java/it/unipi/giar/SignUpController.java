@@ -46,7 +46,7 @@ public class SignUpController  {
     private JFXPasswordField signUpConfirmPassword;
 
     @FXML
-    private JFXComboBox<String> ComboBoxCountry;
+    private JFXComboBox<String> signUpCountry;
     
     public void initialize() {
         ObservableList<String> elements = FXCollections.observableArrayList(
@@ -54,8 +54,7 @@ public class SignUpController  {
             new String( "Element 2")
         );
 
-        ComboBoxCountry.setItems(elements);
-        ComboBoxCountry.getSelectionModel().selectFirst();
+        signUpCountry.setItems(elements);
     }
 
     @FXML
