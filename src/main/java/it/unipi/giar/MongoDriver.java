@@ -4,16 +4,25 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 
 public class MongoDriver {
-
-	MongoClient mongoClient;
+	private static MongoDriver mongoDb = null;
+	private MongoClient mongoClient;
 	
-	public void start() {
-		
+	private MongoDriver() {
 		mongoClient = MongoClients.create("mongodb://172.16.0.70:27017");
 	}
 	
+	public static MongoDriver getInstance() {
+		if(mongoDb == null)
+			mongoDb = new MongoDriver();
+		
+		return mongoDb;
+	}
+	
 	public void close() {
-		mongoClient.close();
+		if(mongoDb == null)
+			throw new RuntimeException("Connection doesn't exist.");
+		else
+			mongoClient.close();
 	}
 	
 }
