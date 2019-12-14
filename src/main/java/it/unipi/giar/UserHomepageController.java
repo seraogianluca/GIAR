@@ -6,9 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.event.ActionEvent;
-import java.io.IOException;
-
-
 
 public class UserHomepageController {
 

@@ -33,6 +33,24 @@ public class SignInController {
 
     @FXML
     void SignIn(ActionEvent event) throws IOException {
+    	/*//da controllare
+    	//Connection connection = //connectionstring
+    	//try {
+    		String username = signInNickname.getText();
+    		String password = signInPassword.getText();
+    		
+    		
+    		//Statement statement = connection.create statements..event
+    	    //int status = ritorno di mongo
+    		//isadmin? ritorna il tipo di utente
+    	    //if (status > 0) {
+    	    	//loggato
+    	//    }
+    	    
+    	//}catch( MongoDBException e){
+    	//	e.printStacktrace();    		
+    	//}
+    	*/
     	Parent root;
     	boolean isAdmin= false;
     	if (isAdmin) {

@@ -1,8 +1,7 @@
 #signUpCountry{
-	-fx-alignment: center;
 	-fx-font-size: 22px;
 }
 
-#signUpCountry .text-field {
-     -fx-prompt-text-fill: rgba(0, 0, 0, 0.5) ;
- }
+#signUpCountry > .prompt-container {
+    -fx-alignment: center;
+}

@@ -1,34 +1,26 @@
 package it.unipi.giar;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import com.sun.java_cup.internal.runtime.Scanner;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class SignUpController  {
-	ObservableList<String> countries = FXCollections.observableArrayList("Puppa");
 	
     @FXML
     private JFXButton signUpButton;
@@ -49,18 +41,29 @@ public class SignUpController  {
     private JFXComboBox<String> signUpCountry;
     
     public void initialize() {
-        ObservableList<String> elements = FXCollections.observableArrayList(
-            new String("Element 1"),
-            new String( "Element 2")
-        );
-
-        signUpCountry.setItems(elements);
+    	try {
+			List<String> countries1 = Files.readAllLines(new File("src/main/resources/countries.txt").toPath(), Charset.defaultCharset());
+			ObservableList<String> countries = FXCollections.observableArrayList(countries1);
+			signUpCountry.setItems(countries);
+    	} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+    	}
     }
 
     @FXML
     void SignUp(ActionEvent event) throws IOException {
+    	/*//da controllare
+    	String username = signUpNickname.getText();
+		String password = signUpPassword.getText();
+		String confirmPasswrod = signUpConfirmPassword.getText();
+		String email = signUpEmail.getText();
+		String country = signUpCountry.getValue();
+		
+		System.out.println(country);
+		//*/
+		
     	Parent root = FXMLLoader.load(getClass().getResource("/fxml/SignIn.fxml"));
-    
         Stage stage = new Stage();
         stage.setTitle("GIAR");
         stage.setScene(new Scene(root));  
