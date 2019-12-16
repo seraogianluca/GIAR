@@ -22,7 +22,7 @@ public class MongoDriver {
 		if(mongoDb == null)
 			throw new RuntimeException("Connection doesn't exist.");
 		else
-			mongoClient.close();
+			mongoDb.mongoClient.close();
 	}
 	
 }

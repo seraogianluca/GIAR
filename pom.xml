@@ -20,6 +20,11 @@
         <artifactId>mongodb-driver-sync</artifactId>
         <version>3.12.0</version>
     </dependency>
+    <dependency>
+		<groupId>org.neo4j.driver</groupId>
+		<artifactId>neo4j-java-driver</artifactId>
+        <version>1.7.5</version>
+   </dependency>
   </dependencies>
   
 </project>
