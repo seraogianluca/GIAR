@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="577.0" prefWidth="971.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipi.giar.SignInController">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipi.giar.Controller.SignInController">
   <children>
     <AnchorPane fx:id="anchorRoot" prefHeight="561.0" prefWidth="640.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
          <children>
@@ -40,24 +40,29 @@
                <center>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="544.0" prefWidth="380.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER_LEFT">
                      <children>
-                        <JFXButton fx:id="signInButton" layoutX="230.0" layoutY="474.0" onAction="#SignIn" prefHeight="45.0" prefWidth="95.0" style="-fx-background-color: #ffff0d;" text=" Sign In " AnchorPane.bottomAnchor="58.0">
+                        <JFXButton fx:id="signInButton" layoutX="202.0" layoutY="396.0" onAction="#SignIn" prefHeight="45.0" prefWidth="95.0" style="-fx-background-color: #ffff0d;" text=" Sign In " AnchorPane.bottomAnchor="159.0" AnchorPane.leftAnchor="202.0" AnchorPane.rightAnchor="192.0" AnchorPane.topAnchor="396.0">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </JFXButton>
-                        <Text layoutX="214.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In" AnchorPane.topAnchor="64.677734375">
+                        <Text layoutX="179.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In" AnchorPane.bottomAnchor="516.458984375" AnchorPane.leftAnchor="179.0" AnchorPane.rightAnchor="182.564453125" AnchorPane.topAnchor="27.677734375">
                            <font>
                               <Font size="42.0" />
                            </font>
                         </Text>
-                        <JFXTextField fx:id="signInNickname" alignment="CENTER" focusColor="#ffff0d" layoutX="112.0" layoutY="211.0" prefHeight="40.0" prefWidth="340.0" promptText="Nickname" unFocusColor="BLACK">
+                        <JFXTextField fx:id="signInNickname" alignment="CENTER" focusColor="#ffff0d" layoutX="78.0" layoutY="164.0" prefHeight="40.0" prefWidth="340.0" promptText="Nickname" unFocusColor="BLACK" AnchorPane.bottomAnchor="388.0" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="71.0" AnchorPane.topAnchor="164.0">
                            <font>
                               <Font size="22.0" />
                            </font></JFXTextField>
-                        <JFXPasswordField fx:id="signInPassword" alignment="CENTER" focusColor="#ffff0d" layoutX="108.0" layoutY="319.0" prefHeight="40.0" prefWidth="340.0" promptText="Password" unFocusColor="BLACK">
+                        <JFXPasswordField fx:id="signInPassword" alignment="CENTER" focusColor="#ffff0d" layoutX="90.0" layoutY="270.0" prefHeight="40.0" prefWidth="340.0" promptText="Password" unFocusColor="BLACK" AnchorPane.bottomAnchor="282.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="59.0" AnchorPane.topAnchor="270.0">
                            <font>
                               <Font size="22.0" />
                            </font></JFXPasswordField>
+                        <Text fx:id="errorMessage" fill="RED" layoutX="80.0" layoutY="499.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" visible="false" wrappingWidth="340.0">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
                      </children>
                   </AnchorPane>
                </center>

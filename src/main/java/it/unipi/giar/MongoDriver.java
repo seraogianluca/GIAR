@@ -1,28 +1,40 @@
 package it.unipi.giar;
 
+import org.bson.Document;
+
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 
 public class MongoDriver {
-	private static MongoDriver mongoDb = null;
-	private MongoClient mongoClient;
+	private static MongoDriver driver = null;
+	private MongoClient client;
+	private MongoDatabase database;
 	
 	private MongoDriver() {
-		mongoClient = MongoClients.create("mongodb://172.16.0.70:27017");
+		client = MongoClients.create("mongodb://172.16.0.70:27017");
+		database  = client.getDatabase("giar");
 	}
 	
 	public static MongoDriver getInstance() {
-		if(mongoDb == null)
-			mongoDb = new MongoDriver();
+		if(driver == null)
+			driver = new MongoDriver();
 		
-		return mongoDb;
+		return driver;
 	}
 	
-	public void close() {
-		if(mongoDb == null)
+	public MongoCollection<Document> getCollection(String collection) {
+		if(driver == null)
 			throw new RuntimeException("Connection doesn't exist.");
 		else
-			mongoDb.mongoClient.close();
+			return driver.database.getCollection(collection);
+	}
+	public void close() {
+		if(driver == null)
+			throw new RuntimeException("Connection doesn't exist.");
+		else
+			driver.client.close();
 	}
 	
 }
