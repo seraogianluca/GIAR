@@ -1,4 +1,4 @@
-package it.unipi.giar;
+package it.unipi.giar.Controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;

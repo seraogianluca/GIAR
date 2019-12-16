@@ -1,4 +1,4 @@
-package it.unipi.giar;
+package it.unipi.giar.Controller;
 
 import java.io.File;
 import java.io.IOException;
