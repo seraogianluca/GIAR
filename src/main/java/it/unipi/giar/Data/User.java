@@ -6,12 +6,19 @@ import java.security.MessageDigest;
 
 import javax.xml.bind.DatatypeConverter;
 
+import org.neo4j.driver.v1.Session;
+import org.neo4j.driver.v1.Transaction;
+import org.neo4j.driver.v1.TransactionWork;
+
+import static org.neo4j.driver.v1.Values.parameters;
+
 import org.bson.Document;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import static com.mongodb.client.model.Filters.*;
 
 import it.unipi.giar.MongoDriver;
+import it.unipi.giar.Neo4jDriver;
 
 public class User {
 
@@ -105,5 +112,28 @@ public class User {
 		MongoDriver md = MongoDriver.getInstance();
 		MongoCollection<Document> collection = md.getCollection("users");
 		collection.insertOne(user);
+		
+		addPerson(nickname);
+		
+	}
+	
+	public void addPerson(final String name) {
+		Neo4jDriver nd = Neo4jDriver.getInstance();
+	    try (Session session = nd.getDriver().session()) {
+	    	
+	        session.writeTransaction(
+	        	new TransactionWork<Integer>() {
+	        		@Override
+	        		public Integer execute(Transaction tx) {
+	        			return createPersonNode(tx, name);
+	        		}
+	        	}
+	        );
+	    }
+	}
+
+	private static int createPersonNode(Transaction tx, String name) {
+	    tx.run("CREATE (n:Player {nickname: $nickname, pro: $pro})", parameters("nickname", name, "pro", false));
+	    return 1;
 	}
 }

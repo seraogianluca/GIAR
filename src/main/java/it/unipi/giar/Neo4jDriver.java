@@ -19,6 +19,13 @@ public class Neo4jDriver {
     	return neo;
     }
     
+    public Driver getDriver() {
+    	if(neo == null)
+    		throw new RuntimeException("Connection doesn't exist.");
+    	else
+    		return neo.driver;
+    }
+    
     public static void close() {
     	if(neo == null)
     		throw new RuntimeException("Connection doesn't exist.");
