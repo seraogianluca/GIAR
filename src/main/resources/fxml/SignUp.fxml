@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="785.0" prefWidth="971.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipi.giar.SignUpController">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipi.giar.Controller.SignUpController">
   <children>
     <AnchorPane prefHeight="561.0" prefWidth="640.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
          <children>
@@ -20,12 +20,12 @@
                <left>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="643.0" prefWidth="411.0" style="-fx-background-color: A2A2A2;" BorderPane.alignment="CENTER">
                      <children>
-                        <ImageView fitHeight="218.0" fitWidth="213.0" layoutX="99.0" layoutY="210.0">
+                        <ImageView fitHeight="218.0" fitWidth="213.0" layoutX="97.0" layoutY="122.0" AnchorPane.bottomAnchor="260.0" AnchorPane.leftAnchor="97.0" AnchorPane.rightAnchor="101.0" AnchorPane.topAnchor="122.0">
                            <image>
                               <Image url="@../images/logoy.png" />
                            </image>
                         </ImageView>
-                        <Text fill="#ffff0d" layoutX="121.0" layoutY="499.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GIAR" wrappingWidth="168.9296875">
+                        <Text fill="#ffff0d" layoutX="120.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GIAR" wrappingWidth="168.9296875" AnchorPane.bottomAnchor="167.8671875" AnchorPane.leftAnchor="119.9296875" AnchorPane.rightAnchor="122.0703125" AnchorPane.topAnchor="353.224609375">
                            <font>
                               <Font name="System Bold" size="67.0" />
                            </font>
@@ -36,35 +36,46 @@
                <center>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="544.0" prefWidth="380.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER_LEFT">
                      <children>
-                        <JFXButton fx:id="signUpButton" layoutX="233.0" layoutY="472.0" onAction="#SignUp" prefHeight="45.0" prefWidth="101.0" style="-fx-background-color: #ffff0d;" text=" Sign Up " AnchorPane.bottomAnchor="60.0">
+                        <JFXButton fx:id="signUpButton" layoutX="194.0" layoutY="459.0" onAction="#SignUp" prefHeight="45.0" prefWidth="100.0" style="-fx-background-color: #ffff0d;" text=" Sign Up " AnchorPane.bottomAnchor="96.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="194.0" AnchorPane.topAnchor="459.0">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </JFXButton>
-                        <Text layoutX="214.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign Up" AnchorPane.topAnchor="64.677734375">
+                        <Text layoutX="185.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign Up" AnchorPane.bottomAnchor="542.25" AnchorPane.leftAnchor="185.0" AnchorPane.rightAnchor="185.21875" AnchorPane.topAnchor="20.0625">
                            <font>
-                              <Font size="42.0" />
+                              <Font size="32.0" />
                            </font>
                         </Text>
-                        <JFXTextField fx:id="signUpNickname" alignment="CENTER" focusColor="#ffff0d" layoutX="108.0" layoutY="182.0" prefHeight="40.0" prefWidth="340.0" promptText="Nickname" unFocusColor="BLACK">
-                           <font>
-                              <Font size="22.0" />
-                           </font></JFXTextField>
-                        <JFXPasswordField fx:id="signUpPassword" alignment="CENTER" focusColor="#ffff0d" layoutX="106.0" layoutY="465.0" prefHeight="40.0" prefWidth="340.0" promptText="Password" unFocusColor="BLACK">
-                           <font>
-                              <Font size="22.0" />
-                           </font></JFXPasswordField>
-                        <JFXTextField fx:id="signUpEmail" alignment="CENTER" focusColor="#ffff0d" layoutX="110.0" layoutY="271.0" prefHeight="40.0" prefWidth="340.0" promptText="Email" unFocusColor="BLACK">
+                        <AnchorPane layoutX="71.0" layoutY="124.0" AnchorPane.bottomAnchor="207.0" AnchorPane.leftAnchor="71.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="124.0">
+                           <children>
+                              <JFXTextField fx:id="signUpNickname" focusColor="#ffff0d" onKeyReleased="#checkNickname" prefHeight="40.0" prefWidth="340.0" promptText="Nickname" unFocusColor="BLACK" AnchorPane.topAnchor="10.0">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="signUpEmail" focusColor="#ffff0d" layoutX="1.0" layoutY="66.0" onKeyReleased="#checkEmail" prefHeight="40.0" prefWidth="340.0" promptText="Email" unFocusColor="BLACK" AnchorPane.topAnchor="65.0">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXComboBox fx:id="signUpCountry" focusColor="#ffff0d" layoutX="2.0" layoutY="120.0" prefHeight="40.0" prefWidth="340.0" promptText="Country" unFocusColor="BLACK" visibleRowCount="5" AnchorPane.topAnchor="120.0" />
+                              <JFXPasswordField fx:id="signUpPassword" focusColor="#ffff0d" layoutX="3.0" layoutY="146.0" prefHeight="40.0" prefWidth="340.0" promptText="Password" unFocusColor="BLACK" AnchorPane.topAnchor="170.0">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </JFXPasswordField>
+                              <JFXPasswordField fx:id="signUpConfirmPassword" focusColor="#ffff0d" layoutX="1.0" layoutY="244.0" onKeyReleased="#checkPassword" prefHeight="40.0" prefWidth="340.0" promptText="Confirm Password" unFocusColor="BLACK" AnchorPane.topAnchor="225.0">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </JFXPasswordField>
+                           </children>
+                        </AnchorPane>
+                        <Text fx:id="errorMessage" fill="RED" layoutX="69.0" layoutY="580.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" visible="false" wrappingWidth="350.8310546875" AnchorPane.bottomAnchor="15.359375" AnchorPane.leftAnchor="68.8310546875" AnchorPane.rightAnchor="69.1689453125" AnchorPane.topAnchor="558.640625">
                            <font>
                               <Font size="22.0" />
                            </font>
-                        </JFXTextField>
-                        <JFXPasswordField fx:id="signInConfirmPassword" alignment="CENTER" focusColor="#ffff0d" layoutX="106.0" layoutY="555.0" prefHeight="40.0" prefWidth="340.0" promptText="Confirm Password" unFocusColor="BLACK">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </JFXPasswordField>
-                        <JFXComboBox fx:id="signUpCountry" focusColor="#ffff0d" layoutX="105.0" layoutY="373.0" prefHeight="31.0" prefWidth="350.0" promptText="                      Country" unFocusColor="BLACK" visibleRowCount="5" />
+                        </Text>
                      </children>
                   </AnchorPane>
                </center>
