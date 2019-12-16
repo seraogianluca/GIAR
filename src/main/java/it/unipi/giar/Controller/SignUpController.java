@@ -65,12 +65,12 @@ public class SignUpController  {
     
     @FXML
     void checkNickname(KeyEvent event) {
-		/*
-		 * if(!User.checkNickname(signUpNickname.getText())) {
-		 * errorMessage.setText("Nickname already exists.");
-		 * errorMessage.setVisible(true); errorFlag = true; } else {
-		 * errorMessage.setVisible(false); errorFlag = false; }
-		 */
+    	if(!User.checkNickname(signUpNickname.getText())) {
+    		errorMessage.setText("Nickname already exists.");
+    		errorMessage.setVisible(true); errorFlag = true; 
+    	} else {
+    		errorMessage.setVisible(false); errorFlag = false; 
+    	} 
     }
 
     @FXML

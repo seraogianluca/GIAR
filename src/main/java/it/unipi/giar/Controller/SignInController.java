@@ -6,7 +6,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
-import it.unipi.giar.MongoDriver;
 import it.unipi.giar.Data.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,10 +45,7 @@ public class SignInController {
     		
     		username = signInNickname.getText();
     		password = signInPassword.getText();
-    		
-    		System.out.println("nick: "+ username);
-    		System.out.println("pwd: " + password);
-    		
+    
     	   }
     	    
     	catch( Exception e){
@@ -69,11 +65,11 @@ public class SignInController {
     	boolean isAdmin= false;
     	isAdmin = User.isAdmin(username);
     	if (isAdmin) {
-    		System.out.println("admin");
+
     		root = FXMLLoader.load(getClass().getResource("/fxml/AdminHomepage.fxml"));
     	}
     	else { 	
-    		System.out.println("non admin");
+    		
 	    	root = FXMLLoader.load(getClass().getResource("/fxml/UserHomepage.fxml"));
 	    	
     	}
