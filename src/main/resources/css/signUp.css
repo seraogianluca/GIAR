@@ -1,0 +1,7 @@
+#signUpCountry{
+	-fx-font-size: 22px;
+}
+
+#signUpCountry > .prompt-container {
+    -fx-alignment: center;
+}

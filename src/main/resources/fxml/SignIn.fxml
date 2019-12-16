@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="577.0" prefWidth="971.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipi.giar.SignInController">
+  <children>
+    <AnchorPane fx:id="anchorRoot" prefHeight="561.0" prefWidth="640.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+         <children>
+            <BorderPane prefHeight="614.0" prefWidth="971.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <left>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="643.0" prefWidth="411.0" style="-fx-background-color: A2A2A2;" BorderPane.alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="218.0" fitWidth="213.0" layoutX="99.0" layoutY="135.0">
+                           <image>
+                              <Image url="@../images/logoy.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="#ffff0d" layoutX="121.0" layoutY="424.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GIAR" wrappingWidth="168.9296875">
+                           <font>
+                              <Font name="System Bold" size="67.0" />
+                           </font>
+                        </Text>
+                        <JFXButton fx:id="signUpNowButton" layoutX="44.0" layoutY="475.0" onAction="#showSignUpPage" prefHeight="45.0" prefWidth="322.0" style="-fx-underline: true;" text="Not registered yet? Sign up now!">
+                           <font>
+                              <Font name="System Italic" size="18.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="544.0" prefWidth="380.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER_LEFT">
+                     <children>
+                        <JFXButton fx:id="signInButton" layoutX="230.0" layoutY="474.0" onAction="#SignIn" prefHeight="45.0" prefWidth="95.0" style="-fx-background-color: #ffff0d;" text=" Sign In " AnchorPane.bottomAnchor="58.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </JFXButton>
+                        <Text layoutX="214.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In" AnchorPane.topAnchor="64.677734375">
+                           <font>
+                              <Font size="42.0" />
+                           </font>
+                        </Text>
+                        <JFXTextField fx:id="signInNickname" alignment="CENTER" focusColor="#ffff0d" layoutX="112.0" layoutY="211.0" prefHeight="40.0" prefWidth="340.0" promptText="Nickname" unFocusColor="BLACK">
+                           <font>
+                              <Font size="22.0" />
+                           </font></JFXTextField>
+                        <JFXPasswordField fx:id="signInPassword" alignment="CENTER" focusColor="#ffff0d" layoutX="108.0" layoutY="319.0" prefHeight="40.0" prefWidth="340.0" promptText="Password" unFocusColor="BLACK">
+                           <font>
+                              <Font size="22.0" />
+                           </font></JFXPasswordField>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>
