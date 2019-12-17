@@ -10,6 +10,7 @@ import java.util.List;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 
+import it.unipi.giar.Data.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,6 +24,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 public class UserMenuController {
+	
+	private User user;
 
     @FXML
     private SplitPane splitPaneLeft;
@@ -249,6 +252,11 @@ public class UserMenuController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
     	}
+    }
+    
+    public void initData(User user) {
+    	this.user = user;
+    	userNameMenuPanel.setText(user.getNickname());
     }
 
 }

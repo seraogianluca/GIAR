@@ -31,12 +31,24 @@ public class User {
 	//private ArrayList<Game> myGames;
 	//private ArrayList<Rating> ratings;
 
+	public User(String nickname) {
+		this.nickname = nickname;
+	}
+	
 	public User(String type, String nickname, String email, String password, String country) {
 		this.type = type;
 		this.nickname = nickname;
 		this.email = email;
 		this.password = password;
 		this.country = country;
+	}
+	
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 	public static boolean checkNickname(String nick) {

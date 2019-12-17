@@ -70,31 +70,31 @@ public class SignInController {
     	}
     	else { 	
     		
-	    	root = FXMLLoader.load(getClass().getResource("/fxml/UserMenu.fxml"));
-	    	
+    		FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/fxml/UserMenu.fxml"));
+            root = loader.load();
+           
+            //access the controller and call a method
+            UserMenuController controller = loader.getController();
+            controller.initData(new User(username));
+    		
     	}
-	        Stage stage = new Stage();
-	        stage.setTitle("GIAR");
-	        stage.setScene(new Scene(root));  
-	        stage.show();
-	        stage.setResizable(false);
-	        Stage stage1 = (Stage) signInButton.getScene().getWindow();
-	        stage1.close();
-    	
+	        
+    	Stage stage = (Stage)signInButton.getScene().getWindow();
+	    stage.setScene(new Scene(root));  
+	    stage.show();
     }
 
     @FXML
     void showSignUpPage(ActionEvent event) throws IOException {
     	Parent root = FXMLLoader.load(getClass().getResource("/fxml/SignUp.fxml"));
-        Stage stage = new Stage();
-        stage.setTitle("GIAR");
-        stage.setScene(new Scene(root));  
-        stage.show();
-        stage.setResizable(false);
-        String css = this.getClass().getResource("/css/signUp.css").toExternalForm(); 
+    	String css = this.getClass().getResource("/css/signUp.css").toExternalForm(); 
+        Stage stage = (Stage) signUpNowButton.getScene().getWindow();
+        
         root.getStylesheets().add(css);
-        Stage stage1 = (Stage) signUpNowButton.getScene().getWindow();
-        stage1.close();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.show();
     }
     
 }

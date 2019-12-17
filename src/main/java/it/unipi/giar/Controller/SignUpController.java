@@ -137,13 +137,9 @@ public class SignUpController  {
     
     void loadLogin() throws IOException {
     	Parent root = FXMLLoader.load(getClass().getResource("/fxml/SignIn.fxml"));
-        Stage stage = new Stage();
-        stage.setTitle("GIAR");
-        stage.setScene(new Scene(root));  
+        Stage stage = (Stage)signUpButton.getScene().getWindow();
+        stage.setScene(new Scene(root));
         stage.show();
-        stage.setResizable(false);
-        Stage stage1 = (Stage)signUpButton.getScene().getWindow();
-        stage1.close();
     }
 
 }
