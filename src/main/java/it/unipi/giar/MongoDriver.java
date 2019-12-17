@@ -30,6 +30,7 @@ public class MongoDriver {
 		else
 			return driver.database.getCollection(collection);
 	}
+	
 	public void close() {
 		if(driver == null)
 			throw new RuntimeException("Connection doesn't exist.");
