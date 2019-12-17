@@ -26,6 +26,9 @@ public class UserMenuController {
 
     @FXML
     private SplitPane splitPaneLeft;
+    
+    @FXML
+    private AnchorPane homepageMenuPane;
 
     @FXML
     private AnchorPane logoMenuPanel;
@@ -65,6 +68,25 @@ public class UserMenuController {
     
     @FXML
     private AnchorPane anchorPaneLeft;
+    
+    @FXML
+    void openHomepage(MouseEvent event) {
+       	genreBrowseMenuPanel.valueProperty().set(null);
+    	topPerPlatformMenuPanel.valueProperty().set(null);
+    	platformBrowseMenuPanel.valueProperty().set(null);
+    	yearBrowseMenuPanel.valueProperty().set(null);
+    	
+    	
+    	try {
+			AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/UserHomepage.fxml"));
+			anchorPaneRight.getChildren().setAll(pane);
+    	
+    	} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+
+    }
 
     @FXML
     void logout(MouseEvent event) {
@@ -225,6 +247,18 @@ public class UserMenuController {
 
     public void initialize() {
     	try {
+    		
+    		try {
+    			AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/UserHomepage.fxml"));
+    			anchorPaneRight.getChildren().setAll(pane);
+        	
+        	} catch (IOException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		} 
+    		
+    		
+    		
     		//populate the combobox for platforms
     		//ObservableList<String> platforms = FXCollections.observableArrayList(Game.getAllPlatformsList()); //mongo   		
     		List<String> platforms1 = Files.readAllLines(new File("src/main/resources/platforms.txt").toPath(), Charset.defaultCharset());
@@ -243,6 +277,7 @@ public class UserMenuController {
 			List<String> genres1 = Files.readAllLines(new File("src/main/resources/genres.txt").toPath(), Charset.defaultCharset());
 			ObservableList<String> genres = FXCollections.observableArrayList(genres1);
 			genreBrowseMenuPanel.setItems(genres);
+			
 			
 			
     	} catch (IOException e) {

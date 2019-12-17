@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="650.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="it.unipi.giar.Controller.UserSocialController">
+<AnchorPane prefHeight="600.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipi.giar.Controller.UserSocialController">
    <children>
       <BorderPane prefHeight="600.0" prefWidth="650.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -19,7 +18,7 @@
                         <Image url="@../images/search.png" />
                      </image>
                   </ImageView>
-                  <JFXTextField layoutX="50.0" layoutY="33.0" promptText="Search users.." AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+                  <JFXTextField fx:id="searchUsers" layoutX="50.0" layoutY="33.0" promptText="Search users.." AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
                      <font>
                         <Font size="19.0" />
                      </font>
