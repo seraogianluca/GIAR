@@ -17,11 +17,11 @@ public class Game {
 	private long id;
 	private String slug;
 	private String name;
-	private String name_original;
+	private String nameOriginal;
 	private String description;
 	private int metacritic;
 	private Date released;
-	private String background_image;
+	private String backgroundImage;
 	private double rating;
 	private ArrayList<Rating> ratings;
 	private long added;
@@ -30,39 +30,64 @@ public class Game {
 	private ArrayList<Platform> platforms;
 	private ArrayList<Developer> developers;
 	private ArrayList<Genre> genres;
-	private ArrayList<Game> searchGames;
+
+
+	private ArrayList<Platform> getPlatforms(String platforms) {
+		ArrayList<Platform> listPlatforms = new ArrayList<Platform>();
+		return listPlatforms;
+	}
+
+	private ArrayList<Developer> getDevelopers(String developers) {
+		ArrayList<Developer> listDevelopers = new ArrayList<Developer>();
+		return listDevelopers;
+	}
+
+	private ArrayList<Genre> getGenres(String genres) {
+		ArrayList<Genre> listGenres = new ArrayList<Genre>();
+		return listGenres;
+	}
 
 	public Game(Document document) {
 		this.id = document.getLong("id");
 		this.slug = document.getString("slug");
 		this.name = document.getString("name");
-		this.name_original = document.getString("name_original");
+		this.nameOriginal = document.getString("name_original");
 		this.description = document.getString("description");
 		this.metacritic = document.getInteger("metacritic");
 		this.released = document.getDate("released");
-		this.background_image = document.getString("background_image");
+		this.backgroundImage = document.getString("background_image");
 		this.rating = document.getDouble("rating");
+		this.added = document.getLong("added");
+		this.addedWishlist = document.getLong("added_wishlist");
+		this.addedMyGames = document.getLong("added_mygames");
+		this.platforms = getPlatforms(document.getString("platforms"));
+		this.developers = getDevelopers(document.getString("developers"));
+		this.genres = getGenres(document.getString("genres"));
 	}
 
-	public Game(long id, String slug, String name, String name_original, String description, int metacritic,
-			Date released, String background_image, double rating, ArrayList<Rating> ratings, long added,
-			long addedWishlist, long addedMyGames) {
+	public Game(long id, String slug, String name, String nameOriginal, String description, int metacritic,
+			Date released, String backgroundImage, double rating, ArrayList<Rating> ratings, long added,
+			long addedWishlist, long addedMyGames, ArrayList<Platform> platforms, ArrayList<Developer> developers,
+			ArrayList<Genre> genres) {
 		this.id = id;
 		this.slug = slug;
 		this.name = name;
-		this.name_original = name_original;
+		this.nameOriginal = nameOriginal;
 		this.description = description;
 		this.metacritic = metacritic;
 		this.released = released;
-		this.background_image = background_image;
+		this.backgroundImage = backgroundImage;
 		this.rating = rating;
 		this.ratings = ratings;
 		this.added = added;
 		this.addedWishlist = addedWishlist;
 		this.addedMyGames = addedMyGames;
+		this.platforms = platforms;
+		this.developers = developers;
+		this.genres = genres;
 	}
 
-	public static List<String> getAllPlatformsList() {
+	/*public static List<String> getAllPlatformsList() {
 		// MATILDE, i need this function to populate the fields of the combobox for
 		// platforms
 		// this function returns the list of the platforms existing in the database.
@@ -84,7 +109,7 @@ public class Game {
 
 		// MongoDriver md = MongoDriver.getInstance();
 		// MongoCollection<Document> collection = md.getCollection("games");
-	}
+	}*/
 
 	public ArrayList<Game> searchGames(String search) {
 		ArrayList<Game> listGames = new ArrayList<Game>();
@@ -126,11 +151,11 @@ public class Game {
 		this.name = name;
 	}
 
-	public void setname_original(String name_original) {
-		this.name_original = name_original;
+	public void setNameOriginal(String nameOriginal) {
+		this.nameOriginal = nameOriginal;
 	}
 
-	public void setdescription(String description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
@@ -142,8 +167,8 @@ public class Game {
 		this.released = released;
 	}
 
-	public void setbackground_image(String background_image) {
-		this.background_image = background_image;
+	public void setBackgroundImage(String backgroundImage) {
+		this.backgroundImage = backgroundImage;
 	}
 
 	public void setRating(double rating) {
@@ -178,11 +203,11 @@ public class Game {
 		return this.name;
 	}
 
-	public String getname_original() {
-		return this.name_original;
+	public String getNameOriginal() {
+		return this.nameOriginal;
 	}
 
-	public String getdescription() {
+	public String getDescription() {
 		return this.description;
 	}
 
@@ -194,8 +219,8 @@ public class Game {
 		return this.released;
 	}
 
-	public String getbackground_image() {
-		return this.background_image;
+	public String getBackgroundImage() {
+		return this.backgroundImage;
 	}
 
 	public double getRating() {
@@ -217,5 +242,17 @@ public class Game {
 	public long getAddedMyGames() {
 		return this.addedMyGames;
 	}
+
+	public ArrayList<Platform> getPlatforms() {
+		return this.platforms;
+	};
+
+	public ArrayList<Developer> getDevelopers() {
+		return this.developers;
+	};
+
+	public ArrayList<Genre> getGenres() {
+		return this.genres;
+	};
 
 }
