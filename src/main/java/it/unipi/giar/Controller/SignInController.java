@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 
 public class SignInController {
 
+	private User user;
     @FXML
     private AnchorPane anchorRoot;
     
@@ -38,7 +39,7 @@ public class SignInController {
 
     @FXML
     void SignIn(ActionEvent event) throws IOException {
-    	
+    	user = null;
     	String username = null;
     	String password = null;
     	try {
@@ -62,6 +63,10 @@ public class SignInController {
     	
     	Parent root;
     	
+    	if(user == null) {
+    		user = new User(username);
+    	}
+    	
     	boolean isAdmin= false;
     	isAdmin = User.isAdmin(username);
     	if (isAdmin) {
@@ -76,7 +81,7 @@ public class SignInController {
            
             //access the controller and call a method
             UserMenuController controller = loader.getController();
-            controller.initData(new User(username));
+            controller.initData(user);
     		
     	}
 	        
@@ -95,6 +100,10 @@ public class SignInController {
         stage.setScene(new Scene(root));
         stage.setResizable(false);
         stage.show();
+    }
+    
+    public void initData(User user) {
+    	this.user = user;
     }
     
 }

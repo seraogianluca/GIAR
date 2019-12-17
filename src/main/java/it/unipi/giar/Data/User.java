@@ -3,6 +3,8 @@ package it.unipi.giar.Data;
 
 import java.security.MessageDigest;
 //import java.util.ArrayList;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.bind.DatatypeConverter;
 
@@ -13,6 +15,9 @@ import org.neo4j.driver.v1.TransactionWork;
 import static org.neo4j.driver.v1.Values.parameters;
 
 import org.bson.Document;
+
+import com.mongodb.BasicDBObject;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import static com.mongodb.client.model.Filters.*;
@@ -27,14 +32,58 @@ public class User {
 	private String email;
 	private String password;
 	private String country;
-	//private ArrayList<Game> wishlist;
-	//private ArrayList<Game> myGames;
+	private ArrayList<Game> wishlist;
+	private ArrayList<Game> myGames;
 	//private ArrayList<Rating> ratings;
 
+	
+	
 	public User(String nickname) {
-		this.nickname = nickname;
+		MongoDriver driver = null;
+		MongoCollection<Document> collection = null;
+
+		try {
+			driver = MongoDriver.getInstance();
+			collection = driver.getCollection("users");
+			Document user = collection.find(eq("nickname", nickname)).first();
+			this.nickname = user.getString("nickname");
+			this.type = user.getString("type");
+			this.email=user.getString("email");
+			this.password=user.getString("password");
+			this.country=user.getString("country");
+			
+//			List<Document> items = new ArrayList<>();			
+//			items = (List<Document>)user.get("wishlist");
+//			
+//			for(Document d: items) {				
+//				addGameToList(d, "wishlist");			
+//			}
+//			
+//			items = new ArrayList<>();			
+//			items = (List<Document>)user.get("myGames");
+//			
+//			for(Document d: items) {				
+//				addGameToList(d, "myGames");			
+//			}
+//		    
+//			System.out.println(wishlist);
+//			System.out.println(myGames);
+			
+			
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
+	public void addGameToList(Document d, String list) {
+		if(list.equals("wishlist"))
+			wishlist.add(new Game(d));
+		else if(list.equals("myGames"))
+			myGames.add(new Game(d));
+		else
+			System.out.println("write list name correctly");
+	}
 	public User(String type, String nickname, String email, String password, String country) {
 		this.type = type;
 		this.nickname = nickname;
