@@ -3,20 +3,26 @@ package it.unipi.giar.Data;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import static com.mongodb.client.model.Filters.*;
+
+import org.bson.Document;
 
 import it.unipi.giar.MongoDriver;
 
 public class Game {
-	private final long id;
+	private long id;
 	private String slug;
 	private String name;
-	private String nameOriginal;
+	private String name_original;
 	private String description;
 	private int metacritic;
 	private Date released;
-	private String backgroundImage;
+	private String background_image;
 	private double rating;
 	private ArrayList<Rating> ratings;
 	private long added;
@@ -27,16 +33,17 @@ public class Game {
 	private ArrayList<Genre> genres;
 	private ArrayList<Game> searchGames;
 
-	public Game(String slug, String name, String nameOriginal, String description, int metacritic, Date released,
-			String backgroundImage, double rating, ArrayList<Rating> ratings, long added, long addedWishlist,
+	public Game(long id, String slug, String name, String name_original, String description, int metacritic, Date released,
+			String background_image, double rating, ArrayList<Rating> ratings, long added, long addedWishlist,
 			long addedMyGames) {
+		this.id = id;
 		this.slug = slug;
 		this.name = name;
-		this.nameOriginal = nameOriginal;
+		this.name_original = name_original;
 		this.description = description;
 		this.metacritic = metacritic;
 		this.released = released;
-		this.backgroundImage = backgroundImage;
+		this.background_image = background_image;
 		this.rating = rating;
 		this.ratings = ratings;
 		this.added = added;
@@ -68,13 +75,27 @@ public class Game {
 		MongoDriver driver = null;
 		MongoCollection<Document> collection = null;
 
+		BasicDBObject query = new BasicDBObject();
+		query.put("slug",  Pattern.compile(search));
+
 		try {
 			driver = MongoDriver.getInstance();
 			collection = driver.getCollection("games");
-			MongoCursor<Document> cursor = collection.find(eq("slug", "game")).iterator();
+			MongoCursor<Document> cursor = collection.find(query).iterator();
 			try {
 				while (cursor.hasNext()) {
-					System.out.println(cursor.next().toJson());
+					Document document = cursor.next();
+					//System.out.println(cursor.next().toJson());
+					slug = document.getString("slug");
+					id = document.getLong("id");
+					slug = document.getString("slug");
+					name = document.getString("name");
+					name_original = document.getString("name_original");
+					description = document.getString("description");
+					metacritic = document.getInteger("metacritic");
+					released = document.getDate("released");
+					background_image = document.getString("background_image");
+					rating = document.getDouble("rating");
 				}
 			} finally {
 				cursor.close();
@@ -95,8 +116,8 @@ public class Game {
 		this.name = name;
 	}
 
-	public void setnameOriginal(String nameOriginal) {
-		this.nameOriginal = nameOriginal;
+	public void setname_original(String name_original) {
+		this.name_original = name_original;
 	}
 
 	public void setdescription(String description) {
@@ -111,8 +132,8 @@ public class Game {
 		this.released = released;
 	}
 
-	public void setbackgroundImage(String backgroundImage) {
-		this.backgroundImage = backgroundImage;
+	public void setbackground_image(String background_image) {
+		this.background_image = background_image;
 	}
 
 	public void setRating(double rating) {
@@ -143,8 +164,8 @@ public class Game {
 		return this.name;
 	}
 
-	public String getnameOriginal() {
-		return this.nameOriginal;
+	public String getname_original() {
+		return this.name_original;
 	}
 
 	public String getdescription() {
@@ -159,8 +180,8 @@ public class Game {
 		return this.released;
 	}
 
-	public String getbackgroundImage() {
-		return this.backgroundImage;
+	public String getbackground_image() {
+		return this.background_image;
 	}
 
 	public double getRating() {
