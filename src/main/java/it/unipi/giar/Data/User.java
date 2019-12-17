@@ -201,6 +201,12 @@ public class User {
 	        );
 	    }
 	}
+	
+	public double getGameRate(long gameid) {
+		//MATILDE,  this function goes inside the logged user and takes the rating of the user for the gameid game and return his rating
+		double rating = 2.4; ///per prova
+		return rating;
+	}
 
 	private static int createPersonNode(Transaction tx, String name) {
 	    tx.run("CREATE (n:Player {nickname: $nickname, pro: $pro})", parameters("nickname", name, "pro", false));

@@ -3,7 +3,10 @@ package it.unipi.giar.Controller;
 import java.io.File;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.jfoenix.controls.JFXButton;
@@ -74,10 +77,14 @@ public class InfoGameController {
     public void initialize() {
     	name.setText(game.getName()); 
     	description.setText(game.getDescription()); 
-    	rating.setText(game.getRating()); 
-    	released.setText(game.getReleased()); 
-    	metacritic.setText(game.getMetacritic()); 
+    	rating.setText(String.valueOf(game.getRating())); 
     	
+    	Date date = game.getReleased();
+    	DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
+    	
+    	released.setText(dateFormat.format(date)); 
+    	metacritic.setText(String.valueOf(game.getMetacritic())); 
+    	 
 		List<String> list = new ArrayList<String>();
     	ObservableList<String> rats = FXCollections.observableArrayList(list);
     	rats.add("1");
@@ -88,7 +95,7 @@ public class InfoGameController {
 		yourRating.setItems((ObservableList<String>) rats);
 		
 		//IF THE USER ALREADY VOTED THE GAME, IN THE COMBOBOX APPEARS THE RATE OF THAT USER BY DEFAULT
-		String userRate = user.getGameRate(game.getGameId());
+		String userRate = String.valueOf(user.getGameRate(game.getId()));
 		yourRating.setValue(userRate);
     }
     
