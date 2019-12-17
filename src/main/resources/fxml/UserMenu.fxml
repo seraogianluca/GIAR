@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipi.giar.Controller.UserMenuController">
+   <children>
+      <SplitPane fx:id="splitPaneLeft" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: A2A2A2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <AnchorPane fx:id="anchorPaneLeft">
+               <children>
+                  <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <top>
+                        <AnchorPane fx:id="logoMenuPanel" minHeight="-Infinity" minWidth="-Infinity" prefHeight="79.0" prefWidth="250.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <ImageView fitHeight="54.0" fitWidth="56.0" layoutX="144.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/logoy.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="#ffff0d" layoutX="56.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GIAR">
+                                 <font>
+                                    <Font name="System Bold" size="32.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                     </top>
+                     <center>
+                        <AnchorPane prefHeight="518.0" prefWidth="250.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <JFXButton fx:id="userNameMenuPanel" minHeight="-Infinity" minWidth="-Infinity" onAction="#openUser" prefHeight="50.0" prefWidth="250.0" text="UserName" textAlignment="JUSTIFY" textFill="#000000bc" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="socialMenuPanel" layoutX="2.0" layoutY="50.0" onAction="#openSocial" prefHeight="50.0" prefWidth="250.0" text="Social" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                              <JFXButton fx:id="wishlistMenuPanel" layoutY="100.0" onAction="#openWishlist" prefHeight="50.0" prefWidth="250.0" text="Wishlist" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                              <JFXButton fx:id="myGamesMenuPanel" layoutX="5.0" layoutY="150.0" onAction="#openMyGames" prefHeight="50.0" prefWidth="250.0" text="MyGames" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                              <Text fill="#000000a8" layoutX="13.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Browse by:">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                              <JFXComboBox fx:id="topPerPlatformMenuPanel" focusColor="#ffff0d" layoutX="52.0" layoutY="213.0" onAction="#openTopPlatform" promptText="Top Per Platform" visibleRowCount="5" />
+                              <JFXComboBox fx:id="platformBrowseMenuPanel" focusColor="#ffff0d" layoutX="70.0" layoutY="303.0" onAction="#openPlatformBrowse" promptText="Platform" visibleRowCount="5" />
+                              <JFXComboBox fx:id="yearBrowseMenuPanel" focusColor="#ffff0d" layoutX="84.0" layoutY="359.0" onAction="#openYearBrowse" promptText="Year" visibleRowCount="5" />
+                              <JFXComboBox fx:id="genreBrowseMenuPanel" focusColor="#ffff0d" layoutX="79.0" layoutY="412.0" onAction="#openGenreBrowse" promptText="Genre" visibleRowCount="5" />
+                           </children>
+                        </AnchorPane>
+                     </center>
+                     <bottom>
+                        <AnchorPane prefHeight="64.0" prefWidth="250.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <ImageView fx:id="logout" fitHeight="50.0" fitWidth="50.0" layoutX="100.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+                                 <image>
+                                    <Image url="@../images/LOGOUT%20(2).png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </bottom>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+      <SplitPane fx:id="splitPaneRight" layoutX="250.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="650.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <AnchorPane fx:id="anchorPaneRight">
+               <children>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" />
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
