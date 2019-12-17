@@ -104,8 +104,9 @@ public class SignUpController  {
     void SignUp(ActionEvent event) {
 	    if (!errorFlag) {
 	    	errorMessage.setVisible(false);
-	    	
 			MessageDigest md;
+			User user;
+		
 			try {
 				md = MessageDigest.getInstance("MD5");
 				md.update(signUpPassword.getText().getBytes());
@@ -115,32 +116,27 @@ public class SignUpController  {
 				String email = signUpEmail.getText();
 				String country = signUpCountry.getValue();
 				
-				User user = new User("player", nickname, email, password, country);
+				user = new User("player", nickname, email, password, country);
 				user.register();
-			} catch (NoSuchAlgorithmException e) {
+				
+				FXMLLoader loader = new FXMLLoader();
+	            loader.setLocation(getClass().getResource("/fxml/SignIn.fxml"));
+	            Parent root = loader.load();
+	            SignInController controller = loader.getController();
+	            controller.initData(user);
+				
+		        Stage stage = (Stage)signUpButton.getScene().getWindow();
+		        stage.setScene(new Scene(root));
+		        stage.show();
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-			try {
-				loadLogin();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
+			}		
 		} else {
 			errorMessage.setText("Unable to register.");
 			errorMessage.setVisible(true);
 			errorFlag = true;
 		}
     }
-    
-    void loadLogin() throws IOException {
-    	Parent root = FXMLLoader.load(getClass().getResource("/fxml/SignIn.fxml"));
-        Stage stage = (Stage)signUpButton.getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
-
 }
 
