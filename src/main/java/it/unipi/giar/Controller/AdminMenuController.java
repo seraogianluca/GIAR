@@ -13,10 +13,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class AdminMenuController {
 
@@ -52,7 +55,20 @@ public class AdminMenuController {
 
     @FXML
     void logout(MouseEvent event) {
-    	System.out.println("BYE");  
+    	try {
+    		
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/fxml/SignIn.fxml"));
+			Parent root = loader.load();
+			
+			Stage stage = (Stage)logout.getScene().getWindow();
+			stage.setScene(new Scene(root));
+			stage.show();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     @FXML
