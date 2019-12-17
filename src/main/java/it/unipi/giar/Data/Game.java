@@ -110,22 +110,23 @@ public class Game {
 		// MongoCollection<Document> collection = md.getCollection("games");
 	}*/
 
-	public ArrayList<Game> searchGames(String search) {
+	public static ArrayList<Game> searchGames(String search) {
 		ArrayList<Game> listGames = new ArrayList<Game>();
 		MongoDriver driver = null;
 		MongoCollection<Document> collection = null;
 
 		BasicDBObject query = new BasicDBObject();
-		query.put("slug", Pattern.compile(search));
+		query.put("name", Pattern.compile(search, Pattern.CASE_INSENSITIVE));
 
 		try {
 			driver = MongoDriver.getInstance();
 			collection = driver.getCollection("games");
-			MongoCursor<Document> cursor = collection.find(query).iterator();
+			MongoCursor<Document> cursor = collection.find(query).limit(5).iterator();
 			try {
 				while (cursor.hasNext()) {
 					Document document = cursor.next();
-					listGames.add(new Game(document));
+					System.out.println(document.toJson());
+					//listGames.add(new Game(document));
 				}
 			} finally {
 				cursor.close();
