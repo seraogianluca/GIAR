@@ -70,7 +70,7 @@ public class SignInController {
     	}
     	else { 	
     		
-	    	root = FXMLLoader.load(getClass().getResource("/fxml/UserHomepage.fxml"));
+	    	root = FXMLLoader.load(getClass().getResource("/fxml/UserMenu.fxml"));
 	    	
     	}
 	        Stage stage = new Stage();
