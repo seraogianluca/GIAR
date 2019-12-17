@@ -11,6 +11,7 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import it.unipi.giar.Data.Game;
+import it.unipi.giar.Data.User;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
@@ -27,6 +28,8 @@ import javafx.util.Callback;
 
 public class UserHomepageController {
 	
+	private User user;
+	
 	private ObservableList<GameTable> games;
 
     @FXML
@@ -34,6 +37,10 @@ public class UserHomepageController {
     
     @FXML
     private JFXTreeTableView<GameTable> gamesTable;
+    
+    public void initData(User user) {
+    	this.user = user;
+    }
     
     public void initialize() {
     	JFXTreeTableColumn<GameTable, String> gameName = new JFXTreeTableColumn<GameTable, String>("Name"); 
@@ -76,12 +83,9 @@ public class UserHomepageController {
     @FXML
     void searchGames(KeyEvent event) {
     	ArrayList<Game> searchResult = Game.searchGames(searchGames.getText());
-    	System.out.println(searchResult);
-    	
     	games.clear();
     	
     	for(Game game : searchResult) {
-    		System.out.println(game.getName());
     		games.add(new GameTable(game.getName(), Double.toString(game.getRating())));
     	}
     }
@@ -89,9 +93,17 @@ public class UserHomepageController {
     void openGameInfo(String name) {
     	try { 		
     		Scene scene = searchGames.getScene();
-    		AnchorPane pane = (AnchorPane)scene.lookup("#anchorPaneRight"); 		
-    		AnchorPane newPane = FXMLLoader.load(getClass().getResource("/fxml/InfoGame.fxml"));
+    		AnchorPane pane = (AnchorPane)scene.lookup("#anchorPaneRight");
+    		
+    		FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/fxml/InfoGame.fxml"));
+            AnchorPane newPane = loader.load();
+            
+            InfoGameController controller = loader.getController();
+            controller.initData(user, Game.findGame(name));
+            
             pane.getChildren().setAll(newPane);
+            
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

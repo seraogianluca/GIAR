@@ -22,6 +22,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 
 public class InfoGameController {
+	
 	private Game game;
 	private User user;
 	
@@ -101,7 +102,6 @@ public class InfoGameController {
     
     public void initData(User user, Game game) {
     	this.user = user;
-    	this.game = game; //quando clicco sul nome del gioco dal menu precedente
-    	
+    	this.game = game;
     }
 }

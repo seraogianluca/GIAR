@@ -1,5 +1,7 @@
 package it.unipi.giar.Data;
 
+import static com.mongodb.client.model.Filters.eq;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Pattern;
@@ -29,7 +31,7 @@ public class Game {
 	private ArrayList<Platform> platforms;
 	private ArrayList<Developer> developers;
 	private ArrayList<Genre> genres;
-
+	
 	public Game(Document document) {
 		//this.id = document.getInteger("id");
 		//this.slug = document.getString("slug");
@@ -134,6 +136,20 @@ public class Game {
 			return listGames;
 
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	public static Game findGame(String name) {
+		try {
+			MongoDriver md = MongoDriver.getInstance();
+			MongoCollection<Document> collection = md.getCollection("games");
+			Document game = collection.find(eq("name", name)).first();
+			
+			return new Game(game);
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		

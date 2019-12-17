@@ -85,9 +85,15 @@ public class UserMenuController {
     	
     	
     	try {
-			AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/UserHomepage.fxml"));
+    		
+    		FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/fxml/UserHomepage.fxml"));
+            AnchorPane pane = loader.load();
+			
+			UserHomepageController controller = loader.getController();
+            controller.initData(user);
+            
 			anchorPaneRight.getChildren().setAll(pane);
-    	
     	} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
