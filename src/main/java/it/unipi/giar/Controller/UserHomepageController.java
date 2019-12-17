@@ -1,9 +1,11 @@
 package it.unipi.giar.Controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableColumn;
+import com.jfoenix.controls.JFXTreeTableRow;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
@@ -15,8 +17,10 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.Scene;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.util.Callback;
@@ -48,6 +52,17 @@ public class UserHomepageController {
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<GameTable, String> param) {
                 return param.getValue().getValue().rating;
             }
+            
+            
+        });
+        
+        gamesTable.setRowFactory(tv->{
+            JFXTreeTableRow<GameTable> row = new JFXTreeTableRow<>();
+            row.setOnMouseClicked(event -> {
+                    GameTable rowData = row.getItem();
+                    openGameInfo(rowData.name.get());
+            });
+            return row ;
         });
         
         games = FXCollections.observableArrayList();
@@ -71,6 +86,18 @@ public class UserHomepageController {
     	}
     }
     
+    void openGameInfo(String name) {
+    	try { 		
+    		Scene scene = searchGames.getScene();
+    		AnchorPane pane = (AnchorPane)scene.lookup("#anchorPaneRight"); 		
+    		AnchorPane newPane = FXMLLoader.load(getClass().getResource("/fxml/InfoGame.fxml"));
+            pane.getChildren().setAll(newPane);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
     class GameTable extends RecursiveTreeObject<GameTable> {
 
         StringProperty name;
@@ -79,10 +106,6 @@ public class UserHomepageController {
         public GameTable(String name, String rating) {
             this.name = new SimpleStringProperty(name);
             this.rating = new SimpleStringProperty(rating);
-        }
-        
-        public String getName() {
-        	return this.getName();
         }
 
     }
