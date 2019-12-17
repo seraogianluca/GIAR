@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
-import static com.mongodb.client.model.Filters.*;
 
 import org.bson.Document;
 
@@ -33,9 +32,21 @@ public class Game {
 	private ArrayList<Genre> genres;
 	private ArrayList<Game> searchGames;
 
-	public Game(long id, String slug, String name, String name_original, String description, int metacritic, Date released,
-			String background_image, double rating, ArrayList<Rating> ratings, long added, long addedWishlist,
-			long addedMyGames) {
+	public Game(Document document) {
+		this.id = document.getLong("id");
+		this.slug = document.getString("slug");
+		this.name = document.getString("name");
+		this.name_original = document.getString("name_original");
+		this.description = document.getString("description");
+		this.metacritic = document.getInteger("metacritic");
+		this.released = document.getDate("released");
+		this.background_image = document.getString("background_image");
+		this.rating = document.getDouble("rating");
+	}
+
+	public Game(long id, String slug, String name, String name_original, String description, int metacritic,
+			Date released, String background_image, double rating, ArrayList<Rating> ratings, long added,
+			long addedWishlist, long addedMyGames) {
 		this.id = id;
 		this.slug = slug;
 		this.name = name;
@@ -52,31 +63,36 @@ public class Game {
 	}
 
 	public static List<String> getAllPlatformsList() {
-		//MATILDE, i need this function to populate the fields of the combobox for platforms
-		//this function returns the list of the platforms existing in the database. distinct.
-	
-	  }
-	
-	public static List<String> getAllYearsList() {
-		//MATILDE, i need this function to populate the fields of the combobox for years
-		//this function returns the list of the years existing in the database. distinct.
+		// MATILDE, i need this function to populate the fields of the combobox for
+		// platforms
+		// this function returns the list of the platforms existing in the database.
+		// distinct.
+	}
 
-	  }
-	
+	public static List<String> getAllYearsList() {
+		// MATILDE, i need this function to populate the fields of the combobox for
+		// years
+		// this function returns the list of the years existing in the database.
+		// distinct.
+	}
+
 	public static List<String> getAllGenresList() {
-		//MATILDE, i need this function to populate the fields of the combobox for genres
-		//this function returns the list of the genres existing in the database. distinct.
-		
-	    //MongoDriver md = MongoDriver.getInstance();
-	    //MongoCollection<Document> collection = md.getCollection("games");
-	  }
+		// MATILDE, i need this function to populate the fields of the combobox for
+		// genres
+		// this function returns the list of the genres existing in the database.
+		// distinct.
+
+		// MongoDriver md = MongoDriver.getInstance();
+		// MongoCollection<Document> collection = md.getCollection("games");
+	}
 
 	public ArrayList<Game> searchGames(String search) {
+		ArrayList<Game> listGames = new ArrayList<Game>();
 		MongoDriver driver = null;
 		MongoCollection<Document> collection = null;
 
 		BasicDBObject query = new BasicDBObject();
-		query.put("slug",  Pattern.compile(search));
+		query.put("slug", Pattern.compile(search));
 
 		try {
 			driver = MongoDriver.getInstance();
@@ -85,27 +101,21 @@ public class Game {
 			try {
 				while (cursor.hasNext()) {
 					Document document = cursor.next();
-					//System.out.println(cursor.next().toJson());
-					slug = document.getString("slug");
-					id = document.getLong("id");
-					slug = document.getString("slug");
-					name = document.getString("name");
-					name_original = document.getString("name_original");
-					description = document.getString("description");
-					metacritic = document.getInteger("metacritic");
-					released = document.getDate("released");
-					background_image = document.getString("background_image");
-					rating = document.getDouble("rating");
+					listGames.add(new Game(document));
 				}
 			} finally {
 				cursor.close();
+				return listGames;
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			return false;
+			return listGames;
 		}
-		return true;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public void setSlug(String slug) {
@@ -154,6 +164,10 @@ public class Game {
 
 	public void setAddedMyGames(long addedMyGames) {
 		this.addedMyGames = addedMyGames;
+	}
+
+	public long getId() {
+		return this.id;
 	}
 
 	public String getSlug() {
