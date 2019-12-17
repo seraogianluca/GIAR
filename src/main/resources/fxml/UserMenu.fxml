@@ -22,7 +22,7 @@
                            <children>
                               <AnchorPane fx:id="homepageMenuPanel" layoutX="56.0" layoutY="22.0" onMouseClicked="#openHomepage">
                                  <children>
-                                    <ImageView fitHeight="54.0" fitWidth="56.0" layoutX="88.0" pickOnBounds="true" preserveRatio="true" >
+                                    <ImageView fitHeight="54.0" fitWidth="56.0" layoutX="88.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/logoy.png" />
                                        </image>
@@ -38,32 +38,32 @@
                         </AnchorPane>
                      </top>
                      <center>
-                        <AnchorPane prefHeight="518.0" prefWidth="250.0" BorderPane.alignment="CENTER">
+                        <AnchorPane prefHeight="518.0" prefWidth="250.0" BorderPane.alignment="TOP_LEFT">
                            <children>
-                              <JFXButton fx:id="userNameMenuPanel" minHeight="-Infinity" minWidth="-Infinity" onAction="#openUser" prefHeight="50.0" prefWidth="250.0" text="UserName" textAlignment="JUSTIFY" textFill="#000000bc" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <JFXButton fx:id="userNameMenuPanel" minHeight="-Infinity" minWidth="-Infinity" onAction="#openUser" prefHeight="50.0" prefWidth="250.0" style="-fx-alignment: center-left;" text="UserName" textFill="#000000bc" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                               </JFXButton>
-                              <JFXButton fx:id="socialMenuPanel" layoutX="2.0" layoutY="50.0" onAction="#openSocial" prefHeight="50.0" prefWidth="250.0" text="Social" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                              <JFXButton fx:id="wishlistMenuPanel" layoutY="100.0" onAction="#openWishlist" prefHeight="50.0" prefWidth="250.0" text="Wishlist" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                              <JFXButton fx:id="myGamesMenuPanel" layoutX="5.0" layoutY="150.0" onAction="#openMyGames" prefHeight="50.0" prefWidth="250.0" text="MyGames" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                              <Text fill="#000000a8" layoutX="13.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Browse by:">
+                              <JFXButton fx:id="socialMenuPanel" layoutX="2.0" layoutY="50.0" onAction="#openSocial" prefHeight="50.0" prefWidth="250.0" style="-fx-alignment: center-left;" text="Social" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                              <JFXButton fx:id="wishlistMenuPanel" layoutY="100.0" onAction="#openWishlist" prefHeight="50.0" prefWidth="250.0" style="-fx-alignment: center-left;" text="Wishlist" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                              <JFXButton fx:id="myGamesMenuPanel" layoutX="5.0" layoutY="150.0" onAction="#openMyGames" prefHeight="50.0" prefWidth="250.0" style="-fx-alignment: center-left;" text="MyGames" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                              <Text fill="#000000a8" layoutX="5.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Browse by:">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                               </Text>
-                              <JFXComboBox fx:id="topPerPlatformMenuPanel" focusColor="#ffff0d" layoutX="52.0" layoutY="213.0" onAction="#openTopPlatform" promptText="Top Per Platform" visibleRowCount="5" />
-                              <JFXComboBox fx:id="platformBrowseMenuPanel" focusColor="#ffff0d" layoutX="70.0" layoutY="303.0" onAction="#openPlatformBrowse" promptText="Platform" visibleRowCount="5" />
-                              <JFXComboBox fx:id="yearBrowseMenuPanel" focusColor="#ffff0d" layoutX="84.0" layoutY="359.0" onAction="#openYearBrowse" promptText="Year" visibleRowCount="5" />
-                              <JFXComboBox fx:id="genreBrowseMenuPanel" focusColor="#ffff0d" layoutX="79.0" layoutY="412.0" onAction="#openGenreBrowse" promptText="Genre" visibleRowCount="5" />
+                              <JFXComboBox fx:id="topPerPlatformMenuPanel" focusColor="#ffff0d" layoutX="5.0" layoutY="200.0" onAction="#openTopPlatform" prefHeight="35.0" prefWidth="240.0" promptText="Top Per Platform" visibleRowCount="5" />
+                              <JFXComboBox fx:id="platformBrowseMenuPanel" focusColor="#ffff0d" layoutX="5.0" layoutY="293.0" onAction="#openPlatformBrowse" prefHeight="35.0" prefWidth="240.0" promptText="Platform" visibleRowCount="5" />
+                              <JFXComboBox fx:id="yearBrowseMenuPanel" focusColor="#ffff0d" layoutX="5.0" layoutY="345.0" onAction="#openYearBrowse" prefHeight="35.0" prefWidth="240.0" promptText="Year" visibleRowCount="5" />
+                              <JFXComboBox fx:id="genreBrowseMenuPanel" focusColor="#ffff0d" layoutX="5.0" layoutY="397.0" onAction="#openGenreBrowse" prefHeight="35.0" prefWidth="240.0" promptText="Genre" visibleRowCount="5" />
                            </children>
                         </AnchorPane>
                      </center>
                      <bottom>
                         <AnchorPane prefHeight="64.0" prefWidth="250.0" BorderPane.alignment="CENTER">
                            <children>
-                              <ImageView fx:id="logout" fitHeight="50.0" fitWidth="50.0" layoutX="100.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+                              <ImageView fx:id="logout" fitHeight="30.0" fitWidth="30.0" layoutX="110.0" layoutY="18.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="110.0">
                                  <image>
                                     <Image url="@../images/LOGOUT%20(2).png" />
                                  </image>
