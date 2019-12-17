@@ -50,7 +50,7 @@ public class User {
 
 			return(cursor.hasNext());
 
-		}catch(Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 
@@ -70,18 +70,23 @@ public class User {
 			String myHash = DatatypeConverter.printHexBinary(digest).toUpperCase();
 			MongoCursor<Document> cursor = collection.find(eq("password", myHash)).iterator();
 			return(cursor.hasNext());
-		}	catch(Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		return false;
 	}
 	
 	public static boolean checkEmail(String email) {
-		MongoDriver md = MongoDriver.getInstance();
-		MongoCollection<Document> collection = md.getCollection("users");
-		Document user = collection.find(eq("email", email)).first();
-		if(user == null)
-			return true;
+		try {
+			MongoDriver md = MongoDriver.getInstance();
+			MongoCollection<Document> collection = md.getCollection("users");
+			Document user = collection.find(eq("email", email)).first();
+			if (user == null)
+				return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 		return false;	
 	}
 
@@ -103,18 +108,22 @@ public class User {
 	}
 
 	public void register() {
-		Document user = new Document("nickname", nickname)
-				.append("email", email)
-				.append("password", password)
-				.append("type", type)
-				.append("country", country);
+		try {
+			Document user = new Document("nickname", nickname)
+					.append("email", email)
+					.append("password", password)
+					.append("type", type)
+					.append("country", country);
 
-		MongoDriver md = MongoDriver.getInstance();
-		MongoCollection<Document> collection = md.getCollection("users");
-		collection.insertOne(user);
-		
-		addPerson(nickname);
-		
+			MongoDriver md = MongoDriver.getInstance();
+			MongoCollection<Document> collection = md.getCollection("users");
+			collection.insertOne(user);
+			
+			addPerson(nickname);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void addPerson(final String name) {
