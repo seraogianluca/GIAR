@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
@@ -12,7 +12,12 @@
          <top>
           <AnchorPane prefHeight="100.0" prefWidth="650.0" BorderPane.alignment="CENTER">
                <children>
-                  <Text fx:id="Top" layoutX="196.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Top" wrappingWidth="258.890625">
+                  <Text fx:id="top" layoutX="196.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Top" wrappingWidth="258.890625">
+                     <font>
+                        <Font size="56.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="plat" layoutX="302.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" " wrappingWidth="258.890625">
                      <font>
                         <Font size="56.0" />
                      </font>
@@ -21,7 +26,11 @@
             </AnchorPane>
          </top>
          <center>
-            
+             <AnchorPane BorderPane.alignment="CENTER">
+               <children>
+                  <JFXTreeTableView fx:id="gamesTable3" layoutX="26.0" layoutY="23.0" prefHeight="465.0" prefWidth="600.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="40.0" />
+               </children>
+            </AnchorPane>
          </center>
       </BorderPane>
    </children>

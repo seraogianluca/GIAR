@@ -127,8 +127,13 @@ public class UserMenuController {
     	yearBrowseMenuPanel.valueProperty().set(null);
     	
     	try {
-			AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/UserTopPerPlatform.fxml"));
-			anchorPaneRight.getChildren().setAll(pane);
+    		FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/fxml/UserTopPerPlatform.fxml"));         
+            AnchorPane pane = loader.load();
+			
+		    UserTopPerPlatformController controller = loader.getController();            
+	    	controller.initialize(platform);
+	    	anchorPaneRight.getChildren().setAll(pane);
     	
     	} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -137,14 +142,14 @@ public class UserMenuController {
     
     }
      
-    void loadBrowsePage(String browseType) {
+    void loadBrowsePage(String value, String browseType) {
     	try {
      		FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/fxml/UserBrowse.fxml"));         
             AnchorPane pane = loader.load();
 			           
             UserBrowseController controller = loader.getController();            
-    	    controller.initialize(browseType);
+    	    controller.initialize(value,browseType);
     	    
 			anchorPaneRight.getChildren().setAll(pane);
     	
@@ -156,38 +161,38 @@ public class UserMenuController {
     
     @FXML
     void openYearBrowse(ActionEvent event) {
-    	String year = yearBrowseMenuPanel.getValue();
+    	String yearValue = yearBrowseMenuPanel.getValue();
     	
     	genreBrowseMenuPanel.valueProperty().set(null);
     	topPerPlatformMenuPanel.valueProperty().set(null);
     	platformBrowseMenuPanel.valueProperty().set(null);
     	
-    	loadBrowsePage(year);
+    	loadBrowsePage(yearValue, "year");
    
     }
 
     @FXML
     void openPlatformBrowse(ActionEvent event) {
-    	String platform = platformBrowseMenuPanel.getValue();
+    	String platformValue = platformBrowseMenuPanel.getValue();
     	
     	genreBrowseMenuPanel.valueProperty().set(null);
     	topPerPlatformMenuPanel.valueProperty().set(null);
     	yearBrowseMenuPanel.valueProperty().set(null);
     	
     	
-    	loadBrowsePage(platform);
+    	loadBrowsePage(platformValue, "platform");
     	
     }
     
     @FXML
     void openGenreBrowse(ActionEvent event) {
-    	String genre = genreBrowseMenuPanel.getValue();
+    	String genreValue = genreBrowseMenuPanel.getValue();
 
     	topPerPlatformMenuPanel.valueProperty().set(null);
     	platformBrowseMenuPanel.valueProperty().set(null);
     	yearBrowseMenuPanel.valueProperty().set(null);
     	
-    	loadBrowsePage(genre);
+    	loadBrowsePage(genreValue,"genre");
     }
     
     
@@ -198,7 +203,7 @@ public class UserMenuController {
     
     @FXML
     void openMyGames(ActionEvent event) {
-    	loadListPage("Mygames");
+    	loadListPage("MyGames");
     }
     
     void loadListPage(String listType) {        
