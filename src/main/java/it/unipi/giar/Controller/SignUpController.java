@@ -123,7 +123,7 @@ public class SignUpController  {
 	            loader.setLocation(getClass().getResource("/fxml/SignIn.fxml"));
 	            Parent root = loader.load();
 	            SignInController controller = loader.getController();
-	            controller.initData(user);
+	            controller.initialize(user);
 				
 		        Stage stage = (Stage)signUpButton.getScene().getWindow();
 		        stage.setScene(new Scene(root));

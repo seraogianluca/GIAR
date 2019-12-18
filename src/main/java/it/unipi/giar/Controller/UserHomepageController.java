@@ -37,12 +37,12 @@ public class UserHomepageController {
     
     @FXML
     private JFXTreeTableView<GameTable> gamesTable;
-    
-    public void initData(User user) {
-    	this.user = user;
-    }
+
     
     public void initialize() {
+    	
+    	this.user = UserMenuController.user;
+    	
     	JFXTreeTableColumn<GameTable, String> gameName = new JFXTreeTableColumn<GameTable, String>("Name"); 
     	gameName.prefWidthProperty().bind(gamesTable.widthProperty().divide(2));
         gameName.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<GameTable, String>, ObservableValue<String>>() {
@@ -66,8 +66,9 @@ public class UserHomepageController {
         gamesTable.setRowFactory(tv->{
             JFXTreeTableRow<GameTable> row = new JFXTreeTableRow<>();
             row.setOnMouseClicked(event -> {
-                    GameTable rowData = row.getItem();
+                    GameTable rowData = row.getItem();             
                     openGameInfo(rowData.name.get());
+                    
             });
             return row ;
         });
@@ -94,16 +95,19 @@ public class UserHomepageController {
     	try { 		
     		Scene scene = searchGames.getScene();
     		AnchorPane pane = (AnchorPane)scene.lookup("#anchorPaneRight");
-    		
+    	    		
     		FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/fxml/InfoGame.fxml"));
             AnchorPane newPane = loader.load();
-            
-            InfoGameController controller = loader.getController();
-            controller.initData(user, Game.findGame(name));
+    		
+    	    InfoGameController controller = loader.getController();            
+    	    controller.initialize(user, Game.findGame(name));
             
             pane.getChildren().setAll(newPane);
             
+           
+            
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

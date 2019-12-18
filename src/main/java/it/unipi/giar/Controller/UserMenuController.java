@@ -10,6 +10,7 @@ import java.util.List;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 
+import it.unipi.giar.Data.Game;
 import it.unipi.giar.Data.User;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -17,6 +18,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuButton;
@@ -29,7 +32,7 @@ import javafx.stage.Stage;
 
 public class UserMenuController {
 	
-	private User user;
+	public static User user;
 
     @FXML
     private SplitPane splitPaneLeft;
@@ -39,7 +42,7 @@ public class UserMenuController {
 
     @FXML
     private AnchorPane logoMenuPanel;
-
+    
     @FXML
     private JFXButton userNameMenuPanel;
 
@@ -76,24 +79,21 @@ public class UserMenuController {
     @FXML
     private AnchorPane anchorPaneLeft;
     
+    
     @FXML
     void openHomepage(MouseEvent event) {
        	genreBrowseMenuPanel.valueProperty().set(null);
     	topPerPlatformMenuPanel.valueProperty().set(null);
     	platformBrowseMenuPanel.valueProperty().set(null);
-    	yearBrowseMenuPanel.valueProperty().set(null);
-    	
-    	
+    	yearBrowseMenuPanel.valueProperty().set(null);    	
     	try {
     		
     		FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/fxml/UserHomepage.fxml"));
+            loader.setLocation(getClass().getResource("/fxml/UserHomepage.fxml"));         
             AnchorPane pane = loader.load();
-			
-			UserHomepageController controller = loader.getController();
-            controller.initData(user);
-            
+			           
 			anchorPaneRight.getChildren().setAll(pane);
+			
     	} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -126,9 +126,7 @@ public class UserMenuController {
     	platformBrowseMenuPanel.valueProperty().set(null);
     	yearBrowseMenuPanel.valueProperty().set(null);
     	
-    	//query a mongo per listare i giochi di quella platform
-    	//topPerPlatformMenuPanel.valueProperty().set(null);//  questa va chiamata o con un altro evento o dopo aver caricato la pagina nuova
-     	try {
+    	try {
 			AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/UserTopPerPlatform.fxml"));
 			anchorPaneRight.getChildren().setAll(pane);
     	
@@ -138,7 +136,36 @@ public class UserMenuController {
 		} 
     
     }
+     
+    void loadBrowsePage(String browseType) {
+    	try {
+     		FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/fxml/UserBrowse.fxml"));         
+            AnchorPane pane = loader.load();
+			           
+            UserBrowseController controller = loader.getController();            
+    	    controller.initialize(browseType);
+    	    
+			anchorPaneRight.getChildren().setAll(pane);
+    	
+    	} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+    }
     
+    @FXML
+    void openYearBrowse(ActionEvent event) {
+    	String year = yearBrowseMenuPanel.getValue();
+    	
+    	genreBrowseMenuPanel.valueProperty().set(null);
+    	topPerPlatformMenuPanel.valueProperty().set(null);
+    	platformBrowseMenuPanel.valueProperty().set(null);
+    	
+    	loadBrowsePage(year);
+   
+    }
+
     @FXML
     void openPlatformBrowse(ActionEvent event) {
     	String platform = platformBrowseMenuPanel.getValue();
@@ -148,14 +175,7 @@ public class UserMenuController {
     	yearBrowseMenuPanel.valueProperty().set(null);
     	
     	
-    	try {
-			AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/UserBrowse.fxml"));
-			anchorPaneRight.getChildren().setAll(pane);
-    	
-    	} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
+    	loadBrowsePage(platform);
     	
     }
     
@@ -167,52 +187,40 @@ public class UserMenuController {
     	platformBrowseMenuPanel.valueProperty().set(null);
     	yearBrowseMenuPanel.valueProperty().set(null);
     	
-     	try {
-			AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/UserBrowse.fxml"));
-			anchorPaneRight.getChildren().setAll(pane);
-    	
-    	} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
+    	loadBrowsePage(genre);
     }
-
+    
     
     @FXML
-    void openYearBrowse(ActionEvent event) {
-    	String year = yearBrowseMenuPanel.getValue();
-    	
-    	genreBrowseMenuPanel.valueProperty().set(null);
-    	topPerPlatformMenuPanel.valueProperty().set(null);
-    	platformBrowseMenuPanel.valueProperty().set(null);
-    	
-     	try {
-			AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/UserBrowse.fxml"));
-			anchorPaneRight.getChildren().setAll(pane);
-    	
-    	} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
+    void openWishlist(ActionEvent event) {
+    	loadListPage("Wishlist");
     }
-
     
     @FXML
     void openMyGames(ActionEvent event) {
+    	loadListPage("Mygames");
+    }
+    
+    void loadListPage(String listType) {        
     	genreBrowseMenuPanel.valueProperty().set(null);
     	topPerPlatformMenuPanel.valueProperty().set(null);
     	platformBrowseMenuPanel.valueProperty().set(null);
-    	yearBrowseMenuPanel.valueProperty().set(null);
+    	yearBrowseMenuPanel.valueProperty().set(null);	
     	
     	try {
-			AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/UserMyGames.fxml"));
+    		FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/fxml/UserList.fxml"));         
+            AnchorPane pane = loader.load();
+			           
+            UserListController controller = loader.getController();            
+    	    controller.initialize(listType);
+    	    
 			anchorPaneRight.getChildren().setAll(pane);
     	
     	} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
-    	
     }
     
     @FXML
@@ -226,32 +234,14 @@ public class UserMenuController {
     	try {
 			AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/UserProfile.fxml"));
 			anchorPaneRight.getChildren().setAll(pane);
-    	
+		
+        			
     	} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
     }
     
-    @FXML
-    void openWishlist(ActionEvent event) {
-    	genreBrowseMenuPanel.valueProperty().set(null);
-    	topPerPlatformMenuPanel.valueProperty().set(null);
-    	platformBrowseMenuPanel.valueProperty().set(null);
-    	yearBrowseMenuPanel.valueProperty().set(null);
-    	
-
-    	try {
-			AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/UserWishlist.fxml"));
-			anchorPaneRight.getChildren().setAll(pane);
-    	
-    	} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-    	
-    }
-
     @FXML
     void openSocial(ActionEvent event) {
     	genreBrowseMenuPanel.valueProperty().set(null);
@@ -269,21 +259,32 @@ public class UserMenuController {
 		} 
     }
 
+    public void initialize(User user) {
 
-    public void initialize() {
     	try {
     		
-    		try {
-    			AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/UserHomepage.fxml"));
-    			anchorPaneRight.getChildren().setAll(pane);
+    		this.user = user;
+        	userNameMenuPanel.setText(user.getNickname());
+    	
+          	logoMenuPanel.setCursor(Cursor.HAND); //Change cursor to hand
+        	userNameMenuPanel.setCursor(Cursor.HAND);
+        	socialMenuPanel.setCursor(Cursor.HAND);
+        	wishlistMenuPanel.setCursor(Cursor.HAND);
+        	myGamesMenuPanel.setCursor(Cursor.HAND);
+        	topPerPlatformMenuPanel.setCursor(Cursor.HAND);
+        	platformBrowseMenuPanel.setCursor(Cursor.HAND);
+        	yearBrowseMenuPanel.setCursor(Cursor.HAND);
+        	genreBrowseMenuPanel.setCursor(Cursor.HAND);
+        	logout.setCursor(Cursor.HAND);
         	
-        	} catch (IOException e) {
-    			// TODO Auto-generated catch block
-    			e.printStackTrace();
-    		} 
+        	
+    		FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/fxml/UserHomepage.fxml"));
+            AnchorPane pane = loader.load();
+			           
+			anchorPaneRight.getChildren().setAll(pane);  		
     		
-    		
-    		
+			//TO DO
     		//populate the combobox for platforms
     		//ObservableList<String> platforms = FXCollections.observableArrayList(Game.getAllPlatformsList()); //mongo   		
     		List<String> platforms1 = Files.readAllLines(new File("src/main/resources/platforms.txt").toPath(), Charset.defaultCharset());
@@ -291,12 +292,14 @@ public class UserMenuController {
     		topPerPlatformMenuPanel.setItems(platforms);
 			platformBrowseMenuPanel.setItems(platforms);
 			
+			//TO DO 
 			//populate the combobox for years
 			//ObservableList<String> years = FXCollections.observableArrayList(Game.getAllYearsList());			
 			List<String> years1 = Files.readAllLines(new File("src/main/resources/years.txt").toPath(), Charset.defaultCharset());
 			ObservableList<String> years = FXCollections.observableArrayList(years1);
 	        yearBrowseMenuPanel.setItems(years);
 			
+	        //TO DO
 			//populate the combobox for genres
 	        //ObservableList<String> genres = FXCollections.observableArrayList(Game.getAllGenresList());	        
 			List<String> genres1 = Files.readAllLines(new File("src/main/resources/genres.txt").toPath(), Charset.defaultCharset());
@@ -304,16 +307,9 @@ public class UserMenuController {
 			genreBrowseMenuPanel.setItems(genres);
 			
 			
-			
     	} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
     	}
     }
-    
-    public void initData(User user) {
-    	this.user = user;
-    	userNameMenuPanel.setText(user.getNickname());
-    }
-
 }

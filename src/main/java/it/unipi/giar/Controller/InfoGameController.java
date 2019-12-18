@@ -25,7 +25,7 @@ public class InfoGameController {
 	
 	private Game game;
 	private User user;
-	
+
     @FXML
     private Text name;
 
@@ -64,6 +64,7 @@ public class InfoGameController {
     	addToMyGamesButton.setDisable(true);
     	addToWishlistButton.setDisable(false);
     	
+    	//TO DO
     	System.out.println("added to my games list");
     }
 
@@ -72,10 +73,11 @@ public class InfoGameController {
     	addToWishlistButton.setDisable(true);
     	addToMyGamesButton.setDisable(false);
     	
+    	//TO DO
     	System.out.println("added to wishlist");
     }
     
-    public void initialize() {
+    public void initialize(User user, Game game) {
     	name.setText(game.getName()); 
     	description.setText(game.getDescription()); 
     	rating.setText(String.valueOf(game.getRating())); 
@@ -83,7 +85,8 @@ public class InfoGameController {
     	Date date = game.getReleased();
     	DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
     	
-    	released.setText(dateFormat.format(date)); 
+    	
+    	//released.setText(dateFormat.format(date)); 
     	metacritic.setText(String.valueOf(game.getMetacritic())); 
     	 
 		List<String> list = new ArrayList<String>();
@@ -95,13 +98,24 @@ public class InfoGameController {
     	rats.add("5");
 		yourRating.setItems((ObservableList<String>) rats);
 		
+		//TO DO 
 		//IF THE USER ALREADY VOTED THE GAME, IN THE COMBOBOX APPEARS THE RATE OF THAT USER BY DEFAULT
-		String userRate = String.valueOf(user.getGameRate(game.getId()));
-		yourRating.setValue(userRate);
+		//String userRate = String.valueOf(user.getGameRate(game.getId()));
+		//yourRating.setValue(userRate);
+		
+		//TO DO
+		//IF THE USER ALREADY has THE GAME in the wishlist or mygames, 
+		// TO WRITE THE user.isInList function, return
+		//if (user.isInlist()==0)
+		//addToWishlistButton.setDisable(false);
+    	//addToMyGamesButton.setDisable(false);
+		//else  if is already in wishlist
+		//addToWishlistButton.setDisable(true);
+    	//addToMyGamesButton.setDisable(false);
+		//else if is already in mygames
+		//addToWishlistButton.setDisable(false);
+    	//addToMyGamesButton.setDisable(true);
+		
     }
     
-    public void initData(User user, Game game) {
-    	this.user = user;
-    	this.game = game;
-    }
 }
