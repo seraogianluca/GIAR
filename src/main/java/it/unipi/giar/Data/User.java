@@ -84,6 +84,7 @@ public class User {
 		else
 			System.out.println("write list name correctly");
 	}
+	
 	public User(String type, String nickname, String email, String password, String country) {
 		this.type = type;
 		this.nickname = nickname;
@@ -95,6 +96,8 @@ public class User {
 	public String getNickname() {
 		return nickname;
 	}
+	
+
 
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
@@ -203,6 +206,7 @@ public class User {
 	}
 	
 	public double getGameRate(long gameid) {
+		//TO DO
 		//MATILDE,  this function goes inside the logged user and takes the rating of the user for the gameid game and return his rating
 		double rating = 2.4; ///per prova
 		return rating;

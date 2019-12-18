@@ -1,5 +1,7 @@
 package it.unipi.giar.Data;
 
+import static com.mongodb.client.model.Filters.eq;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Pattern;
@@ -13,7 +15,7 @@ import org.bson.Document;
 import it.unipi.giar.MongoDriver;
 
 public class Game {
-	private long id;
+	private int id;
 	private String slug;
 	private String name;
 	private String nameOriginal;
@@ -29,42 +31,26 @@ public class Game {
 	private ArrayList<Platform> platforms;
 	private ArrayList<Developer> developers;
 	private ArrayList<Genre> genres;
-
-
-	private ArrayList<Platform> getPlatforms(String platforms) {
-		ArrayList<Platform> listPlatforms = new ArrayList<Platform>();
-		return listPlatforms;
-	}
-
-	private ArrayList<Developer> getDevelopers(String developers) {
-		ArrayList<Developer> listDevelopers = new ArrayList<Developer>();
-		return listDevelopers;
-	}
-
-	private ArrayList<Genre> getGenres(String genres) {
-		ArrayList<Genre> listGenres = new ArrayList<Genre>();
-		return listGenres;
-	}
-
+	
 	public Game(Document document) {
-		this.id = document.getLong("id");
-		this.slug = document.getString("slug");
+		//this.id = document.getInteger("id");
+		//this.slug = document.getString("slug");
 		this.name = document.getString("name");
-		this.nameOriginal = document.getString("name_original");
-		this.description = document.getString("description");
-		this.metacritic = document.getInteger("metacritic");
-		this.released = document.getDate("released");
-		this.backgroundImage = document.getString("background_image");
+		//this.nameOriginal = document.getString("name_original");
+		//this.description = document.getString("description");
+		//this.metacritic = document.getInteger("metacritic");
+		//this.released = document.getDate("released");
+		//this.backgroundImage = document.getString("background_image");
 		this.rating = document.getDouble("rating");
-		this.added = document.getLong("added");
-		this.addedWishlist = document.getLong("added_wishlist");
-		this.addedMyGames = document.getLong("added_mygames");
-		this.platforms = getPlatforms(document.getString("platforms"));
-		this.developers = getDevelopers(document.getString("developers"));
-		this.genres = getGenres(document.getString("genres"));
+		//this.added = document.getLong("added");
+		//this.addedWishlist = document.getLong("added_wishlist");
+		//this.addedMyGames = document.getLong("added_mygames");
+		//this.platforms = getPlatforms(document.getString("platforms"));
+		//this.developers = getDevelopers(document.getString("developers"));
+		//this.genres = getGenres(document.getString("genres"));
 	}
 
-	public Game(long id, String slug, String name, String nameOriginal, String description, int metacritic,
+	public Game(int id, String slug, String name, String nameOriginal, String description, int metacritic,
 			Date released, String backgroundImage, double rating, ArrayList<Rating> ratings, long added,
 			long addedWishlist, long addedMyGames, ArrayList<Platform> platforms, ArrayList<Developer> developers,
 			ArrayList<Genre> genres) {
@@ -84,6 +70,21 @@ public class Game {
 		this.platforms = platforms;
 		this.developers = developers;
 		this.genres = genres;
+	}
+	
+	private ArrayList<Platform> getPlatforms(String platforms) {
+		ArrayList<Platform> listPlatforms = new ArrayList<Platform>();
+		return listPlatforms;
+	}
+
+	private ArrayList<Developer> getDevelopers(String developers) {
+		ArrayList<Developer> listDevelopers = new ArrayList<Developer>();
+		return listDevelopers;
+	}
+
+	private ArrayList<Genre> getGenres(String genres) {
+		ArrayList<Genre> listGenres = new ArrayList<Genre>();
+		return listGenres;
 	}
 
 	/*public static List<String> getAllPlatformsList() {
@@ -121,25 +122,41 @@ public class Game {
 		try {
 			driver = MongoDriver.getInstance();
 			collection = driver.getCollection("games");
-			MongoCursor<Document> cursor = collection.find(query).limit(5).iterator();
+			MongoCursor<Document> cursor = collection.find(query).limit(10).iterator();
+			
 			try {
 				while (cursor.hasNext()) {
 					Document document = cursor.next();
-					System.out.println(document.toJson());
-					//listGames.add(new Game(document));
+					listGames.add(new Game(document));
 				}
 			} finally {
 				cursor.close();
-				return listGames;
 			}
+			
+			return listGames;
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			return listGames;
 		}
+		
+		return null;
+	}
+	
+	public static Game findGame(String name) {
+		try {
+			MongoDriver md = MongoDriver.getInstance();
+			MongoCollection<Document> collection = md.getCollection("games");
+			Document game = collection.find(eq("name", name)).first();
+			
+			return new Game(game);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -191,7 +208,7 @@ public class Game {
 		this.addedMyGames = addedMyGames;
 	}
 
-	public long getId() {
+	public int getId() {
 		return this.id;
 	}
 

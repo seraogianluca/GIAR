@@ -16,7 +16,7 @@
          <top>
             <AnchorPane prefHeight="46.0" prefWidth="650.0" BorderPane.alignment="CENTER">
                <children>
-                  <Text fx:id="name" layoutX="230.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Call Of Duty 3" AnchorPane.leftAnchor="60.0">
+                  <Text fx:id="name" layoutX="230.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" AnchorPane.leftAnchor="60.0">
                      <font>
                         <Font name="System Bold" size="33.0" />
                      </font>
@@ -36,7 +36,7 @@
                   <Text layoutX="52.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrition:" AnchorPane.leftAnchor="60.0" />
                   <JFXComboBox fx:id="yourRating" focusColor="#ffff0d" layoutX="153.0" layoutY="283.0" prefHeight="31.0" prefWidth="133.0" promptText="Rate this game" />
                   <Text layoutX="60.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rating:" AnchorPane.leftAnchor="60.0" />
-                  <Text fx:id="rating" layoutX="113.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5.5">
+                  <Text fx:id="rating" layoutX="113.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
                      <font>
                         <Font name="System Bold Italic" size="27.0" />
                      </font>
@@ -45,7 +45,7 @@
                   <JFXButton fx:id="addToWishlistButton" layoutX="57.0" layoutY="14.0" onAction="#addToWishlist" prefHeight="31.0" prefWidth="131.0" style="-fx-background-color: #ffff0d;" text="Add To Wishlist" AnchorPane.leftAnchor="60.0" />
                   <JFXButton fx:id="addToMyGamesButton" layoutX="220.0" layoutY="14.0" onAction="#addToMyGames" style="-fx-background-color: #ffff0d;" text="Add To MyGames" AnchorPane.leftAnchor="220.0" />
                   <Text layoutX="53.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of release:" AnchorPane.leftAnchor="60.0" />
-                  <Text fx:id="released" layoutX="177.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2019-16-05">
+                  <Text fx:id="released" layoutX="177.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
                      <font>
                         <Font name="System Bold Italic" size="27.0" />
                      </font>

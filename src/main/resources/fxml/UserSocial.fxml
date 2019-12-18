@@ -11,7 +11,7 @@
          <top>
             <AnchorPane prefHeight="94.0" prefWidth="650.0" BorderPane.alignment="CENTER">
                <children>
-                  <JFXTextField fx:id="searchUsers" layoutX="50.0" layoutY="33.0" promptText="Search users.." AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+                  <JFXTextField fx:id="searchUsers" focusColor="#ffff0d" layoutX="50.0" layoutY="33.0" promptText="Search users.." AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
                      <font>
                         <Font size="19.0" />
                      </font>

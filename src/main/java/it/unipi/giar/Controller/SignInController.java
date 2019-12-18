@@ -52,8 +52,6 @@ public class SignInController {
     	catch( Exception e){
     		e.printStackTrace(); 		
     	}
-    	
-    	
     	   	
     	if((!User.checkNickname(username)) || (!User.checkPassword(password))) {
     		errorMessage.setText("Wrong username or password.");
@@ -81,7 +79,7 @@ public class SignInController {
            
             //access the controller and call a method
             UserMenuController controller = loader.getController();
-            controller.initData(user);
+            controller.initialize(user);
     		
     	}
 	        
@@ -102,8 +100,13 @@ public class SignInController {
         stage.show();
     }
     
-    public void initData(User user) {
+    public void initialize(User user) {
     	this.user = user;
+    	if (user!=null) {
+    		signInNickname.setText(user.getNickname());
+     		
+    		//TO DO
+    		//signInPassword.setText(user.getPassword());
+    	}
     }
-    
 }
