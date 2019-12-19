@@ -77,12 +77,12 @@ public class UserListController {
         ArrayList<Game> browseResult = null;
         if (type == "Wishlist") {
         	
-        	//browseResult = Game.BrowseGamesPerPlatform(value);	//TO DO 
+        	//browseResult = user.getWishlist();	//TO DO 
         	browseResult = Game.searchGames("wi");//	this is a test to see if worked the table. to be deleted
         	
         } else if (type == "MyGames") {
         	
-        	//browseResult = Game.BrowseGamesPerYear(value);	//TO DO 
+        	//browseResult = user.getMyGames();	//TO DO 
         	browseResult = Game.searchGames("my");//	this is a test to see if worked the table. to be deleted
         	
         }
