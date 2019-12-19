@@ -2,6 +2,8 @@ package it.unipi.giar.Data;
 
 import static com.mongodb.client.model.Filters.eq;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Pattern;
@@ -31,23 +33,31 @@ public class Game {
 	private ArrayList<Platform> platforms;
 	private ArrayList<Developer> developers;
 	private ArrayList<Genre> genres;
-	
+
 	public Game(Document document) {
-		//this.id = document.getInteger("id");
-		//this.slug = document.getString("slug");
-		this.name = document.getString("name");
-		//this.nameOriginal = document.getString("name_original");
-		//this.description = document.getString("description");
-		//this.metacritic = document.getInteger("metacritic");
-		//this.released = document.getDate("released");
-		//this.backgroundImage = document.getString("background_image");
-		this.rating = document.getDouble("rating");
-		//this.added = document.getLong("added");
-		//this.addedWishlist = document.getLong("added_wishlist");
-		//this.addedMyGames = document.getLong("added_mygames");
-		//this.platforms = getPlatforms(document.getString("platforms"));
-		//this.developers = getDevelopers(document.getString("developers"));
-		//this.genres = getGenres(document.getString("genres"));
+		SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-mm-dd");
+
+		this.id = (document.get("id") == null) ? 0 : document.getInteger("id");
+		this.slug = (document.get("slug") == null) ? "" : document.getString("slug");
+		this.name = (document.get("name") == null) ? "" : document.getString("name");
+		this.nameOriginal = (document.get("name_original") == null) ? "" : document.getString("name_original");
+		this.description = (document.get("description") == null) ? "" : document.getString("description");
+		this.metacritic = (document.get("metacritic") == null) ? 0 : document.getInteger("metacritic");
+		this.backgroundImage = (document.get("background_image") == null) ? "" : document.getString("background_image");
+		this.rating = (document.get("rating") == null) ? 0 : document.getDouble("rating");
+		this.added = (document.get("added") == null) ? 0 : document.getLong("added");
+		// this.addedWishlist = document.getLong("added_wishlist");
+		// this.addedMyGames = document.getLong("added_mygames");
+		// this.platforms = getPlatforms(document.getString("platforms"));
+		// this.developers = getDevelopers(document.getString("developers"));
+		// this.genres = getGenres(document.getString("genres"));
+
+		try {
+			this.released = (document.get("released") == null) ? new Date()
+					: formatDate.parse(document.getString("released"));
+		} catch (ParseException e) {
+			this.released = new Date();
+		}
 	}
 
 	public Game(int id, String slug, String name, String nameOriginal, String description, int metacritic,
@@ -71,7 +81,7 @@ public class Game {
 		this.developers = developers;
 		this.genres = genres;
 	}
-	
+
 	private ArrayList<Platform> getPlatforms(String platforms) {
 		ArrayList<Platform> listPlatforms = new ArrayList<Platform>();
 		return listPlatforms;
@@ -87,30 +97,6 @@ public class Game {
 		return listGenres;
 	}
 
-	/*public static List<String> getAllPlatformsList() {
-		// MATILDE, i need this function to populate the fields of the combobox for
-		// platforms
-		// this function returns the list of the platforms existing in the database.
-		// distinct.
-	}
-
-	public static List<String> getAllYearsList() {
-		// MATILDE, i need this function to populate the fields of the combobox for
-		// years
-		// this function returns the list of the years existing in the database.
-		// distinct.
-	}
-
-	public static List<String> getAllGenresList() {
-		// MATILDE, i need this function to populate the fields of the combobox for
-		// genres
-		// this function returns the list of the genres existing in the database.
-		// distinct.
-
-		// MongoDriver md = MongoDriver.getInstance();
-		// MongoCollection<Document> collection = md.getCollection("games");
-	}*/
-
 	public static ArrayList<Game> searchGames(String search) {
 		ArrayList<Game> listGames = new ArrayList<Game>();
 		MongoDriver driver = null;
@@ -123,7 +109,7 @@ public class Game {
 			driver = MongoDriver.getInstance();
 			collection = driver.getCollection("games");
 			MongoCursor<Document> cursor = collection.find(query).limit(10).iterator();
-			
+
 			try {
 				while (cursor.hasNext()) {
 					Document document = cursor.next();
@@ -132,27 +118,27 @@ public class Game {
 			} finally {
 				cursor.close();
 			}
-			
+
 			return listGames;
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	}
-	
+
 	public static Game findGame(String name) {
 		try {
 			MongoDriver md = MongoDriver.getInstance();
 			MongoCollection<Document> collection = md.getCollection("games");
 			Document game = collection.find(eq("name", name)).first();
-			
+
 			return new Game(game);
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	}
 
