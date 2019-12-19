@@ -6,6 +6,7 @@ import java.security.MessageDigest;
 //import java.util.ArrayList;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.xml.bind.DatatypeConverter;
 
@@ -344,6 +345,36 @@ public class User {
 		//TODO(MATILDE): this function goes inside the logged user and takes the rating of the user for the gameid game and return his rating  
 		double rating = 2.4; ///per prova
 		return rating;
+	}
+	
+	public static ArrayList<User> searchUsers(String search) {
+		ArrayList<User> listUsers = new ArrayList<User>();
+
+		try {
+			MongoDriver md = MongoDriver.getInstance();
+			MongoCollection<Document> collection = md.getCollection("users");
+			
+			BasicDBObject query = new BasicDBObject();
+			query.put("nickname", Pattern.compile(search, Pattern.CASE_INSENSITIVE));
+			
+			MongoCursor<Document> cursor = collection.find(query).limit(10).iterator();
+			
+			try {
+				while (cursor.hasNext()) {
+					Document document = cursor.next();
+					listUsers.add(new User(document.getString("nickname")));
+				}
+			} finally {
+				cursor.close();
+			}
+			
+			return listUsers;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return listUsers;
 	}
 	
 	public void delete() {
