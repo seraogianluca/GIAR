@@ -1,6 +1,7 @@
 package it.unipi.giar.Data;
 
 
+import java.io.IOException;
 import java.security.MessageDigest;
 //import java.util.ArrayList;
 import java.util.ArrayList;
@@ -24,6 +25,11 @@ import static com.mongodb.client.model.Filters.*;
 
 import it.unipi.giar.MongoDriver;
 import it.unipi.giar.Neo4jDriver;
+import it.unipi.giar.Controller.SignInController;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class User {
 
@@ -32,6 +38,7 @@ public class User {
 	private String email;
 	private String password;
 	private String country;
+	private boolean deleted = false;
 	private ArrayList<Game> wishlist;
 	private ArrayList<Game> myGames;
 	//private ArrayList<Rating> ratings;
@@ -101,6 +108,30 @@ public class User {
 
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 	public static boolean checkNickname(String nick) {
@@ -190,7 +221,29 @@ public class User {
 		}
 	}
 	
-	public void addPerson(final String name) {
+	public double getGameRate(long gameid) {
+		//TODO(MATILDE): this function goes inside the logged user and takes the rating of the user for the gameid game and return his rating  
+		double rating = 2.4; ///per prova
+		return rating;
+	}
+	
+	public void delete() {
+		try {
+			//FIXME: 
+			// * Check if works even if exists wishlist and mygames;
+			// * Works only if connection string of MongoDriver is "mongodb://user:password@172.16.0.70:27017"
+			
+			this.deleted = true;
+			MongoDriver md = MongoDriver.getInstance();
+			MongoCollection<Document> collection = md.getCollection("users");
+			collection.deleteOne(eq("nickname", nickname));
+			removePerson(nickname);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+	}
+	
+	private void addPerson(final String name) {
 		Neo4jDriver nd = Neo4jDriver.getInstance();
 	    try (Session session = nd.getDriver().session()) {
 	    	
@@ -205,15 +258,28 @@ public class User {
 	    }
 	}
 	
-	public double getGameRate(long gameid) {
-		//TO DO
-		//MATILDE,  this function goes inside the logged user and takes the rating of the user for the gameid game and return his rating
-		double rating = 2.4; ///per prova
-		return rating;
+	private void removePerson(final String name) {
+		Neo4jDriver nd = Neo4jDriver.getInstance();
+	    try (Session session = nd.getDriver().session()) {
+	    	
+	        session.writeTransaction(
+	        	new TransactionWork<Integer>() {
+	        		@Override
+	        		public Integer execute(Transaction tx) {
+	        			return deletePersonNode(tx, name);
+	        		}
+	        	}
+	        );
+	    }
 	}
 
 	private static int createPersonNode(Transaction tx, String name) {
 	    tx.run("CREATE (n:Player {nickname: $nickname, pro: $pro})", parameters("nickname", name, "pro", false));
 	    return 1;
+	}
+	
+	private static int deletePersonNode(Transaction tx, String name) {
+		tx.run("MATCH (n:Player {nickname: $nickname}) DETACH DELETE n", parameters("nickname", name));
+		return 1;
 	}
 }
