@@ -289,26 +289,20 @@ public class UserMenuController {
 			           
 			anchorPaneRight.getChildren().setAll(pane);  		
     		
-			//TO DO
+			
     		//populate the combobox for platforms
-    		//ObservableList<String> platforms = FXCollections.observableArrayList(Game.getAllPlatformsList()); //mongo   		
-    		List<String> platforms1 = Files.readAllLines(new File("src/main/resources/platforms.txt").toPath(), Charset.defaultCharset());
-			ObservableList<String> platforms = FXCollections.observableArrayList(platforms1);
+    		ObservableList<String> platforms = FXCollections.observableArrayList(Game.getAllPlatformsList()); //mongo   		
     		topPerPlatformMenuPanel.setItems(platforms);
 			platformBrowseMenuPanel.setItems(platforms);
 			
 			//TO DO 
 			//populate the combobox for years
-			//ObservableList<String> years = FXCollections.observableArrayList(Game.getAllYearsList());			
-			List<String> years1 = Files.readAllLines(new File("src/main/resources/years.txt").toPath(), Charset.defaultCharset());
-			ObservableList<String> years = FXCollections.observableArrayList(years1);
-	        yearBrowseMenuPanel.setItems(years);
+			ObservableList<String> years = FXCollections.observableArrayList(Game.getAllYearsList());			
+			yearBrowseMenuPanel.setItems(years);
 			
 	        //TO DO
 			//populate the combobox for genres
-	        //ObservableList<String> genres = FXCollections.observableArrayList(Game.getAllGenresList());	        
-			List<String> genres1 = Files.readAllLines(new File("src/main/resources/genres.txt").toPath(), Charset.defaultCharset());
-			ObservableList<String> genres = FXCollections.observableArrayList(genres1);
+	        ObservableList<String> genres = FXCollections.observableArrayList(Game.getAllGenresList());	        
 			genreBrowseMenuPanel.setItems(genres);
 			
 			
