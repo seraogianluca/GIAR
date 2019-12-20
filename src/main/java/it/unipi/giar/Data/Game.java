@@ -56,6 +56,7 @@ public class Game {
 		// this.addedMyGames = (document.get("mygames") == null) ? 0 :
 		// document.getLong("mygames");
 		// this.added = (this.addedWishlist + this.addedMyGames);
+		
 		List<Document> platformDoc = new ArrayList<Document>();
 		platformDoc = (List<Document>)document.get("platforms");
 
@@ -65,12 +66,35 @@ public class Game {
 			this.platforms = new ArrayList<Platform>();
 
 			for (Document doc : platformDoc) {
-				this.platforms.add(new Platform(doc));
+				this.platforms.add(new Platform((Document)doc.get("platform")));
 			}
 		}
 
-		// Object developers = document.get("developers");
-		// Object genres = document.getString("genres");
+		List<Document> developDoc = new ArrayList<Document>();
+		developDoc = (List<Document>)document.get("developers");
+
+		if (developDoc.isEmpty()) {
+			this.developers = new ArrayList<Developer>();
+		} else {
+			this.developers = new ArrayList<Developer>();
+
+			for (Document doc : developDoc) {
+				this.developers.add(new Developer(doc));
+			}
+		}
+
+		List<Document> genresDoc = new ArrayList<Document>();
+		genresDoc = (List<Document>)document.get("genres");
+
+		if (genresDoc.isEmpty()) {
+			this.genres = new ArrayList<Genre>();
+		} else {
+			this.genres = new ArrayList<Genre>();
+
+			for (Document doc : genresDoc) {
+				this.genres.add(new Genre(doc));
+			}
+		}
 
 		try {
 			this.released = (document.get("released") == null) ? new Date()

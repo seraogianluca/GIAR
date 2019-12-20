@@ -8,9 +8,9 @@ public class Genre {
 	private String slug;
 
 	public Genre(Document document) {
-		this.id = document.getLong("id");
-		this.name = document.getString("name");
-		this.slug = document.getString("slug");
+		this.id =  (document.get("id") == null) ? 0 : document.getInteger("id");
+		this.name = (document.get("name") == null) ? "" : document.getString("name");
+		this.slug = (document.get("slug") == null) ? "" : document.getString("slug");
 	}
 
 	public Genre(long id, String name, String slug) {
