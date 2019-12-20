@@ -6,11 +6,16 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import org.bson.Document;
 
@@ -36,6 +41,7 @@ public class Game {
 
 	public Game(Document document) {
 		SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-mm-dd");
+		ArrayList<Platform> listPlatforms = new ArrayList<Platform>();
 
 		this.id = (document.get("id") == null) ? 0 : document.getInteger("id");
 		this.slug = (document.get("slug") == null) ? "" : document.getString("slug");
@@ -45,12 +51,26 @@ public class Game {
 		this.metacritic = (document.get("metacritic") == null) ? 0 : document.getInteger("metacritic");
 		this.backgroundImage = (document.get("background_image") == null) ? "" : document.getString("background_image");
 		this.rating = (document.get("rating") == null) ? 0 : document.getDouble("rating");
-		this.added = (document.get("added") == null) ? 0 : document.getLong("added");
-		// this.addedWishlist = document.getLong("added_wishlist");
-		// this.addedMyGames = document.getLong("added_mygames");
-		// this.platforms = getPlatforms(document.getString("platforms"));
-		// this.developers = getDevelopers(document.getString("developers"));
-		// this.genres = getGenres(document.getString("genres"));
+		// this.addedWishlist = (document.get("added_by_status") == null) ? 0 :
+		// document.getLong("wishlist");
+		// this.addedMyGames = (document.get("mygames") == null) ? 0 :
+		// document.getLong("mygames");
+		// this.added = (this.addedWishlist + this.addedMyGames);
+		List<Document> platformDoc = new ArrayList<Document>();
+		platformDoc = (List<Document>)document.get("platforms");
+
+		if (platformDoc.isEmpty()) {
+			this.platforms = new ArrayList<Platform>();
+		} else {
+			this.platforms = new ArrayList<Platform>();
+
+			for (Document doc : platformDoc) {
+				this.platforms.add(new Platform(doc));
+			}
+		}
+
+		// Object developers = document.get("developers");
+		// Object genres = document.getString("genres");
 
 		try {
 			this.released = (document.get("released") == null) ? new Date()
