@@ -116,6 +116,13 @@ public class SignUpController  {
 				String email = signUpEmail.getText();
 				String country = signUpCountry.getValue();
 				
+				if(password == null || nickname == null || email == null || country == null) {
+					errorMessage.setText("Please fill all text field.");
+					errorMessage.setVisible(true);
+					errorFlag = true;
+					return;
+				}
+				
 				user = new User("player", nickname, email, password, country);
 				user.register();
 				

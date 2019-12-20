@@ -3,14 +3,27 @@ package it.unipi.giar.Data;
 import static com.mongodb.client.model.Filters.eq;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
+
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
+import com.mongodb.client.model.UnwindOptions;
 
 import org.bson.Document;
+import static com.mongodb.client.model.Aggregates.group;
+import static com.mongodb.client.model.Aggregates.unwind;
+import static com.mongodb.client.model.Sorts.ascending;
+import static com.mongodb.client.model.Aggregates.sort;
+import static com.mongodb.client.model.Aggregates.project;
+
+import static com.mongodb.client.model.Projections.computed;
+
 
 import it.unipi.giar.MongoDriver;
 
@@ -87,30 +100,70 @@ public class Game {
 		return listGenres;
 	}
 
-	/*public static List<String> getAllPlatformsList() {
+	public static List<String> getAllPlatformsList() {
 		// MATILDE, i need this function to populate the fields of the combobox for
-		// platforms
-		// this function returns the list of the platforms existing in the database.
-		// distinct.
+		// platforms. this function returns the list of the platforms existing in the database.	
+		MongoDriver driver = null;
+		MongoCollection<Document> collection = null;
+		List<String> items = new ArrayList<>();		
+		try {
+			driver = MongoDriver.getInstance();
+			collection = driver.getCollection("games");
+			MongoCursor<Document> cursor = collection.aggregate(Arrays.asList(unwind("$platforms"), group("$platforms.platform.name"), sort(ascending("_id")))).iterator();
+			while (cursor.hasNext()) {
+				items.add(cursor.next().getString("_id"));
+			}
+			cursor.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return items;
 	}
 
 	public static List<String> getAllYearsList() {
 		// MATILDE, i need this function to populate the fields of the combobox for
-		// years
-		// this function returns the list of the years existing in the database.
-		// distinct.
+		// years, this function returns the list of the years existing in the database.
+		MongoDriver driver = null;
+		MongoCollection<Document> collection = null;
+		List<String> items = new ArrayList<>();		
+		try {
+			driver = MongoDriver.getInstance();
+			collection = driver.getCollection("games");
+			MongoCursor<Document> cursor = collection.aggregate(Arrays.asList(project(computed("year", eq("$arrayElemAt", Arrays.asList(eq("$split", Arrays.asList("$released", "-")), 0L)))), group("$year"), sort(ascending("_id")), unwind("$_id", 
+				    new UnwindOptions().preserveNullAndEmptyArrays(false)))).iterator();
+			while (cursor.hasNext()) {
+				items.add(cursor.next().getString("_id"));
+			}
+			cursor.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return items;
 	}
 
 	public static List<String> getAllGenresList() {
 		// MATILDE, i need this function to populate the fields of the combobox for
-		// genres
-		// this function returns the list of the genres existing in the database.
-		// distinct.
+		// genres this function returns the list of the genres existing in the database.
+		
+		MongoDriver driver = null;
+		MongoCollection<Document> collection = null;
+		List<String> items = new ArrayList<>();		
+		try {
+			driver = MongoDriver.getInstance();
+			collection = driver.getCollection("games");
+			MongoCursor<Document> cursor = collection.aggregate(Arrays.asList(unwind("$genres"), group("$genres.name"), sort(ascending("_id")))).iterator();
+			while (cursor.hasNext()) {
+				items.add(cursor.next().getString("_id"));
+			}
+			cursor.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return items;
 
-		// MongoDriver md = MongoDriver.getInstance();
-		// MongoCollection<Document> collection = md.getCollection("games");
-	}*/
-
+		
+	}
+	
 	public static ArrayList<Game> searchGames(String search) {
 		ArrayList<Game> listGames = new ArrayList<Game>();
 		MongoDriver driver = null;

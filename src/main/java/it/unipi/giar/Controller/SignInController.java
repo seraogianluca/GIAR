@@ -102,11 +102,13 @@ public class SignInController {
     
     public void initialize(User user) {
     	this.user = user;
-    	if (user!=null) {
-    		signInNickname.setText(user.getNickname());
-     		
-    		//TO DO
-    		//signInPassword.setText(user.getPassword());
+    	if (user != null) {
+    		if(user.isDeleted()) {
+    			errorMessage.setText("Account successfully deleted.");
+        		errorMessage.setVisible(true);
+    		} else {
+    			signInNickname.setText(user.getNickname());
+    		}
     	}
     }
 }
