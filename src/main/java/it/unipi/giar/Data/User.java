@@ -33,7 +33,7 @@ import it.unipi.giar.Neo4jDriver;
 public class User {
 
 	private String type;
-	private String nickname;
+	private static String nickname;
 	private String email;
 	private String password;
 	private String country;
@@ -142,11 +142,13 @@ public class User {
 				myGames.add(d);
 				
 			}
+		
 
 	}
 	public void removeGameFromList(Document d, String list) {
 		if(list.equals("wishlist")) {					
 			wishlist.remove(d);
+			deleteRelation(d);
 		}
 		else if(list.equals("myGames")) {					
 			myGames.remove(d);
@@ -339,6 +341,23 @@ public class User {
 		}
 		return "noList";
 	}
+	
+	public boolean isInMyGames(Game game) {
+		Document listDoc = new Document();
+		listDoc.append("name", game.getName());
+		listDoc.append("rating", game.getRating());
+		if(myGames == null)
+			return false;
+		return myGames.contains(listDoc);
+	}
+	public boolean isInWishlist(Game game) {
+		Document listDoc = new Document();
+		listDoc.append("name", game.getName());
+		listDoc.append("rating", game.getRating());
+		if(wishlist == null)
+			return false;
+		return wishlist.contains(listDoc);
+	}
 	public double getGameRate(long gameid) {
 		//TO DO
 		//MATILDE,  this function goes inside the logged user and takes the rating of the user for the gameid game and return his rating
@@ -350,4 +369,69 @@ public class User {
 	    tx.run("CREATE (n:Player {nickname: $nickname, pro: $pro})", parameters("nickname", name, "pro", false));
 	    return 1;
 	}
+	
+	public void createGame(final String name) {
+		Neo4jDriver nd = Neo4jDriver.getInstance();
+	    try (Session session = nd.getDriver().session()) {
+	    	
+	        session.writeTransaction(
+	        	new TransactionWork<Boolean>() {
+	        		@Override
+	        		public Boolean execute(Transaction tx) {
+	        			return findGameNode(tx, name);
+	        		}
+	        	}
+	        );
+	    }
+	}
+	
+	private static boolean findGameNode(Transaction tx, String name) {
+		
+       StatementResult result = tx.run( "MATCH (n:Game) WHERE n.name = $name RETURN n", parameters ("name", name) );
+       
+       if(result.hasNext()) {
+    	   System.out.println("game exists!");
+    	   tx.run("MATCH (p:Player) WHERE p.nickname = $nickname MATCH (g:Game) WHERE g.name = $gameName  CREATE (p)-[:WISHED]->(g)"
+    			   ,parameters("nickname", nickname, "gameName", name));
+    	   return true;
+       }
+       else {
+    	   System.out.println("game NOT exists!"); 
+    	   //create
+    	   tx.run("CREATE (n:Game {name: $name})", parameters("name", name));
+    	   
+    	   tx.run("MATCH (p:Player) WHERE p.nickname = $nickname MATCH (g:Game) WHERE g.name = $gameName  CREATE (p)-[:WISHED]->(g)"
+    			   ,parameters("nickname", nickname, "gameName", name));
+    	   System.out.println("creato!");
+    	   return false;
+       }
+   
+	}
+	
+	public void deleteRelation(final Document d) {
+		Neo4jDriver nd = Neo4jDriver.getInstance();
+	    try (Session session = nd.getDriver().session()) {
+	    	
+	        session.writeTransaction(
+	        	new TransactionWork<Boolean>() {
+	        		@Override
+	        		public Boolean execute(Transaction tx) {
+	        			return deleteWishRelation(tx, d);
+	        		}
+	        	}
+	        );
+	    }
+	}
+	
+	private static boolean deleteWishRelation(Transaction tx, Document d) {
+		
+		
+	    tx.run("MATCH (p: Player{nickname: $nickname})-[r:WISHED]->(g: Game{name:$name}) DELETE r", 
+	    		parameters("nickname", nickname, "name", d.get("name")));
+	    tx.run("MATCH (g:Game{name: $name}) WHERE NOT ()-[:WISHED]->(g) DELETE g",
+	    		parameters("name", d.get("name"))); //delete the node if it has no relationships
+	    return true;
+	}
+	
+	
 }

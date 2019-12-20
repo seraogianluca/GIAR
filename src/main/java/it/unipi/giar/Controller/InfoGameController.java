@@ -102,7 +102,7 @@ public class InfoGameController {
     		}
     	}
     		
-    		
+    	user.createGame(game.getName());
     	
     	
     	
@@ -111,7 +111,10 @@ public class InfoGameController {
     public void initialize(User user, Game game) {
     	this.user=user;
     	this.game = game;
-    	gameDoc=Game.findGameDocument(this.game.getName());
+    	
+    	gameDoc = new Document();
+    	gameDoc.append("name", game.getName());
+    	gameDoc.append("rating", game.getRating());
     	
     	name.setText(game.getName()); 
     	description.setText(game.getDescription()); 
@@ -138,23 +141,21 @@ public class InfoGameController {
 		//String userRate = String.valueOf(user.getGameRate(game.getId()));
 		//yourRating.setValue(userRate);
 		
-		if(user.checkListNull("myGames") || user.checkListNull("wishlist")) {
-			addToWishlistButton.setDisable(false);
-    		addToMyGamesButton.setDisable(false);
-    		return;
-		}
-		if (user.inList(game.getName()).equals("noList")) {
-			addToWishlistButton.setDisable(false);
-    		addToMyGamesButton.setDisable(false);
-		}
-		else  if (user.inList(game.getName()).equals("wishlist")) {
-			addToWishlistButton.setDisable(true);
-    		addToMyGamesButton.setDisable(false);
-		}
-		else if (user.inList(game.getName()).equals("mygames")){
+		if(user.isInMyGames(game)) {
 			addToWishlistButton.setDisable(false);
 			addToMyGamesButton.setDisable(true);
 		}
+		
+		else if(user.isInWishlist(game)) {
+			addToWishlistButton.setDisable(true);
+			addToMyGamesButton.setDisable(false);
+		}
+		
+		else {
+			addToWishlistButton.setDisable(false);
+    		addToMyGamesButton.setDisable(false);
+		}
+		
     }
     
 }
