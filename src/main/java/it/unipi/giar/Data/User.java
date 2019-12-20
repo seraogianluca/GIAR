@@ -9,17 +9,22 @@ import java.util.List;
 import javax.xml.bind.DatatypeConverter;
 
 import org.neo4j.driver.v1.Session;
+import org.neo4j.driver.v1.StatementResult;
 import org.neo4j.driver.v1.Transaction;
 import org.neo4j.driver.v1.TransactionWork;
 
 import static org.neo4j.driver.v1.Values.parameters;
 
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+
 import static com.mongodb.client.model.Filters.*;
 
 import it.unipi.giar.MongoDriver;
@@ -32,8 +37,8 @@ public class User {
 	private String email;
 	private String password;
 	private String country;
-	private ArrayList<Game> wishlist;
-	private ArrayList<Game> myGames;
+	private ArrayList<Document> wishlist;
+	private ArrayList<Document> myGames;
 	//private ArrayList<Rating> ratings;
 
 	
@@ -52,37 +57,28 @@ public class User {
 			this.password=user.getString("password");
 			this.country=user.getString("country");
 			
-//			List<Document> items = new ArrayList<>();			
-//			items = (List<Document>)user.get("wishlist");
-//			
-//			for(Document d: items) {				
-//				addGameToList(d, "wishlist");			
-//			}
-//			
-//			items = new ArrayList<>();			
-//			items = (List<Document>)user.get("myGames");
-//			
-//			for(Document d: items) {				
-//				addGameToList(d, "myGames");			
-//			}
-//		    
-//			System.out.println(wishlist);
-//			System.out.println(myGames);
+			List<Document> items = new ArrayList<>();			
+			items = (List<Document>)user.get("wishlist");
+			if(items!=null) {
+				wishlist = new ArrayList<>();
+				
+				for(Document d: items) {				
+					addGameToList(d, "wishlist");			
+				}
+			}
 			
-			
-			
+			items = new ArrayList<>();			
+			items = (List<Document>)user.get("mygames");
+			if(items!=null) {
+				myGames = new ArrayList<>();
+				for(Document d: items) {				
+					addGameToList(d, "myGames");			
+				}
+			}
+		    			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public void addGameToList(Document d, String list) {
-		if(list.equals("wishlist"))
-			wishlist.add(new Game(d));
-		else if(list.equals("myGames"))
-			myGames.add(new Game(d));
-		else
-			System.out.println("write list name correctly");
 	}
 	
 	public User(String type, String nickname, String email, String password, String country) {
@@ -92,6 +88,127 @@ public class User {
 		this.password = password;
 		this.country = country;
 	}
+	public boolean checkDuplicate(Document d, String list) {
+		if(list.equals("wishlist")){
+			for(Document k: wishlist) {
+				if(d.get("name").equals(k.get("name"))) {				
+					return true;
+				}
+			}
+		}
+		else if(list.equals("myGames")) {
+			for(Document k: myGames) {
+				if(d.get("name").equals(k.get("name"))) {					
+					return true;
+				}
+			}
+		}
+		return false;
+		}
+			
+		
+	
+	public boolean checkListNull(String list) {
+		MongoDriver driver = null;
+		MongoCollection<Document> collection = null;
+
+		try {
+			driver = MongoDriver.getInstance();
+			collection = driver.getCollection("users");
+			Document user = collection.find(eq("nickname", nickname)).first();
+			List<Document> items = new ArrayList<>();  
+			if(list.equals("myGames"))
+				items = (List<Document>)user.get("mygames");
+			else
+				items = (List<Document>)user.get("wishlist");
+			if(items==null)
+				return true;
+			}
+		catch(Exception e) {e.printStackTrace();}
+		return false;
+	}
+	public void addGameToList(Document d, String list) {
+
+		if(list.equals("wishlist")) {
+				if(checkListNull("wishlist"))
+					wishlist = new ArrayList<>();
+				wishlist.add(d);
+				
+			}
+		
+			else if(list.equals("myGames")) {
+				if(checkListNull("myGames"))
+					myGames = new ArrayList<>();
+				myGames.add(d);
+				
+			}
+
+	}
+	public void removeGameFromList(Document d, String list) {
+		if(list.equals("wishlist")) {					
+			wishlist.remove(d);
+		}
+		else if(list.equals("myGames")) {					
+			myGames.remove(d);
+		}
+		
+	}
+		
+		public void addToMongoList(Document d , String list) {
+			
+			
+			MongoDriver driver = null;
+			MongoCollection<Document> collection = null;
+			Document docForList = new Document();
+			try {
+			driver = MongoDriver.getInstance();
+			
+			String name = d.getString("name");			
+			Double rating = d.getDouble("rating");
+			
+			docForList.append("name", name);
+			docForList.append("rating", rating);
+			
+			collection = driver.getCollection("users");
+			if(list.equals("wishlist"))		
+				collection.updateOne(eq("nickname", nickname),Updates.addToSet("wishlist",docForList));
+			else
+				collection.updateOne(eq("nickname", nickname),Updates.addToSet("mygames",docForList));
+		
+			}
+		catch(Exception e) {e.printStackTrace();}
+		}
+	
+		public void removeFromMongoList(Document d, String list) {
+			MongoDriver driver = null;
+			MongoCollection<Document> collection = null;
+			
+			try {
+			driver = MongoDriver.getInstance();
+		
+			collection = driver.getCollection("users");
+			
+			if(list.equals("wishlist"))	{	
+				
+				Bson filter = Filters.eq("nickname", nickname);
+				Bson delete = Updates.pull("wishlist", new Document("name", d.getString("name")));
+				collection.updateOne(filter, delete);
+				return;
+				
+			}
+			else if (list.equals("myGames")) {
+				Bson filter = Filters.eq("nickname", nickname);
+				Bson delete = Updates.pull("mygames", new Document("name", d.getString("name")));
+				collection.updateOne(filter, delete);
+				return;
+			}
+				  
+		
+			}
+		catch(Exception e) {e.printStackTrace();}
+			
+		}
+
 	
 	public String getNickname() {
 		return nickname;
@@ -205,6 +322,23 @@ public class User {
 	    }
 	}
 	
+	
+
+	
+	
+	public String inList(String name) {
+		for(Document d: wishlist) {
+			if(d.get("name").equals(name)) {
+				return "wishlist";
+			}
+		}
+		for(Document d: myGames) {
+			if(d.get("name").equals(name)) {
+				return "myGames";
+			}
+		}
+		return "noList";
+	}
 	public double getGameRate(long gameid) {
 		//TO DO
 		//MATILDE,  this function goes inside the logged user and takes the rating of the user for the gameid game and return his rating

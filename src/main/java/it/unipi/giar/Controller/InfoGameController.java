@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.bson.Document;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 
@@ -25,6 +27,7 @@ public class InfoGameController {
 	
 	private Game game;
 	private User user;
+	private Document gameDoc;
 
     @FXML
     private Text name;
@@ -65,7 +68,19 @@ public class InfoGameController {
     	addToWishlistButton.setDisable(false);
     	
     	//TO DO
-    	System.out.println("added to my games list");
+    	
+    	
+    	user.addGameToList(gameDoc, "myGames");
+    	user.addToMongoList(gameDoc, "myGames");
+    	if(!user.checkListNull("myGames"))
+    		if(user.checkDuplicate(gameDoc, "wishlist")) {
+    		user.removeGameFromList(gameDoc, "wishlist");	
+    		user.removeFromMongoList(gameDoc, "wishlist");
+    	}
+    	
+    	
+    	
+    	
     }
 
     @FXML
@@ -74,10 +89,30 @@ public class InfoGameController {
     	addToMyGamesButton.setDisable(false);
     	
     	//TO DO
-    	System.out.println("added to wishlist");
+    	
+    	user.addGameToList(gameDoc, "wishlist");
+    	user.addToMongoList(gameDoc, "wishlist");
+    			
+    	if(!user.checkListNull("myGames")) {
+    		
+    		if(user.checkDuplicate(gameDoc, "myGames")==true) {
+    			
+    		user.removeGameFromList(gameDoc, "myGames");	
+    		user.removeFromMongoList(gameDoc, "myGames");
+    		}
+    	}
+    		
+    		
+    	
+    	
+    	
     }
     
     public void initialize(User user, Game game) {
+    	this.user=user;
+    	this.game = game;
+    	gameDoc=Game.findGameDocument(this.game.getName());
+    	
     	name.setText(game.getName()); 
     	description.setText(game.getDescription()); 
     	rating.setText(String.valueOf(game.getRating())); 
@@ -103,19 +138,23 @@ public class InfoGameController {
 		//String userRate = String.valueOf(user.getGameRate(game.getId()));
 		//yourRating.setValue(userRate);
 		
-		//TO DO
-		//IF THE USER ALREADY has THE GAME in the wishlist or mygames, 
-		// TO WRITE THE user.isInList function, return
-		//if (user.isInlist()==0)
-		//addToWishlistButton.setDisable(false);
-    	//addToMyGamesButton.setDisable(false);
-		//else  if is already in wishlist
-		//addToWishlistButton.setDisable(true);
-    	//addToMyGamesButton.setDisable(false);
-		//else if is already in mygames
-		//addToWishlistButton.setDisable(false);
-    	//addToMyGamesButton.setDisable(true);
-		
+		if(user.checkListNull("myGames") || user.checkListNull("wishlist")) {
+			addToWishlistButton.setDisable(false);
+    		addToMyGamesButton.setDisable(false);
+    		return;
+		}
+		if (user.inList(game.getName()).equals("noList")) {
+			addToWishlistButton.setDisable(false);
+    		addToMyGamesButton.setDisable(false);
+		}
+		else  if (user.inList(game.getName()).equals("wishlist")) {
+			addToWishlistButton.setDisable(true);
+    		addToMyGamesButton.setDisable(false);
+		}
+		else if (user.inList(game.getName()).equals("mygames")){
+			addToWishlistButton.setDisable(false);
+			addToMyGamesButton.setDisable(true);
+		}
     }
     
 }

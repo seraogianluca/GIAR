@@ -155,6 +155,20 @@ public class Game {
 		
 		return null;
 	}
+	
+	public static Document findGameDocument(String name) {
+		try {
+			MongoDriver md = MongoDriver.getInstance();
+			MongoCollection<Document> collection = md.getCollection("games");
+			Document game = collection.find(eq("name", name)).first();
+			
+			return game;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 
 	public void setId(int id) {
 		this.id = id;
