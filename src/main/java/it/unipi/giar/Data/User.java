@@ -44,8 +44,8 @@ public class User {
 	private String password;
 	private String country;
 	private boolean deleted = false;
-	private ArrayList<Game> wishlist;
-	private ArrayList<Game> myGames;
+	private ArrayList<Document> wishlist;
+	private ArrayList<Document> myGames;
 	//private ArrayList<Rating> ratings;
 
 	
