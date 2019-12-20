@@ -16,12 +16,14 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 
 public class UserSocialController {
@@ -72,6 +74,7 @@ public class UserSocialController {
     	 actionColumn.setCellFactory(column -> {
          	TreeTableCell<UserTable, String> cell = new TreeTableCell<UserTable, String>(){
          		final JFXButton unfollowBtn = new JFXButton("Unfollow");
+         		final JFXButton wishlistBtn = new JFXButton("Whishlist");
 
          		@Override
          		protected void updateItem(String item, boolean empty) {
@@ -86,52 +89,58 @@ public class UserSocialController {
          				
          				});
          				
-         				unfollowBtn.setText("Unfollow");
+         				wishlistBtn.setOnAction((event) -> {
+         					
+         				}); 
+         				
          				unfollowBtn.setAlignment(Pos.CENTER);
          				unfollowBtn.setStyle("-fx-background-color: red; -fx-text-fill: white;");
-         				setGraphic(unfollowBtn);
+         				wishlistBtn.setAlignment(Pos.CENTER);
+         				wishlistBtn.setStyle("-fx-background-color: grey; -fx-text-fill: white;");
+         				
+         				HBox buttons = new HBox(unfollowBtn, wishlistBtn);
+         				setGraphic(buttons);
          			}
          		}
          	};
          	
          	return cell;
-         });	 
-    	 
+         });	  
     	 
     }
     
     @FXML
     void searchUsers(KeyEvent event) {
-    	actionColumn.setCellFactory(column -> {
-         	TreeTableCell<UserTable, String> cell = new TreeTableCell<UserTable, String>(){
-         		final JFXButton socialButton = new JFXButton();
-
-         		@Override
-         		protected void updateItem(String item, boolean empty) {
-         			super.updateItem(item, empty);
-         			setText(null);
-
-         			if(empty) {
-         				setGraphic(null);
-         			} else {
-         				socialButton.setOnAction((event) -> {
-         					socialButton.setDisable(true);
-         					//TODO Follow
-         					String nickname = getTreeTableView().getTreeItem(getIndex()).getValue().nickname.get();
-         					//User.followUser(nickname);
-         				});
-         				
-         				socialButton.setText("Follow");
-         				socialButton.setAlignment(Pos.CENTER);
-         				socialButton.setStyle("-fx-background-color: green; -fx-text-fill: white;");
-         				setGraphic(socialButton);
-         			}
-         		}
-         	};
-         	
-         	return cell;
-         });
+//    	actionColumn.setCellFactory(column -> {
+//         	TreeTableCell<UserTable, String> cell = new TreeTableCell<UserTable, String>(){
+//         		final JFXButton socialButton = new JFXButton("Follow");
+//
+//         		@Override
+//         		protected void updateItem(String item, boolean empty) {
+//         			super.updateItem(item, empty);
+//         			setText(null);
+//
+//         			if(empty) {
+//         				setGraphic(null);
+//         			} else {
+//         				socialButton.setOnAction((event) -> {
+//         					socialButton.setDisable(true);
+//         					//TODO Follow
+//         					String nickname = getTreeTableView().getTreeItem(getIndex()).getValue().nickname.get();
+//         					//User.followUser(nickname);
+//         				});
+//         				
+//         				socialButton.setAlignment(Pos.CENTER);
+//         				socialButton.setStyle("-fx-background-color: green; -fx-text-fill: white;");
+//         				setGraphic(socialButton);
+//         			}
+//         		}
+//         	};
+//         	
+//         	return cell;
+//         });
     	
+    	loadFollowing();
     	users.clear();
     	ArrayList<User> userSearch = User.searchUsers(searchUsers.getText());
     	for(User u : userSearch) {
