@@ -12,20 +12,64 @@
          <top>
             <AnchorPane prefHeight="100.0" prefWidth="650.0" BorderPane.alignment="CENTER">
                <children>
-                  <Text fx:id="Username" layoutX="196.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName" wrappingWidth="258.890625">
+                  <Text fx:id="profileTitle" layoutX="20.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Profile" wrappingWidth="609.890625" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="16.0">
                      <font>
-                        <Font size="56.0" />
+                        <Font size="48.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
          </top>
          <center>
-            <JFXButton fx:id="deleteProfile" onAction="#deleteUserProfile" style="-fx-background-color: red;" text="Delete Profile" BorderPane.alignment="CENTER">
-               <font>
-                  <Font size="32.0" />
-               </font>
-            </JFXButton>
+            <AnchorPane BorderPane.alignment="CENTER">
+               <children>
+                  <Text fx:id="followersLabel" layoutX="14.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Followers:" AnchorPane.leftAnchor="16.0">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="followingLabel" layoutX="273.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Following:">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="nicknameLabel" layoutX="14.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nickname:" AnchorPane.leftAnchor="16.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="userNickname" fill="#6b6b6b" layoutX="120.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nickname" AnchorPane.leftAnchor="150.0">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="emailLabel" layoutX="14.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" AnchorPane.leftAnchor="16.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="countryLabel" layoutX="14.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country:" AnchorPane.leftAnchor="16.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <JFXButton fx:id="deleteProfile" layoutX="247.0" layoutY="446.0" onAction="#deleteUserProfile" style="-fx-background-color: red;" text="Delete Profile" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="247.0" AnchorPane.topAnchor="446.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </JFXButton>
+                  <Text fx:id="userEmail" fill="#6b6b6b" layoutX="120.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="email" AnchorPane.leftAnchor="150.0">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="userCountry" fill="#6b6b6b" layoutX="120.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="country" AnchorPane.leftAnchor="150.0">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
          </center>
       </BorderPane>
    </children>
