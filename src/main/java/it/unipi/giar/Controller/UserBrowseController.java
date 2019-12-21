@@ -79,18 +79,14 @@ public class UserBrowseController {
         
         
         ArrayList<Game> browseResult = null;
-        if (type == "platform") {
+        if (type == "platform") {        	
+        	browseResult = Game.browseGamesPerPlatform(value);	
         	
-        	//browseResult = Game.BrowseGamesPerPlatform(value);	//TO DO 
-        	browseResult = Game.searchGames("fif");//	this is a test to see if worked the table. to be deleted
-        } else if (type == "year") {
+        } else if (type == "year") {        	
+        	browseResult = Game.browseGamesPerYear(value);	
         	
-        	//browseResult = Game.BrowseGamesPerYear(value);	//TO DO 
-        	browseResult = Game.searchGames("de");//	this is a test to see if worked the table. to be deleted
         }else if (type == "genre") {
-        	
-        	//browseResult = Game.BrowseGamesPerGenre(value);	//TO DO 
-        	browseResult = Game.searchGames("ac");//	this is a test to see if worked the table. to be deleted
+        	browseResult = Game.browseGamesPerGenre(value);
         }
         
     	for(Game game : browseResult) {

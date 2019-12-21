@@ -21,7 +21,7 @@ import static com.mongodb.client.model.Aggregates.unwind;
 import static com.mongodb.client.model.Sorts.ascending;
 import static com.mongodb.client.model.Aggregates.sort;
 import static com.mongodb.client.model.Aggregates.project;
-
+import static com.mongodb.client.model.Aggregates.skip;
 import static com.mongodb.client.model.Projections.computed;
 
 
@@ -129,8 +129,7 @@ public class Game {
 		try {
 			driver = MongoDriver.getInstance();
 			collection = driver.getCollection("games");
-			MongoCursor<Document> cursor = collection.aggregate(Arrays.asList(project(computed("year", eq("$arrayElemAt", Arrays.asList(eq("$split", Arrays.asList("$released", "-")), 0L)))), group("$year"), sort(ascending("_id")), unwind("$_id", 
-				    new UnwindOptions().preserveNullAndEmptyArrays(false)))).iterator();
+			MongoCursor<Document> cursor = collection.aggregate(Arrays.asList(group("$year"), sort(ascending("_id")), skip(1))).iterator();
 			while (cursor.hasNext()) {
 				items.add(cursor.next().getString("_id"));
 			}
@@ -222,6 +221,56 @@ public class Game {
 		
 		return null;
 	}
+	
+	
+	
+	
+	public static ArrayList<Game> browseGames(String key, String value){
+		ArrayList<Game> listGames = new ArrayList<Game>();
+		MongoDriver driver = null;
+		MongoCollection<Document> collection = null;
+
+		BasicDBObject query = new BasicDBObject();
+		query.put(key, value);
+
+		try {
+			driver = MongoDriver.getInstance();
+			collection = driver.getCollection("games");
+			MongoCursor<Document> cursor = collection.find(query).limit(10).iterator();	//TODO CHECK THE LIMIT, without limit, if the list is big, the system is slow.
+			
+			try {
+				while (cursor.hasNext()) {
+					Document document = cursor.next();
+					listGames.add(new Game(document));
+				}
+			} finally {
+				cursor.close();
+			}
+			
+			return listGames;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	public static ArrayList<Game> browseGamesPerPlatform(String value) {
+		return browseGames("platforms.platform.name", value);
+	}
+	public static ArrayList<Game> browseGamesPerGenre(String value) {
+		return browseGames("genres.name", value);
+	}
+	public static ArrayList<Game> browseGamesPerYear(String value) {
+		return browseGames("year", value);
+	}
+	
+	
+	
+	
+	
+	
 
 	public void setId(int id) {
 		this.id = id;
