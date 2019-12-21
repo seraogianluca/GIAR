@@ -47,9 +47,9 @@ no index used | 20 | 0 | 79670 | 177.4
 Example images of the results on an execution
 
 Without index:
-![pc](platPCnoindex.png)
+![pc](./resources/platPCnoindex.png)
 With index:
-![pc no index](platPCindex.png)
+![pc no index](./resources/platPCindex.png)
 
 
 
@@ -80,9 +80,9 @@ no index used | 4210 | 0 | 79670 | 175.1
 Example images of the results on an execution:
 
 Without index:
-![action](genresACTIONnoindex.png)
+![action](./resources/genresACTIONnoindex.png)
 With index:
-![action no index](genresACTIONindex.png)
+![action no index](./resources/genresACTIONindex.png)
 
 
 ## 3. `year`
@@ -104,6 +104,6 @@ no index used | 2046 | 0 | 79670 | 171
 Example images of the results on an execution:
 
 Without index:
-![action](year2013noindex.png)
+![action](./resources/year2013noindex.png)
 With index:
-![action no index](year2013index.png)
+![action no index](./resources/year2013index.png)
