@@ -407,12 +407,6 @@ public class User {
 			return false;
 		return wishlist.contains(listDoc);
 	}
-	public double getGameRate(long gameid) {
-		//TO DO
-		//MATILDE,  this function goes inside the logged user and takes the rating of the user for the gameid game and return his rating
-		double rating = 2.4; ///per prova
-		return rating;
-  }
 
 	private void removePerson(final String name) {
 		Neo4jDriver nd = Neo4jDriver.getInstance();
