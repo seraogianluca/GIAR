@@ -1,9 +1,7 @@
 package it.unipi.giar.Data;
 
-import java.io.IOException;
 import java.security.MessageDigest;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.xml.bind.DatatypeConverter;
 
@@ -15,8 +13,6 @@ import org.neo4j.driver.v1.TransactionWork;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
@@ -25,11 +21,6 @@ import com.mongodb.client.model.Updates;
 import it.unipi.giar.GiarSession;
 import it.unipi.giar.MongoDriver;
 import it.unipi.giar.Neo4jDriver;
-import it.unipi.giar.Controller.SignInController;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 import static com.mongodb.client.model.Filters.*;
 import static org.neo4j.driver.v1.Values.parameters;
@@ -75,7 +66,6 @@ public class User {
 			this.wishlist = new ArrayList<>();
 			this.myGames = new ArrayList<>();
 			
-			//FIXME: Null Pointer Exception
 			list = new ArrayList<>();			
 			list = (ArrayList<Document>)user.get("wishlist");
 						
@@ -149,11 +139,14 @@ public class User {
 			case "wishlist":
 				wishlist.add(game);
 				addToMongoList(game, "wishlist");
-				addToGraph(gameName);				
+				addToGraph(gameName, this.nickname);				
 				
 				if(isInMyGames(gameName)) {
 		    		removeGameFromList(gameName, "myGames");
 		    	}
+				
+				break;
+				
 			case "myGames":
 				myGames.add(game);
 				addToMongoList(game, "myGames");
@@ -161,8 +154,11 @@ public class User {
 				if(isInWishlist(gameName)) {
 		    		removeGameFromList(gameName, "wishlist");
 		    	}
+				
+				break;
+				
 			default:
-				return;
+				break;
 		}
 	}
 	
@@ -184,9 +180,8 @@ public class User {
 		}
 	}
 	
-	public void addToGraph(final String gameName) {
+	public void addToGraph(String gameName, String nickname) {
 		Neo4jDriver nd = Neo4jDriver.getInstance();
-		System.out.println("Add to graph wishlist");
 		try (Session session = nd.getDriver().session()) {
 			session.writeTransaction(
 					new TransactionWork<Boolean>() {
@@ -225,11 +220,15 @@ public class User {
 				wishlist.remove(game);
 				removeFromMongoList(game, "wishlist");
 				deleteFromGraph(gameName);
+				break;
+				
 			case "myGames":
 				myGames.remove(game);
 				removeFromMongoList(game, "myGames");
+				break;
+				
 			default:
-				return;
+				break;
 		}
 	}
 
@@ -379,9 +378,6 @@ public class User {
 	
 	public static void delete(String nick) {
 		try {
-			//FIXME: 
-			// * Check if works even if exists wishlist and mygames;
-			// * Works only if connection string of MongoDriver is "mongodb://user:password@172.16.0.70:27017"
 			MongoDriver md;
 			MongoCollection<Document> collection;
 			
@@ -399,12 +395,23 @@ public class User {
 	}
 	
 	private static void deleteUserNode(String nick) {
-		//FIXME: Delete a game if it has no relations
 		Neo4jDriver nd = Neo4jDriver.getInstance();
 		try (Session session = nd.getDriver().session()) {
-			session.run("MATCH (n:Player {nickname: $nickname}) DETACH DELETE n", parameters("nickname", nick));
-		} catch (Exception e) {
-			e.printStackTrace();
+			session.writeTransaction(
+					new TransactionWork<Boolean>() {
+						@Override
+						public Boolean execute(Transaction tx) {
+							tx.run("MATCH (n:Player {nickname: $nickname}) "
+									+ "DETACH DELETE n"
+									, parameters("nickname", nick));
+							//Delete the node if it has no relationships.
+							tx.run("MATCH (g:Game) "
+									+ "WHERE NOT ()-[:WISHED]->(g) "
+									+ "DELETE g"); 
+							return true;
+						}
+					}
+			);
 		}
 	}
 		
