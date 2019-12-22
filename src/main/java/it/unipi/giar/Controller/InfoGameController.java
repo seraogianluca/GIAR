@@ -1,8 +1,5 @@
 package it.unipi.giar.Controller;
 
-import java.io.File;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,6 +11,7 @@ import org.bson.Document;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 
+import it.unipi.giar.GiarSession;
 import it.unipi.giar.Data.Game;
 import it.unipi.giar.Data.User;
 import javafx.collections.FXCollections;
@@ -24,10 +22,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 
 public class InfoGameController {
-	
-	private Game game;
-	private User user;
-	private Document gameDoc;
 
     @FXML
     private Text name;
@@ -61,101 +55,77 @@ public class InfoGameController {
 
     @FXML
     private ListView<?> developers;
-
-    @FXML
-    void addToMyGames(ActionEvent event) {
-    	addToMyGamesButton.setDisable(true);
-    	addToWishlistButton.setDisable(false);
-    	
-    	//TO DO
-    	
-    	
-    	user.addGameToList(gameDoc, "myGames");
-    	user.addToMongoList(gameDoc, "myGames");
-    	if(!user.checkListNull("myGames"))
-    		if(user.checkDuplicate(gameDoc, "wishlist")) {
-    		user.removeGameFromList(gameDoc, "wishlist");	
-    		user.removeFromMongoList(gameDoc, "wishlist");
-    	}
-    	
-    	
-    	
-    	
-    }
-
-    @FXML
-    void addToWishlist(ActionEvent event) {
-    	addToWishlistButton.setDisable(true);
-    	addToMyGamesButton.setDisable(false);
-    	
-    	//TO DO
-    	
-    	user.addGameToList(gameDoc, "wishlist");
-    	user.addToMongoList(gameDoc, "wishlist");
-    			
-    	if(!user.checkListNull("myGames")) {
-    		
-    		if(user.checkDuplicate(gameDoc, "myGames")==true) {
-    			
-    		user.removeGameFromList(gameDoc, "myGames");	
-    		user.removeFromMongoList(gameDoc, "myGames");
-    		}
-    	}
-    		
-    	user.createGame(game.getName());
-    	
-    	
-    	
-    }
     
-    public void initialize(User user, Game game) {
-    	this.user=user;
-    	this.game = game;
+    public void initialize(String gameName) {
+    	GiarSession session;
+    	User user;
+    	Game game;
+    	Date date;
+    	DateFormat dateFormat;
     	
-    	gameDoc = new Document();
-    	gameDoc.append("name", game.getName());
-    	gameDoc.append("rating", game.getRating());
+    	game = Game.findGame(gameName);
     	
-    	name.setText(game.getName()); 
+    	name.setText(game.getName());
     	description.setText(game.getDescription()); 
-    	rating.setText(String.valueOf(game.getRating())); 
+    	rating.setText(Double.toString(game.getRating())); 
     	
-    	Date date = game.getReleased();
-    	DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
-    	
+    	date = game.getReleased();
+    	dateFormat = new SimpleDateFormat("yyyy-mm-dd"); 	
     	
     	//released.setText(dateFormat.format(date)); 
-    	metacritic.setText(String.valueOf(game.getMetacritic())); 
+    	metacritic.setText(Integer.toString(game.getMetacritic())); 
     	 
-		List<String> list = new ArrayList<String>();
-    	ObservableList<String> rats = FXCollections.observableArrayList(list);
-    	rats.add("1");
-    	rats.add("2");
-    	rats.add("3");
-    	rats.add("4");
-    	rats.add("5");
-		yourRating.setItems((ObservableList<String>) rats);
+    	ObservableList<String> ratingValues = FXCollections.observableArrayList();
+    	ratingValues.addAll("1", "2", "3", "4", "5");
+		yourRating.setItems(ratingValues);
 		
-		//TO DO 
+		//TODO: 
 		//IF THE USER ALREADY VOTED THE GAME, IN THE COMBOBOX APPEARS THE RATE OF THAT USER BY DEFAULT
 		//String userRate = String.valueOf(user.getGameRate(game.getId()));
 		//yourRating.setValue(userRate);
 		
-		if(user.isInMyGames(game)) {
+		session = GiarSession.getInstance();
+		user = session.getLoggedUser();
+		
+		if(user.isInMyGames(game.getName())) {
 			addToWishlistButton.setDisable(false);
 			addToMyGamesButton.setDisable(true);
-		}
-		
-		else if(user.isInWishlist(game)) {
+		} else if(user.isInWishlist(game.getName())) {
 			addToWishlistButton.setDisable(true);
 			addToMyGamesButton.setDisable(false);
-		}
-		
-		else {
+		} else {
 			addToWishlistButton.setDisable(false);
     		addToMyGamesButton.setDisable(false);
 		}
 		
     }
+
+    @FXML
+    void addToMyGames(ActionEvent event) {
+    	GiarSession session;
+    	User user;
+    	
+    	session = GiarSession.getInstance();
+    	user = session.getLoggedUser();
+
+    	user.addGameToList(name.getText(), "myGames");  
+    	
+    	addToMyGamesButton.setDisable(true);
+    	addToWishlistButton.setDisable(false);
+    }
+
+    @FXML
+    void addToWishlist(ActionEvent event) {
+      	GiarSession session;
+    	User user;
+    	
+    	session = GiarSession.getInstance();
+    	user = session.getLoggedUser();
+    	
+    	user.addGameToList(name.getText(), "wishlist");
+    		
+    	addToWishlistButton.setDisable(true);
+    	addToMyGamesButton.setDisable(false);
+    } 
     
 }

@@ -42,7 +42,7 @@ public class UserBrowseController {
     
     public void initialize(String value, String type) {
     	browseType.setText(value);
-    	this.user = UserMenuController.user;
+    	//this.user = UserMenuController.user;
     	
     	JFXTreeTableColumn<GameTable, String> gameName = new JFXTreeTableColumn<GameTable, String>("Name"); 
     	gameName.prefWidthProperty().bind(gamesTable1.widthProperty().divide(2));
@@ -108,7 +108,7 @@ public class UserBrowseController {
             AnchorPane newPane = loader.load();
     		
     	    InfoGameController controller = loader.getController();            
-    	    controller.initialize(user, Game.findGame(name));
+    	    //controller.initialize(user, Game.findGame(name));
             
             pane.getChildren().setAll(newPane);          
 
