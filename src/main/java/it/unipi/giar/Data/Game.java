@@ -11,15 +11,10 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import com.mongodb.BasicDBObject;
-import com.mongodb.DBObject;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.UnwindOptions;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import org.bson.Document;
 import static com.mongodb.client.model.Aggregates.group;
@@ -53,7 +48,6 @@ public class Game {
 
 	public Game(Document document) {
 		SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-mm-dd");
-		ArrayList<Platform> listPlatforms = new ArrayList<Platform>();
 
 		this.id = (document.get("id") == null) ? 0 : document.getInteger("id");
 		this.slug = (document.get("slug") == null) ? "" : document.getString("slug");
