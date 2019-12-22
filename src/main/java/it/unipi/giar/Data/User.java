@@ -180,7 +180,7 @@ public class User {
 		}
 	}
 	
-	public void addToGraph(String gameName, String nickname) {
+	private void addToGraph(String gameName, String nickname) {
 		Neo4jDriver nd = Neo4jDriver.getInstance();
 		try (Session session = nd.getDriver().session()) {
 			session.writeTransaction(
@@ -232,7 +232,7 @@ public class User {
 		}
 	}
 
-	public void removeFromMongoList(Document game, String list) {
+	private void removeFromMongoList(Document game, String list) {
 		try {
 			MongoDriver driver;
 			MongoCollection<Document> collection;
@@ -255,7 +255,7 @@ public class User {
 		}
 	}
 	
-	public void deleteFromGraph(final String game) {
+	private void deleteFromGraph(final String game) {
 		Neo4jDriver nd = Neo4jDriver.getInstance();
 		try (Session session = nd.getDriver().session()) {
 			session.writeTransaction(
