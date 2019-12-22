@@ -45,7 +45,7 @@ public class UserSocialController {
     
     public void initialize() {
     	//FIXME: Class fields must be private because is readonly, is better to use get methods for access.
-    	this.user = UserMenuController.user;
+    	//this.user = UserMenuController.user;
     	
     	userNick = new JFXTreeTableColumn<UserTable, String>("Nickname"); 
     	userNick.prefWidthProperty().bind(usersTable.widthProperty().multiply(0.8));

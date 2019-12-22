@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
+import it.unipi.giar.GiarSession;
 import it.unipi.giar.Data.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +19,6 @@ import javafx.stage.Stage;
 
 public class SignInController {
 
-	private User user;
     @FXML
     private AnchorPane anchorRoot;
     
@@ -36,54 +36,49 @@ public class SignInController {
     
     @FXML
     private Text errorMessage;
+    
+    public void initialize() {
+    	GiarSession session = GiarSession.getInstance();
+    	
+    	if (session.getDeleted()) {
+    		errorMessage.setText("Account successfully deleted.");
+        	errorMessage.setVisible(true);
+    	} else if (session.getRegistered() != null) {
+    		signInNickname.setText(session.getRegistered());
+    	}
+    }
 
     @FXML
     void SignIn(ActionEvent event) throws IOException {
-    	user = null;
+    	GiarSession session;
     	String username = null;
     	String password = null;
-    	try {
-    		
-    		username = signInNickname.getText();
-    		password = signInPassword.getText();
-    
-    	   }
-    	    
-    	catch( Exception e){
-    		e.printStackTrace(); 		
-    	}
-    	   	
-    	if((!User.checkNickname(username)) || (!User.checkPassword(password))) {
+    	Parent root;
+    	Stage stage;
+    	
+    	username = signInNickname.getText();
+    	password = signInPassword.getText();
+    	
+    	if(username == null || password == null) {
+			errorMessage.setText("Please insert username and password.");
+			errorMessage.setVisible(true);
+			return;
+		} else if ((!User.checkNickname(username)) || (!User.checkPassword(password))) {
     		errorMessage.setText("Wrong username or password.");
     		errorMessage.setVisible(true);
     		return;
     	}
     	
-    	Parent root;
+    	session = GiarSession.getInstance();
+    	session.setLoggedUser(username);
     	
-    	if(user == null) {
-    		user = new User(username);
-    	}
-    	
-    	boolean isAdmin= false;
-    	isAdmin = User.isAdmin(username);
-    	if (isAdmin) {
-
+    	if (User.isAdmin(username)) {
     		root = FXMLLoader.load(getClass().getResource("/fxml/AdminHomepage.fxml"));
-    	}
-    	else { 	
-    		
-    		FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/fxml/UserMenu.fxml"));
-            root = loader.load();
-           
-            //access the controller and call a method
-            UserMenuController controller = loader.getController();
-            controller.initialize(user);
-    		
+    	} else { 	
+            root = FXMLLoader.load(getClass().getResource("/fxml/UserMenu.fxml"));	
     	}
 	        
-    	Stage stage = (Stage)signInButton.getScene().getWindow();
+    	stage = (Stage)signInButton.getScene().getWindow();
 	    stage.setScene(new Scene(root));  
 	    stage.show();
     }
@@ -100,15 +95,4 @@ public class SignInController {
         stage.show();
     }
     
-    public void initialize(User user) {
-    	this.user = user;
-    	if (user != null) {
-    		if(user.isDeleted()) {
-    			errorMessage.setText("Account successfully deleted.");
-        		errorMessage.setVisible(true);
-    		} else {
-    			signInNickname.setText(user.getNickname());
-    		}
-    	}
-    }
 }

@@ -41,7 +41,7 @@ public class UserTopPerPlatformController {
     private JFXTreeTableView<GameTable> gamesTable3;
     
     public void initialize(String value) {
-    	this.user = UserMenuController.user;
+    	//this.user = UserMenuController.user;
     	plat.setText(value);
     	JFXTreeTableColumn<GameTable, String> gameName = new JFXTreeTableColumn<GameTable, String>("Name"); 
     	gameName.prefWidthProperty().bind(gamesTable3.widthProperty().divide(2));
@@ -96,7 +96,7 @@ public class UserTopPerPlatformController {
             AnchorPane newPane = loader.load();
     		
     	    InfoGameController controller = loader.getController();            
-    	    controller.initialize(user, Game.findGame(name));
+    	    //controller.initialize(user, Game.findGame(name));
             
             pane.getChildren().setAll(newPane);          
 

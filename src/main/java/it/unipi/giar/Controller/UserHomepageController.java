@@ -1,6 +1,5 @@
 package it.unipi.giar.Controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import com.jfoenix.controls.JFXTextField;
@@ -11,7 +10,6 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import it.unipi.giar.Data.Game;
-import it.unipi.giar.Data.User;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
@@ -28,8 +26,6 @@ import javafx.util.Callback;
 
 public class UserHomepageController {
 	
-	private User user;
-	
 	private ObservableList<GameTable> games;
 
     @FXML
@@ -40,9 +36,6 @@ public class UserHomepageController {
 
     
     public void initialize() {
-    	
-    	this.user = UserMenuController.user;
-    	
     	JFXTreeTableColumn<GameTable, String> gameName = new JFXTreeTableColumn<GameTable, String>("Name"); 
     	gameName.prefWidthProperty().bind(gamesTable.widthProperty().divide(2));
         gameName.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<GameTable, String>, ObservableValue<String>>() {
@@ -58,17 +51,14 @@ public class UserHomepageController {
             @Override
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<GameTable, String> param) {
                 return param.getValue().getValue().rating;
-            }
-            
-            
+            }    
         });
         
         gamesTable.setRowFactory(tv->{
             JFXTreeTableRow<GameTable> row = new JFXTreeTableRow<>();
             row.setOnMouseClicked(event -> {
                     GameTable rowData = row.getItem();             
-                    openGameInfo(rowData.name.get());
-                    
+                    openGameInfo(rowData.name.get());             
             });
             return row ;
         });
@@ -91,38 +81,40 @@ public class UserHomepageController {
     	}
     }
     
-    void openGameInfo(String name) {
-    	try { 		
-    		Scene scene = searchGames.getScene();
-    		AnchorPane pane = (AnchorPane)scene.lookup("#anchorPaneRight");
-    	    		
-    		FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/fxml/InfoGame.fxml"));
-            AnchorPane newPane = loader.load();
+    void openGameInfo(String gameName) {
+    	try {
+    		FXMLLoader loader;
+    		InfoGameController controller;
+    		Scene scene;
+    		AnchorPane pane;
+    		AnchorPane newPane;
     		
-    	    InfoGameController controller = loader.getController();            
-    	    controller.initialize(user, Game.findGame(name));
+    		scene = searchGames.getScene();
+    		pane = (AnchorPane)scene.lookup("#anchorPaneRight");
+    	    		
+    		loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/fxml/InfoGame.fxml"));
+            newPane = loader.load();
+    		
+    	    controller = loader.getController();            
+    	    controller.initialize(gameName);
             
             pane.getChildren().setAll(newPane);
-            
-           
-            
-
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
     
-    class GameTable extends RecursiveTreeObject<GameTable> {
+}
 
-        StringProperty name;
-        StringProperty rating;
+class GameTable extends RecursiveTreeObject<GameTable> {
 
-        public GameTable(String name, String rating) {
-            this.name = new SimpleStringProperty(name);
-            this.rating = new SimpleStringProperty(rating);
-        }
+    StringProperty name;
+    StringProperty rating;
 
+    public GameTable(String name, String rating) {
+        this.name = new SimpleStringProperty(name);
+        this.rating = new SimpleStringProperty(rating);
     }
+
 }
