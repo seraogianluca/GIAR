@@ -78,7 +78,7 @@
                      </font>
                   </Text>
                   <ListView fx:id="platforms" layoutX="57.0" layoutY="430.0" prefHeight="74.0" prefWidth="157.0" AnchorPane.leftAnchor="57.0" />
-                  <ListView fx:id="genres" layoutX="237.0" layoutY="427.0" prefHeight="77.0" prefWidth="164.0" />
+                  <ListView fx:id="genres" layoutX="237.0" layoutY="428.0" prefHeight="77.0" prefWidth="164.0" />
                   <ListView fx:id="developers" layoutX="421.0" layoutY="427.0" prefHeight="78.0" prefWidth="179.0" />
                   <Text layoutX="57.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Platforms:" AnchorPane.leftAnchor="57.0">
                      <font>
