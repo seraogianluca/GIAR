@@ -2,7 +2,9 @@ package it.unipi.giar.Controller;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -54,7 +56,6 @@ public class InfoGameController {
     private ListView<String> genres;
 
     @FXML
-
     private ListView<String> developers;
     
     public void initialize(String gameName) {
