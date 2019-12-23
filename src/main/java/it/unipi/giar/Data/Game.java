@@ -132,21 +132,6 @@ public class Game {
 		this.genres = genres;
 	}
 
-	private ArrayList<Platform> getPlatforms(String platforms) {
-		ArrayList<Platform> listPlatforms = new ArrayList<Platform>();
-		return listPlatforms;
-	}
-
-	private ArrayList<Developer> getDevelopers(String developers) {
-		ArrayList<Developer> listDevelopers = new ArrayList<Developer>();
-		return listDevelopers;
-	}
-
-	private ArrayList<Genre> getGenres(String genres) {
-		ArrayList<Genre> listGenres = new ArrayList<Genre>();
-		return listGenres;
-	}
-
 	public static List<String> getAllPlatformsList() {
 		// MATILDE, i need this function to populate the fields of the combobox for
 		// platforms. this function returns the list of the platforms existing in the database.	
@@ -312,12 +297,6 @@ public class Game {
 	public static ArrayList<Game> browseGamesPerYear(String value) {
 		return browseGames("year", value);
 	}
-	
-	
-	
-	
-	
-	
 
 	public void setId(int id) {
 		this.id = id;
