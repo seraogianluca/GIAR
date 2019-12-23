@@ -66,28 +66,30 @@ public class AdminMenuController {
 			stage.show();
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
 
     @FXML
     void openAdmin(ActionEvent event) {
-
-    }
-
-    @FXML
-    void openHomepage(MouseEvent event) {
-
     	try {
 			AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/AdminHomepage.fxml"));
 			anchorPaneRight.getChildren().setAll(pane);
     	
     	} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+    }
 
+    @FXML
+    void openHomepage(MouseEvent event) {
+    	try {
+			AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/AdminHomepage.fxml"));
+			anchorPaneRight.getChildren().setAll(pane);
+    	
+    	} catch (IOException e) {
+			e.printStackTrace();
+		} 
     }
 
     @FXML
@@ -97,7 +99,6 @@ public class AdminMenuController {
 			anchorPaneRight.getChildren().setAll(pane);
     	
     	} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 	
     }
@@ -109,23 +110,17 @@ public class AdminMenuController {
 			anchorPaneRight.getChildren().setAll(pane);
     	
     	} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
     }
     
-    public void initialize() {
-    		
+    public void initialize() {  		
 		try {
 			AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/AdminHomepage.fxml"));
 			anchorPaneRight.getChildren().setAll(pane);
     	
     	} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
-		
-
     }
-
 }
