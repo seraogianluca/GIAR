@@ -229,7 +229,6 @@ public class UserMenuController {
     	topPerPlatformMenuPanel.valueProperty().set(null);
     	yearBrowseMenuPanel.valueProperty().set(null);
     	
-    	
     	loadBrowsePage(platformValue, "platform");
     	
     }
