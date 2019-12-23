@@ -2,6 +2,8 @@ package it.unipi.giar.Data;
 
 import static com.mongodb.client.model.Filters.eq;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -9,7 +11,6 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import com.mongodb.BasicDBObject;
-import com.mongodb.DBObject;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
@@ -44,23 +45,69 @@ public class Game {
 	private ArrayList<Platform> platforms;
 	private ArrayList<Developer> developers;
 	private ArrayList<Genre> genres;
-	
+
 	public Game(Document document) {
-		//this.id = document.getInteger("id");
-		//this.slug = document.getString("slug");
-		this.name = document.getString("name");
-		//this.nameOriginal = document.getString("name_original");
-		//this.description = document.getString("description");
-		//this.metacritic = document.getInteger("metacritic");
-		//this.released = document.getDate("released");
-		//this.backgroundImage = document.getString("background_image");
-		this.rating = document.getDouble("rating");
-		//this.added = document.getLong("added");
-		//this.addedWishlist = document.getLong("added_wishlist");
-		//this.addedMyGames = document.getLong("added_mygames");
-		//this.platforms = getPlatforms(document.getString("platforms"));
-		//this.developers = getDevelopers(document.getString("developers"));
-		//this.genres = getGenres(document.getString("genres"));
+		SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-mm-dd");
+
+		this.id = (document.get("id") == null) ? 0 : document.getInteger("id");
+		this.slug = (document.get("slug") == null) ? "" : document.getString("slug");
+		this.name = (document.get("name") == null) ? "" : document.getString("name");
+		this.nameOriginal = (document.get("name_original") == null) ? "" : document.getString("name_original");
+		this.description = (document.get("description") == null) ? "" : document.getString("description");
+		this.metacritic = (document.get("metacritic") == null) ? 0 : document.getInteger("metacritic");
+		this.backgroundImage = (document.get("background_image") == null) ? "" : document.getString("background_image");
+		this.rating = (document.get("rating") == null) ? 0 : document.getDouble("rating");
+		// this.addedWishlist = (document.get("added_by_status") == null) ? 0 :
+		// document.getLong("wishlist");
+		// this.addedMyGames = (document.get("mygames") == null) ? 0 :
+		// document.getLong("mygames");
+		// this.added = (this.addedWishlist + this.addedMyGames);
+		
+		List<Document> platformDoc = new ArrayList<Document>();
+		platformDoc = (List<Document>)document.get("platforms");
+
+		if (platformDoc.isEmpty()) {
+			this.platforms = new ArrayList<Platform>();
+		} else {
+			this.platforms = new ArrayList<Platform>();
+
+			for (Document doc : platformDoc) {
+				this.platforms.add(new Platform((Document)doc.get("platform")));
+			}
+		}
+
+		List<Document> developDoc = new ArrayList<Document>();
+		developDoc = (List<Document>)document.get("developers");
+
+		if (developDoc.isEmpty()) {
+			this.developers = new ArrayList<Developer>();
+		} else {
+			this.developers = new ArrayList<Developer>();
+
+			for (Document doc : developDoc) {
+				this.developers.add(new Developer(doc));
+			}
+		}
+
+		List<Document> genresDoc = new ArrayList<Document>();
+		genresDoc = (List<Document>)document.get("genres");
+
+		if (genresDoc.isEmpty()) {
+			this.genres = new ArrayList<Genre>();
+		} else {
+			this.genres = new ArrayList<Genre>();
+
+			for (Document doc : genresDoc) {
+				this.genres.add(new Genre(doc));
+			}
+		}
+
+		try {
+			this.released = (document.get("released") == null) ? new Date()
+					: formatDate.parse(document.getString("released"));
+		} catch (ParseException e) {
+			this.released = new Date();
+		}
 	}
 
 	public Game(int id, String slug, String name, String nameOriginal, String description, int metacritic,
@@ -84,7 +131,7 @@ public class Game {
 		this.developers = developers;
 		this.genres = genres;
 	}
-	
+
 	private ArrayList<Platform> getPlatforms(String platforms) {
 		ArrayList<Platform> listPlatforms = new ArrayList<Platform>();
 		return listPlatforms;
@@ -175,7 +222,7 @@ public class Game {
 			driver = MongoDriver.getInstance();
 			collection = driver.getCollection("games");
 			MongoCursor<Document> cursor = collection.find(query).limit(10).iterator();
-			
+
 			try {
 				while (cursor.hasNext()) {
 					Document document = cursor.next();
@@ -184,27 +231,27 @@ public class Game {
 			} finally {
 				cursor.close();
 			}
-			
+
 			return listGames;
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	}
-	
+
 	public static Game findGame(String name) {
 		try {
 			MongoDriver md = MongoDriver.getInstance();
 			MongoCollection<Document> collection = md.getCollection("games");
 			Document game = collection.find(eq("name", name)).first();
-			
+
 			return new Game(game);
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	}
 	
