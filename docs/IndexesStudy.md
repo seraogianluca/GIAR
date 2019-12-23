@@ -4,6 +4,7 @@
 1) [Introduction](#1-introduction)
 2) [`platforms.platform.name`](#2-`platforms.platform.name`)
 3) [`genres.name`](#2-`genres.name`)
+4) [`year`](#2-`year`)
 
 ## 1. Introduction
 The MongoDd Compass Explain Plan section offers the possibility to evaluate the query performance executed on the database. We used this feature to compare the performance between queries that exploit the indexes or not.
@@ -85,14 +86,14 @@ With index:
 ![action no index](./resources/genresACTIONindex.png)
 
 
-## 3. `year`
+## 4. `year`
 In this section we study the index on the `year` field of the games collection.
 The query executed is: 
 ````
 giar.games.find({year: "2013"})
 ````
 
-### 3.1 Action Query Performances Summary
+### 4.1 Action Query Performances Summary
 
 Used Index | Documents Returned | Index Keys Examinated | Documents Examined | Average Actual Query Execution Time(ms) 
 ------------ | ------------ | ------------ | ------------ | ------------ 
@@ -100,7 +101,7 @@ no index used | 2046 | 0 | 79670 | 171
 `year` | 2046 | 2046 | 2046 | 4 
 
 
-### 3.3 Screeshots
+### 4.2 Screeshots
 Example images of the results on an execution:
 
 Without index:
