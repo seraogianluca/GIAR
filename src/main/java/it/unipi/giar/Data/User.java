@@ -2,7 +2,6 @@ package it.unipi.giar.Data;
 
 import java.security.MessageDigest;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Pattern;
 
 import javax.xml.bind.DatatypeConverter;
@@ -12,7 +11,6 @@ import org.neo4j.driver.v1.Session;
 import org.neo4j.driver.v1.StatementResult;
 import org.neo4j.driver.v1.Transaction;
 import org.neo4j.driver.v1.TransactionWork;
-import org.neo4j.driver.v1.Value;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
@@ -417,14 +415,6 @@ public class User {
 					}
 			);
 		}
-	}
-  
-	public double getGameRate(long gameid) {
-		//TODO
-		//MATILDE,  this function goes inside the logged user and takes the rating of the user for the gameid game and return his rating
-		double rating = 2.4; ///per prova
-		return rating;
-		
 	}
 	
 	public static void followUser(String follower, String toFollow) {
