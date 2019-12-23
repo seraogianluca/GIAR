@@ -42,8 +42,8 @@
                      <font>
                         <Font size="18.0" />
                      </font></Text>
-                  <JFXComboBox fx:id="yourRating" focusColor="#ffff0d" layoutX="169.0" layoutY="283.0" prefHeight="31.0" prefWidth="133.0" promptText="Rate this game" onAction="#rateGame" />
-                  <Text layoutX="60.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rating:" AnchorPane.leftAnchor="60.0">
+                  <JFXComboBox fx:id="yourRating" focusColor="#ffff0d" layoutX="464.0" layoutY="165.0" onAction="#rateGame" prefHeight="31.0" prefWidth="133.0" promptText="Rate this game" />
+                  <Text layoutX="61.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rating:" AnchorPane.leftAnchor="61.0">
                  
                      <font>
                         <Font size="18.0" />
