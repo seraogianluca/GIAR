@@ -98,7 +98,7 @@ public class UserSocialController {
 		user = session.getLoggedUser();
 		users.clear();
 		
-		following = User.following(user.getNickname());
+		following = User.getFollowingList(user.getNickname());
 	}
 
 	private void setFollowColumn() {

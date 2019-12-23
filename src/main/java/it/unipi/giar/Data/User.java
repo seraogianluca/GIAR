@@ -2,12 +2,10 @@ package it.unipi.giar.Data;
 
 import java.security.MessageDigest;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Pattern;
 
 import javax.xml.bind.DatatypeConverter;
 
-import org.neo4j.driver.v1.Record;
 import org.neo4j.driver.v1.Session;
 import org.neo4j.driver.v1.StatementResult;
 import org.neo4j.driver.v1.Transaction;
@@ -418,6 +416,13 @@ public class User {
 			);
 		}
 	}
+		
+	public double getGameRate(long gameid) {
+		//TO DO
+		//MATILDE,  this function goes inside the logged user and takes the rating of the user for the gameid game and return his rating
+		double rating = 2.4; ///per prova
+		return rating;
+	}
 	
 	public static void followUser(String follower, String toFollow) {
 		Neo4jDriver nd = Neo4jDriver.getInstance();
@@ -439,7 +444,7 @@ public class User {
 		}
 	}
 	
-	public static ArrayList<User> following(String nickname) {
+	public static ArrayList<User> getFollowingList(String nickname) {
 		ArrayList<User> following = new ArrayList<User>();
 		
 		Neo4jDriver nd = Neo4jDriver.getInstance();
@@ -493,13 +498,6 @@ public class User {
 		}
 		
 		return listUsers;
-	}
-		
-	public double getGameRate(long gameid) {
-		//TO DO
-		//MATILDE,  this function goes inside the logged user and takes the rating of the user for the gameid game and return his rating
-		double rating = 2.4; ///per prova
-		return rating;
 	}
 			
 }
