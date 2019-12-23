@@ -2,17 +2,19 @@ package it.unipi.giar.Data;
 
 import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import javax.xml.bind.DatatypeConverter;
 
+import org.neo4j.driver.v1.Record;
 import org.neo4j.driver.v1.Session;
 import org.neo4j.driver.v1.StatementResult;
 import org.neo4j.driver.v1.Transaction;
 import org.neo4j.driver.v1.TransactionWork;
-
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
@@ -429,6 +431,99 @@ public class User {
 			);
 		}
 	}
+	
+	public static void followUser(String follower, String toFollow) {
+		Neo4jDriver nd = Neo4jDriver.getInstance();
+		try (Session session = nd.getDriver().session()) {
+			session.writeTransaction(
+					new TransactionWork<Boolean>() {
+						@Override
+						public Boolean execute(Transaction tx) {
+							tx.run("MATCH (p:Player) "
+									+ "WHERE p.nickname = $nickname "
+									+ "MATCH (n:Player) "
+									+ "WHERE n.nickname = $toFollow "
+									+ "CREATE (p)-[:FOLLOW]->(n)"
+									,parameters("nickname", follower, "toFollow", toFollow));
+							return true;
+						};
+					}
+			);
+		}
+	}
+	
+	public static void unfollowUser(String follower, String toUnfollow) {
+		Neo4jDriver nd = Neo4jDriver.getInstance();
+		try(Session session = nd.getDriver().session()) {
+			session.writeTransaction(
+					new TransactionWork<Boolean>() {
+						@Override
+						public Boolean execute(Transaction tx) {
+							tx.run("MATCH (n:Player {nickname: $follower })-[r:FOLLOW]->(p:Player {nickname: $toUnfollow }) "
+									+ "DELETE r"
+									,parameters("follower", follower, "toUnfollow", toUnfollow));
+							return true;
+						}
+					}
+			);
+		}
+	}
+	
+	public static ArrayList<User> getFollowingList(String nickname) {
+		ArrayList<User> following = new ArrayList<User>();		
+		Neo4jDriver nd = Neo4jDriver.getInstance();
+		try (Session session = nd.getDriver().session()) {
+			session.writeTransaction(
+					new TransactionWork<Boolean>() {
+						@Override
+						public Boolean execute(Transaction tx) {
+							StatementResult result = tx.run("MATCH (p: Player)-[:FOLLOW]->(n:Player) "
+									+ "WHERE p.nickname = $nickname "
+									+ "RETURN n.nickname AS nickname",parameters ("nickname", nickname));
+							
+							while(result.hasNext()) {
+								Record record = result.next();
+								following.add(new User(record.get("nickname").asString()));
+							}
+							
+							return true;
+						};
+					}
+			);
+		}
+		
+		return following;
+	}
+	
+	public static ArrayList<User> searchUsers(String search) {
+		ArrayList<User> listUsers = new ArrayList<User>();
+
+		try {
+			MongoDriver md = MongoDriver.getInstance();
+			MongoCollection<Document> collection = md.getCollection("users");
+			
+			BasicDBObject query = new BasicDBObject();
+			query.put("nickname", Pattern.compile(search, Pattern.CASE_INSENSITIVE));
+			
+			MongoCursor<Document> cursor = collection.find(query).limit(10).iterator();
+			
+			try {
+				while (cursor.hasNext()) {
+					Document document = cursor.next();
+					listUsers.add(new User(document.getString("nickname")));
+				}
+			} finally {
+				cursor.close();
+			}
+			
+			return listUsers;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return listUsers;
+	}
 
 	public boolean alreadyVoted(String gameName) {
 		Document game = new Document();
@@ -483,4 +578,5 @@ public class User {
 	public ArrayList<Document> getMyGames() {
 		return this.myGames;
 	}
+
 }

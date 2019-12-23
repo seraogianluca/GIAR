@@ -38,5 +38,4 @@ public class Platform {
 	public String getSlug() {
 		return this.slug;
 	}
-
 }
