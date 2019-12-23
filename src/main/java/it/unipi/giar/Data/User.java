@@ -421,4 +421,14 @@ public class User {
 		double rating = 2.4; ///per prova
 		return rating;
   }
+	
+	
+	
+	public ArrayList<Document> getWishlist() {
+		return this.wishlist;
+	}
+	
+	public ArrayList<Document> getMyGames() {
+		return this.myGames;
+	}
 }
