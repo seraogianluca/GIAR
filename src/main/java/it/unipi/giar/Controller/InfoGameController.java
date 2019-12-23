@@ -104,15 +104,13 @@ public class InfoGameController {
 		  }
     	ObservableList<String> obsPlatform = FXCollections.observableArrayList(listPlatform);
 		  platforms.setItems((ObservableList<String>) obsPlatform);
-
-
-		//TO DO 
-		//IF THE USER ALREADY VOTED THE GAME, IN THE COMBOBOX APPEARS THE RATE OF THAT USER BY DEFAULT
-		//String userRate = String.valueOf(user.getGameRate(game.getId()));
-		//yourRating.setValue(userRate);
-		
+		  
 		session = GiarSession.getInstance();
 		user = session.getLoggedUser();
+		
+		if(user.alreadyVoted(name.getText())) {
+			yourRating.setValue(user.getPreviousVote(name.getText()));
+    	}
 		
 		if(user.isInMyGames(game.getName())) {
 			addToWishlistButton.setDisable(false);
@@ -154,5 +152,21 @@ public class InfoGameController {
     	addToWishlistButton.setDisable(true);
     	addToMyGamesButton.setDisable(false);
     } 
+    @FXML
+    void rateGame(ActionEvent event) {
+    	GiarSession session;
+    	User user;
+    	
+    	session = GiarSession.getInstance();
+    	user = session.getLoggedUser();
+    	
+    	String value = yourRating.getValue();
+
+    	user.rateGame(value, name.getText());
+    	
+    	
+    	
+    }
+    
     
 }

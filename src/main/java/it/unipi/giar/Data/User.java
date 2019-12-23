@@ -34,7 +34,7 @@ public class User {
 	private String country;
 	private ArrayList<Document> wishlist;
 	private ArrayList<Document> myGames;
-	//private ArrayList<Rating> ratings;
+	private ArrayList<Document> ratings;
 	
 	public User(String type, String nickname, String email, String password, String country) {
 		this.type = type;
@@ -65,6 +65,7 @@ public class User {
 			this.country=user.getString("country");
 			this.wishlist = new ArrayList<>();
 			this.myGames = new ArrayList<>();
+			this.ratings = new ArrayList<>();
 			
 			list = new ArrayList<>();			
 			list = (ArrayList<Document>)user.get("wishlist");
@@ -78,6 +79,13 @@ public class User {
 			
 			if(list != null) {
 				this.myGames.addAll(list);
+			}	
+			
+			list = new ArrayList<>();
+			list = (ArrayList<Document>)user.get("ratings");
+
+			if(list != null) {
+				this.ratings.addAll(list);
 			}	
 			
 		} catch(Exception e) {
@@ -172,9 +180,12 @@ public class User {
 
 			if(list.equals("wishlist")) {
 				collection.updateOne(eq("nickname", this.nickname),Updates.addToSet("wishlist",game));
-			} else {
+			} else if(list.equals("myGames")) {
 				collection.updateOne(eq("nickname", this.nickname),Updates.addToSet("mygames",game));	
 			}	
+			else if(list.equals("ratings")) {
+				collection.updateOne(eq("nickname", this.nickname),Updates.addToSet("ratings",game));	
+			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -249,7 +260,11 @@ public class User {
 			} else if (list.equals("myGames")) {
 				delete = Updates.pull("mygames", game);
 				collection.updateOne(filter, delete);
-			}	
+			}
+			else if(list.equals("ratings")) {
+				delete = Updates.pull("ratings", game);
+				collection.updateOne(filter, delete);
+			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -414,16 +429,53 @@ public class User {
 			);
 		}
 	}
-  
-	public double getGameRate(long gameid) {
-		//TO DO
-		//MATILDE,  this function goes inside the logged user and takes the rating of the user for the gameid game and return his rating
-		double rating = 2.4; ///per prova
-		return rating;
+
+	public boolean alreadyVoted(String gameName) {
+		Document game = new Document();
+		game.append("name", gameName);
+		
+		if (this.ratings.size() == 0) {
+			return false;
+		} else {
+			for (Document d: ratings) {
+				if(d.getString("name").equals(gameName))
+					return true;					
+			}
+		}
+		return false;
+	}
+	
+	public String getPreviousVote(String gameName) {
+		for (Document d: ratings) {
+			if(d.getString("name").equals(gameName))
+				return d.getString("ratingid");
+		}
+		return null;
+	}
+	
+	public void rateGame(String value, String gameName) {
+		Document old;
+		Document doc;
+		if(alreadyVoted(gameName)) {
+			old = new Document();
+			for(Document d: ratings) {
+				if(d.getString("name").equals(gameName)) {
+					old.append("name", gameName);
+					old.append("ratingid", d.get("ratingid"));
+				}
+			}
+			if( old != null) {
+				ratings.remove(old);
+				removeFromMongoList(old, "ratings");
+			}
+		}
+		doc = new Document();
+		doc.append("name", gameName);
+		doc.append("ratingid", value);
+		ratings.add(doc);
+		addToMongoList(doc, "ratings");
   }
-	
-	
-	
+  
 	public ArrayList<Document> getWishlist() {
 		return this.wishlist;
 	}
