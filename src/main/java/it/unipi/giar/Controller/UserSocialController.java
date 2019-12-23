@@ -17,7 +17,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
@@ -29,6 +28,7 @@ import javafx.util.Callback;
 public class UserSocialController {
 
 	private ObservableList<UserTable> users;
+	private ObservableList<UserTable> following;
 
 	@FXML
 	private AnchorPane socialContent;
@@ -43,7 +43,7 @@ public class UserSocialController {
 
 	public void initialize() {
 		userNick = new JFXTreeTableColumn<UserTable, String>("Nickname"); 
-		userNick.prefWidthProperty().bind(usersTable.widthProperty().multiply(0.8));
+		userNick.prefWidthProperty().bind(usersTable.widthProperty().multiply(0.6));
 		userNick.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<UserTable, String>, ObservableValue<String>>() {
 			@Override
 			public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<UserTable, String> param) {
@@ -52,11 +52,11 @@ public class UserSocialController {
 		});
 
 		actionColumn = new JFXTreeTableColumn<UserTable, String>("");
-		actionColumn.prefWidthProperty().bind(usersTable.widthProperty().multiply(0.2));
-		actionColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<UserTable, String> param) -> null);
-		actionColumn.setStyle("-fx-alignment: CENTER");
+		actionColumn.prefWidthProperty().bind(usersTable.widthProperty().multiply(0.4));
+		actionColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<UserTable, String> param) -> null);	
 
 		users = FXCollections.observableArrayList();
+		following = FXCollections.observableArrayList();
 		loadFollowing();
 
 		final TreeItem<UserTable> root = new RecursiveTreeItem<UserTable>(users, RecursiveTreeObject::getChildren);
@@ -71,34 +71,45 @@ public class UserSocialController {
 		User user;
 		ArrayList<User> searchedUser;
 		
-		if(searchUsers.getText() == null) {
+		if(searchUsers.getText().equals("")) {
 			loadFollowing();
-		}
+		} else {
+			setFollowColumn();
+			session = GiarSession.getInstance();
+			user = session.getLoggedUser();
+			users.clear();
 
-		setFollowColumn();
-		session = GiarSession.getInstance();
-		user = session.getLoggedUser();
-		users.clear();
-
-		searchedUser = User.searchUsers(searchUsers.getText());
-		for(User u : searchedUser) {
-			if(!u.getNickname().equals(user.getNickname())) {
-				users.add(new UserTable(u.getNickname()));
-			}	
+			searchedUser = User.searchUsers(searchUsers.getText());
+			for(User u : searchedUser) {
+				if(!u.getNickname().equals(user.getNickname())) {
+					UserTable userFound = new UserTable(u.getNickname());
+					if (!following.contains(userFound)) {
+						users.add(userFound);
+					}
+				}	
+			}
 		}
 	}
 	
-	void loadFollowing() {
+	private void loadFollowing() {
 		GiarSession session;
 		User user;
-		ArrayList<User> following;
+		ArrayList<User> follow;
 		
 		setFollowingColumn();
 		session = GiarSession.getInstance();
 		user = session.getLoggedUser();
 		users.clear();
+		following.clear();
 		
-		following = User.getFollowingList(user.getNickname());
+		follow = User.getFollowingList(user.getNickname());
+		for(User u : follow) {
+			if(!u.getNickname().equals(user.getNickname())) {
+				UserTable userToAdd = new UserTable(u.getNickname());
+				users.add(userToAdd);
+				following.add(userToAdd);
+			}	
+		}
 	}
 
 	private void setFollowColumn() {
@@ -125,10 +136,10 @@ public class UserSocialController {
 
 							User.followUser(loggedUser.getNickname(), toFollow);
 							socialButton.setDisable(true);
-							
+							following.add(new UserTable(toFollow));
+							loadFollowing();
 						});
 
-						socialButton.setAlignment(Pos.CENTER);
 						socialButton.setStyle("-fx-background-color: green; -fx-text-fill: white;");
 						setGraphic(socialButton);
 					}
@@ -154,20 +165,27 @@ public class UserSocialController {
 						setGraphic(null);
 					} else {
 						unfollowBtn.setOnAction((event) -> {
-							unfollowBtn.setDisable(true);
+							GiarSession session;
+							User loggedUser;
+							String toUnfollow;
 
+							session = GiarSession.getInstance();
+							loggedUser = session.getLoggedUser();
+							toUnfollow = getTreeTableView().getTreeItem(getIndex()).getValue().nickname.get();
+
+							User.unfollowUser(loggedUser.getNickname(), toUnfollow);
+							loadFollowing();
 						});
 
 						wishlistBtn.setOnAction((event) -> {
-
+							//TODO: Load following wish list.
 						}); 
 
-						unfollowBtn.setAlignment(Pos.CENTER);
 						unfollowBtn.setStyle("-fx-background-color: red; -fx-text-fill: white;");
-						wishlistBtn.setAlignment(Pos.CENTER);
 						wishlistBtn.setStyle("-fx-background-color: grey; -fx-text-fill: white;");
 
 						HBox buttons = new HBox(unfollowBtn, wishlistBtn);
+						buttons.setSpacing(20);
 						setGraphic(buttons);
 					}
 				}
@@ -183,6 +201,22 @@ public class UserSocialController {
 
 		public UserTable(String name) {
 			this.nickname = new SimpleStringProperty(name);
+		}
+		
+		@Override
+		public boolean equals(Object o) {
+			
+	        if (o == this) { 
+	            return true; 
+	        } 
+	  
+	        if (!(o instanceof UserTable)) { 
+	            return false; 
+	        } 
+	          
+	        UserTable u = (UserTable)o; 
+	           
+	        return this.nickname.get().equals(u.nickname.get()); 
 		}
 
 	}

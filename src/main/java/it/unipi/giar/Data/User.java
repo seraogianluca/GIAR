@@ -2,15 +2,17 @@ package it.unipi.giar.Data;
 
 import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import javax.xml.bind.DatatypeConverter;
 
+import org.neo4j.driver.v1.Record;
 import org.neo4j.driver.v1.Session;
 import org.neo4j.driver.v1.StatementResult;
 import org.neo4j.driver.v1.Transaction;
 import org.neo4j.driver.v1.TransactionWork;
-
+import org.neo4j.driver.v1.Value;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
@@ -445,21 +447,38 @@ public class User {
 		}
 	}
 	
+	public static void unfollowUser(String follower, String toUnfollow) {
+		Neo4jDriver nd = Neo4jDriver.getInstance();
+		try(Session session = nd.getDriver().session()) {
+			session.writeTransaction(
+					new TransactionWork<Boolean>() {
+						@Override
+						public Boolean execute(Transaction tx) {
+							tx.run("MATCH (n:Player {nickname: $follower })-[r:FOLLOW]->(p:Player {nickname: $toUnfollow }) "
+									+ "DELETE r"
+									,parameters("follower", follower, "toUnfollow", toUnfollow));
+							return true;
+						}
+					}
+			);
+		}
+	}
+	
 	public static ArrayList<User> getFollowingList(String nickname) {
-		ArrayList<User> following = new ArrayList<User>();
-		
+		ArrayList<User> following = new ArrayList<User>();		
 		Neo4jDriver nd = Neo4jDriver.getInstance();
 		try (Session session = nd.getDriver().session()) {
 			session.writeTransaction(
 					new TransactionWork<Boolean>() {
 						@Override
 						public Boolean execute(Transaction tx) {
-							StatementResult result = tx.run("MATCH (p: Player{nickname: $nickname})-[:FOLLOW]->(n:Player)"
-									+ "RETURN n.nickname",parameters ("nickname", nickname));
-
-							if(result.hasNext()) {
-								String nickname = result.next().toString();
-								System.out.println(nickname);
+							StatementResult result = tx.run("MATCH (p: Player)-[:FOLLOW]->(n:Player) "
+									+ "WHERE p.nickname = $nickname "
+									+ "RETURN n.nickname AS nickname",parameters ("nickname", nickname));
+							
+							while(result.hasNext()) {
+								Record record = result.next();
+								following.add(new User(record.get("nickname").asString()));
 							}
 							
 							return true;
@@ -500,5 +519,5 @@ public class User {
 		
 		return listUsers;
 	}
-
+	
 }
