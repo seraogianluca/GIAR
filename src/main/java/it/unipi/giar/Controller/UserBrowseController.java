@@ -94,26 +94,30 @@ public class UserBrowseController {
     	}
     }
     
-    void openGameInfo(String name) {
+    void openGameInfo(String gameName) {
     	try { 		
-    		Scene scene = browse.getScene();
-    		AnchorPane pane = (AnchorPane)scene.lookup("#anchorPaneRight");
-    	    		
-    		FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/fxml/InfoGame.fxml"));
-            AnchorPane newPane = loader.load();
+    		FXMLLoader loader;
+    		InfoGameController controller;
+    		Scene scene;
+    		AnchorPane pane;
+    		AnchorPane newPane;
     		
-    	    InfoGameController controller = loader.getController();            
-    	    //controller.initialize(user, Game.findGame(name));
+    		scene = browse.getScene();
+    		pane = (AnchorPane)scene.lookup("#anchorPaneRight");
+    	    		
+    		loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/fxml/InfoGame.fxml"));
+            newPane = loader.load();
+    		
+    	    controller = loader.getController();            
+    	    controller.initialize(gameName);
             
-            pane.getChildren().setAll(newPane);          
-
+            pane.getChildren().setAll(newPane);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
-    
     class GameTable extends RecursiveTreeObject<GameTable> {
 
         StringProperty name;
@@ -126,3 +130,4 @@ public class UserBrowseController {
 
     }
 }
+

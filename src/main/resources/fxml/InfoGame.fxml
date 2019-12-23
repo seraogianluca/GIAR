@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -27,62 +28,67 @@
          <center>
             <AnchorPane BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="47.0" layoutY="244.0">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="46.0" layoutY="163.0">
                      <image>
                         <Image url="@../images/stary.png" />
                      </image>
                   </ImageView>
-                  <Text fx:id="description" layoutX="51.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="descrizione gioco puppa puppa ipsurm erjnv se ci giochi diventi scemo non ti arrendere vota forteeeq efk bifecco infame per te solo lame aiuto smenenehe miao ciao garibaldi e coccodèqwkf ewknkefm q jf kj3f kj2f kj2 fkjn3i4fji fq2ifi2jqd fnewijqwif fijqo3ijfq3ifj " wrappingWidth="569.044921875" AnchorPane.leftAnchor="60.0" />
-                  <Text layoutX="52.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrition:" AnchorPane.leftAnchor="60.0">
+                  <ScrollPane hbarPolicy="NEVER" layoutX="60.0" layoutY="257.0" prefHeight="130.0" prefWidth="537.0" AnchorPane.leftAnchor="60.0">
+                     <content>
+                        <Text fx:id="description" strokeType="OUTSIDE" strokeWidth="0.0" text="ddddd" wrappingWidth="519.044921875" />
+                     </content>
+                  </ScrollPane>
+                  <Text layoutX="60.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrition:" AnchorPane.leftAnchor="60.0">
                      <font>
                         <Font size="18.0" />
                      </font></Text>
                   <JFXComboBox fx:id="yourRating" focusColor="#ffff0d" layoutX="169.0" layoutY="283.0" prefHeight="31.0" prefWidth="133.0" promptText="Rate this game" onAction="#rateGame" />
                   <Text layoutX="60.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rating:" AnchorPane.leftAnchor="60.0">
+                 
                      <font>
                         <Font size="18.0" />
                      </font></Text>
-                  <Text fx:id="rating" layoutX="113.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
+                  <Text fx:id="rating" layoutX="141.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="120.0">
                      <font>
                         <Font name="System Bold Italic" size="27.0" />
                      </font>
                   </Text>
-                  <Text layoutX="47.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Rating:" AnchorPane.leftAnchor="60.0">
+                  <Text layoutX="338.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Rating:" AnchorPane.leftAnchor="338.0">
                      <font>
                         <Font size="18.0" />
                      </font></Text>
-                  <JFXButton fx:id="addToWishlistButton" layoutX="57.0" layoutY="14.0" onAction="#addToWishlist" prefHeight="31.0" prefWidth="131.0" style="-fx-background-color: #ffff0d;" text="Add To Wishlist" AnchorPane.leftAnchor="60.0" />
-                  <JFXButton fx:id="addToMyGamesButton" layoutX="220.0" layoutY="14.0" onAction="#addToMyGames" style="-fx-background-color: #ffff0d;" text="Add To MyGames" AnchorPane.leftAnchor="220.0" />
-                  <Text layoutX="53.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of release:" AnchorPane.leftAnchor="60.0">
+                  <JFXButton fx:id="addToWishlistButton" focusTraversable="false" layoutX="57.0" layoutY="14.0" onAction="#addToWishlist" prefHeight="33.0" prefWidth="138.0" style="-fx-background-color: #ffff0d;" text="Add To Wishlist" AnchorPane.leftAnchor="60.0" />
+                  <JFXButton fx:id="addToMyGamesButton" focusTraversable="false" layoutX="220.0" layoutY="14.0" onAction="#addToMyGames" prefHeight="33.0" prefWidth="138.0" style="-fx-background-color: #ffff0d;" text="Add To MyGames" AnchorPane.leftAnchor="220.0" />
+                  <Text layoutX="60.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of release:" AnchorPane.leftAnchor="60.0">
                      <font>
                         <Font size="18.0" />
                      </font></Text>
-                  <Text fx:id="released" layoutX="177.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
+                  <Text fx:id="released" layoutX="228.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="240.0">
                      <font>
                         <Font name="System Bold Italic" size="27.0" />
                      </font>
                   </Text>
-                  <Text layoutX="48.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Metacritic Rating: " AnchorPane.leftAnchor="60.0">
+                  <Text layoutX="61.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Metacritic Rating: " AnchorPane.leftAnchor="61.0">
                      <font>
                         <Font size="18.0" />
                      </font></Text>
-                  <Text fx:id="metacritic" layoutX="207.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="81">
+                  <Text fx:id="metacritic" layoutX="215.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="81">
                      <font>
                         <Font name="System Bold Italic" size="27.0" />
                      </font>
                   </Text>
-                  <ListView fx:id="platforms" layoutX="60.0" layoutY="383.0" prefHeight="74.0" prefWidth="132.0" AnchorPane.leftAnchor="60.0" />
-                  <ListView fx:id="genres" layoutX="209.0" layoutY="380.0" prefHeight="77.0" prefWidth="128.0" />
-                  <ListView fx:id="developers" layoutX="354.0" layoutY="380.0" prefHeight="78.0" prefWidth="131.0" />
-                  <Text layoutX="60.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Platforms:" AnchorPane.leftAnchor="60.0">
+                  <ListView fx:id="platforms" layoutX="57.0" layoutY="430.0" prefHeight="74.0" prefWidth="157.0" AnchorPane.leftAnchor="57.0" />
+                  <ListView fx:id="genres" layoutX="237.0" layoutY="427.0" prefHeight="77.0" prefWidth="164.0" />
+                  <ListView fx:id="developers" layoutX="421.0" layoutY="427.0" prefHeight="78.0" prefWidth="179.0" />
+                  <Text layoutX="57.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Platforms:" AnchorPane.leftAnchor="57.0">
                      <font>
                         <Font size="18.0" />
                      </font></Text>
-                  <Text layoutX="209.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Genres:">
+                  <Text layoutX="237.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Genres:">
                      <font>
                         <Font size="18.0" />
                      </font></Text>
-                  <Text layoutX="354.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Developers:">
+                  <Text layoutX="421.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Developers:">
                      <font>
                         <Font size="18.0" />
                      </font></Text>

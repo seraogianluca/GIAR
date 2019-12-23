@@ -429,8 +429,7 @@ public class User {
 			);
 		}
 	}
-  
-	
+
 	public boolean alreadyVoted(String gameName) {
 		Document game = new Document();
 		game.append("name", gameName);
@@ -475,6 +474,13 @@ public class User {
 		doc.append("ratingid", value);
 		ratings.add(doc);
 		addToMongoList(doc, "ratings");
-		
+  }
+  
+	public ArrayList<Document> getWishlist() {
+		return this.wishlist;
+	}
+	
+	public ArrayList<Document> getMyGames() {
+		return this.myGames;
 	}
 }

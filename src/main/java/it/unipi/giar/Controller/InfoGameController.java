@@ -56,7 +56,6 @@ public class InfoGameController {
     private ListView<String> genres;
 
     @FXML
-
     private ListView<String> developers;
     
     public void initialize(String gameName) {
