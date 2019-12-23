@@ -73,7 +73,7 @@ public class SignInController {
     	session.setLoggedUser(username);
     	
     	if (User.isAdmin(username)) {
-    		root = FXMLLoader.load(getClass().getResource("/fxml/AdminHomepage.fxml"));
+    		root = FXMLLoader.load(getClass().getResource("/fxml/AdminMenu.fxml"));
     	} else { 	
             root = FXMLLoader.load(getClass().getResource("/fxml/UserMenu.fxml"));	
     	}

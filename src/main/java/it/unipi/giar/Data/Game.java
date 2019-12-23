@@ -133,8 +133,7 @@ public class Game {
 	}
 
 	public static List<String> getAllPlatformsList() {
-		// MATILDE, i need this function to populate the fields of the combobox for
-		// platforms. this function returns the list of the platforms existing in the database.	
+		//populate the fields of the combobox. returns the list of the platforms existing in the database.	
 		MongoDriver driver = null;
 		MongoCollection<Document> collection = null;
 		List<String> items = new ArrayList<>();		
@@ -153,8 +152,7 @@ public class Game {
 	}
 
 	public static List<String> getAllYearsList() {
-		// MATILDE, i need this function to populate the fields of the combobox for
-		// years, this function returns the list of the years existing in the database.
+		//populate the fields of the combobox. returns the list of the years existing in the database.
 		MongoDriver driver = null;
 		MongoCollection<Document> collection = null;
 		List<String> items = new ArrayList<>();		
@@ -173,9 +171,7 @@ public class Game {
 	}
 
 	public static List<String> getAllGenresList() {
-		// MATILDE, i need this function to populate the fields of the combobox for
-		// genres this function returns the list of the genres existing in the database.
-		
+		//populates the fields of the combobox. returns the list of the genres existing in the database.	
 		MongoDriver driver = null;
 		MongoCollection<Document> collection = null;
 		List<String> items = new ArrayList<>();		
@@ -190,9 +186,7 @@ public class Game {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		return items;
-
-		
+		return items;	
 	}
 	
 	public static ArrayList<Game> searchGames(String search) {
@@ -253,9 +247,6 @@ public class Game {
 		
 		return null;
 	}
-	
-	
-	
 	
 	public static ArrayList<Game> browseGames(String key, String value){
 		ArrayList<Game> listGames = new ArrayList<Game>();
