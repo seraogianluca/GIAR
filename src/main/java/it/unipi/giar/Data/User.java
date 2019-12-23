@@ -416,12 +416,13 @@ public class User {
 			);
 		}
 	}
-		
+  
 	public double getGameRate(long gameid) {
-		//TO DO
+		//TODO
 		//MATILDE,  this function goes inside the logged user and takes the rating of the user for the gameid game and return his rating
 		double rating = 2.4; ///per prova
 		return rating;
+		
 	}
 	
 	public static void followUser(String follower, String toFollow) {
@@ -499,5 +500,5 @@ public class User {
 		
 		return listUsers;
 	}
-			
+
 }

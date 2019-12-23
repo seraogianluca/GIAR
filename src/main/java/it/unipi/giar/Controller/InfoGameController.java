@@ -7,8 +7,12 @@ import java.util.Date;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 
+
 import it.unipi.giar.GiarSession;
+import it.unipi.giar.Data.Developer;
 import it.unipi.giar.Data.Game;
+import it.unipi.giar.Data.Genre;
+import it.unipi.giar.Data.Platform;
 import it.unipi.giar.Data.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -44,13 +48,14 @@ public class InfoGameController {
     private Text metacritic;
 
     @FXML
-    private ListView<?> platforms;
+    private ListView<String> platforms;
 
     @FXML
-    private ListView<?> genres;
+    private ListView<String> genres;
 
     @FXML
-    private ListView<?> developers;
+
+    private ListView<String> developers;
     
     public void initialize(String gameName) {
     	GiarSession session;
@@ -67,15 +72,40 @@ public class InfoGameController {
     	
     	date = game.getReleased();
     	dateFormat = new SimpleDateFormat("yyyy-mm-dd"); 	
-    	
-    	//released.setText(dateFormat.format(date)); 
+      
     	metacritic.setText(Integer.toString(game.getMetacritic())); 
     	 
     	ObservableList<String> ratingValues = FXCollections.observableArrayList();
     	ratingValues.addAll("1", "2", "3", "4", "5");
-		yourRating.setItems(ratingValues);
+		  yourRating.setItems(ratingValues);
+		  
+      released.setText(dateFormat.format(date));
 		
-		//TODO: 
+    	metacritic.setText(String.valueOf(game.getMetacritic())); 
+
+		  List<String> listDeveloper = new ArrayList<String>();
+		  for (Developer dev : game.getDevelopers()) {
+			  listDeveloper.add(dev.getName());
+		  }
+    	ObservableList<String> obsDeveloper = FXCollections.observableArrayList(listDeveloper);
+		  developers.setItems((ObservableList<String>) obsDeveloper);
+
+		  List<String> listGenres = new ArrayList<String>();
+		  for (Genre genre : game.getGenres()) {
+			  listGenres.add(genre.getName());
+		  }
+    	ObservableList<String> obsGenre = FXCollections.observableArrayList(listGenres);
+		  genres.setItems((ObservableList<String>) obsGenre);
+
+		  List<String> listPlatform = new ArrayList<String>();
+		  for (Platform plat : game.getPlatforms()) {
+			  listPlatform.add(plat.getName());
+		  }
+    	ObservableList<String> obsPlatform = FXCollections.observableArrayList(listPlatform);
+		  platforms.setItems((ObservableList<String>) obsPlatform);
+
+
+		//TO DO 
 		//IF THE USER ALREADY VOTED THE GAME, IN THE COMBOBOX APPEARS THE RATE OF THAT USER BY DEFAULT
 		//String userRate = String.valueOf(user.getGameRate(game.getId()));
 		//yourRating.setValue(userRate);
