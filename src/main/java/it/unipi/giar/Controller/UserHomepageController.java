@@ -105,16 +105,16 @@ public class UserHomepageController {
 		}
     }
     
-}
+    class GameTable extends RecursiveTreeObject<GameTable> {
 
-class GameTable extends RecursiveTreeObject<GameTable> {
+        StringProperty name;
+        StringProperty rating;
 
-    StringProperty name;
-    StringProperty rating;
+        public GameTable(String name, String rating) {
+            this.name = new SimpleStringProperty(name);
+            this.rating = new SimpleStringProperty(rating);
+        }
 
-    public GameTable(String name, String rating) {
-        this.name = new SimpleStringProperty(name);
-        this.rating = new SimpleStringProperty(rating);
     }
-
+    
 }

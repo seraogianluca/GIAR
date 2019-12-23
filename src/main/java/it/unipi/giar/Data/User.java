@@ -2,10 +2,12 @@ package it.unipi.giar.Data;
 
 import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import javax.xml.bind.DatatypeConverter;
 
+import org.neo4j.driver.v1.Record;
 import org.neo4j.driver.v1.Session;
 import org.neo4j.driver.v1.StatementResult;
 import org.neo4j.driver.v1.Transaction;
@@ -213,7 +215,7 @@ public class User {
 		}
 	}
 	
-	private void removeGameFromList(String gameName, String list) {
+	public void removeGameFromList(String gameName, String list) {
 		Document game = new Document();
 		game.append("name", gameName);
 		
@@ -415,6 +417,52 @@ public class User {
 					}
 			);
 		}
+	}
+	
+	public static void followUser(String follower, String toFollow) {
+		Neo4jDriver nd = Neo4jDriver.getInstance();
+		try (Session session = nd.getDriver().session()) {
+			session.writeTransaction(
+					new TransactionWork<Boolean>() {
+						@Override
+						public Boolean execute(Transaction tx) {
+							tx.run("MATCH (p:Player) "
+									+ "WHERE p.nickname = $nickname "
+									+ "MATCH (n:Player) "
+									+ "WHERE n.nickname = $toFollow "
+									+ "CREATE (p)-[:FOLLOW]->(n)"
+									,parameters("nickname", follower, "toFollow", toFollow));
+							return true;
+						};
+					}
+			);
+		}
+	}
+	
+	public static ArrayList<User> following(String nickname) {
+		ArrayList<User> following = new ArrayList<User>();
+		
+		Neo4jDriver nd = Neo4jDriver.getInstance();
+		try (Session session = nd.getDriver().session()) {
+			session.writeTransaction(
+					new TransactionWork<Boolean>() {
+						@Override
+						public Boolean execute(Transaction tx) {
+							StatementResult result = tx.run("MATCH (p: Player{nickname: $nickname})-[:FOLLOW]->(n:Player)"
+									+ "RETURN n.nickname",parameters ("nickname", nickname));
+
+							if(result.hasNext()) {
+								String nickname = result.next().toString();
+								System.out.println(nickname);
+							}
+							
+							return true;
+						};
+					}
+			);
+		}
+		
+		return following;
 	}
 	
 	public static ArrayList<User> searchUsers(String search) {
