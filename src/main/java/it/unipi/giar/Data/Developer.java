@@ -38,4 +38,5 @@ public class Developer {
 	public String getSlug() {
 		return this.slug;
 	}
+
 }

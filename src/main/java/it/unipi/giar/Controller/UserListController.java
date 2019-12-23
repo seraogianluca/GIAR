@@ -8,7 +8,6 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
-import it.unipi.giar.Controller.UserHomepageController.GameTable;
 import it.unipi.giar.Data.Game;
 import it.unipi.giar.Data.User;
 import javafx.beans.property.SimpleStringProperty;
@@ -39,7 +38,7 @@ public class UserListController {
     public void initialize(String type) {
     	listType.setText(type);
 
-    	this.user = UserMenuController.user;
+    	//this.user = UserMenuController.user;
     	
     	JFXTreeTableColumn<GameTable, String> gameName = new JFXTreeTableColumn<GameTable, String>("Name"); 
     	gameName.prefWidthProperty().bind(gamesTable2.widthProperty().divide(2));
@@ -101,7 +100,7 @@ public class UserListController {
             AnchorPane newPane = loader.load();
     		
     	    InfoGameController controller = loader.getController();            
-    	    controller.initialize(user, Game.findGame(name));
+    	    //controller.initialize(user, Game.findGame(name));
             
             pane.getChildren().setAll(newPane);          
 

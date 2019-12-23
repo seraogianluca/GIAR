@@ -2,6 +2,7 @@ package it.unipi.giar.Controller;
 
 import com.jfoenix.controls.JFXButton;
 
+import it.unipi.giar.GiarSession;
 import it.unipi.giar.Data.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +13,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class UserProfileController {
-	User user;
 	
 	@FXML
 	private Text profileTitle;
@@ -45,7 +45,11 @@ public class UserProfileController {
 	private JFXButton deleteProfile;
 	
     public void initialize() {
-    	this.user = UserMenuController.user;
+    	User user;
+    	
+    	GiarSession session = GiarSession.getInstance();
+    	user = session.getLoggedUser();
+    	
     	userNickname.setText(user.getNickname());
     	userEmail.setText(user.getEmail());
     	userCountry.setText(user.getCountry());
@@ -54,16 +58,14 @@ public class UserProfileController {
     @FXML
     void deleteUserProfile(ActionEvent event) {
     	try {
-			user.delete();
+    		Parent root;
+    		Stage stage;
+    		
+			User.delete(userNickname.getText());
 			
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/fxml/SignIn.fxml"));
-			Parent root = loader.load();
+			root = FXMLLoader.load(getClass().getResource("/fxml/SignIn.fxml"));
 			
-			SignInController controller = loader.getController();
-            controller.initialize(user);
-			
-			Stage stage = (Stage)profileTitle.getScene().getWindow();
+			stage = (Stage)profileTitle.getScene().getWindow();
 			stage.setScene(new Scene(root));
 			stage.show();
 		} catch (Exception e) {

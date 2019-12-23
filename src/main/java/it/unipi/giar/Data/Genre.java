@@ -38,4 +38,5 @@ public class Genre {
 	public String getSlug() {
 		return this.slug;
 	}
+
 }

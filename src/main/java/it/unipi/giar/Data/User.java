@@ -1,11 +1,7 @@
 package it.unipi.giar.Data;
 
-
-import java.io.IOException;
 import java.security.MessageDigest;
-//import java.util.ArrayList;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.xml.bind.DatatypeConverter;
 
@@ -14,79 +10,31 @@ import org.neo4j.driver.v1.StatementResult;
 import org.neo4j.driver.v1.Transaction;
 import org.neo4j.driver.v1.TransactionWork;
 
-import static org.neo4j.driver.v1.Values.parameters;
-
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 
-import static com.mongodb.client.model.Filters.*;
-
+import it.unipi.giar.GiarSession;
 import it.unipi.giar.MongoDriver;
 import it.unipi.giar.Neo4jDriver;
-import it.unipi.giar.Controller.SignInController;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+
+import static com.mongodb.client.model.Filters.*;
+import static org.neo4j.driver.v1.Values.parameters;
 
 public class User {
 
 	private String type;
-	private static String nickname;
+	private String nickname;
 	private String email;
 	private String password;
 	private String country;
-	private boolean deleted = false;
 	private ArrayList<Document> wishlist;
 	private ArrayList<Document> myGames;
 	//private ArrayList<Rating> ratings;
-
-	
-	
-	public User(String nickname) {
-		MongoDriver driver = null;
-		MongoCollection<Document> collection = null;
-
-		try {
-			driver = MongoDriver.getInstance();
-			collection = driver.getCollection("users");
-			Document user = collection.find(eq("nickname", nickname)).first();
-			this.nickname = user.getString("nickname");
-			this.type = user.getString("type");
-			this.email=user.getString("email");
-			this.password=user.getString("password");
-			this.country=user.getString("country");
-			
-			List<Document> items = new ArrayList<>();			
-			items = (List<Document>)user.get("wishlist");
-			if(items!=null) {
-				wishlist = new ArrayList<>();
-				
-				for(Document d: items) {				
-					addGameToList(d, "wishlist");			
-				}
-			}
-			
-			items = new ArrayList<>();			
-			items = (List<Document>)user.get("mygames");
-			if(items!=null) {
-				myGames = new ArrayList<>();
-				for(Document d: items) {				
-					addGameToList(d, "myGames");			
-				}
-			}
-		    			
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
 	
 	public User(String type, String nickname, String email, String password, String country) {
 		this.type = type;
@@ -94,136 +42,52 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.country = country;
+		this.wishlist = new ArrayList<>();
+		this.myGames = new ArrayList<>();
 	}
-	public boolean checkDuplicate(Document d, String list) {
-		if(list.equals("wishlist")){
-			for(Document k: wishlist) {
-				if(d.get("name").equals(k.get("name"))) {				
-					return true;
-				}
-			}
-		}
-		else if(list.equals("myGames")) {
-			for(Document k: myGames) {
-				if(d.get("name").equals(k.get("name"))) {					
-					return true;
-				}
-			}
-		}
-		return false;
-		}
-			
-		
 	
-	public boolean checkListNull(String list) {
-		MongoDriver driver = null;
-		MongoCollection<Document> collection = null;
-
+	public User(String nickname) {
 		try {
-			driver = MongoDriver.getInstance();
-			collection = driver.getCollection("users");
-			Document user = collection.find(eq("nickname", nickname)).first();
-			List<Document> items = new ArrayList<>();  
-			if(list.equals("myGames"))
-				items = (List<Document>)user.get("mygames");
-			else
-				items = (List<Document>)user.get("wishlist");
-			if(items==null)
-				return true;
-			}
-		catch(Exception e) {e.printStackTrace();}
-		return false;
-	}
-	public void addGameToList(Document d, String list) {
-
-		if(list.equals("wishlist")) {
-				if(checkListNull("wishlist"))
-					wishlist = new ArrayList<>();
-				wishlist.add(d);
-				
-			}
-		
-			else if(list.equals("myGames")) {
-				if(checkListNull("myGames"))
-					myGames = new ArrayList<>();
-				myGames.add(d);
-				
-			}
-		
-
-	}
-	public void removeGameFromList(Document d, String list) {
-		if(list.equals("wishlist")) {					
-			wishlist.remove(d);
-			deleteRelation(d);
-		}
-		else if(list.equals("myGames")) {					
-			myGames.remove(d);
-		}
-		
-	}
-		
-		public void addToMongoList(Document d , String list) {
-			
-			
 			MongoDriver driver = null;
 			MongoCollection<Document> collection = null;
-			Document docForList = new Document();
-			try {
+			Document user;
+			ArrayList<Document> list;
+			
 			driver = MongoDriver.getInstance();
-			
-			String name = d.getString("name");			
-			Double rating = d.getDouble("rating");
-			
-			docForList.append("name", name);
-			docForList.append("rating", rating);
-			
-			collection = driver.getCollection("users");
-			if(list.equals("wishlist"))		
-				collection.updateOne(eq("nickname", nickname),Updates.addToSet("wishlist",docForList));
-			else
-				collection.updateOne(eq("nickname", nickname),Updates.addToSet("mygames",docForList));
-		
-			}
-		catch(Exception e) {e.printStackTrace();}
-		}
-	
-		public void removeFromMongoList(Document d, String list) {
-			MongoDriver driver = null;
-			MongoCollection<Document> collection = null;
-			
-			try {
-			driver = MongoDriver.getInstance();
-		
 			collection = driver.getCollection("users");
 			
-			if(list.equals("wishlist"))	{	
-				
-				Bson filter = Filters.eq("nickname", nickname);
-				Bson delete = Updates.pull("wishlist", new Document("name", d.getString("name")));
-				collection.updateOne(filter, delete);
-				return;
-				
-			}
-			else if (list.equals("myGames")) {
-				Bson filter = Filters.eq("nickname", nickname);
-				Bson delete = Updates.pull("mygames", new Document("name", d.getString("name")));
-				collection.updateOne(filter, delete);
-				return;
-			}
-				  
-		
-			}
-		catch(Exception e) {e.printStackTrace();}
+			user = collection.find(eq("nickname", nickname)).first();
 			
+			this.nickname = user.getString("nickname");
+			this.type = user.getString("type");
+			this.email=user.getString("email");
+			this.password=user.getString("password");
+			this.country=user.getString("country");
+			this.wishlist = new ArrayList<>();
+			this.myGames = new ArrayList<>();
+			
+			list = new ArrayList<>();			
+			list = (ArrayList<Document>)user.get("wishlist");
+						
+			if(list != null) {				
+				this.wishlist.addAll(list);
+			}
+			
+			list = new ArrayList<>();
+			list = (ArrayList<Document>)user.get("mygames");
+			
+			if(list != null) {
+				this.myGames.addAll(list);
+			}	
+			
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
-
+	}
 	
 	public String getNickname() {
 		return nickname;
 	}
-	
-
 
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
@@ -244,15 +108,176 @@ public class User {
 	public void setCountry(String country) {
 		this.country = country;
 	}
+	
+	public boolean isInMyGames(String gameName) {
+		Document game = new Document();
+		game.append("name", gameName);
+		
+		if (this.myGames.size() == 0) {
+			return false;
+		} else {
+			return this.myGames.contains(game);
+		}
+	}
+	
+	public boolean isInWishlist(String gameName) {
+		Document game = new Document();
+		game.append("name", gameName);
+		
+		if (this.wishlist.size() == 0) {
+			return false;
+		} else {
+			return this.wishlist.contains(game);
+		}
+	}
+	
+	public void addGameToList(String gameName, String list) {
+		Document game = new Document();
+		game.append("name", gameName);
+		
+		switch(list) {
+			case "wishlist":
+				wishlist.add(game);
+				addToMongoList(game, "wishlist");
+				addToGraph(gameName, this.nickname);				
+				
+				if(isInMyGames(gameName)) {
+		    		removeGameFromList(gameName, "myGames");
+		    	}
+				
+				break;
+				
+			case "myGames":
+				myGames.add(game);
+				addToMongoList(game, "myGames");
+				
+				if(isInWishlist(gameName)) {
+		    		removeGameFromList(gameName, "wishlist");
+		    	}
+				
+				break;
+				
+			default:
+				break;
+		}
+	}
+	
+	private void addToMongoList(Document game, String list) {		
+		try {
+			MongoDriver driver;
+			MongoCollection<Document> collection;
 
-	public boolean isDeleted() {
-		return deleted;
+			driver = MongoDriver.getInstance();
+			collection = driver.getCollection("users");
+
+			if(list.equals("wishlist")) {
+				collection.updateOne(eq("nickname", this.nickname),Updates.addToSet("wishlist",game));
+			} else {
+				collection.updateOne(eq("nickname", this.nickname),Updates.addToSet("mygames",game));	
+			}	
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void addToGraph(String gameName, String nickname) {
+		Neo4jDriver nd = Neo4jDriver.getInstance();
+		try (Session session = nd.getDriver().session()) {
+			session.writeTransaction(
+					new TransactionWork<Boolean>() {
+						@Override
+						public Boolean execute(Transaction tx) {
+							StatementResult result = tx.run( 
+									"MATCH (n:Game) "
+											+ "WHERE n.name = $name "
+											+ "RETURN n"
+											,parameters ("name", gameName));
+
+							if(!result.hasNext()) {
+								tx.run("CREATE (n:Game {name: $name})"
+										,parameters("name", gameName));
+							}
+							
+							tx.run("MATCH (p:Player) "
+									+ "WHERE p.nickname = $nickname "
+									+ "MATCH (g:Game) "
+									+ "WHERE g.name = $gameName "
+									+ "CREATE (p)-[:WISHED]->(g)"
+									,parameters("nickname", nickname, "gameName", gameName));
+							return true;
+						};
+					}
+			);
+		}
+	}
+	
+	public void removeGameFromList(String gameName, String list) {
+		Document game = new Document();
+		game.append("name", gameName);
+		
+		switch(list) {
+			case "wishlist":
+				wishlist.remove(game);
+				removeFromMongoList(game, "wishlist");
+				deleteFromGraph(gameName);
+				break;
+				
+			case "myGames":
+				myGames.remove(game);
+				removeFromMongoList(game, "myGames");
+				break;
+				
+			default:
+				break;
+		}
 	}
 
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
-	}
+	private void removeFromMongoList(Document game, String list) {
+		try {
+			MongoDriver driver;
+			MongoCollection<Document> collection;
+			Bson filter;
+			Bson delete;
+			
+			driver = MongoDriver.getInstance();
+			collection = driver.getCollection("users");
+			filter = Filters.eq("nickname", this.nickname);
 
+			if(list.equals("wishlist"))	{		
+				delete = Updates.pull("wishlist", game);
+				collection.updateOne(filter, delete);
+			} else if (list.equals("myGames")) {
+				delete = Updates.pull("mygames", game);
+				collection.updateOne(filter, delete);
+			}	
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void deleteFromGraph(final String game) {
+		Neo4jDriver nd = Neo4jDriver.getInstance();
+		try (Session session = nd.getDriver().session()) {
+			session.writeTransaction(
+					new TransactionWork<Boolean>() {
+						@Override
+						public Boolean execute(Transaction tx) {
+							tx.run("MATCH (p: Player{nickname: $nickname})-[r:WISHED]->(g: Game{name:$name}) "
+									+ "DELETE r"
+									,parameters("nickname", nickname, "name", game));
+
+							//Delete the node if it has no relationships.
+							tx.run("MATCH (g:Game{name: $name}) "
+									+ "WHERE NOT ()-[:WISHED]->(g) "
+									+ "DELETE g"
+									,parameters("name", game)); 
+							return true;
+						}
+					}
+			);
+		}
+	}
+			
 	public static boolean checkNickname(String nick) {
 		MongoDriver driver = null;
 		MongoCollection<Document> collection = null;
@@ -298,7 +323,6 @@ public class User {
 			if (user == null)
 				return true;
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 		return false;	
@@ -321,178 +345,80 @@ public class User {
 		return false;
 	}
 
-	public void register() {
+	public static void register(String registNick, String registEmail, String registPwd, String registCnt) {
 		try {
-			Document user = new Document("nickname", nickname)
-					.append("email", email)
-					.append("password", password)
-					.append("type", type)
-					.append("country", country);
+			MongoDriver md;
+			MongoCollection<Document> collection;
+			Document user;
+			
+			user = new Document("nickname", registNick)
+					.append("email", registEmail)
+					.append("password", registPwd)
+					.append("type", "player")
+					.append("country", registCnt);
 
-			MongoDriver md = MongoDriver.getInstance();
-			MongoCollection<Document> collection = md.getCollection("users");
+			md = MongoDriver.getInstance();
+			collection = md.getCollection("users");
 			collection.insertOne(user);
 			
-			addPerson(nickname);
+			createUserNode(registNick);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+		
+	private static void createUserNode(String nick) {
+		Neo4jDriver nd = Neo4jDriver.getInstance();
+		try (Session session = nd.getDriver().session()) {
+			session.run("CREATE (n:Player {nickname: $nickname, pro: $pro})", parameters("nickname", nick, "pro", false));
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public double getGameRate(long gameid) {
-		//TODO(MATILDE): this function goes inside the logged user and takes the rating of the user for the gameid game and return his rating  
-		double rating = 2.4; ///per prova
-		return rating;
-	}
-	
-	public void delete() {
+	public static void delete(String nick) {
 		try {
-			//FIXME: 
-			// * Check if works even if exists wishlist and mygames;
-			// * Works only if connection string of MongoDriver is "mongodb://user:password@172.16.0.70:27017"
+			MongoDriver md;
+			MongoCollection<Document> collection;
 			
-			this.deleted = true;
-			MongoDriver md = MongoDriver.getInstance();
-			MongoCollection<Document> collection = md.getCollection("users");
-			collection.deleteOne(eq("nickname", nickname));
-			removePerson(nickname);
+			GiarSession session = GiarSession.getInstance();
+			session.setDeleted(true);
+			
+			md = MongoDriver.getInstance();
+			collection = md.getCollection("users");
+			collection.deleteOne(eq("nickname", nick));
+			
+			deleteUserNode(nick);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	
 	}
 	
-	private void addPerson(final String name) {
+	private static void deleteUserNode(String nick) {
 		Neo4jDriver nd = Neo4jDriver.getInstance();
-	    try (Session session = nd.getDriver().session()) {
-	    	
-	        session.writeTransaction(
-	        	new TransactionWork<Integer>() {
-	        		@Override
-	        		public Integer execute(Transaction tx) {
-	        			return createPersonNode(tx, name);
-	        		}
-	        	}
-	        );
-	    }
-	}
-	
-	public String inList(String name) {
-		for(Document d: wishlist) {
-			if(d.get("name").equals(name)) {
-				return "wishlist";
-			}
+		try (Session session = nd.getDriver().session()) {
+			session.writeTransaction(
+					new TransactionWork<Boolean>() {
+						@Override
+						public Boolean execute(Transaction tx) {
+							tx.run("MATCH (n:Player {nickname: $nickname}) "
+									+ "DETACH DELETE n"
+									, parameters("nickname", nick));
+							//Delete the node if it has no relationships.
+							tx.run("MATCH (g:Game) "
+									+ "WHERE NOT ()-[:WISHED]->(g) "
+									+ "DELETE g"); 
+							return true;
+						}
+					}
+			);
 		}
-		for(Document d: myGames) {
-			if(d.get("name").equals(name)) {
-				return "myGames";
-			}
-		}
-		return "noList";
 	}
-	
-	public boolean isInMyGames(Game game) {
-		Document listDoc = new Document();
-		listDoc.append("name", game.getName());
-		listDoc.append("rating", game.getRating());
-		if(myGames == null)
-			return false;
-		return myGames.contains(listDoc);
-	}
-	public boolean isInWishlist(Game game) {
-		Document listDoc = new Document();
-		listDoc.append("name", game.getName());
-		listDoc.append("rating", game.getRating());
-		if(wishlist == null)
-			return false;
-		return wishlist.contains(listDoc);
-	}
-
-	private void removePerson(final String name) {
-		Neo4jDriver nd = Neo4jDriver.getInstance();
-	    try (Session session = nd.getDriver().session()) {
-	    	
-	        session.writeTransaction(
-	        	new TransactionWork<Integer>() {
-	        		@Override
-	        		public Integer execute(Transaction tx) {
-	        			return deletePersonNode(tx, name);
-	        		}
-	        	}
-	        );
-	    }
-	}
-
-	private static int createPersonNode(Transaction tx, String name) {
-	    tx.run("CREATE (n:Player {nickname: $nickname, pro: $pro})", parameters("nickname", name, "pro", false));
-	    return 1;
-	}
-	
-	public void createGame(final String name) {
-		Neo4jDriver nd = Neo4jDriver.getInstance();
-	    try (Session session = nd.getDriver().session()) {
-	    	
-	        session.writeTransaction(
-	        	new TransactionWork<Boolean>() {
-	        		@Override
-	        		public Boolean execute(Transaction tx) {
-	        			return findGameNode(tx, name);
-	        		}
-	        	}
-	        );
-	    }
-	}
-	
-	private static boolean findGameNode(Transaction tx, String name) {
-		
-       StatementResult result = tx.run( "MATCH (n:Game) WHERE n.name = $name RETURN n", parameters ("name", name) );
-       
-       if(result.hasNext()) {
-    	   System.out.println("game exists!");
-    	   tx.run("MATCH (p:Player) WHERE p.nickname = $nickname MATCH (g:Game) WHERE g.name = $gameName  CREATE (p)-[:WISHED]->(g)"
-    			   ,parameters("nickname", nickname, "gameName", name));
-    	   return true;
-       }
-       else {
-    	   System.out.println("game NOT exists!"); 
-    	   //create
-    	   tx.run("CREATE (n:Game {name: $name})", parameters("name", name));
-    	   
-    	   tx.run("MATCH (p:Player) WHERE p.nickname = $nickname MATCH (g:Game) WHERE g.name = $gameName  CREATE (p)-[:WISHED]->(g)"
-    			   ,parameters("nickname", nickname, "gameName", name));
-    	   System.out.println("creato!");
-    	   return false;
-       }
-   
-	}
-	
-	public void deleteRelation(final Document d) {
-		Neo4jDriver nd = Neo4jDriver.getInstance();
-	    try (Session session = nd.getDriver().session()) {
-	    	
-	        session.writeTransaction(
-	        	new TransactionWork<Boolean>() {
-	        		@Override
-	        		public Boolean execute(Transaction tx) {
-	        			return deleteWishRelation(tx, d);
-	        		}
-	        	}
-	        );
-	    }
-	}
-	
-	private static boolean deleteWishRelation(Transaction tx, Document d) {
-		
-		
-	    tx.run("MATCH (p: Player{nickname: $nickname})-[r:WISHED]->(g: Game{name:$name}) DELETE r", 
-	    		parameters("nickname", nickname, "name", d.get("name")));
-	    tx.run("MATCH (g:Game{name: $name}) WHERE NOT ()-[:WISHED]->(g) DELETE g",
-	    		parameters("name", d.get("name"))); //delete the node if it has no relationships
-	    return true;
-	}
-	
-	private static int deletePersonNode(Transaction tx, String name) {
-		tx.run("MATCH (n:Player {nickname: $nickname}) DETACH DELETE n", parameters("nickname", name));
-		return 1;
-	}
+  
+	public double getGameRate(long gameid) {
+		//TO DO
+		//MATILDE,  this function goes inside the logged user and takes the rating of the user for the gameid game and return his rating
+		double rating = 2.4; ///per prova
+		return rating;
+  }
 }

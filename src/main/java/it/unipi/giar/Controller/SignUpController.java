@@ -1,11 +1,9 @@
 package it.unipi.giar.Controller;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import javax.xml.bind.DatatypeConverter;
@@ -15,6 +13,7 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
+import it.unipi.giar.GiarSession;
 import it.unipi.giar.Data.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -54,95 +53,104 @@ public class SignUpController  {
     
     public void initialize() {
     	try {
-			List<String> countries1 = Files.readAllLines(new File("src/main/resources/countries.txt").toPath(), Charset.defaultCharset());
+			List<String> countries1 = Files.readAllLines(
+					new File("src/main/resources/countries.txt").toPath(), 
+					Charset.defaultCharset());
 			ObservableList<String> countries = FXCollections.observableArrayList(countries1);
 			signUpCountry.setItems(countries);
-    	} catch (IOException e) {
-			// TODO Auto-generated catch block
+    	} catch (Exception e) {
 			e.printStackTrace();
     	}	
     }
     
-    @FXML
-    void checkNickname(KeyEvent event) {
-    	if(!User.checkNickname(signUpNickname.getText())) {
-    		errorMessage.setText("Nickname already exists.");
-    		errorMessage.setVisible(true); errorFlag = true; 
+    private void setError(boolean flag, String msg) {
+    	errorFlag = flag;
+    	
+    	if(flag) {
+    		errorMessage.setText(msg);
+    		errorMessage.setVisible(true);
     	} else {
-    		errorMessage.setVisible(false); errorFlag = false; 
+    		errorMessage.setVisible(false);
+    	}
+    }
+    
+    @FXML
+    private void checkNickname(KeyEvent event) {
+    	if(!User.checkNickname(signUpNickname.getText())) {
+    		setError(true, "Nickname already exists.");
+    	} else {
+    		setError(false, null);
     	} 
     }
 
     @FXML
-    void checkEmail(KeyEvent event) {
+    private void checkEmail(KeyEvent event) {
     	if(!User.checkEmail(signUpEmail.getText())) {
-    		errorMessage.setText("Email already exists.");
-			errorMessage.setVisible(true);
-			errorFlag = true;
+    		setError(true, "Email already exists.");
     	} else {
-    		errorMessage.setVisible(false);
-    		errorFlag = false;
+    		setError(false, null);
     	}
     }
 
     @FXML
-    void checkPassword(KeyEvent event) {
+    private void checkPassword(KeyEvent event) {
 		String password = signUpPassword.getText();
 		String confirmPassword = signUpConfirmPassword.getText();
 
 		if(!password.equals(confirmPassword)) {
-			errorMessage.setText("Password doesn't match.");
-			errorMessage.setVisible(true);
-			errorFlag = true;
+			setError(true, "Password doesn't match.");
 		} else {
-			errorMessage.setVisible(false);
-			errorFlag = false;
+			setError(false, null);
 		}
     }
 
     @FXML
-    void SignUp(ActionEvent event) {
+    private void SignUp(ActionEvent event) {
+    	GiarSession session;
+    	
+    	MessageDigest md;
+    	byte[] digest;
+    	
+    	String password;
+    	String nickname;
+    	String email;
+    	String country;
+    	
+		Parent root;
+		Stage stage;
+		
 	    if (!errorFlag) {
 	    	errorMessage.setVisible(false);
-			MessageDigest md;
-			User user;
-		
+			
 			try {
 				md = MessageDigest.getInstance("MD5");
 				md.update(signUpPassword.getText().getBytes());
-				byte[] digest = md.digest();
-				String password = DatatypeConverter.printHexBinary(digest).toUpperCase();
-				String nickname = signUpNickname.getText();
-				String email = signUpEmail.getText();
-				String country = signUpCountry.getValue();
+				digest = md.digest();
+				password = DatatypeConverter.printHexBinary(digest).toUpperCase();
+				
+				nickname = signUpNickname.getText();
+				email = signUpEmail.getText();
+				country = signUpCountry.getValue();
 				
 				if(password == null || nickname == null || email == null || country == null) {
-					errorMessage.setText("Please fill all text field.");
-					errorMessage.setVisible(true);
-					errorFlag = true;
+					setError(true, "Please fill all text field.");
 					return;
 				}
 				
-				user = new User("player", nickname, email, password, country);
-				user.register();
+				User.register(nickname, email, password, country);
+				session = GiarSession.getInstance();
+				session.setRegistered(nickname);
+
+	            root = FXMLLoader.load(getClass().getResource("/fxml/SignIn.fxml"));
 				
-				FXMLLoader loader = new FXMLLoader();
-	            loader.setLocation(getClass().getResource("/fxml/SignIn.fxml"));
-	            Parent root = loader.load();
-	            SignInController controller = loader.getController();
-	            controller.initialize(user);
-				
-		        Stage stage = (Stage)signUpButton.getScene().getWindow();
+		        stage = (Stage)signUpButton.getScene().getWindow();
 		        stage.setScene(new Scene(root));
 		        stage.show();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}		
 		} else {
-			errorMessage.setText("Unable to register.");
-			errorMessage.setVisible(true);
-			errorFlag = true;
+			setError(true, "Unable to register.");
 		}
     }
 }
