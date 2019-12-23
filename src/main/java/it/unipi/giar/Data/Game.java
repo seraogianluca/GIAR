@@ -53,7 +53,7 @@ public class Game {
 		this.slug = (document.get("slug") == null) ? "" : document.getString("slug");
 		this.name = (document.get("name") == null) ? "" : document.getString("name");
 		this.nameOriginal = (document.get("name_original") == null) ? "" : document.getString("name_original");
-		this.description = (document.get("description") == null) ? "" : document.getString("description");
+		this.description = (document.get("description_raw") == null) ? "" : document.getString("description_raw");
 		this.metacritic = (document.get("metacritic") == null) ? 0 : document.getInteger("metacritic");
 		this.backgroundImage = (document.get("background_image") == null) ? "" : document.getString("background_image");
 		this.rating = (document.get("rating") == null) ? 0 : document.getDouble("rating");

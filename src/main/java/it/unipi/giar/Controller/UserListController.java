@@ -8,6 +8,7 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
+import it.unipi.giar.GiarSession;
 import it.unipi.giar.Data.Game;
 import it.unipi.giar.Data.User;
 import javafx.beans.property.SimpleStringProperty;
@@ -23,10 +24,9 @@ import javafx.scene.control.TreeTableColumn;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
+import org.bson.Document;
 
 public class UserListController {
-
-	private User user;
 	
     private ObservableList<GameTable> games;
     
@@ -36,9 +36,12 @@ public class UserListController {
     private JFXTreeTableView<GameTable> gamesTable2;
     
     public void initialize(String type) {
-    	listType.setText(type);
+    	User user;
+    	
+    	GiarSession session = GiarSession.getInstance();
+    	user = session.getLoggedUser();
 
-    	//this.user = UserMenuController.user;
+    	listType.setText(type);
     	
     	JFXTreeTableColumn<GameTable, String> gameName = new JFXTreeTableColumn<GameTable, String>("Name"); 
     	gameName.prefWidthProperty().bind(gamesTable2.widthProperty().divide(2));
@@ -73,39 +76,48 @@ public class UserListController {
         gamesTable2.setRoot(root);
         gamesTable2.setShowRoot(false);     
         
-        ArrayList<Game> browseResult = null;
-        if (type == "Wishlist") {
-        	
-        	//browseResult = user.getWishlist();	//TO DO 
-        	browseResult = Game.searchGames("wi");//	this is a test to see if worked the table. to be deleted
+        ArrayList<Game> browseResult = new ArrayList();
+        ArrayList<Document> namelist = new ArrayList();
+        
+        if (type == "Wishlist") {      	
+        	namelist = user.getWishlist();	
         	
         } else if (type == "MyGames") {
-        	
-        	//browseResult = user.getMyGames();	//TO DO 
-        	browseResult = Game.searchGames("my");//	this is a test to see if worked the table. to be deleted
-        	
+        	namelist = user.getMyGames();	  	   	
         }
+        
+        for(Document game : namelist) {
+    		String name = game.getString("name");
+    		browseResult.add(Game.findGame(name));	
+    	}  
+        
     	for(Game game : browseResult) {
     		games.add(new GameTable(game.getName(), Double.toString(game.getRating())));
     	}
     }
     
-    void openGameInfo(String name) {
+    void openGameInfo(String gameName) {
     	try { 		
-    		Scene scene = listType.getScene();
-    		AnchorPane pane = (AnchorPane)scene.lookup("#anchorPaneRight");
-    	    		
-    		FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/fxml/InfoGame.fxml"));
-            AnchorPane newPane = loader.load();
     		
-    	    InfoGameController controller = loader.getController();            
-    	    //controller.initialize(user, Game.findGame(name));
+    		FXMLLoader loader;
+    		InfoGameController controller;
+    		Scene scene;
+    		AnchorPane pane;
+    		AnchorPane newPane;
+    		
+    		scene = listType.getScene();
+    		pane = (AnchorPane)scene.lookup("#anchorPaneRight");
+    	    		
+    		loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/fxml/InfoGame.fxml"));
+            newPane = loader.load();
+    		
+    	    controller = loader.getController();            
+    	    controller.initialize(gameName);
             
-            pane.getChildren().setAll(newPane);          
+            pane.getChildren().setAll(newPane);      
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
