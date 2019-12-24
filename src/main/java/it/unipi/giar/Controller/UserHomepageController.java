@@ -79,7 +79,9 @@ public class UserHomepageController {
         if (searchGames.getText().isEmpty()
                 || (event.getText().isEmpty() && !event.getCode().name().equals("BACK_SPACE"))) {
             games.clear();
-        } else if ((searchGames.getText().charAt(searchGames.getText().length() - 1) == (event.getText().charAt(0)))) {
+        } else if (event.getCode().name().equals("BACK_SPACE") 
+        || (searchGames.getText().charAt(searchGames.getText().length() - 1) == (event.getText().charAt(0)))){
+            
             ArrayList<Game> searchResult = Game.searchGames(searchGames.getText());
 
             for (Game game : searchResult) {
