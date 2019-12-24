@@ -46,7 +46,7 @@ public class SignInController {
     	} else if (session.getRegistered() != null) {
     		signInNickname.setText(session.getRegistered());
     	}
-    }
+	}
 
     @FXML
     void SignIn(ActionEvent event) throws IOException {
@@ -93,6 +93,11 @@ public class SignInController {
         stage.setScene(new Scene(root));
         stage.setResizable(false);
         stage.show();
-    }
+	}
+	
+	@FXML
+	void signInPassword(ActionEvent event) throws IOException {
+		SignIn(event);
+	}
     
 }
