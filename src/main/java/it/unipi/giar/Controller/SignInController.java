@@ -16,6 +16,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.input.KeyEvent;
+
 
 public class SignInController {
 
@@ -35,7 +37,7 @@ public class SignInController {
     private JFXPasswordField signInPassword;
     
     @FXML
-    private Text errorMessage;
+	private Text errorMessage;
     
     public void initialize() {
     	GiarSession session = GiarSession.getInstance();
@@ -94,10 +96,12 @@ public class SignInController {
         stage.setResizable(false);
         stage.show();
 	}
-	
+
 	@FXML
-	void signInPassword(ActionEvent event) throws IOException {
-		SignIn(event);
-	}
+    private void signInPassword(KeyEvent event) throws IOException {
+			if ((event.getCode().name()).equals("ENTER")) {
+				SignIn(null);
+			}
+    }
     
 }
