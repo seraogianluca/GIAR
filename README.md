@@ -1,5 +1,5 @@
 # GIAR
-[![CodeFactor](https://www.codefactor.io/repository/github/seraogianluca/giar/badge/master)](https://www.codefactor.io/repository/github/seraogianluca/giar/overview/master)
+[![CodeFactor](https://www.codefactor.io/repository/github/seraogianluca/GIAR/badge/master)](https://www.codefactor.io/repository/github/seraogianluca/GIAR/overview/master)
 
 A service for the workgroup tasks of the Large-Scale and Multi-Structured Databases course of the Artificial Intelligence and Data Engineering Master Degree at University of Pisa.
 
