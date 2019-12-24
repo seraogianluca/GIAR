@@ -77,19 +77,13 @@ public class UserListController {
         gamesTable2.setShowRoot(false);     
         
         ArrayList<Game> browseResult = new ArrayList();
-        ArrayList<Document> namelist = new ArrayList();
         
         if (type == "Wishlist") {      	
-        	namelist = user.getWishlist();	
+        	browseResult = user.getWishlist();	
         	
         } else if (type == "MyGames") {
-        	namelist = user.getMyGames();	  	   	
+        	browseResult = user.getMyGames();	  	   	
         }
-        
-        for(Document game : namelist) {
-    		String name = game.getString("name");
-    		browseResult.add(Game.findGame(name));	
-    	}  
         
     	for(Game game : browseResult) {
     		games.add(new GameTable(game.getName(), Double.toString(game.getRating())));

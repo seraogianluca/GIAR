@@ -571,12 +571,23 @@ public class User {
 		addToMongoList(doc, "ratings");
   }
   
-	public ArrayList<Document> getWishlist() {
-		return this.wishlist;
+	public ArrayList<Game> getWishlist() {
+		ArrayList<Game> result = new ArrayList();
+		for(Document game : wishlist) {
+    		String name = game.getString("name");
+    		result.add(Game.findGame(name));	
+    	}
+		return result;
 	}
 	
-	public ArrayList<Document> getMyGames() {
-		return this.myGames;
+	public ArrayList<Game> getMyGames() {
+		
+		ArrayList<Game> result = new ArrayList();
+		for(Document game : myGames) {
+    		String name = game.getString("name");
+    		result.add(Game.findGame(name));	
+    	}
+		return result;
 	}
 
 }
