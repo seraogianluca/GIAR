@@ -15,19 +15,24 @@ import com.mongodb.BasicDBObject;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
-import com.mongodb.client.model.UnwindOptions;
 
 import org.bson.Document;
+import org.neo4j.driver.v1.Record;
+import org.neo4j.driver.v1.Session;
+import org.neo4j.driver.v1.StatementResult;
+import org.neo4j.driver.v1.Transaction;
+import org.neo4j.driver.v1.TransactionWork;
+
+import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Aggregates.group;
 import static com.mongodb.client.model.Aggregates.unwind;
 import static com.mongodb.client.model.Sorts.ascending;
+import static org.neo4j.driver.v1.Values.parameters;
 import static com.mongodb.client.model.Aggregates.sort;
-import static com.mongodb.client.model.Aggregates.project;
 import static com.mongodb.client.model.Aggregates.skip;
-import static com.mongodb.client.model.Projections.computed;
-
 
 import it.unipi.giar.MongoDriver;
+import it.unipi.giar.Neo4jDriver;
 
 public class Game {
 	private int id;
@@ -375,5 +380,31 @@ public class Game {
 	public ArrayList<Genre> getGenres() {
 		return this.genres;
 	};
+	
+	public static ArrayList<Game> getFriendWishlist(String friendNickname) {
+		ArrayList<Game> games = new ArrayList<Game>();
+		Neo4jDriver nd = Neo4jDriver.getInstance();
+		try (Session session = nd.getDriver().session()) {
+			session.writeTransaction(
+					new TransactionWork<Boolean>() {
+						@Override
+						public Boolean execute(Transaction tx) {
+							StatementResult result = tx.run("MATCH ()-[:FOLLOW]-(p:Player)-[:WISHED]-(game) "
+									+ "WHERE p.nickname = $friend "
+									+ "RETURN DISTINCT game.name AS game",parameters ("friend", friendNickname));
+							
+							while(result.hasNext()) {
+								Record record = result.next();
+								games.add(new Game(findGameDocument(record.get("game").asString())));
+							}
+							
+							return true;
+						};
+					}
+			);
+		}
+		
+		return games;
+	}
 
 }

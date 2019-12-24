@@ -510,7 +510,9 @@ public class User {
 			try {
 				while (cursor.hasNext()) {
 					Document document = cursor.next();
-					listUsers.add(new User(document.getString("nickname")));
+					if(!isAdmin(document.getString("nickname"))) {
+						listUsers.add(new User(document.getString("nickname")));
+					}
 				}
 			} finally {
 				cursor.close();
