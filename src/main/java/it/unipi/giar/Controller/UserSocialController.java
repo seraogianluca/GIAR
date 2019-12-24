@@ -17,6 +17,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
@@ -178,7 +180,30 @@ public class UserSocialController {
 						});
 
 						wishlistBtn.setOnAction((event) -> {
-							//TODO: Load following wish list.
+							try { 		
+					    		String friendNickname;
+					    		FXMLLoader loader;
+					    		UserSocialWishlistController controller;
+					    		Scene scene;
+					    		AnchorPane pane;
+					    		AnchorPane newPane;
+					    		
+					    		scene = socialContent.getScene();
+					    		pane = (AnchorPane)scene.lookup("#anchorPaneRight");
+					    	    		
+					    		loader = new FXMLLoader();
+					            loader.setLocation(getClass().getResource("/fxml/UserSocialWishlist.fxml"));
+					            newPane = loader.load();
+					    		
+					            friendNickname = getTreeTableView().getTreeItem(getIndex()).getValue().nickname.get();
+					    	    controller = loader.getController();            
+					    	    controller.initialize(friendNickname);
+					            
+					            pane.getChildren().setAll(newPane);      
+
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
 						}); 
 
 						unfollowBtn.setStyle("-fx-background-color: red; -fx-text-fill: white;");
