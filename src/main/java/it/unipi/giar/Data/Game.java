@@ -1,6 +1,7 @@
 package it.unipi.giar.Data;
 
 import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Filters.regex;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -194,13 +195,10 @@ public class Game {
 		MongoDriver driver = null;
 		MongoCollection<Document> collection = null;
 
-		BasicDBObject query = new BasicDBObject();
-		query.put("name", Pattern.compile(search, Pattern.CASE_INSENSITIVE));
-
 		try {
 			driver = MongoDriver.getInstance();
 			collection = driver.getCollection("games");
-			MongoCursor<Document> cursor = collection.find(query).limit(10).iterator();
+			MongoCursor<Document> cursor = collection.find(regex("name", search)).limit(1500).batchSize(500).iterator();
 
 			try {
 				while (cursor.hasNext()) {
