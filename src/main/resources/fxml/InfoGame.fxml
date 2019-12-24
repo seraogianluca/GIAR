@@ -42,8 +42,8 @@
                      <font>
                         <Font size="18.0" />
                      </font></Text>
-                  <JFXComboBox fx:id="yourRating" focusColor="#ffff0d" layoutX="169.0" layoutY="283.0" prefHeight="31.0" prefWidth="133.0" promptText="Rate this game" onAction="#rateGame" />
-                  <Text layoutX="60.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rating:" AnchorPane.leftAnchor="60.0">
+                  <JFXComboBox fx:id="yourRating" focusColor="#ffff0d" layoutX="464.0" layoutY="165.0" onAction="#rateGame" prefHeight="31.0" prefWidth="133.0" promptText="Rate this game" />
+                  <Text layoutX="61.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rating:" AnchorPane.leftAnchor="61.0">
                  
                      <font>
                         <Font size="18.0" />
@@ -78,7 +78,7 @@
                      </font>
                   </Text>
                   <ListView fx:id="platforms" layoutX="57.0" layoutY="430.0" prefHeight="74.0" prefWidth="157.0" AnchorPane.leftAnchor="57.0" />
-                  <ListView fx:id="genres" layoutX="237.0" layoutY="427.0" prefHeight="77.0" prefWidth="164.0" />
+                  <ListView fx:id="genres" layoutX="237.0" layoutY="428.0" prefHeight="77.0" prefWidth="164.0" />
                   <ListView fx:id="developers" layoutX="421.0" layoutY="427.0" prefHeight="78.0" prefWidth="179.0" />
                   <Text layoutX="57.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Platforms:" AnchorPane.leftAnchor="57.0">
                      <font>
