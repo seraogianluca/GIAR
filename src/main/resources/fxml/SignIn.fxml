@@ -54,7 +54,7 @@
                            <font>
                               <Font size="22.0" />
                            </font></JFXTextField>
-                        <JFXPasswordField fx:id="signInPassword" alignment="CENTER" focusColor="#ffff0d" layoutX="80.0" layoutY="270.0" prefHeight="40.0" prefWidth="340.0" promptText="Password" unFocusColor="BLACK" AnchorPane.bottomAnchor="282.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="270.0">
+                        <JFXPasswordField fx:id="signInPassword" onKeyReleased="#signInPassword" alignment="CENTER" focusColor="#ffff0d" layoutX="80.0" layoutY="270.0" prefHeight="40.0" prefWidth="340.0" promptText="Password" unFocusColor="BLACK" AnchorPane.bottomAnchor="282.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="270.0">
                            <font>
                               <Font size="22.0" />
                            </font></JFXPasswordField>

@@ -1,5 +1,8 @@
 package it.unipi.giar.Data;
 
+import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Filters.regex;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -191,19 +194,20 @@ public class Game {
 		}
 		return items;	
 	}
-	
+
 	public static ArrayList<Game> searchGames(String search) {
+		return searchGames("name", search);
+	}
+	
+	public static ArrayList<Game> searchGames(String key, String search) {
 		ArrayList<Game> listGames = new ArrayList<Game>();
 		MongoDriver driver = null;
 		MongoCollection<Document> collection = null;
 
-		BasicDBObject query = new BasicDBObject();
-		query.put("name", Pattern.compile(search, Pattern.CASE_INSENSITIVE));
-
 		try {
 			driver = MongoDriver.getInstance();
 			collection = driver.getCollection("games");
-			MongoCursor<Document> cursor = collection.find(query).limit(10).iterator();
+			MongoCursor<Document> cursor = collection.find(regex("name", search, "i")).limit(50).batchSize(50).iterator();
 
 			try {
 				while (cursor.hasNext()) {
@@ -251,45 +255,14 @@ public class Game {
 		return null;
 	}
 	
-	public static ArrayList<Game> browseGames(String key, String value){
-		ArrayList<Game> listGames = new ArrayList<Game>();
-		MongoDriver driver = null;
-		MongoCollection<Document> collection = null;
-
-		BasicDBObject query = new BasicDBObject();
-		query.put(key, value);
-
-		try {
-			driver = MongoDriver.getInstance();
-			collection = driver.getCollection("games");
-			MongoCursor<Document> cursor = collection.find(query).limit(10).iterator();	//TODO CHECK THE LIMIT, without limit, if the list is big, the system is slow.
-			
-			try {
-				while (cursor.hasNext()) {
-					Document document = cursor.next();
-					listGames.add(new Game(document));
-				}
-			} finally {
-				cursor.close();
-			}
-			
-			return listGames;
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return null;
-	}
-	
 	public static ArrayList<Game> browseGamesPerPlatform(String value) {
-		return browseGames("platforms.platform.name", value);
+		return searchGames("platforms.platform.name", value);
 	}
 	public static ArrayList<Game> browseGamesPerGenre(String value) {
-		return browseGames("genres.name", value);
+		return searchGames("genres.name", value);
 	}
 	public static ArrayList<Game> browseGamesPerYear(String value) {
-		return browseGames("year", value);
+		return searchGames("year", value);
 	}
 
 	public void setId(int id) {
