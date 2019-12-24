@@ -202,7 +202,7 @@ public class Game {
 		try {
 			driver = MongoDriver.getInstance();
 			collection = driver.getCollection("games");
-			MongoCursor<Document> cursor = collection.find(regex("name", search)).limit(1500).batchSize(500).iterator();
+			MongoCursor<Document> cursor = collection.find(regex("name", search, "i")).limit(1500).batchSize(100).iterator();
 
 			try {
 				while (cursor.hasNext()) {
