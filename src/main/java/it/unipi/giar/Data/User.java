@@ -24,7 +24,8 @@ import it.unipi.giar.GiarSession;
 import it.unipi.giar.MongoDriver;
 import it.unipi.giar.Neo4jDriver;
 
-import static com.mongodb.client.model.Filters.*;
+import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Filters.and;
 import static org.neo4j.driver.v1.Values.parameters;
 
 public class User {
@@ -44,10 +45,12 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.country = country;
-		this.wishlist = new ArrayList<>();
-		this.myGames = new ArrayList<>();
+		this.wishlist = new ArrayList<Document>();
+		this.myGames = new ArrayList<Document>();
+		this.ratings = new ArrayList<Document>();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public User(String nickname) {
 		try {
 			MongoDriver driver = null;
@@ -69,7 +72,7 @@ public class User {
 			this.myGames = new ArrayList<>();
 			this.ratings = new ArrayList<>();
 			
-			list = new ArrayList<>();			
+			list = new ArrayList<>();
 			list = (ArrayList<Document>)user.get("wishlist");
 						
 			if(list != null) {				
@@ -184,9 +187,6 @@ public class User {
 				collection.updateOne(eq("nickname", this.nickname),Updates.addToSet("wishlist",game));
 			} else if(list.equals("myGames")) {
 				collection.updateOne(eq("nickname", this.nickname),Updates.addToSet("mygames",game));	
-			}	
-			else if(list.equals("ratings")) {
-				collection.updateOne(eq("nickname", this.nickname),Updates.addToSet("ratings",game));	
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -261,10 +261,6 @@ public class User {
 				collection.updateOne(filter, delete);
 			} else if (list.equals("myGames")) {
 				delete = Updates.pull("mygames", game);
-				collection.updateOne(filter, delete);
-			}
-			else if(list.equals("ratings")) {
-				delete = Updates.pull("ratings", game);
 				collection.updateOne(filter, delete);
 			}
 		} catch(Exception e) {
@@ -526,55 +522,9 @@ public class User {
 		
 		return listUsers;
 	}
-
-	public boolean alreadyVoted(String gameName) {
-		Document game = new Document();
-		game.append("name", gameName);
-		
-		if (this.ratings.size() == 0) {
-			return false;
-		} else {
-			for (Document d: ratings) {
-				if(d.getString("name").equals(gameName))
-					return true;					
-			}
-		}
-		return false;
-	}
-	
-	public String getPreviousVote(String gameName) {
-		for (Document d: ratings) {
-			if(d.getString("name").equals(gameName))
-				return d.getString("ratingid");
-		}
-		return null;
-	}
-	
-	public void rateGame(String value, String gameName) {
-		Document old;
-		Document doc;
-		if(alreadyVoted(gameName)) {
-			old = new Document();
-			for(Document d: ratings) {
-				if(d.getString("name").equals(gameName)) {
-					old.append("name", gameName);
-					old.append("ratingid", d.get("ratingid"));
-				}
-			}
-			if( old != null) {
-				ratings.remove(old);
-				removeFromMongoList(old, "ratings");
-			}
-		}
-		doc = new Document();
-		doc.append("name", gameName);
-		doc.append("ratingid", value);
-		ratings.add(doc);
-		addToMongoList(doc, "ratings");
-  }
   
 	public ArrayList<Game> getWishlist() {
-		ArrayList<Game> result = new ArrayList();
+		ArrayList<Game> result = new ArrayList<Game>();
 		for(Document game : wishlist) {
     		String name = game.getString("name");
     		result.add(Game.findGame(name));	
@@ -584,12 +534,68 @@ public class User {
 	
 	public ArrayList<Game> getMyGames() {
 		
-		ArrayList<Game> result = new ArrayList();
+		ArrayList<Game> result = new ArrayList<Game>();
 		for(Document game : myGames) {
     		String name = game.getString("name");
     		result.add(Game.findGame(name));	
     	}
 		return result;
+	}
+	
+	public boolean rated(String gameName) {
+		Document game = new Document();
+		game.append("name", gameName);
+		
+		if (this.ratings.size() == 0) {
+			return false;
+		} else {
+			for (Document d: ratings) {
+				if(d.getString("game").equals(gameName))
+					return true;					
+			}
+		}
+		return false;
+	}
+	
+	public String getRate(String gameName) {
+		for (Document d: ratings) {
+			if(d.getString("game").equals(gameName))
+				return d.getString("ratingid");
+		}
+		return null;
+	}
+	
+	public void rate(String gameName, String value) {
+		MongoDriver md;
+		MongoCollection<Document> collection;
+		Document rate;
+		Document toDelete = null;
+		Long modified = 0L;
+		
+		md = MongoDriver.getInstance();
+		collection = md.getCollection("users");
+		
+		rate = new Document();
+		rate.append("game", gameName);
+		rate.append("ratingid", value);
+		
+		modified = collection.updateOne(and(eq("nickname", this.nickname), eq("ratings.game", gameName)), 
+							Updates.set("ratings.$.ratingid", value)).getModifiedCount();
+		
+		if(modified == 0) {
+			collection.updateOne(eq("nickname", this.nickname), Updates.addToSet("ratings", rate));
+		} else {
+			for(Document r : ratings) {
+				if(r.getString("game").equals(gameName)) {
+					toDelete = r;
+					break;
+				}
+			}
+			
+			ratings.remove(toDelete);
+		}
+		
+		ratings.add(rate);
 	}
 
 }

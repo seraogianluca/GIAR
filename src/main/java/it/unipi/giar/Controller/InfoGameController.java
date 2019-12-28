@@ -23,6 +23,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 
 public class InfoGameController {
+	
+	Game game;
 
 	@FXML
 	private Text name;
@@ -60,7 +62,6 @@ public class InfoGameController {
 	public void initialize(String gameName) {
 		GiarSession session;
 		User user;
-		Game game;
 		Date date;
 		DateFormat dateFormat;
 
@@ -72,16 +73,13 @@ public class InfoGameController {
 
 		date = game.getReleased();
 		dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+		released.setText(dateFormat.format(date));
 
 		metacritic.setText(Integer.toString(game.getMetacritic()));
 
 		ObservableList<String> ratingValues = FXCollections.observableArrayList();
 		ratingValues.addAll("1", "2", "3", "4", "5");
-		yourRating.setItems(ratingValues);
-
-		released.setText(dateFormat.format(date));
-
-		metacritic.setText(String.valueOf(game.getMetacritic()));
+		yourRating.setItems(ratingValues);		
 
 		List<String> listDeveloper = new ArrayList<String>();
 		for (Developer dev : game.getDevelopers()) {
@@ -107,8 +105,8 @@ public class InfoGameController {
 		session = GiarSession.getInstance();
 		user = session.getLoggedUser();
 
-		if (user.alreadyVoted(name.getText())) {
-			yourRating.setValue(user.getPreviousVote(name.getText()));
+		if (user.rated(name.getText())) {
+			yourRating.setValue(user.getRate(name.getText()));
 		}
 
 		if (user.isInMyGames(game.getName())) {
@@ -160,10 +158,9 @@ public class InfoGameController {
 		session = GiarSession.getInstance();
 		user = session.getLoggedUser();
 
-		String value = yourRating.getValue();
-
-		user.rateGame(value, name.getText());
-
+		game.rate(yourRating.getValue(), user.getRate(name.getText()));
+		user.rate(name.getText(), yourRating.getValue());
+		rating.setText(Double.toString(game.getRating()));
 	}
 
 }

@@ -1,20 +1,15 @@
 package it.unipi.giar.Data;
 
-import static com.mongodb.client.model.Filters.eq;
-import static com.mongodb.client.model.Filters.regex;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.regex.Pattern;
-
-import com.mongodb.BasicDBObject;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
+import com.mongodb.client.model.Updates;
 
 import org.bson.Document;
 import org.neo4j.driver.v1.Record;
@@ -23,16 +18,20 @@ import org.neo4j.driver.v1.StatementResult;
 import org.neo4j.driver.v1.Transaction;
 import org.neo4j.driver.v1.TransactionWork;
 
-import static com.mongodb.client.model.Filters.eq;
+import it.unipi.giar.MongoDriver;
+import it.unipi.giar.Neo4jDriver;
+
+import static com.mongodb.client.model.Aggregates.match;
 import static com.mongodb.client.model.Aggregates.group;
 import static com.mongodb.client.model.Aggregates.unwind;
+import static com.mongodb.client.model.Accumulators.sum;
 import static com.mongodb.client.model.Sorts.ascending;
 import static org.neo4j.driver.v1.Values.parameters;
 import static com.mongodb.client.model.Aggregates.sort;
 import static com.mongodb.client.model.Aggregates.skip;
-
-import it.unipi.giar.MongoDriver;
-import it.unipi.giar.Neo4jDriver;
+import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Filters.and;
+import static com.mongodb.client.model.Filters.regex;
 
 public class Game {
 	private int id;
@@ -44,7 +43,6 @@ public class Game {
 	private Date released;
 	private String backgroundImage;
 	private double rating;
-	private ArrayList<Rating> ratings;
 	private long added;
 	private long addedWishlist;
 	private long addedMyGames;
@@ -52,8 +50,10 @@ public class Game {
 	private ArrayList<Developer> developers;
 	private ArrayList<Genre> genres;
 
+	@SuppressWarnings("unchecked")
 	public Game(Document document) {
 		SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-mm-dd");
+		ArrayList<Document> list;
 
 		this.id = (document.get("id") == null) ? 0 : document.getInteger("id");
 		this.slug = (document.get("slug") == null) ? "" : document.getString("slug");
@@ -68,7 +68,7 @@ public class Game {
 		// this.addedMyGames = (document.get("mygames") == null) ? 0 :
 		// document.getLong("mygames");
 		// this.added = (this.addedWishlist + this.addedMyGames);
-		
+
 		List<Document> platformDoc = new ArrayList<Document>();
 		platformDoc = (List<Document>)document.get("platforms");
 
@@ -117,7 +117,7 @@ public class Game {
 	}
 
 	public Game(int id, String slug, String name, String nameOriginal, String description, int metacritic,
-			Date released, String backgroundImage, double rating, ArrayList<Rating> ratings, long added,
+			Date released, String backgroundImage, double rating, long added,
 			long addedWishlist, long addedMyGames, ArrayList<Platform> platforms, ArrayList<Developer> developers,
 			ArrayList<Genre> genres) {
 		this.id = id;
@@ -129,7 +129,6 @@ public class Game {
 		this.released = released;
 		this.backgroundImage = backgroundImage;
 		this.rating = rating;
-		this.ratings = ratings;
 		this.added = added;
 		this.addedWishlist = addedWishlist;
 		this.addedMyGames = addedMyGames;
@@ -138,8 +137,7 @@ public class Game {
 		this.genres = genres;
 	}
 
-	public static List<String> getAllPlatformsList() {
-		//populate the fields of the combobox. returns the list of the platforms existing in the database.	
+	public static List<String> getAllPlatform() {
 		MongoDriver driver = null;
 		MongoCollection<Document> collection = null;
 		List<String> items = new ArrayList<>();		
@@ -157,8 +155,7 @@ public class Game {
 		return items;
 	}
 
-	public static List<String> getAllYearsList() {
-		//populate the fields of the combobox. returns the list of the years existing in the database.
+	public static List<String> getAllYears() {
 		MongoDriver driver = null;
 		MongoCollection<Document> collection = null;
 		List<String> items = new ArrayList<>();		
@@ -176,8 +173,7 @@ public class Game {
 		return items;
 	}
 
-	public static List<String> getAllGenresList() {
-		//populates the fields of the combobox. returns the list of the genres existing in the database.	
+	public static List<String> getAllGenres() {
 		MongoDriver driver = null;
 		MongoCollection<Document> collection = null;
 		List<String> items = new ArrayList<>();		
@@ -198,7 +194,7 @@ public class Game {
 	public static ArrayList<Game> searchGames(String search) {
 		return searchGames("name", search);
 	}
-	
+
 	public static ArrayList<Game> searchGames(String key, String search) {
 		ArrayList<Game> listGames = new ArrayList<Game>();
 		MongoDriver driver = null;
@@ -240,21 +236,21 @@ public class Game {
 
 		return null;
 	}
-	
+
 	public static Document findGameDocument(String name) {
 		try {
 			MongoDriver md = MongoDriver.getInstance();
 			MongoCollection<Document> collection = md.getCollection("games");
 			Document game = collection.find(eq("name", name)).first();
-			
+
 			return game;
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	}
-	
+
 	public static ArrayList<Game> browseGamesPerPlatform(String value) {
 		return searchGames("platforms.platform.name", value);
 	}
@@ -299,10 +295,6 @@ public class Game {
 
 	public void setRating(double rating) {
 		this.rating = rating;
-	}
-
-	public void setRatings(ArrayList<Rating> ratings) {
-		this.ratings = ratings;
 	}
 
 	public void setAdded(long added) {
@@ -353,10 +345,6 @@ public class Game {
 		return this.rating;
 	}
 
-	public ArrayList<Rating> getRatings() {
-		return this.ratings;
-	}
-
 	public long getAdded() {
 		return this.added;
 	}
@@ -380,7 +368,7 @@ public class Game {
 	public ArrayList<Genre> getGenres() {
 		return this.genres;
 	};
-	
+
 	public static ArrayList<Game> getFriendWishlist(String friendNickname) {
 		ArrayList<Game> games = new ArrayList<Game>();
 		Neo4jDriver nd = Neo4jDriver.getInstance();
@@ -392,19 +380,117 @@ public class Game {
 							StatementResult result = tx.run("MATCH ()-[:FOLLOW]-(p:Player)-[:WISHED]-(game) "
 									+ "WHERE p.nickname = $friend "
 									+ "RETURN DISTINCT game.name AS game",parameters ("friend", friendNickname));
-							
+
 							while(result.hasNext()) {
 								Record record = result.next();
+								//FIXME: Duplicate function -> findGame
 								games.add(new Game(findGameDocument(record.get("game").asString())));
 							}
-							
+
 							return true;
 						};
 					}
-			);
+					);
 		}
-		
+
 		return games;
+	}
+
+	private int getTotalRating() {
+		MongoDriver md;
+		MongoCollection<Document> collection;
+		Document total;
+
+		md = MongoDriver.getInstance();
+		collection = md.getCollection("games");
+
+		total = collection.aggregate(Arrays.asList(
+				match(eq("name", this.name)),
+				unwind("$ratings"),
+				group("$_id", sum("count", "$ratings.count")))).first();
+
+		return total.getInteger("count");
+	}
+
+	@SuppressWarnings("unchecked")
+	private void updatePercentage(String ratingid) {
+		MongoDriver md;
+		MongoCollection<Document> collection;
+		ArrayList<Document> ratings;
+		Document game;
+		int ratingCount;
+		int totalRatingCount;
+
+		md = MongoDriver.getInstance();
+		collection = md.getCollection("games");
+
+		game = collection.find(eq("name", this.name)).first();
+
+		ratings = (ArrayList<Document>)game.get("ratings");
+
+		for(Document r : ratings) {
+			ratingCount = r.getInteger("count");
+			totalRatingCount = getTotalRating();
+
+			collection.updateOne(and(eq("name", this.name), eq("ratings.title", ratingid)),
+					Updates.set("ratings.$.percent", (ratingCount / totalRatingCount) * 100));
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	private void calculateRating() {
+		MongoDriver md;
+		MongoCollection<Document> collection;
+		Document game;
+		ArrayList<Document> ratings;
+		int num = 0;
+		int den = 0;
+
+		md = MongoDriver.getInstance();
+		collection = md.getCollection("games");
+		game = collection.find(eq("name", this.name)).first();
+
+		ratings = (ArrayList<Document>)game.get("ratings");
+
+		for(Document r : ratings) {
+			num += (Integer.parseInt(r.getString("title")) * r.getInteger("count"));
+			den += r.getInteger("count");
+		}
+
+		this.rating = num / den;
+
+		collection.updateOne(eq("name", this.name), Updates.set("rating", this.rating));
+	}
+
+	public void rate(String newRate, String oldRate) {
+		MongoDriver md;
+		MongoCollection<Document> collection;
+		Document rate;
+		Long modified = 0L;
+
+		md = MongoDriver.getInstance();
+		collection = md.getCollection("games");
+
+		if(oldRate != null) {
+			collection.updateOne(and(eq("name", this.name), eq("ratings.title", oldRate)),
+					Updates.inc("ratings.$.count", -1));
+		}
+
+		modified = collection.updateOne(and(eq("name", this.name), eq("ratings.title", newRate)),
+				Updates.inc("ratings.$.count", 1)).getModifiedCount();
+
+		if(modified == 0) {
+			rate = new Document();
+			rate.append("id", Integer.parseInt(newRate));
+			rate.append("title", newRate);
+			rate.append("count", 1);
+			rate.append("percent", 1);
+
+			collection.updateOne(eq("name", this.name), Updates.addToSet("ratings", rate));
+		}
+
+		updatePercentage(newRate);
+		calculateRating();
 	}
 
 }
