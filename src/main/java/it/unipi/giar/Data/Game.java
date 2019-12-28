@@ -382,8 +382,10 @@ public class Game {
 
 							while(result.hasNext()) {
 								Record record = result.next();
-								//FIXME: Duplicate function -> findGame
-								games.add(new Game(findGameDocument(record.get("game").asString())));
+								Game game = Game.findGame(record.get("game").asString());
+								if(game != null) {
+									games.add(game);
+								}
 							}
 
 							return true;
