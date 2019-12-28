@@ -24,7 +24,6 @@ import javafx.scene.control.TreeTableColumn;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
-import org.bson.Document;
 
 public class UserListController {
 	
@@ -35,7 +34,8 @@ public class UserListController {
     @FXML
     private JFXTreeTableView<GameTable> gamesTable2;
     
-    public void initialize(String type) {
+    @SuppressWarnings("unchecked")
+	public void initialize(String type) {
     	User user;
     	
     	GiarSession session = GiarSession.getInstance();
@@ -76,7 +76,7 @@ public class UserListController {
         gamesTable2.setRoot(root);
         gamesTable2.setShowRoot(false);     
         
-        ArrayList<Game> browseResult = new ArrayList();
+        ArrayList<Game> browseResult = new ArrayList<Game>();
         
         if (type == "Wishlist") {      	
         	browseResult = user.getWishlist();	

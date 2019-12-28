@@ -34,7 +34,8 @@ public class UserHomepageController {
     @FXML
     private JFXTreeTableView<GameTable> gamesTable;
 
-    public void initialize() {
+    @SuppressWarnings("unchecked")
+	public void initialize() {
         JFXTreeTableColumn<GameTable, String> gameName = new JFXTreeTableColumn<GameTable, String>("Name");
         gameName.prefWidthProperty().bind(gamesTable.widthProperty().divide(2));
         gameName.setCellValueFactory(

@@ -43,6 +43,7 @@ public class UserSocialController {
 	@FXML
 	private JFXTextField searchUsers;
 
+	@SuppressWarnings("unchecked")
 	public void initialize() {
 		userNick = new JFXTreeTableColumn<UserTable, String>("Nickname"); 
 		userNick.prefWidthProperty().bind(usersTable.widthProperty().multiply(0.6));

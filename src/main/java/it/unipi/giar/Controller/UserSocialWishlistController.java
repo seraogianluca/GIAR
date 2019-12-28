@@ -38,6 +38,7 @@ public class UserSocialWishlistController {
 	@FXML
 	private JFXTreeTableView<GameTable> gamesTable;
 
+	@SuppressWarnings("unchecked")
 	public void initialize(String friendNick) {
 
 		title.setText(friendNick + " : Wishlist");

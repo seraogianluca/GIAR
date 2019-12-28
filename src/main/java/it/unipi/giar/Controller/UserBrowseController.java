@@ -9,7 +9,6 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import it.unipi.giar.Data.Game;
-import it.unipi.giar.Data.User;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
@@ -27,8 +26,6 @@ import javafx.util.Callback;
 
 public class UserBrowseController {
 	
-	private User user;
-	
     private ObservableList<GameTable> games;
     
     @FXML
@@ -40,7 +37,8 @@ public class UserBrowseController {
     @FXML
     private JFXTreeTableView<GameTable> gamesTable1;
     
-    public void initialize(String value, String type) {
+    @SuppressWarnings("unchecked")
+	public void initialize(String value, String type) {
     	browseType.setText(value);
     	//this.user = UserMenuController.user;
     	
@@ -114,7 +112,6 @@ public class UserBrowseController {
             
             pane.getChildren().setAll(newPane);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }

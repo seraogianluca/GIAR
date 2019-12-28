@@ -53,7 +53,6 @@ public class Game {
 	@SuppressWarnings("unchecked")
 	public Game(Document document) {
 		SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-mm-dd");
-		ArrayList<Document> list;
 
 		this.id = (document.get("id") == null) ? 0 : document.getInteger("id");
 		this.slug = (document.get("slug") == null) ? "" : document.getString("slug");

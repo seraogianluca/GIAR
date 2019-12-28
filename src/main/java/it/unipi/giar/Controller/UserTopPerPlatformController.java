@@ -9,7 +9,6 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import it.unipi.giar.Data.Game;
-import it.unipi.giar.Data.User;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
@@ -27,8 +26,6 @@ import javafx.util.Callback;
 
 public class UserTopPerPlatformController {
 	
-	private User user;
-	
     private ObservableList<GameTable> games;
     
     @FXML
@@ -40,7 +37,8 @@ public class UserTopPerPlatformController {
     @FXML
     private JFXTreeTableView<GameTable> gamesTable3;
     
-    public void initialize(String value) {
+    @SuppressWarnings("unchecked")
+	public void initialize(String value) {
     	//this.user = UserMenuController.user;
     	plat.setText(value);
     	JFXTreeTableColumn<GameTable, String> gameName = new JFXTreeTableColumn<GameTable, String>("Name"); 
@@ -95,13 +93,12 @@ public class UserTopPerPlatformController {
             loader.setLocation(getClass().getResource("/fxml/InfoGame.fxml"));
             AnchorPane newPane = loader.load();
     		
-    	    InfoGameController controller = loader.getController();            
+    	    //InfoGameController controller = loader.getController();            
     	    //controller.initialize(user, Game.findGame(name));
             
             pane.getChildren().setAll(newPane);          
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }

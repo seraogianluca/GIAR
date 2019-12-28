@@ -1,11 +1,6 @@
 package it.unipi.giar.Controller;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.util.Iterator;
-import java.util.List;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -13,18 +8,14 @@ import com.jfoenix.controls.JFXComboBox;
 import it.unipi.giar.GiarSession;
 import it.unipi.giar.Data.Game;
 import it.unipi.giar.Data.User;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -104,16 +95,16 @@ public class UserMenuController {
 			anchorPaneRight.getChildren().setAll(pane);  		
     		
 			
-    		ObservableList<String> platforms = FXCollections.observableArrayList(Game.getAllPlatformsList()); //mongo   		
+    		ObservableList<String> platforms = FXCollections.observableArrayList(Game.getAllPlatform()); //mongo   		
     		topPerPlatformMenuPanel.setItems(platforms);
 			platformBrowseMenuPanel.setItems(platforms);
 			
 			
-			ObservableList<String> years = FXCollections.observableArrayList(Game.getAllYearsList());			
+			ObservableList<String> years = FXCollections.observableArrayList(Game.getAllYears());			
 			yearBrowseMenuPanel.setItems(years);
 			
 			
-	        ObservableList<String> genres = FXCollections.observableArrayList(Game.getAllGenresList());	        
+	        ObservableList<String> genres = FXCollections.observableArrayList(Game.getAllGenres());	        
 			genreBrowseMenuPanel.setItems(genres);			
     	} catch (Exception e) {
 			e.printStackTrace();
