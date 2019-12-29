@@ -21,9 +21,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 
 public class InfoGameController {
-	
+
 	Game game;
 
 	@FXML
@@ -59,6 +62,9 @@ public class InfoGameController {
 	@FXML
 	private ListView<String> developers;
 
+	@FXML
+	private JFXButton back;
+
 	public void initialize(String gameName) {
 		GiarSession session;
 		User user;
@@ -79,7 +85,7 @@ public class InfoGameController {
 
 		ObservableList<String> ratingValues = FXCollections.observableArrayList();
 		ratingValues.addAll("1", "2", "3", "4", "5");
-		yourRating.setItems(ratingValues);		
+		yourRating.setItems(ratingValues);
 
 		List<String> listDeveloper = new ArrayList<String>();
 		for (Developer dev : game.getDevelopers()) {
@@ -161,6 +167,29 @@ public class InfoGameController {
 		game.rate(yourRating.getValue(), user.getRate(name.getText()));
 		user.rate(name.getText(), yourRating.getValue());
 		rating.setText(Double.toString(game.getRating()));
+	}
+
+	@FXML
+	void back(ActionEvent event) {
+		try {
+			FXMLLoader loader;
+			Scene scene;
+			AnchorPane pane;
+			AnchorPane newPane;
+
+			scene = name.getScene();
+			pane = (AnchorPane) scene.lookup("#anchorPaneRight");
+
+			loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/fxml/UserHomepage.fxml"));
+			
+			newPane = loader.load();
+
+			pane.getChildren().setAll(newPane);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

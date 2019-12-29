@@ -42,7 +42,7 @@ public class UserTopPerPlatformController {
     	//this.user = UserMenuController.user;
     	plat.setText(value);
     	JFXTreeTableColumn<GameTable, String> gameName = new JFXTreeTableColumn<GameTable, String>("Name"); 
-    	gameName.prefWidthProperty().bind(gamesTable3.widthProperty().divide(2));
+    	gameName.prefWidthProperty().bind(gamesTable3.widthProperty().divide(4).multiply(3));
         gameName.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<GameTable, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<GameTable, String> param) {
@@ -50,7 +50,7 @@ public class UserTopPerPlatformController {
             }
         });        
         JFXTreeTableColumn<GameTable, String> gameRating = new JFXTreeTableColumn<GameTable, String>("Rating"); 
-        gameRating.prefWidthProperty().bind(gamesTable3.widthProperty().divide(2));
+        gameRating.prefWidthProperty().bind(gamesTable3.widthProperty().divide(4));
         gameRating.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<GameTable, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<GameTable, String> param) {

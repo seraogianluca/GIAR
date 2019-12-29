@@ -37,7 +37,7 @@ public class UserHomepageController {
     @SuppressWarnings("unchecked")
 	public void initialize() {
         JFXTreeTableColumn<GameTable, String> gameName = new JFXTreeTableColumn<GameTable, String>("Name");
-        gameName.prefWidthProperty().bind(gamesTable.widthProperty().divide(2));
+        gameName.prefWidthProperty().bind(gamesTable.widthProperty().divide(4).multiply(3));
         gameName.setCellValueFactory(
                 new Callback<TreeTableColumn.CellDataFeatures<GameTable, String>, ObservableValue<String>>() {
                     @Override
@@ -47,7 +47,7 @@ public class UserHomepageController {
                 });
 
         JFXTreeTableColumn<GameTable, String> gameRating = new JFXTreeTableColumn<GameTable, String>("Rating");
-        gameRating.prefWidthProperty().bind(gamesTable.widthProperty().divide(2));
+        gameRating.prefWidthProperty().bind(gamesTable.widthProperty().divide(4));
         gameRating.setCellValueFactory(
                 new Callback<TreeTableColumn.CellDataFeatures<GameTable, String>, ObservableValue<String>>() {
                     @Override
