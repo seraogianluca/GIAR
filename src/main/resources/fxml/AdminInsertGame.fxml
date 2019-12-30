@@ -44,7 +44,7 @@
                               <Insets />
                            </opaqueInsets>
                         </JFXButton>
-                        <Text fx:id="error" fill="#db524b" layoutX="35.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="674.0">
+                        <Text fx:id="message" fill="#db524b" layoutX="35.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="674.0">
                            <font>
                               <Font size="14.0" />
                            </font>

@@ -36,7 +36,7 @@ public class AdminInsertGameController {
 	private JFXButton insertGame;
 
 	@FXML
-	private Text error;
+	private Text message;
 
 	@FXML
 	private Pane patformsPane;
@@ -140,7 +140,7 @@ public class AdminInsertGameController {
 		} else if(devList.size() == 0) {
 			setErrorMessage("Please insert at least a developer.");
 		} else {	
-			error.setText("");
+			message.setText("");
 			errFlag = false;
 		}
 		
@@ -193,14 +193,14 @@ public class AdminInsertGameController {
     }
 
 	private void setErrorMessage(String msg) {
-		error.setText(msg);
-		error.setFill(Color.web("#db524b"));
+		message.setText(msg);
+		message.setFill(Color.web("#db524b"));
 		errFlag = true;
 	}
 	
 	private void setAcknowledgement(String msg) {
-		error.setText(msg);
-		error.setFill(Color.web("#7bd500"));
+		message.setText(msg);
+		message.setFill(Color.web("#7bd500"));
 		errFlag = false;
 	}
 
