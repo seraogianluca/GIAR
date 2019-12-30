@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -10,22 +18,83 @@
    <children>
       <BorderPane layoutX="250.0" prefHeight="600.0" prefWidth="650.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <AnchorPane prefHeight="100.0" prefWidth="650.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="66.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
-                  <Text fx:id="insertGameMenuPanel" layoutX="196.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="insertnewgame" wrappingWidth="258.890625">
+                  <Label text="New Game" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font size="56.0" />
+                        <Font size="48.0" />
                      </font>
-                  </Text>
+                  </Label>
                </children>
             </AnchorPane>
          </top>
          <center>
-            <JFXButton fx:id="insertGame" onMouseClicked="#insertNewGame" style="-fx-background-color: red;" text="Insert game" BorderPane.alignment="CENTER">
-               <font>
-                  <Font size="32.0" />
-               </font>
-            </JFXButton>
+            <ScrollPane BorderPane.alignment="CENTER">
+               <content>
+                  <AnchorPane prefHeight="724.0" prefWidth="632.0">
+                     <children>
+                        <JFXTextField fx:id="name" focusColor="#e5e54e" layoutX="34.0" layoutY="15.0" prefHeight="32.0" prefWidth="260.0" promptText="Name" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="52.0" />
+                        <JFXTextField fx:id="date" focusColor="#e5e54e" layoutX="337.0" layoutY="20.0" prefHeight="32.0" prefWidth="260.0" promptText="Release date (dd/mm/yyyy)" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="52.0" />
+                        <JFXTextArea fx:id="description" focusColor="#e5e54e" layoutX="35.0" layoutY="85.0" prefHeight="120.0" prefWidth="550.0" promptText="Description" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="116.0" />
+                        <JFXButton fx:id="insertGame" layoutX="529.0" layoutY="674.0" onMouseClicked="#insertNewGame" prefHeight="32.0" prefWidth="64.0" style="-fx-background-color: #7bd500;" text="Save" textAlignment="CENTER" textFill="WHITE" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="674.0">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </JFXButton>
+                        <Text fx:id="error" fill="#db524b" layoutX="35.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="674.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <Pane fx:id="patformsPane" layoutX="35.0" layoutY="275.0" AnchorPane.leftAnchor="35.0">
+                           <children>
+                              <Label fx:id="platformLabel" text="Platforms">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <JFXListView fx:id="platformList" layoutY="20.0" prefHeight="96.0" prefWidth="160.0" />
+                              <JFXComboBox fx:id="platformCombo" editable="true" focusColor="#e5e54e" layoutX="176.0" layoutY="48.0" prefHeight="32.0" prefWidth="160.0" />
+                              <Label layoutX="176.0" layoutY="20.0" text="Choose one or insert new:" />
+                              <JFXButton fx:id="platAddButton" layoutX="352.0" layoutY="51.0" onAction="#insertPlatform" style="-fx-background-color: #7bd500;" text="Add" textFill="WHITE" />
+                              <JFXButton fx:id="platRemoveButton" layoutX="410.0" layoutY="51.0" onAction="#removePlatform" style="-fx-background-color: #db524b;" text="Remove" textFill="WHITE" />
+                           </children>
+                        </Pane>
+                        <Pane fx:id="genresPane" layoutX="35.0" layoutY="406.0">
+                           <children>
+                              <Label fx:id="genresLabel" text="Genres">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <JFXListView fx:id="genresList" layoutY="20.0" prefHeight="96.0" prefWidth="160.0" />
+                              <JFXComboBox fx:id="genresCombo" editable="true" focusColor="#e5e54e" layoutX="176.0" layoutY="48.0" prefHeight="32.0" prefWidth="160.0" />
+                              <Label layoutX="176.0" layoutY="20.0" text="Choose one or insert new:" />
+                              <JFXButton fx:id="genAddButton" layoutX="352.0" layoutY="51.0" onAction="#insertGenre" style="-fx-background-color: #7bd500;" text="Add" textFill="WHITE" />
+                              <JFXButton fx:id="genRemoveButton" layoutX="410.0" layoutY="51.0" onAction="#removeGenre" style="-fx-background-color: #db524b;" text="Remove" textFill="WHITE" />
+                           </children>
+                        </Pane>
+                        <Pane fx:id="developersPane" layoutX="35.0" layoutY="533.0">
+                           <children>
+                              <Label fx:id="developersLabel" text="Developers">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <JFXListView fx:id="developersList" layoutY="20.0" prefHeight="96.0" prefWidth="160.0" />
+                              <JFXComboBox fx:id="developersCombo" editable="true" focusColor="#e5e54e" layoutX="176.0" layoutY="48.0" prefHeight="32.0" prefWidth="160.0" />
+                              <Label layoutX="176.0" layoutY="20.0" text="Choose one or insert new:" />
+                              <JFXButton fx:id="devAddButton" layoutX="352.0" layoutY="51.0" onAction="#insertDeveloper" style="-fx-background-color: #7bd500;" text="Add" textFill="WHITE" />
+                              <JFXButton fx:id="devRemoveButton" layoutX="410.0" layoutY="51.0" onAction="#removeDeveloper" style="-fx-background-color: #db524b;" text="Remove" textFill="WHITE" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
          </center>
       </BorderPane>
    </children>
