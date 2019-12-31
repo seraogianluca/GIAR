@@ -177,7 +177,6 @@ public class UserMenuController {
 	    	anchorPaneRight.getChildren().setAll(pane);
     	
     	} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
     
@@ -195,7 +194,6 @@ public class UserMenuController {
 			anchorPaneRight.getChildren().setAll(pane);
     	
     	} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
     }
@@ -281,7 +279,6 @@ public class UserMenuController {
 			anchorPaneRight.getChildren().setAll(pane);
     	
     	} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
     }
