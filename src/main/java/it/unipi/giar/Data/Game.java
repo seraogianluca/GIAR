@@ -553,4 +553,85 @@ public class Game {
 			);
 		}
 	}
+
+  
+	public static List<String> getAllDevelopers() {
+		MongoDriver driver = null;
+		MongoCollection<Document> collection = null;
+		List<String> items = new ArrayList<>();		
+		try {
+			driver = MongoDriver.getInstance();
+			collection = driver.getCollection("games");
+			MongoCursor<Document> cursor = collection.aggregate(Arrays.asList(unwind("$developers"), group("$developers.name"), sort(ascending("_id")))).iterator();
+			while (cursor.hasNext()) {
+				items.add(cursor.next().getString("_id"));
+			}
+			cursor.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return items;	
+	}
+	
+	private static ArrayList<Document> createPlatformList(ArrayList<String> platforms) {
+		ArrayList<Document> platformDoc = new ArrayList<Document>();
+		
+		for(String name : platforms) {
+			Document plat = new Document();
+			plat.append("platform", new Document().append("name", name));
+			platformDoc.add(plat);
+		}
+		
+		return platformDoc;
+	}
+	
+	private static ArrayList<Document> createGenresList(ArrayList<String> genres) {
+		ArrayList<Document> genreDoc = new ArrayList<Document>();
+		
+		for(String name : genres) {
+			genreDoc.add(new Document().append("name", name));
+		}
+		
+		return genreDoc;
+	}
+	
+	private static ArrayList<Document> createDevelopersList(ArrayList<String> developers) {
+		ArrayList<Document> developerDoc = new ArrayList<Document>();
+		
+		for(String name : developers) {
+			developerDoc.add(new Document().append("name", name));
+		}
+		
+		return developerDoc;
+	}
+	
+	public static void insertGame(String name, String date, String description, 
+			ArrayList<String> platforms, ArrayList<String> genres, ArrayList<String> developers) {
+		MongoDriver md;
+		MongoCollection<Document> collection;
+		ArrayList<Document> platformList;
+		ArrayList<Document> genresList;
+		ArrayList<Document> developersList;
+		Double rating = 0.0;
+		Document game;
+		
+		platformList = createPlatformList(platforms);
+		genresList = createGenresList(genres);
+		developersList = createDevelopersList(developers);
+		
+		game = new Document();
+		game.append("name", name);
+		game.append("released", date);
+		game.append("description", description);
+		game.append("rating", rating);
+		game.append("platforms", platformList);
+		game.append("genres", genresList);
+		game.append("developers", developersList);
+		
+		md = MongoDriver.getInstance();
+		collection = md.getCollection("games");
+		collection.insertOne(game);	
+	}
+
+
 }
