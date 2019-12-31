@@ -47,35 +47,28 @@ public class AdminMenuController {
     private AnchorPane anchorPaneRight;
 
     @FXML
+    private JFXButton deleteUpdateMenuPanel; 
+    
+    
+
+    @FXML
     void logout(MouseEvent event) {
     	try {
+    		Parent root;
+    		Stage stage;
     		
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/fxml/SignIn.fxml"));
-			Parent root = loader.load();
+			root = FXMLLoader.load(getClass().getResource("/fxml/SignIn.fxml"));
 			
-			Stage stage = (Stage)logout.getScene().getWindow();
+			stage = (Stage)logout.getScene().getWindow();
 			stage.setScene(new Scene(root));
-			stage.show();
-			
+			stage.show();	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
     }
 
     @FXML
-    void openAdmin(ActionEvent event) {
-    	try {
-			AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/AdminHomepage.fxml"));
-			anchorPaneRight.getChildren().setAll(pane);
-    	
-    	} catch (IOException e) {
-			e.printStackTrace();
-		} 
-    }
-
-    @FXML
-    void openHomepage(MouseEvent event) {
+    void openDeleteUpdateGame(ActionEvent event) {
     	try {
 			AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/AdminHomepage.fxml"));
 			anchorPaneRight.getChildren().setAll(pane);
@@ -109,7 +102,7 @@ public class AdminMenuController {
     
     public void initialize() {  		
 		try {
-			AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/AdminHomepage.fxml"));
+			AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/AdminStat.fxml"));
 			anchorPaneRight.getChildren().setAll(pane);
     	
     	} catch (IOException e) {
