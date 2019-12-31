@@ -9,15 +9,18 @@ import java.util.List;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
+import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.neo4j.driver.v1.Record;
 import org.neo4j.driver.v1.Session;
 import org.neo4j.driver.v1.StatementResult;
 import org.neo4j.driver.v1.Transaction;
 import org.neo4j.driver.v1.TransactionWork;
 
+import it.unipi.giar.GiarSession;
 import it.unipi.giar.MongoDriver;
 import it.unipi.giar.Neo4jDriver;
 
@@ -323,7 +326,7 @@ public class Game {
 			driver = MongoDriver.getInstance();
 			collection = driver.getCollection("games");
 			MongoCursor<Document> cursor = collection.find(regex(key, search, "i")).limit(50).batchSize(50).iterator();
-
+			
 			try {
 				while (cursor.hasNext()) {
 					Document document = cursor.next();
@@ -482,6 +485,76 @@ public class Game {
 		calculateRating();
 	}
 	
+	
+	public void deleteGame(String gameName) {
+		
+		try {
+			MongoDriver md;
+			MongoCollection<Document> collection;
+			
+			GiarSession session = GiarSession.getInstance();
+			session.setDeleted(true);
+			
+			md = MongoDriver.getInstance();
+			collection = md.getCollection("games");
+			collection.deleteOne(eq("name", gameName));
+			
+			deleteGameNode(gameName);	//delete from graph
+			deleteFromLists(gameName);	//delete from users lists
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void deleteFromLists(String gameName){
+		try {
+			Document game = new Document();
+			game.append("name", gameName);
+			
+			MongoDriver driver;
+			MongoCollection<Document> collection;
+			Bson filter;
+			Bson filter1;
+			Bson delete;
+			Bson delete1;
+			
+			driver = MongoDriver.getInstance();
+			collection = driver.getCollection("users");
+			
+			filter = Filters.eq("wishlist.name", gameName);
+			filter1 = Filters.eq("mygames.name", gameName);
+			
+			delete = Updates.pull("wishlist", game);
+			delete1 = Updates.pull("mygames", game);
+			
+			collection.updateMany(filter, delete);
+			collection.updateMany(filter1, delete1);
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public void deleteGameNode(String gameName){
+		
+		Neo4jDriver nd = Neo4jDriver.getInstance();
+		try (Session session = nd.getDriver().session()) {
+			session.writeTransaction(
+					new TransactionWork<Boolean>() {
+						@Override
+						public Boolean execute(Transaction tx) {
+							tx.run("MATCH (n:Game {name: $name}) "
+									+ "DETACH DELETE n"
+									, parameters("name", gameName));
+							return true;
+						}
+					}
+			);
+		}
+	}
+
+  
 	public static List<String> getAllDevelopers() {
 		MongoDriver driver = null;
 		MongoCollection<Document> collection = null;
@@ -559,5 +632,6 @@ public class Game {
 		collection = md.getCollection("games");
 		collection.insertOne(game);	
 	}
+
 
 }
