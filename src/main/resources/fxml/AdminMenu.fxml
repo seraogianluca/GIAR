@@ -49,7 +49,7 @@
                                  </font>
                               </JFXButton>
                               <JFXButton fx:id="statisticMenuPanel" layoutX="2.0" layoutY="50.0" onAction="#openStatistics" prefHeight="50.0" prefWidth="250.0" text="Stats" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                              <JFXButton fx:id="newgameMenuPanel" layoutY="100.0" onAction="#openInsertNewGame" prefHeight="50.0" prefWidth="250.0" text="Insert New Game" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                              <JFXButton fx:id="newgameMenuPanel" layoutY="100.0" onAction="#openInsertNewGame" prefHeight="50.0" prefWidth="250.0" text="New Game" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                            </children>
                         </AnchorPane>
                      </center>
