@@ -53,9 +53,9 @@ public class AdminInsertGameController {
 
 	@FXML
 	private JFXButton platAddButton;
-	
+
 	@FXML
-    private JFXButton platRemoveButton;
+	private JFXButton platRemoveButton;
 
 	@FXML
 	private Pane genresPane;
@@ -72,28 +72,28 @@ public class AdminInsertGameController {
 
 	@FXML
 	private JFXButton genAddButton;
-	
+
 	@FXML
-    private JFXButton genRemoveButton;
-	
+	private JFXButton genRemoveButton;
+
 	@FXML
-    private Pane developersPane;
+	private Pane developersPane;
 
-    @FXML
-    private Label developersLabel;
+	@FXML
+	private Label developersLabel;
 
-    @FXML
-    private JFXListView<String> developersList;
-    private ObservableList<String> devList;
+	@FXML
+	private JFXListView<String> developersList;
+	private ObservableList<String> devList;
 
-    @FXML
-    private JFXComboBox<String> developersCombo;
+	@FXML
+	private JFXComboBox<String> developersCombo;
 
-    @FXML
-    private JFXButton devAddButton;
+	@FXML
+	private JFXButton devAddButton;
 
-    @FXML
-    private JFXButton devRemoveButton;
+	@FXML
+	private JFXButton devRemoveButton;
 
 	private boolean errFlag = false;
 
@@ -105,7 +105,7 @@ public class AdminInsertGameController {
 		platforms = FXCollections.observableArrayList(Game.getAllPlatform());	
 		genres = FXCollections.observableArrayList(Game.getAllGenres());		
 		developers = FXCollections.observableArrayList(Game.getAllDevelopers());
-		
+
 		platformCombo.setItems(platforms);
 		genresCombo.setItems(genres);
 		developersCombo.setItems(developers);
@@ -126,11 +126,11 @@ public class AdminInsertGameController {
 		String dateIns;
 		String nameIns;
 		String descIns;
-		
+
 		nameIns = name.getText();
 		dateIns = date.getText();
 		descIns = description.getText();
-		
+
 		if(!Pattern.matches("(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](19|20)\\d\\d", dateIns)) {
 			setErrorMessage("Please insert a valid date.");
 		} else if(platList.size() == 0) {
@@ -142,20 +142,15 @@ public class AdminInsertGameController {
 		} else {	
 			message.setText("");
 			errFlag = false;
-		}
-		
-		if(!errFlag) {
+			
 			String[] dateString = dateIns.split("/");
 			String mongoDateString = dateString[2] + "-" + dateString[1] + "-" + dateString[0];
 			platformsString.addAll(platList);
 			genresString.addAll(genList);
 			developersString.addAll(devList);
-			
+
 			Game.insertGame(nameIns, mongoDateString, descIns, platformsString, genresString, developersString);
 			setAcknowledgement("Game correctly added.");
-			
-		} else {
-			setErrorMessage("Unexpected error.");
 		}
 	}
 
@@ -170,34 +165,34 @@ public class AdminInsertGameController {
 		genList.add(genresCombo.getValue());
 		genresCombo.setValue(null);
 	}
-	
+
 	@FXML
-    void insertDeveloper(ActionEvent event) {
+	void insertDeveloper(ActionEvent event) {
 		devList.add(developersCombo.getValue());
 		developersCombo.setValue(null);
-    }
-	
+	}
+
 	@FXML
-    void removePlatform(ActionEvent event) {
-    	platList.remove(platformList.getSelectionModel().getSelectedItem());
-    }
-	
+	void removePlatform(ActionEvent event) {
+		platList.remove(platformList.getSelectionModel().getSelectedItem());
+	}
+
 	@FXML
-    void removeGenre(ActionEvent event) {
+	void removeGenre(ActionEvent event) {
 		genList.remove(genresList.getSelectionModel().getSelectedItem());
-    }
-	
+	}
+
 	@FXML
-    void removeDeveloper(ActionEvent event) {
+	void removeDeveloper(ActionEvent event) {
 		devList.remove(developersList.getSelectionModel().getSelectedItem());
-    }
+	}
 
 	private void setErrorMessage(String msg) {
 		message.setText(msg);
 		message.setFill(Color.web("#db524b"));
 		errFlag = true;
 	}
-	
+
 	private void setAcknowledgement(String msg) {
 		message.setText(msg);
 		message.setFill(Color.web("#7bd500"));
