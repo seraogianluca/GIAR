@@ -78,13 +78,13 @@ public class UserBrowseController {
         
         ArrayList<Game> browseResult = null;
         if (type == "platform") {        	
-        	browseResult = Game.browseGamesPerPlatform(value);	
+        	browseResult = Game.browseGamesPerPlatform(value, false);	
         	
         } else if (type == "year") {        	
-        	browseResult = Game.browseGamesPerYear(value);	
+        	browseResult = Game.browseGamesPerYear(value, false);	
         	
         }else if (type == "genre") {
-        	browseResult = Game.browseGamesPerGenre(value);
+        	browseResult = Game.browseGamesPerGenre(value, false);
         }
         
     	for(Game game : browseResult) {

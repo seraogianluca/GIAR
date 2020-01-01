@@ -77,7 +77,7 @@ public class UserTopPerPlatformController {
         
         ArrayList<Game> topResult = null;
        // topResult = Game.TopPerPlatform(value);	//TO DO 
-        topResult = Game.searchGames("uo");//	this is a test to see if worked the table. to be deleted
+        topResult = Game.searchGames("uo", false);//	this is a test to see if worked the table. to be deleted
                 
     	for(Game game : topResult) {
     		games.add(new GameTable(game.getName(), Double.toString(game.getRating())));
