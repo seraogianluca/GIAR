@@ -19,7 +19,7 @@
                      <top>
                         <AnchorPane fx:id="logoMenuPanel" minHeight="-Infinity" minWidth="-Infinity" prefHeight="79.0" prefWidth="250.0" BorderPane.alignment="CENTER">
                            <children>
-                              <AnchorPane fx:id="homepageMenuPane" layoutX="56.0" layoutY="22.0" onMouseClicked="#openHomepage">
+                              <AnchorPane fx:id="homepageMenuPane" layoutX="56.0" layoutY="22.0" >
                                  <children>
                                     <AnchorPane>
                                        <children>
@@ -28,7 +28,7 @@
                                                 <Image url="@../images/logoy.png" />
                                              </image>
                                           </ImageView>
-                                          <Text fx:id="homepageMenuPanel" fill="#ffff0d" layoutY="40.0" onMouseClicked="#openHomepage" strokeType="OUTSIDE" strokeWidth="0.0" text="GIAR">
+                                          <Text fx:id="homepageMenuPanel" fill="#ffff0d" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GIAR">
                                              <font>
                                                 <Font name="System Bold" size="32.0" />
                                              </font>
@@ -43,13 +43,11 @@
                      <center>
                         <AnchorPane prefHeight="518.0" prefWidth="250.0" BorderPane.alignment="CENTER">
                            <children>
-                              <JFXButton fx:id="adminNameMenuPanel" minHeight="-Infinity" minWidth="-Infinity" onAction="#openAdmin" prefHeight="50.0" prefWidth="250.0" text="AdminName" textAlignment="JUSTIFY" textFill="#000000bc" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton fx:id="statisticMenuPanel" layoutX="2.0" layoutY="50.0" onAction="#openStatistics" prefHeight="50.0" prefWidth="250.0" text="Stats" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                              <JFXButton fx:id="newgameMenuPanel" layoutY="100.0" onAction="#openInsertNewGame" prefHeight="50.0" prefWidth="250.0" text="Insert New Game" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+
+                              <JFXButton fx:id="statisticMenuPanel" focusTraversable="false" onAction="#openStatistics" prefHeight="50.0" prefWidth="250.0" text="Stats" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                              <JFXButton fx:id="newgameMenuPanel" focusTraversable="false" layoutY="50.0" onAction="#openInsertNewGame" prefHeight="50.0" prefWidth="250.0" text="Insert New Game" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                              <JFXButton fx:id="deleteUpdateMenuPanel" focusTraversable="false" layoutY="100.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#openDeleteUpdateGame" prefHeight="50.0" prefWidth="250.0" text="Delete/Update Game" textAlignment="JUSTIFY" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0" />
+
                            </children>
                         </AnchorPane>
                      </center>

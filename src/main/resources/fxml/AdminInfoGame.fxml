@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipi.giar.Controller.AdminInfoGameController">
+   <children>
+      <BorderPane prefHeight="600.0" prefWidth="650.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="46.0" prefWidth="650.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Text fx:id="name" layoutX="230.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" AnchorPane.leftAnchor="60.0">
+                     <font>
+                        <Font name="System Bold" size="33.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <AnchorPane BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="46.0" layoutY="163.0">
+                     <image>
+                        <Image url="@../images/stary.png" />
+                     </image>
+                  </ImageView>
+                  <ScrollPane hbarPolicy="NEVER" layoutX="60.0" layoutY="257.0" prefHeight="130.0" prefWidth="537.0" AnchorPane.leftAnchor="60.0">
+                     <content>
+                        <Text fx:id="description" strokeType="OUTSIDE" strokeWidth="0.0" text="ddddd" wrappingWidth="519.044921875" />
+                     </content>
+                  </ScrollPane>
+                  <Text layoutX="60.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrition:" AnchorPane.leftAnchor="60.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Text>
+                  <Text layoutX="61.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rating:" AnchorPane.leftAnchor="61.0">
+                 
+                     <font>
+                        <Font size="18.0" />
+                     </font></Text>
+                  <Text fx:id="rating" layoutX="141.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="120.0">
+                     <font>
+                        <Font name="System Bold Italic" size="27.0" />
+                     </font>
+                  </Text>
+                  <JFXButton fx:id="updateButton" focusTraversable="false" layoutX="57.0" layoutY="14.0" onAction="#update" prefHeight="33.0" prefWidth="138.0" style="-fx-background-color: #ffff0d;" text="Update" AnchorPane.leftAnchor="60.0" />
+                  <JFXButton fx:id="deleteButton" focusTraversable="false" layoutX="220.0" layoutY="14.0" onAction="#delete" prefHeight="33.0" prefWidth="138.0" style="-fx-background-color: red;" text="Delete" AnchorPane.leftAnchor="220.0" />
+                  <Text layoutX="60.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of release:" AnchorPane.leftAnchor="60.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Text>
+                  <Text fx:id="released" layoutX="228.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="240.0">
+                     <font>
+                        <Font name="System Bold Italic" size="27.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="61.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Metacritic Rating: " AnchorPane.leftAnchor="61.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Text>
+                  <Text fx:id="metacritic" layoutX="215.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="81">
+                     <font>
+                        <Font name="System Bold Italic" size="27.0" />
+                     </font>
+                  </Text>
+                  <ListView fx:id="platforms" layoutX="57.0" layoutY="430.0" prefHeight="74.0" prefWidth="157.0" AnchorPane.leftAnchor="57.0" />
+                  <ListView fx:id="genres" layoutX="237.0" layoutY="428.0" prefHeight="77.0" prefWidth="164.0" />
+                  <ListView fx:id="developers" layoutX="421.0" layoutY="427.0" prefHeight="78.0" prefWidth="179.0" />
+                  <Text layoutX="57.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Platforms:" AnchorPane.leftAnchor="57.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Text>
+                  <Text layoutX="237.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Genres:">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Text>
+                  <Text layoutX="421.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Developers:">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Text>
+               </children>
+            </AnchorPane>
+         </center></BorderPane>
+   </children>
+</AnchorPane>

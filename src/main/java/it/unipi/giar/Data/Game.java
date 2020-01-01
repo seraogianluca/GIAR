@@ -9,15 +9,18 @@ import java.util.List;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
+import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.neo4j.driver.v1.Record;
 import org.neo4j.driver.v1.Session;
 import org.neo4j.driver.v1.StatementResult;
 import org.neo4j.driver.v1.Transaction;
 import org.neo4j.driver.v1.TransactionWork;
 
+import it.unipi.giar.GiarSession;
 import it.unipi.giar.MongoDriver;
 import it.unipi.giar.Neo4jDriver;
 
@@ -487,5 +490,154 @@ public class Game {
 		updatePercentage(newRate);
 		calculateRating();
 	}
+	
+	
+	public void deleteGame(String gameName) {
+		
+		try {
+			MongoDriver md;
+			MongoCollection<Document> collection;
+			
+			GiarSession session = GiarSession.getInstance();
+			session.setDeleted(true);
+			
+			md = MongoDriver.getInstance();
+			collection = md.getCollection("games");
+			collection.deleteOne(eq("name", gameName));
+			
+			deleteGameNode(gameName);	//delete from graph
+			deleteFromLists(gameName);	//delete from users lists
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void deleteFromLists(String gameName){
+		try {
+			Document game = new Document();
+			game.append("name", gameName);
+			
+			MongoDriver driver;
+			MongoCollection<Document> collection;
+			Bson filter;
+			Bson filter1;
+			Bson delete;
+			Bson delete1;
+			
+			driver = MongoDriver.getInstance();
+			collection = driver.getCollection("users");
+			
+			filter = Filters.eq("wishlist.name", gameName);
+			filter1 = Filters.eq("mygames.name", gameName);
+			
+			delete = Updates.pull("wishlist", game);
+			delete1 = Updates.pull("mygames", game);
+			
+			collection.updateMany(filter, delete);
+			collection.updateMany(filter1, delete1);
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public void deleteGameNode(String gameName){
+		
+		Neo4jDriver nd = Neo4jDriver.getInstance();
+		try (Session session = nd.getDriver().session()) {
+			session.writeTransaction(
+					new TransactionWork<Boolean>() {
+						@Override
+						public Boolean execute(Transaction tx) {
+							tx.run("MATCH (n:Game {name: $name}) "
+									+ "DETACH DELETE n"
+									, parameters("name", gameName));
+							return true;
+						}
+					}
+			);
+		}
+	}
+
+  
+	public static List<String> getAllDevelopers() {
+		MongoDriver driver = null;
+		MongoCollection<Document> collection = null;
+		List<String> items = new ArrayList<>();		
+		try {
+			driver = MongoDriver.getInstance();
+			collection = driver.getCollection("games");
+			MongoCursor<Document> cursor = collection.aggregate(Arrays.asList(unwind("$developers"), group("$developers.name"), sort(ascending("_id")))).iterator();
+			while (cursor.hasNext()) {
+				items.add(cursor.next().getString("_id"));
+			}
+			cursor.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return items;	
+	}
+	
+	private static ArrayList<Document> createPlatformList(ArrayList<String> platforms) {
+		ArrayList<Document> platformDoc = new ArrayList<Document>();
+		
+		for(String name : platforms) {
+			Document plat = new Document();
+			plat.append("platform", new Document().append("name", name));
+			platformDoc.add(plat);
+		}
+		
+		return platformDoc;
+	}
+	
+	private static ArrayList<Document> createGenresList(ArrayList<String> genres) {
+		ArrayList<Document> genreDoc = new ArrayList<Document>();
+		
+		for(String name : genres) {
+			genreDoc.add(new Document().append("name", name));
+		}
+		
+		return genreDoc;
+	}
+	
+	private static ArrayList<Document> createDevelopersList(ArrayList<String> developers) {
+		ArrayList<Document> developerDoc = new ArrayList<Document>();
+		
+		for(String name : developers) {
+			developerDoc.add(new Document().append("name", name));
+		}
+		
+		return developerDoc;
+	}
+	
+	public static void insertGame(String name, String date, String description, 
+			ArrayList<String> platforms, ArrayList<String> genres, ArrayList<String> developers) {
+		MongoDriver md;
+		MongoCollection<Document> collection;
+		ArrayList<Document> platformList;
+		ArrayList<Document> genresList;
+		ArrayList<Document> developersList;
+		Double rating = 0.0;
+		Document game;
+		
+		platformList = createPlatformList(platforms);
+		genresList = createGenresList(genres);
+		developersList = createDevelopersList(developers);
+		
+		game = new Document();
+		game.append("name", name);
+		game.append("released", date);
+		game.append("description", description);
+		game.append("rating", rating);
+		game.append("platforms", platformList);
+		game.append("genres", genresList);
+		game.append("developers", developersList);
+		
+		md = MongoDriver.getInstance();
+		collection = md.getCollection("games");
+		collection.insertOne(game);	
+	}
+
 
 }
