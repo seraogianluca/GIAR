@@ -42,7 +42,7 @@ public class UserTopPerPlatformController {
     	//this.user = UserMenuController.user;
     	plat.setText(value);
     	JFXTreeTableColumn<GameTable, String> gameName = new JFXTreeTableColumn<GameTable, String>("Name"); 
-    	gameName.prefWidthProperty().bind(gamesTable3.widthProperty().divide(2));
+    	gameName.prefWidthProperty().bind(gamesTable3.widthProperty().divide(4).multiply(3));
         gameName.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<GameTable, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<GameTable, String> param) {
@@ -50,7 +50,7 @@ public class UserTopPerPlatformController {
             }
         });        
         JFXTreeTableColumn<GameTable, String> gameRating = new JFXTreeTableColumn<GameTable, String>("Rating"); 
-        gameRating.prefWidthProperty().bind(gamesTable3.widthProperty().divide(2));
+        gameRating.prefWidthProperty().bind(gamesTable3.widthProperty().divide(4));
         gameRating.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<GameTable, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<GameTable, String> param) {
@@ -77,7 +77,7 @@ public class UserTopPerPlatformController {
         
         ArrayList<Game> topResult = null;
        // topResult = Game.TopPerPlatform(value);	//TO DO 
-        topResult = Game.searchGames("uo");//	this is a test to see if worked the table. to be deleted
+        topResult = Game.searchGames("uo", false);//	this is a test to see if worked the table. to be deleted
                 
     	for(Game game : topResult) {
     		games.add(new GameTable(game.getName(), Double.toString(game.getRating())));

@@ -86,7 +86,7 @@ public class AdminHomepageController {
         } else if (event.getCode().name().equals("BACK_SPACE") 
         || (searchGames.getText().charAt(searchGames.getText().length() - 1) == (event.getText().charAt(0)))){
             
-            ArrayList<Game> searchResult = Game.searchGames(searchGames.getText());
+            ArrayList<Game> searchResult = Game.searchGames(searchGames.getText(), false);
 
             for (Game game : searchResult) {
                 games.add(new GameTable(game.getName(), Double.toString(game.getRating())));
