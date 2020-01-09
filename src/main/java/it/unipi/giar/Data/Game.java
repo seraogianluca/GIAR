@@ -35,6 +35,11 @@ import static com.mongodb.client.model.Aggregates.skip;
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.regex;
+import static com.mongodb.client.model.Filters.gt;
+import static com.mongodb.client.model.Aggregates.limit;
+import static com.mongodb.client.model.Accumulators.first;
+import static com.mongodb.client.model.Sorts.descending;
+
 
 public class Game {
 	private int id;
@@ -633,5 +638,32 @@ public class Game {
 		collection.insertOne(game);	
 	}
 
+	
+	public static ArrayList<Document> TopPerPlatform(String value) {
+		ArrayList<Document> listGames = new ArrayList<Document>();
+		MongoDriver driver = null;
+		MongoCollection<Document> collection = null;
 
+		try {
+			driver = MongoDriver.getInstance();
+			collection = driver.getCollection("games");
+			MongoCursor<Document> cursor = collection.aggregate(Arrays.asList(match(and(eq("platforms.platform.name", value), gt("rating", 3L))), unwind("$ratings"), group("$id", sum("ratings_count", "$ratings.count"), first("rating", "$rating"), first("name", "$name")), sort(descending("ratings_count")), limit(10), sort(descending("rating")))).iterator();
+			
+			try {
+				while (cursor.hasNext()) {
+					Document document = cursor.next();
+					listGames.add(document);
+				}
+				
+			} finally {
+				cursor.close();
+			}
+
+			return listGames;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
