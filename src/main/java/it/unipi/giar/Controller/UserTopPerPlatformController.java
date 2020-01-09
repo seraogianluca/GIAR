@@ -42,7 +42,7 @@ public class UserTopPerPlatformController {
     	
     	plat.setText(value);
     	JFXTreeTableColumn<GameTable, String> gameName = new JFXTreeTableColumn<GameTable, String>("Name"); 
-    	gameName.prefWidthProperty().bind(gamesTable3.widthProperty().divide(2));
+    	gameName.prefWidthProperty().bind(gamesTable3.widthProperty().divide(4).multiply(3));
         gameName.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<GameTable, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<GameTable, String> param) {
@@ -50,7 +50,7 @@ public class UserTopPerPlatformController {
             }
         });        
         JFXTreeTableColumn<GameTable, String> gameRating = new JFXTreeTableColumn<GameTable, String>("Rating"); 
-        gameRating.prefWidthProperty().bind(gamesTable3.widthProperty().divide(2));
+        gameRating.prefWidthProperty().bind(gamesTable3.widthProperty().divide(4));
         gameRating.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<GameTable, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<GameTable, String> param) {
@@ -76,11 +76,13 @@ public class UserTopPerPlatformController {
         gamesTable3.setShowRoot(false);
         
         
+
         ArrayList<Document> topResult = null;
         topResult = Game.TopPerPlatform(value);	
         
     	for(Document game : topResult) {
     		games.add(new GameTable(game.get("name").toString(), game.get("rating").toString()));
+
     	}
     }
     

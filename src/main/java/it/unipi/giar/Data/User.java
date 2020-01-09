@@ -2,6 +2,8 @@ package it.unipi.giar.Data;
 
 import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import javax.xml.bind.DatatypeConverter;
@@ -15,8 +17,10 @@ import org.bson.Document;
 import org.bson.conversions.Bson;
 
 import com.mongodb.BasicDBObject;
+import com.mongodb.client.AggregateIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoIterable;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 
@@ -25,7 +29,15 @@ import it.unipi.giar.MongoDriver;
 import it.unipi.giar.Neo4jDriver;
 
 import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Accumulators.sum;
+import static com.mongodb.client.model.Aggregates.group;
+import static com.mongodb.client.model.Aggregates.match;
+import static com.mongodb.client.model.Aggregates.unwind;
 import static com.mongodb.client.model.Filters.and;
+import static com.mongodb.client.model.Aggregates.limit;
+import static com.mongodb.client.model.Aggregates.sort;
+import static com.mongodb.client.model.Sorts.descending;
+
 import static org.neo4j.driver.v1.Values.parameters;
 
 public class User {
@@ -596,6 +608,28 @@ public class User {
 		}
 		
 		ratings.add(rate);
+	}
+	
+	public static MongoIterable<Document> gameDistributionPerCountry(String country) {
+		
+		MongoDriver md;
+		MongoCollection<Document> collection;
+		MongoIterable<Document> total;
+
+		md = MongoDriver.getInstance();
+		collection = md.getCollection("users");
+
+		total = collection.aggregate( Arrays.asList(match(eq("country", country)), unwind("$mygames"), group("$mygames.name", sum("count", 1L)), sort(descending("count")), limit(10)));
+		
+		for(Bson b: total) {
+			System.out.println(b.toString());
+				
+		}
+		
+		return total;
+		
+		
+		
 	}
 
 }

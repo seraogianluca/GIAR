@@ -59,9 +59,8 @@ public class Game {
 	private ArrayList<Genre> genres;
 
 	public Game(int id, String slug, String name, String nameOriginal, String description, int metacritic,
-			Date released, String backgroundImage, double rating, long added,
-			long addedWishlist, long addedMyGames, ArrayList<Platform> platforms, ArrayList<Developer> developers,
-			ArrayList<Genre> genres) {
+			Date released, String backgroundImage, double rating, long added, long addedWishlist, long addedMyGames,
+			ArrayList<Platform> platforms, ArrayList<Developer> developers, ArrayList<Genre> genres) {
 		this.id = id;
 		this.slug = slug;
 		this.name = name;
@@ -78,7 +77,7 @@ public class Game {
 		this.developers = developers;
 		this.genres = genres;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public Game(Document document) {
 		SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-mm-dd");
@@ -98,7 +97,7 @@ public class Game {
 		// this.added = (this.addedWishlist + this.addedMyGames);
 
 		List<Document> platformDoc = new ArrayList<Document>();
-		platformDoc = (List<Document>)document.get("platforms");
+		platformDoc = (List<Document>) document.get("platforms");
 
 		if (platformDoc.isEmpty()) {
 			this.platforms = new ArrayList<Platform>();
@@ -106,12 +105,12 @@ public class Game {
 			this.platforms = new ArrayList<Platform>();
 
 			for (Document doc : platformDoc) {
-				this.platforms.add(new Platform((Document)doc.get("platform")));
+				this.platforms.add(new Platform((Document) doc.get("platform")));
 			}
 		}
 
 		List<Document> developDoc = new ArrayList<Document>();
-		developDoc = (List<Document>)document.get("developers");
+		developDoc = (List<Document>) document.get("developers");
 
 		if (developDoc.isEmpty()) {
 			this.developers = new ArrayList<Developer>();
@@ -124,7 +123,7 @@ public class Game {
 		}
 
 		List<Document> genresDoc = new ArrayList<Document>();
-		genresDoc = (List<Document>)document.get("genres");
+		genresDoc = (List<Document>) document.get("genres");
 
 		if (genresDoc.isEmpty()) {
 			this.genres = new ArrayList<Genre>();
@@ -143,7 +142,7 @@ public class Game {
 			this.released = new Date();
 		}
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -255,16 +254,18 @@ public class Game {
 	public static List<String> getAllPlatform() {
 		MongoDriver driver = null;
 		MongoCollection<Document> collection = null;
-		List<String> items = new ArrayList<>();		
+		List<String> items = new ArrayList<>();
 		try {
 			driver = MongoDriver.getInstance();
 			collection = driver.getCollection("games");
-			MongoCursor<Document> cursor = collection.aggregate(Arrays.asList(unwind("$platforms"), group("$platforms.platform.name"), sort(ascending("_id")))).iterator();
+			MongoCursor<Document> cursor = collection.aggregate(
+					Arrays.asList(unwind("$platforms"), group("$platforms.platform.name"), sort(ascending("_id"))))
+					.iterator();
 			while (cursor.hasNext()) {
 				items.add(cursor.next().getString("_id"));
 			}
 			cursor.close();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return items;
@@ -273,16 +274,17 @@ public class Game {
 	public static List<String> getAllYears() {
 		MongoDriver driver = null;
 		MongoCollection<Document> collection = null;
-		List<String> items = new ArrayList<>();		
+		List<String> items = new ArrayList<>();
 		try {
 			driver = MongoDriver.getInstance();
 			collection = driver.getCollection("games");
-			MongoCursor<Document> cursor = collection.aggregate(Arrays.asList(group("$year"), sort(ascending("_id")), skip(1))).iterator();
+			MongoCursor<Document> cursor = collection
+					.aggregate(Arrays.asList(group("$year"), sort(ascending("_id")), skip(1))).iterator();
 			while (cursor.hasNext()) {
 				items.add(cursor.next().getString("_id"));
 			}
 			cursor.close();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return items;
@@ -291,47 +293,54 @@ public class Game {
 	public static List<String> getAllGenres() {
 		MongoDriver driver = null;
 		MongoCollection<Document> collection = null;
-		List<String> items = new ArrayList<>();		
+		List<String> items = new ArrayList<>();
 		try {
 			driver = MongoDriver.getInstance();
 			collection = driver.getCollection("games");
-			MongoCursor<Document> cursor = collection.aggregate(Arrays.asList(unwind("$genres"), group("$genres.name"), sort(ascending("_id")))).iterator();
+			MongoCursor<Document> cursor = collection
+					.aggregate(Arrays.asList(unwind("$genres"), group("$genres.name"), sort(ascending("_id"))))
+					.iterator();
 			while (cursor.hasNext()) {
 				items.add(cursor.next().getString("_id"));
 			}
 			cursor.close();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return items;	
-	}
-	
-	public static ArrayList<Game> browseGamesPerPlatform(String value) {
-		return searchGames("platforms.platform.name", value);
-	}
-	
-	public static ArrayList<Game> browseGamesPerGenre(String value) {
-		return searchGames("genres.name", value);
-	}
-	
-	public static ArrayList<Game> browseGamesPerYear(String value) {
-		return searchGames("year", value);
+		return items;
 	}
 
-	public static ArrayList<Game> searchGames(String search) {
-		return searchGames("name", search);
+	public static ArrayList<Game> browseGamesPerPlatform(String value, Boolean searchAll) {
+		return searchGames("platforms.platform.name", value, searchAll);
 	}
 
-	public static ArrayList<Game> searchGames(String key, String search) {
+	public static ArrayList<Game> browseGamesPerGenre(String value, Boolean searchAll) {
+		return searchGames("genres.name", value, searchAll);
+	}
+
+	public static ArrayList<Game> browseGamesPerYear(String value, Boolean searchAll) {
+		return searchGames("year", value, searchAll);
+	}
+
+	public static ArrayList<Game> searchGames(String search, Boolean searchAll) {
+		return searchGames("name", search, searchAll);
+	}
+
+	// Flag SearchAll. True return all the results without limit
+	public static ArrayList<Game> searchGames(String key, String search, Boolean searchAll) {
 		ArrayList<Game> listGames = new ArrayList<Game>();
 		MongoDriver driver = null;
 		MongoCollection<Document> collection = null;
-
+		MongoCursor<Document> cursor;
 		try {
 			driver = MongoDriver.getInstance();
 			collection = driver.getCollection("games");
-			MongoCursor<Document> cursor = collection.find(regex(key, search, "i")).limit(50).batchSize(50).iterator();
-			
+			if (searchAll) {
+				cursor = collection.find(regex(key, search, "i")).batchSize(1500).iterator();
+			} else {
+				cursor = collection.find(regex(key, search, "i")).limit(10).batchSize(10).iterator();
+			}
+
 			try {
 				while (cursor.hasNext()) {
 					Document document = cursor.next();
@@ -368,26 +377,24 @@ public class Game {
 		ArrayList<Game> games = new ArrayList<Game>();
 		Neo4jDriver nd = Neo4jDriver.getInstance();
 		try (Session session = nd.getDriver().session()) {
-			session.writeTransaction(
-					new TransactionWork<Boolean>() {
-						@Override
-						public Boolean execute(Transaction tx) {
-							StatementResult result = tx.run("MATCH ()-[:FOLLOW]-(p:Player)-[:WISHED]-(game) "
-									+ "WHERE p.nickname = $friend "
-									+ "RETURN DISTINCT game.name AS game",parameters ("friend", friendNickname));
+			session.writeTransaction(new TransactionWork<Boolean>() {
+				@Override
+				public Boolean execute(Transaction tx) {
+					StatementResult result = tx.run("MATCH ()-[:FOLLOW]-(p:Player)-[:WISHED]-(game) "
+							+ "WHERE p.nickname = $friend " + "RETURN DISTINCT game.name AS game",
+							parameters("friend", friendNickname));
 
-							while(result.hasNext()) {
-								Record record = result.next();
-								Game game = Game.findGame(record.get("game").asString());
-								if(game != null) {
-									games.add(game);
-								}
-							}
-
-							return true;
-						};
+					while (result.hasNext()) {
+						Record record = result.next();
+						Game game = Game.findGame(record.get("game").asString());
+						if (game != null) {
+							games.add(game);
+						}
 					}
-					);
+
+					return true;
+				};
+			});
 		}
 
 		return games;
@@ -401,9 +408,7 @@ public class Game {
 		md = MongoDriver.getInstance();
 		collection = md.getCollection("games");
 
-		total = collection.aggregate(Arrays.asList(
-				match(eq("name", this.name)),
-				unwind("$ratings"),
+		total = collection.aggregate(Arrays.asList(match(eq("name", this.name)), unwind("$ratings"),
 				group("$_id", sum("count", "$ratings.count")))).first();
 
 		return total.getInteger("count");
@@ -423,9 +428,9 @@ public class Game {
 
 		game = collection.find(eq("name", this.name)).first();
 
-		ratings = (ArrayList<Document>)game.get("ratings");
+		ratings = (ArrayList<Document>) game.get("ratings");
 
-		for(Document r : ratings) {
+		for (Document r : ratings) {
 			ratingCount = r.getInteger("count");
 			totalRatingCount = getTotalRating();
 
@@ -447,9 +452,9 @@ public class Game {
 		collection = md.getCollection("games");
 		game = collection.find(eq("name", this.name)).first();
 
-		ratings = (ArrayList<Document>)game.get("ratings");
+		ratings = (ArrayList<Document>) game.get("ratings");
 
-		for(Document r : ratings) {
+		for (Document r : ratings) {
 			num += (Integer.parseInt(r.getString("title")) * r.getInteger("count"));
 			den += r.getInteger("count");
 		}
@@ -468,15 +473,16 @@ public class Game {
 		md = MongoDriver.getInstance();
 		collection = md.getCollection("games");
 
-		if(oldRate != null) {
+		if (oldRate != null) {
 			collection.updateOne(and(eq("name", this.name), eq("ratings.title", oldRate)),
 					Updates.inc("ratings.$.count", -1));
 		}
 
-		modified = collection.updateOne(and(eq("name", this.name), eq("ratings.title", newRate)),
-				Updates.inc("ratings.$.count", 1)).getModifiedCount();
+		modified = collection
+				.updateOne(and(eq("name", this.name), eq("ratings.title", newRate)), Updates.inc("ratings.$.count", 1))
+				.getModifiedCount();
 
-		if(modified == 0) {
+		if (modified == 0) {
 			rate = new Document();
 			rate.append("id", Integer.parseInt(newRate));
 			rate.append("title", newRate);
