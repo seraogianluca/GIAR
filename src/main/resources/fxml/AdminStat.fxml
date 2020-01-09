@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
@@ -21,6 +24,21 @@
             </AnchorPane>
          </top>
          <center>
+         </center>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXComboBox fx:id="comboCountry" layoutX="20.0" layoutY="14.0" onAction="#statistics" />
+                  <BarChart id="chart" fx:id="chart" layoutX="6.0" layoutY="59.0" prefHeight="417.0" prefWidth="609.0" title="Stats">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" fx:id="xAxe" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis fx:id="yAxe" side="LEFT" />
+                    </yAxis>
+                  </BarChart>
+               </children>
+            </AnchorPane>
          </center>
       </BorderPane>
    </children>
