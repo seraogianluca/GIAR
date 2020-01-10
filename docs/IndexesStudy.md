@@ -2,8 +2,8 @@
 
 ## Table of contents
 1) [Introduction](#1-introduction)
-2) [`platforms.platform.name`](#2-`platforms.platform.name`)
-3) [`genres.name`](#2-`genres.name`)
+2) [`platforms platform name`](#2-`platforms.platform.name`)
+3) [`genres name`](#2-`genres.name`)
 4) [`year`](#2-`year`)
 
 ## 1. Introduction
