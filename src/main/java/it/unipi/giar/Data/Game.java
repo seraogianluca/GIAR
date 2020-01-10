@@ -743,6 +743,7 @@ public class Game {
 					}
 			);
 		}
+	}
 	
 	public static ArrayList<Document> TopPerPlatform(String value) {
 		ArrayList<Document> listGames = new ArrayList<Document>();
