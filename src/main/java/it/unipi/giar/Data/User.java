@@ -3,7 +3,6 @@ package it.unipi.giar.Data;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Pattern;
 
 import javax.xml.bind.DatatypeConverter;
@@ -17,7 +16,6 @@ import org.bson.Document;
 import org.bson.conversions.Bson;
 
 import com.mongodb.BasicDBObject;
-import com.mongodb.client.AggregateIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoIterable;
@@ -42,20 +40,16 @@ import static org.neo4j.driver.v1.Values.parameters;
 
 public class User {
 
-	private String type;
 	private String nickname;
 	private String email;
-	private String password;
 	private String country;
 	private ArrayList<Document> wishlist;
 	private ArrayList<Document> myGames;
 	private ArrayList<Document> ratings;
 	
 	public User(String type, String nickname, String email, String password, String country) {
-		this.type = type;
 		this.nickname = nickname;
 		this.email = email;
-		this.password = password;
 		this.country = country;
 		this.wishlist = new ArrayList<Document>();
 		this.myGames = new ArrayList<Document>();
@@ -76,10 +70,8 @@ public class User {
 			user = collection.find(eq("nickname", nickname)).first();
 			
 			this.nickname = user.getString("nickname");
-			this.type = user.getString("type");
-			this.email=user.getString("email");
-			this.password=user.getString("password");
-			this.country=user.getString("country");
+			this.email = user.getString("email");
+			this.country = user.getString("country");
 			this.wishlist = new ArrayList<>();
 			this.myGames = new ArrayList<>();
 			this.ratings = new ArrayList<>();
@@ -395,7 +387,7 @@ public class User {
 	private static void createUserNode(String nick) {
 		Neo4jDriver nd = Neo4jDriver.getInstance();
 		try (Session session = nd.getDriver().session()) {
-			session.run("CREATE (n:Player {nickname: $nickname, pro: $pro})", parameters("nickname", nick, "pro", false));
+			session.run("CREATE (n:Player {nickname: $nickname, pro: false})", parameters("nickname", nick));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -626,10 +618,112 @@ public class User {
 				
 		}
 		
-		return total;
+		return total;	
+	}
+	
+	public static boolean isPro(String nickname) {
+		Neo4jDriver nd = Neo4jDriver.getInstance();
+		try (Session session = nd.getDriver().session()) {
+			return session.readTransaction(
+					new TransactionWork<Boolean>() {
+						@Override
+						public Boolean execute(Transaction tx) {
+							StatementResult result = tx.run("MATCH (p:Player) "
+									+ "WHERE p.nickname = $nickname "
+									+ "RETURN p.pro AS pro"
+									,parameters("nickname", nickname));
+							return result.next().get("pro").asBoolean();		
+						};
+					}
+			);
+		}
+	}
+	
+	private static int getPlayers() {
+		Neo4jDriver nd = Neo4jDriver.getInstance();
+		try (Session session = nd.getDriver().session()) {
+			return session.readTransaction(
+					new TransactionWork<Integer>() {
+						@Override
+						public Integer execute(Transaction tx) {
+							StatementResult result = tx.run("MATCH (n:Player) "
+									+ "RETURN COUNT(n) AS players");	
+							return result.next().get("players").asInt();
+						};
+					}
+			);
+		}
+	}
+	
+	private static int getFollow() {
+		Neo4jDriver nd = Neo4jDriver.getInstance();
+		try (Session session = nd.getDriver().session()) {
+			return session.readTransaction(
+					new TransactionWork<Integer>() {
+						@Override
+						public Integer execute(Transaction tx) {
+							StatementResult result = tx.run("MATCH ()-[r:FOLLOW]->() "
+									+ "RETURN COUNT(r) AS follow");	
+							return result.next().get("follow").asInt();
+						};
+					}
+			);
+		}
+	}
+	
+	private static int getFollowing(String nickname) {
+		Neo4jDriver nd = Neo4jDriver.getInstance();
+		try (Session session = nd.getDriver().session()) {
+			return session.readTransaction(
+					new TransactionWork<Integer>() {
+						@Override
+						public Integer execute(Transaction tx) {
+							StatementResult result = tx.run("MATCH ()-[r:FOLLOW]->(p:Player)"
+									+ "WHERE p.nickname = $nickname"
+									+ " RETURN count(r) AS follow"
+									, parameters("nickname", nickname));	
+							return result.next().get("follow").asInt();
+						};
+					}
+			);
+		}
+	}
+	
+	private static boolean setPro(String nickname) {
+		Neo4jDriver nd = Neo4jDriver.getInstance();
+		try (Session session = nd.getDriver().session()) {
+			return session.writeTransaction(
+					new TransactionWork<Boolean>() {
+						@Override
+						public Boolean execute(Transaction tx) {
+							StatementResult result = tx.run("MATCH (p:Player) "
+									+ "WHERE p.nickname = $nickname "
+									+ "SET p.pro = true " 
+									+ "RETURN p.pro AS pro"
+									, parameters("nickname", nickname));	
+							return result.next().get("pro").asBoolean();
+						};
+					}
+			);
+		}
+	}
+	
+	public static boolean checkPro(String nickname) {
+		int players = getPlayers();
+		int follow = getFollow();
+		int following = getFollowing(nickname);
+		double threshold = (double)follow / (double)players;
 		
+		System.out.println(follow);
+		System.out.println(players);
+		System.out.println(threshold);
+		System.out.println(following);
 		
+		if(following >= threshold) {
+			return setPro(nickname);
+		}
 		
+		return false;
 	}
 
 }

@@ -62,7 +62,7 @@
                                     <Image url="@../images/gamey.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="90.0" layoutY="7.0">
+                              <ImageView fx:id="userBadge" fitHeight="25.0" fitWidth="25.0" layoutX="90.0" layoutY="7.0">
                                  <image>
                                     <Image url="@../images/USERY.png" />
                                  </image>
