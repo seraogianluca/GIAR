@@ -95,8 +95,6 @@ public class AdminInsertGameController {
 	@FXML
 	private JFXButton devRemoveButton;
 
-	private boolean errFlag = false;
-
 	public void initialize() {
 		ObservableList<String> platforms;
 		ObservableList<String> genres;
@@ -141,7 +139,6 @@ public class AdminInsertGameController {
 			setErrorMessage("Please insert at least a developer.");
 		} else {	
 			message.setText("");
-			errFlag = false;
 			
 			String[] dateString = dateIns.split("/");
 			String mongoDateString = dateString[2] + "-" + dateString[1] + "-" + dateString[0];
@@ -190,13 +187,11 @@ public class AdminInsertGameController {
 	private void setErrorMessage(String msg) {
 		message.setText(msg);
 		message.setFill(Color.web("#db524b"));
-		errFlag = true;
 	}
 
 	private void setAcknowledgement(String msg) {
 		message.setText(msg);
 		message.setFill(Color.web("#7bd500"));
-		errFlag = false;
 	}
 
 }

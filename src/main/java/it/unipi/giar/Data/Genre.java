@@ -3,7 +3,7 @@ package it.unipi.giar.Data;
 import org.bson.Document;
 
 public class Genre {
-	private final long id;
+	private long id;
 	private String name;
 	private String slug;
 
@@ -17,6 +17,10 @@ public class Genre {
 		this.id = id;
 		this.name = name;
 		this.slug = slug;
+	}
+	
+	public Genre(String name) {
+		this.name = name;
 	}
 
 	public void setName(String name) {
