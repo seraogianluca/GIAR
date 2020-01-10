@@ -57,7 +57,7 @@
                      <font>
                         <Font size="18.0" />
                      </font></Text>
-                  <Text fx:id="released" layoutX="228.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="240.0">
+                  <Text fx:id="released" layoutX="205.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="240.0">
                      <font>
                         <Font name="System Bold Italic" size="27.0" />
                      </font>

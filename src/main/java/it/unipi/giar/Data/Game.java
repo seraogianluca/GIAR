@@ -1,5 +1,6 @@
 package it.unipi.giar.Data;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -628,7 +629,7 @@ public class Game {
 		game = new Document();
 		game.append("name", name);
 		game.append("released", date);
-		game.append("description", description);
+		game.append("description_raw", description);
 		game.append("rating", rating);
 		game.append("platforms", platformList);
 		game.append("genres", genresList);
@@ -638,6 +639,104 @@ public class Game {
 		collection = md.getCollection("games");
 		collection.insertOne(game);	
 	}
-
-
+	
+	public void setPlatforms(ArrayList<String> p) {
+		if(this.platforms.size() != 0) {
+			this.platforms.clear();
+		}
+		
+		for(String s: p) {
+			this.platforms.add(new Platform(s));
+		}
+	}
+	
+	public void setDevelopers(ArrayList<String> d) {
+		if(this.developers.size() != 0) {
+			this.developers.clear();
+		}
+		
+		for(String s: d) {
+			this.developers.add(new Developer(s));
+		}
+		
+	}
+	
+	public void setGenres(ArrayList<String> g) {
+		if(this.genres.size() != 0) {
+			this.genres.clear();
+		}
+		
+		for(String s: g) {
+			this.genres.add(new Genre(s));
+		}
+	}
+	
+	public static void updateGame(Game game, String oldName) {
+		MongoDriver driver;
+		MongoCollection<Document> collection;
+		
+		ArrayList<String> names = new ArrayList<String>();
+		ArrayList<Document> platList;
+		ArrayList<Document> devList;
+		ArrayList<Document> genList;
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+		String released = dateFormat.format(game.released);
+		
+		for(Platform p: game.platforms) {
+			names.add(p.getName());
+		}
+		
+		platList = createPlatformList(names);
+		names.clear();
+		
+		for(Genre g: game.genres) {
+			names.add(g.getName());
+		}
+		
+		genList = createGenresList(names);
+		names.clear();
+		
+		for(Developer d: game.developers) {
+			names.add(d.getName());
+		}
+		
+		devList = createDevelopersList(names);
+		names.clear();
+		
+		
+		
+		driver = MongoDriver.getInstance();
+		collection = driver.getCollection("games");
+		
+		collection.updateOne(eq("name", oldName), 
+				Updates.combine(
+						Updates.set("name", game.name),
+						Updates.set("description_raw", game.description),
+						Updates.set("released", released),
+						Updates.set("platforms", platList),
+						Updates.set("developers", devList),
+						Updates.set("genres", genList)));
+		
+		if(!game.name.equals(oldName)) {
+			updateGameNode(oldName, game.name);
+		}	
+	}
+	
+	private static void updateGameNode(String gameName, String newName){
+		
+		Neo4jDriver nd = Neo4jDriver.getInstance();
+		try (Session session = nd.getDriver().session()) {
+			session.writeTransaction(
+					new TransactionWork<Boolean>() {
+						@Override
+						public Boolean execute(Transaction tx) {
+							tx.run("MATCH (n:Game {name: $name}) "
+									+ "SET n.name = $newName"
+									, parameters("name", gameName, "newName", newName));
+							return true;
+						}
+					}
+			);
+		}
+	}
 }

@@ -3,7 +3,7 @@ package it.unipi.giar.Data;
 import org.bson.Document;
 
 public class Platform {
-	private final long id;
+	private long id;
 	private String name;
 	private String slug;
 
@@ -17,6 +17,10 @@ public class Platform {
 		this.id = id;
 		this.name = name;
 		this.slug = slug;
+	}
+	
+	public Platform(String name) {
+		this.name = name;
 	}
 
 	public void setName(String name) {
