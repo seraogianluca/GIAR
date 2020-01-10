@@ -30,6 +30,11 @@
                               <Font name="System Bold" size="67.0" />
                            </font>
                         </Text>
+                        <JFXButton fx:id="signInNowButton" layoutX="44.0" layoutY="475.0" onAction="#showSignInPage" prefHeight="45.0" prefWidth="322.0" style="-fx-underline: true;" text="Already a user? Sign in">
+                           <font>
+                              <Font name="System Italic" size="18.0" />
+                           </font>
+                        </JFXButton>
                      </children>
                   </AnchorPane>
                </left>

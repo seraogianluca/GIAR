@@ -1,7 +1,7 @@
 package it.unipi.giar.Controller;
 
 import java.util.ArrayList;
-
+import org.bson.Document;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableRow;
 import com.jfoenix.controls.JFXTreeTableView;
@@ -39,7 +39,7 @@ public class UserTopPerPlatformController {
     
     @SuppressWarnings("unchecked")
 	public void initialize(String value) {
-    	//this.user = UserMenuController.user;
+    	
     	plat.setText(value);
     	JFXTreeTableColumn<GameTable, String> gameName = new JFXTreeTableColumn<GameTable, String>("Name"); 
     	gameName.prefWidthProperty().bind(gamesTable3.widthProperty().divide(4).multiply(3));
@@ -64,6 +64,7 @@ public class UserTopPerPlatformController {
                     GameTable rowData = row.getItem();             
                     openGameInfo(rowData.name.get());                    
             });
+            
             return row ;
         });
         
@@ -75,16 +76,17 @@ public class UserTopPerPlatformController {
         gamesTable3.setShowRoot(false);
         
         
-        ArrayList<Game> topResult = null;
-       // topResult = Game.TopPerPlatform(value);	//TO DO 
-        topResult = Game.searchGames("uo", false);//	this is a test to see if worked the table. to be deleted
-                
-    	for(Game game : topResult) {
-    		games.add(new GameTable(game.getName(), Double.toString(game.getRating())));
+
+        ArrayList<Document> topResult = null;
+        topResult = Game.TopPerPlatform(value);	
+        
+    	for(Document game : topResult) {
+    		games.add(new GameTable(game.get("name").toString(), game.get("rating").toString()));
+
     	}
     }
     
-    void openGameInfo(String name) {
+    void openGameInfo(String gameName) {
     	try { 		
     		Scene scene = top.getScene();
     		AnchorPane pane = (AnchorPane)scene.lookup("#anchorPaneRight");
@@ -93,8 +95,8 @@ public class UserTopPerPlatformController {
             loader.setLocation(getClass().getResource("/fxml/InfoGame.fxml"));
             AnchorPane newPane = loader.load();
     		
-    	    //InfoGameController controller = loader.getController();            
-    	    //controller.initialize(user, Game.findGame(name));
+    	    InfoGameController controller = loader.getController();            
+    	    controller.initialize(gameName);
             
             pane.getChildren().setAll(newPane);          
 

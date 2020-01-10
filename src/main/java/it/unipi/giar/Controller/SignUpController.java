@@ -1,6 +1,7 @@
 package it.unipi.giar.Controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.security.MessageDigest;
@@ -47,7 +48,10 @@ public class SignUpController  {
 
     @FXML
     private JFXComboBox<String> signUpCountry;
-    
+	
+	@FXML
+	private JFXButton signInNowButton;
+	
     @FXML
     private Text errorMessage;
     
@@ -152,6 +156,17 @@ public class SignUpController  {
 		} else {
 			setError(true, "Unable to register.");
 		}
-    }
+	}
+	
+	@FXML
+	void showSignInPage(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("/fxml/SignIn.fxml"));
+		Stage stage = (Stage) signInNowButton.getScene().getWindow();
+
+		stage.setScene(new Scene(root));
+		stage.setResizable(false);
+		stage.show();
+	}
+
 }
 

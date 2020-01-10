@@ -22,6 +22,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.Scene;
 import javafx.scene.control.TreeItem;
@@ -89,23 +90,24 @@ public class UserHomepageController {
 
     @FXML
     void searchGames(KeyEvent event) {
-        searchAllGames.setVisible(false);
-        games.clear();
-
-        if (searchGames.getText().isEmpty()
-                || (event.getText().isEmpty() && !event.getCode().name().equals("BACK_SPACE"))) {
+        if (event.getCode() != KeyCode.ENTER) {
+            searchAllGames.setVisible(false);
             games.clear();
-        } else if (event.getCode().name().equals("BACK_SPACE")
-                || (searchGames.getText().charAt(searchGames.getText().length() - 1) == (event.getText().charAt(0)))) {
+            if (searchGames.getText().isEmpty()
+                    || (event.getText().isEmpty() && !event.getCode().name().equals("BACK_SPACE"))) {
+                games.clear();
+            } else if (event.getCode().name().equals("BACK_SPACE") || (searchGames.getText()
+                    .charAt(searchGames.getText().length() - 1) == (event.getText().charAt(0)))) {
 
-            ArrayList<Game> searchResult = Game.searchGames(searchGames.getText(), false);
-            if (searchResult.size() >= 10) {
-                searchAllGames.setVisible(true);
-            } else {
-                searchAllGames.setVisible(false);
-            }
-            for (Game game : searchResult) {
-                games.add(new GameTable(game.getName(), Double.toString(game.getRating())));
+                ArrayList<Game> searchResult = Game.searchGames(searchGames.getText(), false);
+                if (searchResult.size() >= 10) {
+                    searchAllGames.setVisible(true);
+                } else {
+                    searchAllGames.setVisible(false);
+                }
+                for (Game game : searchResult) {
+                    games.add(new GameTable(game.getName(), Double.toString(game.getRating())));
+                }
             }
         }
     }
