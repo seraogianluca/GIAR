@@ -2,9 +2,9 @@
 
 ## Table of contents
 1) [Introduction](#1-introduction)
-2) [`platforms platform name`](#2-`platforms.platform.name`)
-3) [`genres name`](#2-`genres.name`)
-4) [`year`](#2-`year`)
+2) [`platforms platform name`](#2-platforms-platform-name)
+3) [`genres name`](#2-genres-name)
+4) [year](#2-year)
 
 ## 1. Introduction
 The MongoDd Compass Explain Plan section offers the possibility to evaluate the query performance executed on the database. We used this feature to compare the performance between queries that exploit the indexes or not.
