@@ -17,6 +17,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -56,6 +57,9 @@ public class UserMenuController {
 
 	@FXML
 	private JFXComboBox<String> genreBrowseMenuPanel;
+	
+	@FXML
+    private ImageView userBadge;
 
 	@FXML
 	private ImageView logout;
@@ -78,6 +82,15 @@ public class UserMenuController {
 			user = session.getLoggedUser();
 
 			userNameMenuPanel.setText(user.getNickname());
+			userBadge.setImage(new Image("/images/USERY.png", true));
+			
+			if(User.isPro(user.getNickname())) {
+				userBadge.setImage(new Image("/images/USERP.png", true));
+			} else {
+				if(User.checkPro(user.getNickname())) {
+					userBadge.setImage(new Image("/images/USERP.png", true));
+				}
+			}
 
 			logoMenuPanel.setCursor(Cursor.HAND); // Change cursor to hand
 			userNameMenuPanel.setCursor(Cursor.HAND);
