@@ -2,8 +2,8 @@
 
 ## Table of contents
 1) [Introduction](#1-introduction)
-2) [`platforms platform name`](#2-platforms-platform-name)
-3) [`genres name`](#2-genres-name)
+2) [platforms platform name](#2-platforms-platform-name)
+3) [genres name](#2-genres-name)
 4) [year](#2-year)
 
 ## 1. Introduction
@@ -14,7 +14,7 @@ We compare the results on the same queryes executed before and after the creatio
 
 In the tables the `Average Actual Query Execution Time(ms)` field is the average time obtained on a sample of 10 executions.
 
-## 2. `platforms.platform.name`
+## 2. platforms platform name
 In this section we study the index on the `platforms.platform.name` field of the games collection.
 The queries executed for different values are: 
 ````
@@ -55,7 +55,7 @@ With index:
 
 
 
-## 3. `genres.name`
+## 3. genres name
 In this section we study the index on the `genres.name` field of the games collection.
 The queries executed for different values are: 
 ````
@@ -86,7 +86,7 @@ With index:
 ![action no index](./resources/genresACTIONindex.png)
 
 
-## 4. `year`
+## 4. year
 In this section we study the index on the `year` field of the games collection.
 The query executed is: 
 ````
