@@ -18,12 +18,6 @@ public class UserProfileController {
 	private Text profileTitle;
 
 	@FXML
-	private Text followersLabel;
-
-	@FXML
-	private Text followingLabel;
-
-	@FXML
 	private Text nicknameLabel;
 
 	@FXML
