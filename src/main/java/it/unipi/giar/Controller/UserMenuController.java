@@ -156,7 +156,7 @@ public class UserMenuController {
 		try {
 			Parent root;
 			Stage stage;
-
+			
 			root = FXMLLoader.load(getClass().getResource("/fxml/SignIn.fxml"));
 
 			stage = (Stage) logout.getScene().getWindow();

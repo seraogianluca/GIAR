@@ -144,6 +144,7 @@ public class SignUpController  {
 				User.register(nickname, email, password, country);
 				session = GiarSession.getInstance();
 				session.setRegistered(nickname);
+				session.setDeleted(false);
 
 	            root = FXMLLoader.load(getClass().getResource("/fxml/SignIn.fxml"));
 				
