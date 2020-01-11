@@ -44,6 +44,7 @@ public class SignInController {
 		if (session.getDeleted()) {
 			errorMessage.setText("Account successfully deleted.");
 			errorMessage.setVisible(true);
+			session.setDeleted(false);
 		} else if (session.getRegistered() != null) {
 			signInNickname.setText(session.getRegistered());
 		}
