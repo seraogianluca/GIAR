@@ -23,32 +23,22 @@
          <center>
             <AnchorPane BorderPane.alignment="CENTER">
                <children>
-                  <Text fx:id="followersLabel" layoutX="14.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Followers:" AnchorPane.leftAnchor="16.0">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="followingLabel" layoutX="273.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Following:">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="nicknameLabel" layoutX="14.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nickname:" AnchorPane.leftAnchor="16.0">
+                  <Text fx:id="nicknameLabel" layoutX="16.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nickname:" AnchorPane.leftAnchor="16.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Text fx:id="userNickname" fill="#6b6b6b" layoutX="120.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nickname" AnchorPane.leftAnchor="150.0">
+                  <Text fx:id="userNickname" fill="#6b6b6b" layoutX="150.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nickname" AnchorPane.leftAnchor="150.0">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Text>
-                  <Text fx:id="emailLabel" layoutX="14.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" AnchorPane.leftAnchor="16.0">
+                  <Text fx:id="emailLabel" layoutX="16.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" AnchorPane.leftAnchor="16.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Text fx:id="countryLabel" layoutX="14.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country:" AnchorPane.leftAnchor="16.0">
+                  <Text fx:id="countryLabel" layoutX="16.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country:" AnchorPane.leftAnchor="16.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -58,12 +48,12 @@
                         <Font size="20.0" />
                      </font>
                   </JFXButton>
-                  <Text fx:id="userEmail" fill="#6b6b6b" layoutX="120.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="email" AnchorPane.leftAnchor="150.0">
+                  <Text fx:id="userEmail" fill="#6b6b6b" layoutX="150.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="email" AnchorPane.leftAnchor="150.0">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Text>
-                  <Text fx:id="userCountry" fill="#6b6b6b" layoutX="120.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="country" AnchorPane.leftAnchor="150.0">
+                  <Text fx:id="userCountry" fill="#6b6b6b" layoutX="150.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="country" AnchorPane.leftAnchor="150.0">
                      <font>
                         <Font size="22.0" />
                      </font>

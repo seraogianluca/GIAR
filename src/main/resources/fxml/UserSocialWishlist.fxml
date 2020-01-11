@@ -18,7 +18,7 @@
                         <Font size="36.0" />
                      </font>
                   </Text>
-                  <JFXButton fx:id="back" layoutX="565.0" layoutY="38.0" onAction="#back" style="-fx-background-color: #ffff0d;" text="Back" textAlignment="CENTER" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="30.0">
+                  <JFXButton fx:id="back" focusTraversable="false" layoutX="565.0" layoutY="38.0" onAction="#back" style="-fx-background-color: #ffff0d;" text="Back" textAlignment="CENTER" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="30.0">
                      <font>
                         <Font size="16.0" />
                      </font>

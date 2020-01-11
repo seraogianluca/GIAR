@@ -10,14 +10,11 @@ import org.bson.Document;
 import com.jfoenix.controls.JFXComboBox;
 import com.mongodb.client.MongoIterable;
 
-import it.unipi.giar.GiarGui;
 import it.unipi.giar.Data.User;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
@@ -135,9 +132,5 @@ public class AdminStatController {
 			e.printStackTrace();
     	}	
     }
-    
-   
-
-    
 	
 }

@@ -43,14 +43,11 @@ import static com.mongodb.client.model.Sorts.descending;
 
 
 public class Game {
-	private int id;
 	private String slug;
 	private String name;
-	private String nameOriginal;
 	private String description;
 	private int metacritic;
 	private Date released;
-	private String backgroundImage;
 	private double rating;
 	private long added;
 	private long addedWishlist;
@@ -59,17 +56,14 @@ public class Game {
 	private ArrayList<Developer> developers;
 	private ArrayList<Genre> genres;
 
-	public Game(int id, String slug, String name, String nameOriginal, String description, int metacritic,
-			Date released, String backgroundImage, double rating, long added, long addedWishlist, long addedMyGames,
+	public Game(String slug, String name, String description, int metacritic,
+			Date released, double rating, long added, long addedWishlist, long addedMyGames,
 			ArrayList<Platform> platforms, ArrayList<Developer> developers, ArrayList<Genre> genres) {
-		this.id = id;
 		this.slug = slug;
 		this.name = name;
-		this.nameOriginal = nameOriginal;
 		this.description = description;
 		this.metacritic = metacritic;
 		this.released = released;
-		this.backgroundImage = backgroundImage;
 		this.rating = rating;
 		this.added = added;
 		this.addedWishlist = addedWishlist;
@@ -83,13 +77,10 @@ public class Game {
 	public Game(Document document) {
 		SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-mm-dd");
 
-		this.id = (document.get("id") == null) ? 0 : document.getInteger("id");
 		this.slug = (document.get("slug") == null) ? "" : document.getString("slug");
 		this.name = (document.get("name") == null) ? "" : document.getString("name");
-		this.nameOriginal = (document.get("name_original") == null) ? "" : document.getString("name_original");
 		this.description = (document.get("description_raw") == null) ? "" : document.getString("description_raw");
 		this.metacritic = (document.get("metacritic") == null) ? 0 : document.getInteger("metacritic");
-		this.backgroundImage = (document.get("background_image") == null) ? "" : document.getString("background_image");
 		this.rating = (document.get("rating") == null) ? 0 : document.getDouble("rating");
 		// this.addedWishlist = (document.get("added_by_status") == null) ? 0 :
 		// document.getLong("wishlist");
@@ -144,20 +135,12 @@ public class Game {
 		}
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public void setSlug(String slug) {
 		this.slug = slug;
 	}
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public void setNameOriginal(String nameOriginal) {
-		this.nameOriginal = nameOriginal;
 	}
 
 	public void setDescription(String description) {
@@ -170,10 +153,6 @@ public class Game {
 
 	public void setReleased(Date released) {
 		this.released = released;
-	}
-
-	public void setBackgroundImage(String backgroundImage) {
-		this.backgroundImage = backgroundImage;
 	}
 
 	public void setRating(double rating) {
@@ -192,20 +171,12 @@ public class Game {
 		this.addedMyGames = addedMyGames;
 	}
 
-	public int getId() {
-		return this.id;
-	}
-
 	public String getSlug() {
 		return this.slug;
 	}
 
 	public String getName() {
 		return this.name;
-	}
-
-	public String getNameOriginal() {
-		return this.nameOriginal;
 	}
 
 	public String getDescription() {
@@ -218,10 +189,6 @@ public class Game {
 
 	public Date getReleased() {
 		return this.released;
-	}
-
-	public String getBackgroundImage() {
-		return this.backgroundImage;
 	}
 
 	public double getRating() {
@@ -381,7 +348,7 @@ public class Game {
 			session.writeTransaction(new TransactionWork<Boolean>() {
 				@Override
 				public Boolean execute(Transaction tx) {
-					StatementResult result = tx.run("MATCH ()-[:FOLLOW]-(p:Player)-[:WISHED]-(game) "
+					StatementResult result = tx.run("MATCH (p:Player)-[:WISHED]-(game) "
 							+ "WHERE p.nickname = $friend " + "RETURN DISTINCT game.name AS game",
 							parameters("friend", friendNickname));
 
