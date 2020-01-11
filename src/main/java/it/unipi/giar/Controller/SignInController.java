@@ -40,6 +40,8 @@ public class SignInController {
 
 	public void initialize() {
 		GiarSession session = GiarSession.getInstance();
+		
+		errorMessage.setVisible(false);
 
 		if (session.getDeleted()) {
 			errorMessage.setText("Account successfully deleted.");
