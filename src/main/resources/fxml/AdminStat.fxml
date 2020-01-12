@@ -15,9 +15,9 @@
          <top>
             <AnchorPane prefHeight="100.0" prefWidth="650.0" BorderPane.alignment="CENTER">
                <children>
-                  <Text fx:id="stats" layoutX="196.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="stats" wrappingWidth="258.890625">
+                  <Text fx:id="stats" layoutX="226.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistics" wrappingWidth="197.890625">
                      <font>
-                        <Font size="56.0" />
+                        <Font size="40.0" />
                      </font>
                   </Text>
                </children>
@@ -28,7 +28,7 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <JFXComboBox fx:id="comboCountry" layoutX="20.0" layoutY="14.0" onAction="#statistics" />
+                  <JFXComboBox fx:id="comboCountry" focusColor="YELLOW" layoutX="43.0" layoutY="14.0" onAction="#statistics" promptText="Country" />
                   <BarChart id="chart" fx:id="chart" layoutX="6.0" layoutY="59.0" prefHeight="417.0" prefWidth="609.0" title="Stats">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" fx:id="xAxe" />

@@ -108,6 +108,8 @@ public class AdminInfoGameController {
 		try {
 			game.deleteGame(game.getName());
 
+			AlertBoxController.display();
+			
 			FXMLLoader loader;
 			Scene scene;
 			AnchorPane pane;
