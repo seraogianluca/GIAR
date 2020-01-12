@@ -62,8 +62,10 @@ public class UserBrowseController {
         gamesTable1.setRowFactory(tv->{
             JFXTreeTableRow<GameTable> row = new JFXTreeTableRow<>();
             row.setOnMouseClicked(event -> {
-                    GameTable rowData = row.getItem();             
-                    openGameInfo(rowData.name.get());                    
+                    GameTable rowData = row.getItem();
+                    if (rowData != null) {
+                        openGameInfo(rowData.name.get());
+                    }
             });
             return row ;
         });
@@ -93,24 +95,26 @@ public class UserBrowseController {
     }
     
     void openGameInfo(String gameName) {
-    	try { 		
-    		FXMLLoader loader;
-    		InfoGameController controller;
-    		Scene scene;
-    		AnchorPane pane;
-    		AnchorPane newPane;
-    		
-    		scene = browse.getScene();
-    		pane = (AnchorPane)scene.lookup("#anchorPaneRight");
-    	    		
-    		loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/fxml/InfoGame.fxml"));
-            newPane = loader.load();
-    		
-    	    controller = loader.getController();            
-    	    controller.initialize(gameName);
-            
-            pane.getChildren().setAll(newPane);
+    	try {
+            if (!gameName.isEmpty()) {
+                FXMLLoader loader;
+                InfoGameController controller;
+                Scene scene;
+                AnchorPane pane;
+                AnchorPane newPane;
+                
+                scene = browse.getScene();
+                pane = (AnchorPane)scene.lookup("#anchorPaneRight");
+                        
+                loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/fxml/InfoGame.fxml"));
+                newPane = loader.load();
+                
+                controller = loader.getController();            
+                controller.initialize(gameName);
+                
+                pane.getChildren().setAll(newPane);
+            }
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
