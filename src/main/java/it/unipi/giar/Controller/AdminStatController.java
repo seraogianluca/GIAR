@@ -45,47 +45,13 @@ public class AdminStatController {
     
     @FXML
     void statistics(ActionEvent event) {
-    	
-//    	 double maxBarWidth=40;
-//         double minCategoryGap=100;
-//        Scene scene = chart.getScene();
-//        scene.widthProperty().addListener((obs,n,n1)->{
-//             if(chart.getData().size()==0) return;
-//
-//             if(n!=null && (n1.doubleValue()>n.doubleValue())){
-//                 double barWidth=0;
-//                 do{
-//                     double catSpace = xAxe.getCategorySpacing();
-//                     double avilableBarSpace = catSpace - (chart.getCategoryGap() + chart.getBarGap());
-//                     barWidth = (avilableBarSpace / chart.getData().size()) - chart.getBarGap();
-//                     if (barWidth >maxBarWidth){
-//                         avilableBarSpace=(maxBarWidth + chart.getBarGap())* chart.getData().size();
-//                         chart.setCategoryGap(catSpace-avilableBarSpace-chart.getBarGap());
-//                     }
-//                 } while(barWidth>maxBarWidth);
-//             }
-//
-//             if(n!=null && (n1.doubleValue()<n.doubleValue()) && chart.getCategoryGap()>minCategoryGap){
-//                 double barWidth=0;
-//                 do{
-//                     double catSpace = xAxe.getCategorySpacing();
-//                     double avilableBarSpace = catSpace - (minCategoryGap + chart.getBarGap());
-//                     barWidth = Math.min(maxBarWidth, (avilableBarSpace / chart.getData().size()) - chart.getBarGap());
-//                     avilableBarSpace=(barWidth + chart.getBarGap())* chart.getData().size();
-//                     chart.setCategoryGap(catSpace-avilableBarSpace-chart.getBarGap());
-//                 } while(barWidth < maxBarWidth && chart.getCategoryGap()>minCategoryGap);
-//             }
-//         });
-//         
-    	
-    	   
-    	
+   	
     	String country;
     	
     	games.clear();
+    	
     	if(total!=null) {
-    		
-    		chart.getData().clear();
+       		chart.getData().clear();
     		chart.layout();
     		
     	}
