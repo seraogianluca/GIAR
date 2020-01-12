@@ -2,7 +2,10 @@ package it.unipi.giar.Controller;
 
 import java.util.ArrayList;
 
+import javax.swing.SwingUtilities;
+
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.JFXProgressBar;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableRow;
 import com.jfoenix.controls.JFXTreeTableView;
@@ -19,10 +22,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TreeItem;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
+import javafx.application.Platform;
+
 
 public class AdminHomepageController {
 
@@ -37,10 +43,19 @@ public class AdminHomepageController {
     @FXML
     private JFXTreeTableView<GameTable> gamesTable;
 
+    @FXML
+    private Hyperlink searchAllGames;
+
+    @FXML
+    private JFXProgressBar progressBar;
+
     @SuppressWarnings("unchecked")
 	public void initialize() {
+        searchAllGames.setVisible(false);
+        progressBar.setVisible(false);
+
         JFXTreeTableColumn<GameTable, String> gameName = new JFXTreeTableColumn<GameTable, String>("Name");
-        gameName.prefWidthProperty().bind(gamesTable.widthProperty().divide(2));
+        gameName.prefWidthProperty().bind(gamesTable.widthProperty().divide(4).multiply(3));
         gameName.setCellValueFactory(
                 new Callback<TreeTableColumn.CellDataFeatures<GameTable, String>, ObservableValue<String>>() {
                     @Override
@@ -50,7 +65,7 @@ public class AdminHomepageController {
                 });
 
         JFXTreeTableColumn<GameTable, String> gameRating = new JFXTreeTableColumn<GameTable, String>("Rating");
-        gameRating.prefWidthProperty().bind(gamesTable.widthProperty().divide(2));
+        gameRating.prefWidthProperty().bind(gamesTable.widthProperty().divide(4));
         gameRating.setCellValueFactory(
                 new Callback<TreeTableColumn.CellDataFeatures<GameTable, String>, ObservableValue<String>>() {
                     @Override
@@ -79,6 +94,7 @@ public class AdminHomepageController {
     @FXML
     void searchGames(KeyEvent event) {
         games.clear();
+        searchAllGames.setVisible(false);
 
         if (searchGames.getText().isEmpty()
                 || (event.getText().isEmpty() && !event.getCode().name().equals("BACK_SPACE"))) {
@@ -88,12 +104,56 @@ public class AdminHomepageController {
             
             ArrayList<Game> searchResult = Game.searchGames(searchGames.getText(), false);
 
+            if (searchResult.size() >= 10) {
+                searchAllGames.setVisible(true);
+            } else {
+                searchAllGames.setVisible(false);
+            }
+
             for (Game game : searchResult) {
                 games.add(new GameTable(game.getName(), Double.toString(game.getRating())));
             }
         }
     }
 
+    @FXML
+    void searchAllGames() {
+        final Runnable chargeAll = new Runnable() {
+            public void run() {
+                Platform.runLater(() -> {
+                    try {
+                        games.clear();
+
+                        ArrayList<Game> searchResult = Game.searchGames(searchGames.getText(), true);
+
+                        for (Game game : searchResult) {
+                            games.add(new GameTable(game.getName(), Double.toString(game.getRating())));
+                        }
+
+                        progressBar.setVisible(false);
+                        searchAllGames.setVisible(true);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        System.out.println("index exception");
+                    }
+                });
+            }
+        };
+
+        Thread stockPicker = new Thread() {
+            public void run() {
+                try {
+                    progressBar.setVisible(true);
+                    searchAllGames.setVisible(false);
+
+                    SwingUtilities.invokeAndWait(chargeAll);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
+        stockPicker.start();
+    }
 
     void openGameInfo(String gameName) {
         try {
