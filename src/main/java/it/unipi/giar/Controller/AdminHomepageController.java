@@ -78,7 +78,9 @@ public class AdminHomepageController {
             JFXTreeTableRow<GameTable> row = new JFXTreeTableRow<>();
             row.setOnMouseClicked(event -> {
                 GameTable rowData = row.getItem();
-                openGameInfo(rowData.name.get());
+                if (rowData != null) {
+                    openGameInfo(rowData.name.get());
+                }
             });
             return row;
         });
