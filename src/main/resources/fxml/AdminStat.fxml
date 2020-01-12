@@ -15,7 +15,7 @@
          <top>
             <AnchorPane prefHeight="100.0" prefWidth="650.0" BorderPane.alignment="CENTER">
                <children>
-                  <Text fx:id="stats" layoutX="171.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin statistics" wrappingWidth="308.890625">
+                  <Text fx:id="stats" layoutX="226.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistics" wrappingWidth="197.890625">
                      <font>
                         <Font size="40.0" />
                      </font>
