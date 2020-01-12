@@ -577,8 +577,8 @@ public class Game {
 	private static ArrayList<Document> createDevelopersList(ArrayList<String> developers) {
 		ArrayList<Document> developerDoc = new ArrayList<Document>();
 		
-		for(String name : developers) {
-			developerDoc.add(new Document().append("name", name));
+		for(String name : developers) {			
+				developerDoc.add(new Document().append("name", name));
 		}
 		
 		return developerDoc;
