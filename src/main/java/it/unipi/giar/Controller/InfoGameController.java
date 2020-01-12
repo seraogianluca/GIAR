@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.bson.Document;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 
@@ -89,7 +91,8 @@ public class InfoGameController {
 
 		List<String> listDeveloper = new ArrayList<String>();
 		for (Developer dev : game.getDevelopers()) {
-			listDeveloper.add(dev.getName());
+			if(!listDeveloper.contains(dev.getName()))
+				listDeveloper.add(dev.getName());
 		}
 		ObservableList<String> obsDeveloper = FXCollections.observableArrayList(listDeveloper);
 		developers.setItems((ObservableList<String>) obsDeveloper);
