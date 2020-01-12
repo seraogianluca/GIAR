@@ -28,7 +28,7 @@
          <center>
              <AnchorPane BorderPane.alignment="CENTER">
                <children>
-                  <JFXTreeTableView fx:id="gamesTable3" layoutX="26.0" layoutY="23.0" prefHeight="465.0" prefWidth="600.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="40.0" />
+                  <JFXTreeTableView fx:id="gamesTable3" layoutX="40.0" layoutY="21.0" prefHeight="465.0" prefWidth="600.0" AnchorPane.bottomAnchor="59.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="21.0" />
                </children>
             </AnchorPane>
          </center>
