@@ -613,11 +613,6 @@ public class User {
 
 		total = collection.aggregate( Arrays.asList(match(eq("country", country)), unwind("$mygames"), group("$mygames.name", sum("count", 1L)), sort(descending("count")), limit(10)));
 		
-		for(Bson b: total) {
-			System.out.println(b.toString());
-				
-		}
-		
 		return total;	
 	}
 	

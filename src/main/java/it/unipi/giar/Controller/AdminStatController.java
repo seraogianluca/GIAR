@@ -104,12 +104,9 @@ public class AdminStatController {
         	games.add(d.getString("_id"));
         }
         
-        System.out.println("lista: "+games);
         xAxe.setCategories(games);
-
         chart.getData().addAll(dataSeries1);
-        
-    	
+           	
     }
     
     
