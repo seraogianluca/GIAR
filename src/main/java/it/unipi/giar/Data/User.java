@@ -716,16 +716,16 @@ public class User {
 	
 	public static boolean checkPro(String nickname) {
 		int players = getPlayers();
-		int follow = getFollow();
-		int following = getFollowing(nickname);
-		double threshold = (double)follow / (double)players;
+		int follow = getFollow();	//tot relations in the graphdb
+		int following = getFollowing(nickname);	//followers of this user
+		double threshold = (double)follow / (double)players;	//ratio
 		
-		System.out.println(follow);
+		/*System.out.println(follow);
 		System.out.println(players);
 		System.out.println(threshold);
 		System.out.println(following);
-		
-		if(following >= threshold) {
+		*/
+		if(following >= threshold) {	//if my followers > threshold -> PRO
 			return setPro(nickname);
 		}
 		

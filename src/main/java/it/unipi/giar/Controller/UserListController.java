@@ -95,8 +95,6 @@ public class UserListController {
 								list = "wishlist";
 							}
 							
-							System.out.println("to remove: "+toRemove);
-							System.out.println("list : "+ list);
 							loggedUser.removeGameFromList(toRemove, list);
 							
 							loadGames(listType.getText().toString().toLowerCase());
