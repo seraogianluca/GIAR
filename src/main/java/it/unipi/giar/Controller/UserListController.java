@@ -2,6 +2,7 @@ package it.unipi.giar.Controller;
 
 import java.util.ArrayList;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableRow;
 import com.jfoenix.controls.JFXTreeTableView;
@@ -9,6 +10,7 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import it.unipi.giar.GiarSession;
+import it.unipi.giar.Controller.UserSocialController.UserTable;
 import it.unipi.giar.Data.Game;
 import it.unipi.giar.Data.User;
 import javafx.beans.property.SimpleStringProperty;
@@ -20,8 +22,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 
@@ -60,6 +64,57 @@ public class UserListController {
             }           
         });
         
+        JFXTreeTableColumn<GameTable, String> actionColumn = new JFXTreeTableColumn<GameTable, String>("Remove");
+		actionColumn.prefWidthProperty().bind(gamesTable2.widthProperty().divide(4));
+		actionColumn.setCellFactory(column -> {
+			TreeTableCell<GameTable, String> cell = new TreeTableCell<GameTable, String>(){
+				final JFXButton removeButton = new JFXButton("Remove");
+				@Override
+				protected void updateItem(String item, boolean empty) {
+					super.updateItem(item, empty);
+					setText(null);
+
+					if(empty) {
+						setGraphic(null);
+					} else {
+						removeButton.setOnAction((event) -> {
+							GiarSession session;
+							User loggedUser;
+							String toRemove;
+							String list;
+							
+							session = GiarSession.getInstance();
+							loggedUser = session.getLoggedUser();
+							
+							toRemove = getTreeTableView().getTreeItem(getIndex()).getValue().name.get();
+							
+							if(listType.getText().equals("MyGames")) {
+								list = "myGames";
+							}
+							else {
+								list = "wishlist";
+							}
+							
+							System.out.println("to remove: "+toRemove);
+							System.out.println("list : "+ list);
+							loggedUser.removeGameFromList(toRemove, list);
+							
+							loadGames(listType.getText().toString().toLowerCase());
+	
+						});
+						
+						removeButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
+						
+						HBox buttons = new HBox(removeButton);
+						buttons.setSpacing(20);
+						setGraphic(buttons);
+					}
+				}
+			};
+
+			return cell;
+		});	 
+        
         gamesTable2.setRowFactory(tv->{
             JFXTreeTableRow<GameTable> row = new JFXTreeTableRow<>();
             row.setOnMouseClicked(event -> {
@@ -71,8 +126,10 @@ public class UserListController {
         
         games = FXCollections.observableArrayList();
   
+    	
+        
         final TreeItem<GameTable> root = new RecursiveTreeItem<GameTable>(games, RecursiveTreeObject::getChildren);
-        gamesTable2.getColumns().setAll(gameName, gameRating);
+        gamesTable2.getColumns().setAll(gameName, gameRating, actionColumn);
         gamesTable2.setRoot(root);
         gamesTable2.setShowRoot(false);     
         
@@ -125,5 +182,29 @@ public class UserListController {
             this.name = new SimpleStringProperty(name);
             this.rating = new SimpleStringProperty(rating);
         }
+    }
+
+    public void loadGames(String type) {
+    	GiarSession session;
+		User user;
+		ArrayList<Game> list;
+		
+		
+		session = GiarSession.getInstance();
+		user = session.getLoggedUser();
+		games.clear();
+		
+		if(type.contentEquals("mygames"))
+			list = user.getMyGames();
+		else
+			list = user.getWishlist();
+		
+		for(Game g : list) {		
+				GameTable toAdd = new GameTable(g.getName(), Double.toString(g.getRating()));
+				games.add(toAdd);
+				
+			
+		}
+    	
     }
 }

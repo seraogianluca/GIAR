@@ -82,11 +82,13 @@ public class Game {
 		this.description = (document.get("description_raw") == null) ? "" : document.getString("description_raw");
 		this.metacritic = (document.get("metacritic") == null) ? 0 : document.getInteger("metacritic");
 		this.rating = (document.get("rating") == null) ? 0 : document.getDouble("rating");
-		// this.addedWishlist = (document.get("added_by_status") == null) ? 0 :
-		// document.getLong("wishlist");
-		// this.addedMyGames = (document.get("mygames") == null) ? 0 :
-		// document.getLong("mygames");
-		// this.added = (this.addedWishlist + this.addedMyGames);
+		
+		
+		Document d= (Document)document.get("added_by_status");
+		this.addedWishlist = Long.parseLong(d.get("wishlist").toString());
+		this.addedMyGames = Long.parseLong(d.get("mygames").toString());	
+		
+		//this.added = (this.addedWishlist + this.addedMyGames);
 
 		List<Document> platformDoc = new ArrayList<Document>();
 		platformDoc = (List<Document>) document.get("platforms");

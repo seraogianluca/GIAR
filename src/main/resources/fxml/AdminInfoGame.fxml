@@ -86,6 +86,26 @@
                      <font>
                         <Font size="18.0" />
                      </font></Text>
+                  <Text layoutX="376.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Added in MyGames:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="375.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Added in Wishlist:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="addedMyGames" layoutX="546.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="81">
+                     <font>
+                        <Font name="System Bold Italic" size="27.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="addedWishList" layoutX="546.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="81">
+                     <font>
+                        <Font name="System Bold Italic" size="27.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
          </center></BorderPane>
