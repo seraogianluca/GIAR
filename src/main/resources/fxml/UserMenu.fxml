@@ -59,7 +59,8 @@
                               <JFXComboBox fx:id="genreBrowseMenuPanel" focusColor="#ffff0d" focusTraversable="false" layoutX="5.0" layoutY="397.0" onAction="#openGenreBrowse" prefHeight="35.0" prefWidth="240.0" promptText="Genre" visibleRowCount="5" />
                               <ImageView fitHeight="21.0" fitWidth="31.0" layoutX="5.0" layoutY="165.0">
                                  <image>
-                                    <Image url="@../images/gamey.png" />
+                                    <Image url="@../images/gamey.png" />         
+                                    
                                  </image>
                               </ImageView>
                               <ImageView fx:id="userBadge" fitHeight="25.0" fitWidth="25.0" layoutX="9.0" layoutY="13.0">
