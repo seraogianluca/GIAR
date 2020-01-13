@@ -183,15 +183,21 @@ public class User {
 		try {
 			MongoDriver driver;
 			MongoCollection<Document> collection;
-
+			MongoCollection<Document> collectionGames;
+			
 			driver = MongoDriver.getInstance();
 			collection = driver.getCollection("users");
+			collectionGames = driver.getCollection("games");
 
 			if(list.equals("wishlist")) {
 				collection.updateOne(eq("nickname", this.nickname),Updates.addToSet("wishlist",game));
+				collectionGames.updateOne(eq("name", game.getString("name")), Updates.inc("added_by_status.wishlist", 1));
 			} else if(list.equals("myGames")) {
 				collection.updateOne(eq("nickname", this.nickname),Updates.addToSet("mygames",game));	
+				collectionGames.updateOne(eq("name", game.getString("name")), Updates.inc("added_by_status.mygames", 1));
 			}
+			
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -253,19 +259,24 @@ public class User {
 		try {
 			MongoDriver driver;
 			MongoCollection<Document> collection;
+			MongoCollection<Document> collectionGames;
 			Bson filter;
 			Bson delete;
 			
 			driver = MongoDriver.getInstance();
 			collection = driver.getCollection("users");
+			collectionGames = driver.getCollection("games");
 			filter = Filters.eq("nickname", this.nickname);
 
 			if(list.equals("wishlist"))	{		
 				delete = Updates.pull("wishlist", game);
 				collection.updateOne(filter, delete);
+				collectionGames.updateOne(eq("name", game.getString("name")), Updates.inc("added_by_status.wishlist", -1));
+				
 			} else if (list.equals("myGames")) {
 				delete = Updates.pull("mygames", game);
 				collection.updateOne(filter, delete);
+				collectionGames.updateOne(eq("name", game.getString("name")), Updates.inc("added_by_status.mygames", -1));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -612,11 +623,6 @@ public class User {
 		collection = md.getCollection("users");
 
 		total = collection.aggregate( Arrays.asList(match(eq("country", country)), unwind("$mygames"), group("$mygames.name", sum("count", 1L)), sort(descending("count")), limit(10)));
-		
-		for(Bson b: total) {
-			System.out.println(b.toString());
-				
-		}
 		
 		return total;	
 	}
