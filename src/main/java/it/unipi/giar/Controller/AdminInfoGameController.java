@@ -107,7 +107,8 @@ public class AdminInfoGameController {
 	void delete(ActionEvent event) {    	
 		try {
 			game.deleteGame(game.getName());
-
+			Game.updateIndexes();
+			
 			AlertBoxController.display();
 			
 			FXMLLoader loader;

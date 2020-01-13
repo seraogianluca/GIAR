@@ -210,7 +210,8 @@ public class AdminUpdateGameController {
 				game.setGenres(genresString);
 				game.setDevelopers(developersString);
 				
-				Game.updateGame(game, oldName);				
+				Game.updateGame(game, oldName);		
+				Game.updateIndexes();
 				setAcknowledgement("Game correctly updated.");
 			}
 		} catch (Exception e) {

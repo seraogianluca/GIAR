@@ -11,6 +11,7 @@ import java.util.List;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Indexes;
 import com.mongodb.client.model.Updates;
 
 import org.bson.Document;
@@ -471,9 +472,6 @@ public class Game {
 			MongoDriver md;
 			MongoCollection<Document> collection;
 			
-			GiarSession session = GiarSession.getInstance();
-			session.setDeleted(true);
-			
 			md = MongoDriver.getInstance();
 			collection = md.getCollection("games");
 			collection.deleteOne(eq("name", gameName));
@@ -739,4 +737,29 @@ public class Game {
 		}
 		return null;
 	}
+	
+	
+	public static void updateIndexes(){
+		MongoDriver driver = null;
+		MongoCollection<Document> collection = null;	
+		try {
+			driver = MongoDriver.getInstance();
+			collection = driver.getCollection("games");
+			//remove all
+		    collection.dropIndexes();
+		    //recreate all
+		    collection.createIndex(Indexes.ascending("year"));
+		    collection.createIndex(Indexes.ascending("genres.name"));
+		    collection.createIndex(Indexes.ascending("platforms.platform.name"));
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return;	
+	}
+	
+	
+	
+	
+	
+	
 }
