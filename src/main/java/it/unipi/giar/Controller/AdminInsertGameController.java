@@ -147,6 +147,7 @@ public class AdminInsertGameController {
 			developersString.addAll(devList);
 
 			Game.insertGame(nameIns, mongoDateString, descIns, platformsString, genresString, developersString);
+			Game.updateIndexes();
 			setAcknowledgement("Game correctly added.");
 		}
 	}
