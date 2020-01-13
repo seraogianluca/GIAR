@@ -583,7 +583,7 @@ public class Game {
 	}
 	
 	public static void insertGame(String name, String date, String description, 
-			ArrayList<String> platforms, ArrayList<String> genres, ArrayList<String> developers) {
+		ArrayList<String> platforms, ArrayList<String> genres, ArrayList<String> developers, String year) {
 		MongoDriver md;
 		MongoCollection<Document> collection;
 		ArrayList<Document> platformList;
@@ -604,6 +604,7 @@ public class Game {
 		game.append("platforms", platformList);
 		game.append("genres", genresList);
 		game.append("developers", developersList);
+		game.append("year", year);
 		
 		md = MongoDriver.getInstance();
 		collection = md.getCollection("games");
@@ -651,7 +652,9 @@ public class Game {
 		ArrayList<Document> genList;
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
 		String released = dateFormat.format(game.released);
-		
+		String[] dateString = released.split("-");
+		String year = dateString[0];
+		 
 		for(Platform p: game.platforms) {
 			names.add(p.getName());
 		}
@@ -671,12 +674,11 @@ public class Game {
 		}
 		
 		devList = createDevelopersList(names);
-		names.clear();
-		
-		
+		names.clear();	
 		
 		driver = MongoDriver.getInstance();
 		collection = driver.getCollection("games");
+		
 		
 		collection.updateOne(eq("name", oldName), 
 				Updates.combine(
@@ -685,6 +687,7 @@ public class Game {
 						Updates.set("released", released),
 						Updates.set("platforms", platList),
 						Updates.set("developers", devList),
+						Updates.set("year", year),
 						Updates.set("genres", genList)));
 		
 		if(!game.name.equals(oldName)) {

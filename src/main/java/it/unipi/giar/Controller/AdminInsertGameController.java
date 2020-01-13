@@ -124,6 +124,7 @@ public class AdminInsertGameController {
 		String dateIns;
 		String nameIns;
 		String descIns;
+		String yearIns;
 
 		nameIns = name.getText();
 		dateIns = date.getText();
@@ -142,11 +143,12 @@ public class AdminInsertGameController {
 			
 			String[] dateString = dateIns.split("/");
 			String mongoDateString = dateString[2] + "-" + dateString[1] + "-" + dateString[0];
+			yearIns =  dateString[2];
 			platformsString.addAll(platList);
 			genresString.addAll(genList);
 			developersString.addAll(devList);
 
-			Game.insertGame(nameIns, mongoDateString, descIns, platformsString, genresString, developersString);
+			Game.insertGame(nameIns, mongoDateString, descIns, platformsString, genresString, developersString, yearIns);
 			Game.updateIndexes();
 			setAcknowledgement("Game correctly added.");
 		}
