@@ -55,6 +55,12 @@ public class AdminInfoGameController {
 
 	@FXML
 	private ListView<String> developers;
+	
+	@FXML
+	private Text addedMyGames;
+
+	@FXML
+	private Text addedWishList;
 
 	public void initialize(String gameName) {
 		Date date;
@@ -98,7 +104,10 @@ public class AdminInfoGameController {
 		for (Platform plat : game.getPlatforms()) {
 			listPlatform.add(plat.getName());
 		}
+		
 
+		addedWishList.setText(Long.toString(game.getAddedWishlist()));
+		addedMyGames.setText(Long.toString(game.getAddedMyGames()));
 		ObservableList<String> obsPlatform = FXCollections.observableArrayList(listPlatform);
 		platforms.setItems((ObservableList<String>) obsPlatform);
 	}
