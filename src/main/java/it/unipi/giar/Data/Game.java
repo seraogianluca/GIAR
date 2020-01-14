@@ -430,7 +430,7 @@ public class Game {
 			den += r.getInteger("count");
 		}
 
-		this.rating = num / den;
+		this.rating = (double) num / (double) den;
 
 		collection.updateOne(eq("name", this.name), Updates.set("rating", this.rating));
 	}
