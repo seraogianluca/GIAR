@@ -83,11 +83,14 @@ public class Game {
 		this.description = (document.get("description_raw") == null) ? "" : document.getString("description_raw");
 		this.metacritic = (document.get("metacritic") == null) ? 0 : document.getInteger("metacritic");
 		this.rating = (document.get("rating") == null) ? 0 : document.getDouble("rating");
-		// this.addedWishlist = (document.get("added_by_status") == null) ? 0 :
-		// document.getLong("wishlist");
-		// this.addedMyGames = (document.get("mygames") == null) ? 0 :
-		// document.getLong("mygames");
-		// this.added = (this.addedWishlist + this.addedMyGames);
+		
+		
+		Document d = (Document)document.get("added_by_status");
+		this.addedWishlist = Long.parseLong(d.get("wishlist").toString());
+		this.addedMyGames = Long.parseLong(d.get("mygames").toString());
+			
+		
+		//this.added = (this.addedWishlist + this.addedMyGames);
 
 		List<Document> platformDoc = new ArrayList<Document>();
 		platformDoc = (List<Document>) document.get("platforms");
@@ -583,27 +586,34 @@ public class Game {
 	}
 	
 	public static void insertGame(String name, String date, String description, 
-			ArrayList<String> platforms, ArrayList<String> genres, ArrayList<String> developers) {
+		ArrayList<String> platforms, ArrayList<String> genres, ArrayList<String> developers, String year) {
 		MongoDriver md;
 		MongoCollection<Document> collection;
 		ArrayList<Document> platformList;
 		ArrayList<Document> genresList;
 		ArrayList<Document> developersList;
 		Double rating = 0.0;
+		Document added;
 		Document game;
 		
 		platformList = createPlatformList(platforms);
 		genresList = createGenresList(genres);
 		developersList = createDevelopersList(developers);
 		
+		added = new Document();
+		added.append("wishlist", 0);
+		added.append("mygames", 0);
+		
 		game = new Document();
 		game.append("name", name);
 		game.append("released", date);
 		game.append("description_raw", description);
 		game.append("rating", rating);
+		game.append("added_by_status", added);
 		game.append("platforms", platformList);
 		game.append("genres", genresList);
 		game.append("developers", developersList);
+		game.append("year", year);
 		
 		md = MongoDriver.getInstance();
 		collection = md.getCollection("games");
@@ -651,7 +661,9 @@ public class Game {
 		ArrayList<Document> genList;
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
 		String released = dateFormat.format(game.released);
-		
+		String[] dateString = released.split("-");
+		String year = dateString[0];
+		 
 		for(Platform p: game.platforms) {
 			names.add(p.getName());
 		}
@@ -671,12 +683,11 @@ public class Game {
 		}
 		
 		devList = createDevelopersList(names);
-		names.clear();
-		
-		
+		names.clear();	
 		
 		driver = MongoDriver.getInstance();
 		collection = driver.getCollection("games");
+		
 		
 		collection.updateOne(eq("name", oldName), 
 				Updates.combine(
@@ -685,6 +696,7 @@ public class Game {
 						Updates.set("released", released),
 						Updates.set("platforms", platList),
 						Updates.set("developers", devList),
+						Updates.set("year", year),
 						Updates.set("genres", genList)));
 		
 		if(!game.name.equals(oldName)) {
