@@ -89,7 +89,7 @@ public class AdminInsertGameController {
 	private ObservableList<String> devList;
 
 	@FXML
-	private JFXComboBox<String> developersCombo;
+	private JFXTextField developersCombo;
 
 	@FXML
 	private JFXButton devAddButton;
@@ -118,7 +118,6 @@ public class AdminInsertGameController {
 					genresCombo.setItems(genres);
 					genList = FXCollections.observableArrayList();
 					genresList.setItems(genList);
-
 				});
 			}
 		};
@@ -126,15 +125,11 @@ public class AdminInsertGameController {
 		final Runnable chargeDevList = new Runnable() {
 			public void run() {
 				Platform.runLater(() -> {
-					ObservableList<String> developers;
-					developers = FXCollections.observableArrayList(Game.getAllDevelopers());
-					developersCombo.setItems(developers);
 					devList = FXCollections.observableArrayList();
 					developersList.setItems(devList);
 				});
 			}
 		};
-
 		Thread pickerLoad = new Thread() {
 			public void run() {
 				try {
@@ -203,8 +198,8 @@ public class AdminInsertGameController {
 
 	@FXML
 	void insertDeveloper(ActionEvent event) {
-		devList.add(developersCombo.getValue());
-		developersCombo.setValue(null);
+		devList.add(developersCombo.getText());
+		developersCombo.setText(null);
 	}
 
 	@FXML
