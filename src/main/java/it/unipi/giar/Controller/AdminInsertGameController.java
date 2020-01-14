@@ -9,6 +9,8 @@ import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
+import javax.swing.SwingUtilities;
+
 import it.unipi.giar.Data.Game;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +21,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-
+import javafx.application.Platform;
 
 public class AdminInsertGameController {
 
@@ -96,24 +98,56 @@ public class AdminInsertGameController {
 	private JFXButton devRemoveButton;
 
 	public void initialize() {
-		ObservableList<String> platforms;
-		ObservableList<String> genres;
-		ObservableList<String> developers;
+		final Runnable chargePlatforms = new Runnable() {
+			public void run() {
+				Platform.runLater(() -> {
+					ObservableList<String> platforms;
+					platforms = FXCollections.observableArrayList(Game.getAllPlatform());
+					platformCombo.setItems(platforms);
+					platList = FXCollections.observableArrayList();
+					platformList.setItems(platList);
+				});
+			}
+		};
 
-		platforms = FXCollections.observableArrayList(Game.getAllPlatform());	
-		genres = FXCollections.observableArrayList(Game.getAllGenres());		
-		developers = FXCollections.observableArrayList(Game.getAllDevelopers());
+		final Runnable chargeGenres = new Runnable() {
+			public void run() {
+				Platform.runLater(() -> {
+					ObservableList<String> genres;
+					genres = FXCollections.observableArrayList(Game.getAllGenres());
+					genresCombo.setItems(genres);
+					genList = FXCollections.observableArrayList();
+					genresList.setItems(genList);
 
-		platformCombo.setItems(platforms);
-		genresCombo.setItems(genres);
-		developersCombo.setItems(developers);
+				});
+			}
+		};
 
-		platList = FXCollections.observableArrayList();	
-		genList = FXCollections.observableArrayList();
-		devList = FXCollections.observableArrayList();
-		platformList.setItems(platList);
-		genresList.setItems(genList);
-		developersList.setItems(devList);
+		final Runnable chargeDevList = new Runnable() {
+			public void run() {
+				Platform.runLater(() -> {
+					ObservableList<String> developers;
+					developers = FXCollections.observableArrayList(Game.getAllDevelopers());
+					developersCombo.setItems(developers);
+					devList = FXCollections.observableArrayList();
+					developersList.setItems(devList);
+				});
+			}
+		};
+
+		Thread pickerLoad = new Thread() {
+			public void run() {
+				try {
+					SwingUtilities.invokeLater(chargePlatforms);
+					SwingUtilities.invokeLater(chargeGenres);
+					SwingUtilities.invokeLater(chargeDevList);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		};
+
+		pickerLoad.start();
 	}
 
 	@FXML
@@ -130,25 +164,26 @@ public class AdminInsertGameController {
 		dateIns = date.getText();
 		descIns = description.getText();
 
-		if(!Pattern.matches("(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](19|20)\\d\\d", dateIns)) {
+		if (!Pattern.matches("(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](19|20)\\d\\d", dateIns)) {
 			setErrorMessage("Please insert a valid date.");
-		} else if(platList.size() == 0) {
+		} else if (platList.size() == 0) {
 			setErrorMessage("Please insert at least a platform.");
-		} else if(genList.size() == 0) {
+		} else if (genList.size() == 0) {
 			setErrorMessage("Please insert at least a genre.");
-		} else if(devList.size() == 0) {
+		} else if (devList.size() == 0) {
 			setErrorMessage("Please insert at least a developer.");
-		} else {	
+		} else {
 			message.setText("");
-			
+
 			String[] dateString = dateIns.split("/");
 			String mongoDateString = dateString[2] + "-" + dateString[1] + "-" + dateString[0];
-			yearIns =  dateString[2];
+			yearIns = dateString[2];
 			platformsString.addAll(platList);
 			genresString.addAll(genList);
 			developersString.addAll(devList);
 
-			Game.insertGame(nameIns, mongoDateString, descIns, platformsString, genresString, developersString, yearIns);
+			Game.insertGame(nameIns, mongoDateString, descIns, platformsString, genresString, developersString,
+					yearIns);
 			Game.updateIndexes();
 			setAcknowledgement("Game correctly added.");
 		}
