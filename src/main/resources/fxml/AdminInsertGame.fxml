@@ -29,7 +29,7 @@
             </AnchorPane>
          </top>
          <center>
-            <ScrollPane BorderPane.alignment="CENTER">
+            <ScrollPane style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
                <content>
                   <AnchorPane prefHeight="724.0" prefWidth="632.0">
                      <children>

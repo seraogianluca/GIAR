@@ -29,12 +29,11 @@
             </AnchorPane>
          </top>
          <center>
-            <ScrollPane BorderPane.alignment="CENTER">
+            <ScrollPane style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
                <content>
                   <AnchorPane prefHeight="724.0" prefWidth="632.0">
                      <children>
-                        <JFXTextField fx:id="name" focusColor="#e5e54e" layoutX="34.0" layoutY="15.0" prefHeight="32.0" prefWidth="260.0" promptText="Name" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="52.0" />
-                        <JFXTextField fx:id="date" focusColor="#e5e54e" layoutX="337.0" layoutY="20.0" prefHeight="32.0" prefWidth="260.0" promptText="Release date (dd/mm/yyyy)" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="52.0" />
+                        <JFXTextField fx:id="date" focusColor="#e5e54e" layoutX="337.0" layoutY="20.0" prefHeight="32.0" prefWidth="260.0" promptText="Release date (dd/mm/yyyy)" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="52.0" />
                         <JFXTextArea fx:id="description" focusColor="#e5e54e" layoutX="35.0" layoutY="85.0" prefHeight="120.0" prefWidth="550.0" promptText="Description" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="116.0" />
                         <JFXButton fx:id="updateButton" layoutX="518.0" layoutY="675.0" onMouseClicked="#update" prefHeight="32.0" prefWidth="82.0" style="-fx-background-color: #7bd500;" text="Update" textAlignment="CENTER" textFill="WHITE" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="675.0">
                            <font>

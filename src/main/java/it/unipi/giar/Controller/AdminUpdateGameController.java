@@ -36,9 +36,6 @@ public class AdminUpdateGameController {
     private Label gameTitle;
 
     @FXML
-    private JFXTextField name;
-
-    @FXML
     private JFXTextField date;
 
     @FXML
@@ -131,7 +128,6 @@ public class AdminUpdateGameController {
 		
 		game = Game.findGame(gameName);
 		gameTitle.setText(gameName);
-		name.setText(game.getName());
 		date.setText(dateForm.format(game.getReleased()));
 		description.setText(game.getDescription());
 		
@@ -161,7 +157,7 @@ public class AdminUpdateGameController {
 			AnchorPane pane;
 			AnchorPane newPane;
 
-			scene = name.getScene();
+			scene = date.getScene();
 			pane = (AnchorPane)scene.lookup("#anchorPaneRight");
 
 			loader = new FXMLLoader();
@@ -184,7 +180,6 @@ public class AdminUpdateGameController {
 			ArrayList<String> genresString = new ArrayList<String>();
 			ArrayList<String> developersString = new ArrayList<String>();
 			SimpleDateFormat formatDate = new SimpleDateFormat("dd/mm/yyyy");
-			String oldName;
 			
 			if(!Pattern.matches("(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](19|20)\\d\\d", date.getText())) {
 				setErrorMessage("Please insert a valid date.");
@@ -196,9 +191,7 @@ public class AdminUpdateGameController {
 				setErrorMessage("Please insert at least a developer.");
 			} else {
 				message.setText("");
-				
-				oldName = game.getName();
-				game.setName(name.getText());
+
 				game.setDescription(description.getText());
 				game.setReleased(formatDate.parse(date.getText()));
 				
@@ -210,7 +203,7 @@ public class AdminUpdateGameController {
 				game.setGenres(genresString);
 				game.setDevelopers(developersString);
 				
-				Game.updateGame(game, oldName);		
+				Game.updateGame(game);		
 				Game.updateIndexes();
 				setAcknowledgement("Game correctly updated.");
 			}

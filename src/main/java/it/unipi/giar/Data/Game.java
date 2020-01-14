@@ -22,7 +22,6 @@ import org.neo4j.driver.v1.StatementResult;
 import org.neo4j.driver.v1.Transaction;
 import org.neo4j.driver.v1.TransactionWork;
 
-import it.unipi.giar.GiarSession;
 import it.unipi.giar.MongoDriver;
 import it.unipi.giar.Neo4jDriver;
 
@@ -651,7 +650,7 @@ public class Game {
 		}
 	}
 	
-	public static void updateGame(Game game, String oldName) {
+	public static void updateGame(Game game) {
 		MongoDriver driver;
 		MongoCollection<Document> collection;
 		
@@ -689,37 +688,14 @@ public class Game {
 		collection = driver.getCollection("games");
 		
 		
-		collection.updateOne(eq("name", oldName), 
+		collection.updateOne(eq("name", game.name), 
 				Updates.combine(
-						Updates.set("name", game.name),
 						Updates.set("description_raw", game.description),
 						Updates.set("released", released),
 						Updates.set("platforms", platList),
 						Updates.set("developers", devList),
 						Updates.set("year", year),
-						Updates.set("genres", genList)));
-		
-		if(!game.name.equals(oldName)) {
-			updateGameNode(oldName, game.name);
-		}	
-	}
-	
-	private static void updateGameNode(String gameName, String newName){
-		
-		Neo4jDriver nd = Neo4jDriver.getInstance();
-		try (Session session = nd.getDriver().session()) {
-			session.writeTransaction(
-					new TransactionWork<Boolean>() {
-						@Override
-						public Boolean execute(Transaction tx) {
-							tx.run("MATCH (n:Game {name: $name}) "
-									+ "SET n.name = $newName"
-									, parameters("name", gameName, "newName", newName));
-							return true;
-						}
-					}
-			);
-		}
+						Updates.set("genres", genList)));	
 	}
 	
 	public static ArrayList<Document> TopPerPlatform(String value) {
