@@ -16,7 +16,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipi.giar.Controller.AdminUpdateGameController">
    <children>
-      <BorderPane layoutX="250.0" prefHeight="600.0" prefWidth="650.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane layoutX="250.0" prefHeight="600.0" prefWidth="650.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <AnchorPane prefHeight="66.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
@@ -31,7 +31,7 @@
          <center>
             <ScrollPane style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
                <content>
-                  <AnchorPane prefHeight="724.0" prefWidth="632.0">
+                  <AnchorPane prefHeight="724.0" prefWidth="632.0" style="-fx-background-color: transparent;">
                      <children>
                         <JFXTextField fx:id="date" focusColor="#e5e54e" layoutX="337.0" layoutY="20.0" prefHeight="32.0" prefWidth="260.0" promptText="Release date (dd/mm/yyyy)" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="52.0" />
                         <JFXTextArea fx:id="description" focusColor="#e5e54e" layoutX="35.0" layoutY="85.0" prefHeight="120.0" prefWidth="550.0" promptText="Description" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="116.0" />

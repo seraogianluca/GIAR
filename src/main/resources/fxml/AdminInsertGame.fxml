@@ -31,7 +31,7 @@
          <center>
             <ScrollPane style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
                <content>
-                  <AnchorPane prefHeight="724.0" prefWidth="632.0">
+                  <AnchorPane style="-fx-background-color: transparent;" prefHeight="724.0" prefWidth="632.0">
                      <children>
                         <JFXTextField fx:id="name" focusColor="#e5e54e" layoutX="34.0" layoutY="15.0" prefHeight="32.0" prefWidth="260.0" promptText="Name" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="52.0" />
                         <JFXTextField fx:id="date" focusColor="#e5e54e" layoutX="337.0" layoutY="20.0" prefHeight="32.0" prefWidth="260.0" promptText="Release date (dd/mm/yyyy)" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="52.0" />
