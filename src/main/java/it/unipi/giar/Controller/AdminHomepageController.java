@@ -25,15 +25,15 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 import javafx.application.Platform;
 
-
 public class AdminHomepageController {
 
     private ObservableList<GameTable> games;
-	
+
     @FXML
     private AnchorPane PaneRight;
 
@@ -50,7 +50,7 @@ public class AdminHomepageController {
     private JFXProgressBar progressBar;
 
     @SuppressWarnings("unchecked")
-	public void initialize() {
+    public void initialize() {
         searchAllGames.setVisible(false);
         progressBar.setVisible(false);
 
@@ -92,28 +92,30 @@ public class AdminHomepageController {
         gamesTable.setRoot(root);
         gamesTable.setShowRoot(false);
     }
-    
+
     @FXML
     void searchGames(KeyEvent event) {
-        games.clear();
-        searchAllGames.setVisible(false);
-
-        if (searchGames.getText().isEmpty()
-                || (event.getText().isEmpty() && !event.getCode().name().equals("BACK_SPACE"))) {
+        if (event.getCode() != KeyCode.ENTER) {
             games.clear();
-        } else if (event.getCode().name().equals("BACK_SPACE") 
-        || (searchGames.getText().charAt(searchGames.getText().length() - 1) == (event.getText().charAt(0)))){
-            
-            ArrayList<Game> searchResult = Game.searchGames(searchGames.getText(), false);
+            searchAllGames.setVisible(false);
 
-            if (searchResult.size() >= 10) {
-                searchAllGames.setVisible(true);
-            } else {
-                searchAllGames.setVisible(false);
-            }
+            if (searchGames.getText().isEmpty()
+                    || (event.getText().isEmpty() && !event.getCode().name().equals("BACK_SPACE"))) {
+                games.clear();
+            } else if (event.getCode().name().equals("BACK_SPACE") || (searchGames.getText()
+                    .charAt(searchGames.getText().length() - 1) == (event.getText().charAt(0)))) {
 
-            for (Game game : searchResult) {
-                games.add(new GameTable(game.getName(), Double.toString(game.getRating())));
+                ArrayList<Game> searchResult = Game.searchGames(searchGames.getText(), false);
+
+                if (searchResult.size() >= 10) {
+                    searchAllGames.setVisible(true);
+                } else {
+                    searchAllGames.setVisible(false);
+                }
+
+                for (Game game : searchResult) {
+                    games.add(new GameTable(game.getName(), Double.toString(game.getRating())));
+                }
             }
         }
     }
@@ -192,5 +194,5 @@ public class AdminHomepageController {
         }
 
     }
-    
+
 }
