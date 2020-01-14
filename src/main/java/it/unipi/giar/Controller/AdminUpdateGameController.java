@@ -12,9 +12,9 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
 import it.unipi.giar.Data.Developer;
+import it.unipi.giar.Data.Platform;
 import it.unipi.giar.Data.Game;
 import it.unipi.giar.Data.Genre;
-import it.unipi.giar.Data.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,86 +29,86 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class AdminUpdateGameController {
-	
+
 	private Game game;
-	
-    @FXML
-    private Label gameTitle;
 
-    @FXML
-    private JFXTextField date;
+	@FXML
+	private Label gameTitle;
 
-    @FXML
-    private JFXTextArea description;
+	@FXML
+	private JFXTextField date;
 
-    @FXML
-    private JFXButton updateButton;
+	@FXML
+	private JFXTextArea description;
 
-    @FXML
-    private JFXButton cancelButton;
+	@FXML
+	private JFXButton updateButton;
 
-    @FXML
-    private Text message;
+	@FXML
+	private JFXButton cancelButton;
 
-    @FXML
-    private Pane patformsPane;
+	@FXML
+	private Text message;
 
-    @FXML
-    private Label platformLabel;
+	@FXML
+	private Pane patformsPane;
 
-    @FXML
-    private JFXListView<String> platformList;
-    private ObservableList<String> platList;
+	@FXML
+	private Label platformLabel;
 
-    @FXML
-    private JFXComboBox<String> platformCombo;
+	@FXML
+	private JFXListView<String> platformList;
+	private ObservableList<String> platList;
 
-    @FXML
-    private JFXButton platAddButton;
+	@FXML
+	private JFXComboBox<String> platformCombo;
 
-    @FXML
-    private JFXButton platRemoveButton;
+	@FXML
+	private JFXButton platAddButton;
 
-    @FXML
-    private Pane genresPane;
+	@FXML
+	private JFXButton platRemoveButton;
 
-    @FXML
-    private Label genresLabel;
+	@FXML
+	private Pane genresPane;
 
-    @FXML
-    private JFXListView<String> genresList;
-    private ObservableList<String> genList;
+	@FXML
+	private Label genresLabel;
 
-    @FXML
-    private JFXComboBox<String> genresCombo;
+	@FXML
+	private JFXListView<String> genresList;
+	private ObservableList<String> genList;
 
-    @FXML
-    private JFXButton genAddButton;
+	@FXML
+	private JFXComboBox<String> genresCombo;
 
-    @FXML
-    private JFXButton genRemoveButton;
+	@FXML
+	private JFXButton genAddButton;
 
-    @FXML
-    private Pane developersPane;
+	@FXML
+	private JFXButton genRemoveButton;
 
-    @FXML
-    private Label developersLabel;
+	@FXML
+	private Pane developersPane;
 
-    @FXML
-    private JFXListView<String> developersList;
-    private ObservableList<String> devList;
+	@FXML
+	private Label developersLabel;
 
-    @FXML
-    private JFXComboBox<String> developersCombo;
+	@FXML
+	private JFXListView<String> developersList;
+	private ObservableList<String> devList;
 
-    @FXML
-    private JFXButton devAddButton;
+	@FXML
+	private JFXTextField developersCombo;
 
-    @FXML
-    private JFXButton devRemoveButton;
-    
-    public void initialize(String gameName) {
-    	ObservableList<String> platforms;
+	@FXML
+	private JFXButton devAddButton;
+
+	@FXML
+	private JFXButton devRemoveButton;
+
+	public void initialize(String gameName) {
+		ObservableList<String> platforms;
 		ObservableList<String> genres;
 		ObservableList<String> developers;
 		DateFormat dateForm;
@@ -120,7 +120,6 @@ public class AdminUpdateGameController {
 
 		platformCombo.setItems(platforms);
 		genresCombo.setItems(genres);
-		developersCombo.setItems(developers);
 
 		platList = FXCollections.observableArrayList();	
 		genList = FXCollections.observableArrayList();
@@ -146,11 +145,11 @@ public class AdminUpdateGameController {
 		platformList.setItems(platList);
 		genresList.setItems(genList);
 		developersList.setItems(devList);
-    }
+	}
 
-    @FXML
-    void cancel(MouseEvent event) {
-    	try {
+	@FXML
+	void cancel(MouseEvent event) {
+		try {
 			FXMLLoader loader;
 			AdminInfoGameController controller;
 			Scene scene;
@@ -158,12 +157,12 @@ public class AdminUpdateGameController {
 			AnchorPane newPane;
 
 			scene = date.getScene();
-			pane = (AnchorPane)scene.lookup("#anchorPaneRight");
+			pane = (AnchorPane) scene.lookup("#anchorPaneRight");
 
 			loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/fxml/AdminInfoGame.fxml"));
 			newPane = loader.load();
-			
+
 			controller = loader.getController();
 			controller.initialize(game.getName());
 
@@ -171,48 +170,48 @@ public class AdminUpdateGameController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-    }
-    
-    @FXML
-    void update(MouseEvent event) {
-    	try {
+	}
+
+	@FXML
+	void update(MouseEvent event) {
+		try {
 			ArrayList<String> platformsString = new ArrayList<String>();
 			ArrayList<String> genresString = new ArrayList<String>();
 			ArrayList<String> developersString = new ArrayList<String>();
 			SimpleDateFormat formatDate = new SimpleDateFormat("dd/mm/yyyy");
-			
-			if(!Pattern.matches("(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](19|20)\\d\\d", date.getText())) {
+
+			if (!Pattern.matches("(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](19|20)\\d\\d", date.getText())) {
 				setErrorMessage("Please insert a valid date.");
-			} else if(platList.size() == 0) {
+			} else if (platList.size() == 0) {
 				setErrorMessage("Please insert at least a platform.");
-			} else if(genList.size() == 0) {
+			} else if (genList.size() == 0) {
 				setErrorMessage("Please insert at least a genre.");
-			} else if(devList.size() == 0) {
+			} else if (devList.size() == 0) {
 				setErrorMessage("Please insert at least a developer.");
 			} else {
 				message.setText("");
 
 				game.setDescription(description.getText());
 				game.setReleased(formatDate.parse(date.getText()));
-				
+
 				platformsString.addAll(platList);
 				genresString.addAll(genList);
 				developersString.addAll(devList);
-				
+
 				game.setPlatforms(platformsString);
 				game.setGenres(genresString);
 				game.setDevelopers(developersString);
-				
-				Game.updateGame(game);		
+
+				Game.updateGame(game);
 				Game.updateIndexes();
 				setAcknowledgement("Game correctly updated.");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-    }
+	}
 
-    @FXML
+	@FXML
 	void insertPlatform(ActionEvent event) {
 		platList.add(platformCombo.getValue());
 		platformCombo.setValue(null);
@@ -226,8 +225,8 @@ public class AdminUpdateGameController {
 
 	@FXML
 	void insertDeveloper(ActionEvent event) {
-		devList.add(developersCombo.getValue());
-		developersCombo.setValue(null);
+		devList.add(developersCombo.getText());
+		developersCombo.setText(null);
 	}
 
 	@FXML
@@ -244,7 +243,7 @@ public class AdminUpdateGameController {
 	void removeDeveloper(ActionEvent event) {
 		devList.remove(developersList.getSelectionModel().getSelectedItem());
 	}
-	
+
 	private void setErrorMessage(String msg) {
 		message.setText(msg);
 		message.setFill(Color.web("#db524b"));

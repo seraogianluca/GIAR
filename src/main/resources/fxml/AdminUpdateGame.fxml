@@ -92,8 +92,7 @@
                                  </font>
                               </Label>
                               <JFXListView fx:id="developersList" layoutY="20.0" prefHeight="96.0" prefWidth="160.0" />
-                              <JFXComboBox fx:id="developersCombo" editable="true" focusColor="#e5e54e" layoutX="176.0" layoutY="48.0" prefHeight="32.0" prefWidth="160.0" />
-                              <Label layoutX="176.0" layoutY="20.0" text="Choose one or insert new:" />
+                              <JFXTextField fx:id="developersCombo" editable="true" focusColor="#e5e54e" layoutX="176.0" layoutY="48.0" prefHeight="32.0" prefWidth="160.0" promptText="Developer Name"/>
                               <JFXButton fx:id="devAddButton" layoutX="352.0" layoutY="51.0" onAction="#insertDeveloper" style="-fx-background-color: #7bd500;" text="Add" textFill="WHITE" />
                               <JFXButton fx:id="devRemoveButton" layoutX="410.0" layoutY="51.0" onAction="#removeDeveloper" style="-fx-background-color: #db524b;" text="Remove" textFill="WHITE" />
                            </children>

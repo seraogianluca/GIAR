@@ -43,11 +43,9 @@
                      <center>
                         <AnchorPane prefHeight="518.0" prefWidth="250.0" BorderPane.alignment="CENTER">
                            <children>
-
                               <JFXButton fx:id="statisticMenuPanel" focusTraversable="false" onAction="#openStatistics" prefHeight="50.0" prefWidth="250.0" text="Stats" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                               <JFXButton fx:id="newgameMenuPanel" focusTraversable="false" layoutY="50.0" onAction="#openInsertNewGame" prefHeight="50.0" prefWidth="250.0" text="Insert New Game" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                               <JFXButton fx:id="deleteUpdateMenuPanel" focusTraversable="false" layoutY="100.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#openDeleteUpdateGame" prefHeight="50.0" prefWidth="250.0" text="Delete/Update Game" textAlignment="JUSTIFY" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0" />
-
                            </children>
                         </AnchorPane>
                      </center>
