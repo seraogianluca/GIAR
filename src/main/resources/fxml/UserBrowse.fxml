@@ -12,14 +12,14 @@
          <top>
           <AnchorPane prefHeight="100.0" prefWidth="650.0" BorderPane.alignment="CENTER">
                <children>
-                  <Text fx:id="browse" layoutX="128.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Browse " wrappingWidth="492.890625">
+                  <Text fx:id="browse" layoutX="33.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Browse " wrappingWidth="88.890625">
                      <font>
-                        <Font size="40.0" />
+                        <Font size="24.0" />
                      </font>
                   </Text>
-                  <Text fx:id="browseType" layoutX="295.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="258.890625">
+                  <Text fx:id="browseType" layoutX="122.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="343.890625">
                      <font>
-                        <Font name="System Italic" size="33.0" />
+                        <Font name="System Italic" size="24.0" />
                      </font>
                   </Text>
                </children>

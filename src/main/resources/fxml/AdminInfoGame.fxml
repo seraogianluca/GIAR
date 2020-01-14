@@ -16,9 +16,9 @@
          <top>
             <AnchorPane prefHeight="46.0" prefWidth="650.0" BorderPane.alignment="CENTER">
                <children>
-                  <Text fx:id="name" layoutX="230.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" AnchorPane.leftAnchor="60.0">
+                  <Text fx:id="name" layoutX="40.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="9.0" AnchorPane.leftAnchor="40.0">
                      <font>
-                        <Font name="System Bold" size="33.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Text>
                </children>

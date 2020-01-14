@@ -15,9 +15,9 @@
          <top>
             <AnchorPane prefHeight="100.0" prefWidth="650.0" BorderPane.alignment="CENTER">
                <children>
-                  <Text fx:id="stats" layoutX="226.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistics" wrappingWidth="197.890625">
+                  <Text fx:id="stats" layoutX="36.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Owned games distribution" wrappingWidth="356.890625">
                      <font>
-                        <Font size="40.0" />
+                        <Font size="24.0" />
                      </font>
                   </Text>
                </children>

@@ -12,9 +12,9 @@
          <top>
             <AnchorPane prefHeight="100.0" prefWidth="650.0" BorderPane.alignment="CENTER">
                <children>
-                  <Text fx:id="profileTitle" layoutX="20.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Profile" wrappingWidth="609.890625" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="16.0">
+                  <Text fx:id="profileTitle" layoutX="14.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Profile" wrappingWidth="609.890625" AnchorPane.bottomAnchor="50.9765625" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="26.109375" AnchorPane.topAnchor="17.1015625">
                      <font>
-                        <Font size="48.0" />
+                        <Font size="24.0" />
                      </font>
                   </Text>
                </children>

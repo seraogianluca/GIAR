@@ -20,9 +20,9 @@
          <top>
             <AnchorPane prefHeight="66.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="New Game" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0">
+                  <Label layoutX="29.0" layoutY="7.0" prefHeight="52.0" prefWidth="117.0" text="New Game" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="7.0">
                      <font>
-                        <Font size="48.0" />
+                        <Font size="24.0" />
                      </font>
                   </Label>
                </children>
