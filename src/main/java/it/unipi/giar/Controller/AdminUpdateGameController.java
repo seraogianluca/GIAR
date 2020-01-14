@@ -36,9 +36,6 @@ public class AdminUpdateGameController {
     private Label gameTitle;
 
     @FXML
-    private JFXTextField name;
-
-    @FXML
     private JFXTextField date;
 
     @FXML
@@ -131,8 +128,6 @@ public class AdminUpdateGameController {
 		
 		game = Game.findGame(gameName);
 		gameTitle.setText(gameName);
-		name.setText(game.getName());
-		name.setEditable(false);
 		date.setText(dateForm.format(game.getReleased()));
 		description.setText(game.getDescription());
 		
@@ -162,7 +157,7 @@ public class AdminUpdateGameController {
 			AnchorPane pane;
 			AnchorPane newPane;
 
-			scene = name.getScene();
+			scene = date.getScene();
 			pane = (AnchorPane)scene.lookup("#anchorPaneRight");
 
 			loader = new FXMLLoader();
