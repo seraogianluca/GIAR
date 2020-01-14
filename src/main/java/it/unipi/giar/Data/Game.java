@@ -1,6 +1,7 @@
 package it.unipi.giar.Data;
 
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -429,8 +430,12 @@ public class Game {
 			num += (Integer.parseInt(r.getString("title")) * r.getInteger("count"));
 			den += r.getInteger("count");
 		}
-
-		this.rating = (double) num / (double) den;
+	
+		double average = (double)num / den;
+		
+		String rate = String.format("%.2f", average);
+		rate = rate.replace(",", ".");
+		this.rating = Double.valueOf(rate);
 
 		collection.updateOne(eq("name", this.name), Updates.set("rating", this.rating));
 	}
