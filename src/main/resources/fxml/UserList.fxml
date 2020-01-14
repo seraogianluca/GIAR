@@ -12,7 +12,7 @@
          <top>
           <AnchorPane prefHeight="100.0" prefWidth="650.0" BorderPane.alignment="CENTER">
                <children>
-                  <Text fx:id="listType" layoutX="41.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wishlist" wrappingWidth="88.890625">
+                  <Text fx:id="listType" layoutX="33.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wishlist" wrappingWidth="140.890625">
                      <font>
                         <Font size="24.0" />
                      </font>
