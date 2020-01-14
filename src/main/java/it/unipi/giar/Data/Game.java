@@ -386,7 +386,7 @@ public class Game {
 	}
 
 	@SuppressWarnings("unchecked")
-	private void updatePercentage(String ratingid) {
+	private void updatePercentage() {
 		MongoDriver md;
 		MongoCollection<Document> collection;
 		ArrayList<Document> ratings;
@@ -404,14 +404,9 @@ public class Game {
 		for (Document r : ratings) {
 			ratingCount = r.getInteger("count");
 			totalRatingCount = getTotalRating();
-			double percent = (double)(ratingCount / totalRatingCount) * 100;
-			
-			String perc = String.format("%.2f", percent);
-			perc = perc.replace(",", ".");
-			percent = Double.valueOf(perc);
-			
+			double percent = (double)((double)ratingCount / totalRatingCount) * 100;
 
-			collection.updateOne(and(eq("name", this.name), eq("ratings.title", ratingid)),
+			collection.updateOne(and(eq("name", this.name), eq("ratings.title", r.getString("title"))),
 					Updates.set("ratings.$.percent", percent));
 		}
 	}
@@ -473,7 +468,7 @@ public class Game {
 			collection.updateOne(eq("name", this.name), Updates.addToSet("ratings", rate));
 		}
 
-		updatePercentage(newRate);
+		updatePercentage();
 		calculateRating();
 	}
 	
