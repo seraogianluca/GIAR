@@ -3,6 +3,7 @@ package it.unipi.giar.Controller;
 import java.io.File;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.Document;
@@ -19,6 +20,8 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.chart.XYChart.Data;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class AdminStatController {
@@ -44,48 +47,50 @@ public class AdminStatController {
     MongoIterable<Document> total;
     
     @FXML
-    void statistics(ActionEvent event) {
-   	
-    	String country;
-    	
+    void statistics(ActionEvent event) {   	
+    	String country;    	
     	games.clear();
     	
     	if(total!=null) {
        		chart.getData().clear();
-    		chart.layout();
-    		
+    		chart.layout();    		
     	}
 	
+    	/*ArrayList<Color> colors = new ArrayList<Color>();
+    	colors.add(Color.BLUE);
+    	colors.add(Color.GOLD); 
+    	colors.add(Color.RED); 
+    	colors.add(Color.GREEN); 
+    	colors.add(Color.SPRINGGREEN); 
+    	colors.add(Color.DIMGRAY); 
+    	colors.add(Color.LIME); 
+    	colors.add(Color.ORANGE); 
+    	colors.add(Color.BLACK); 
+    	colors.add(Color.ORCHID);*/
+    	
     	country = comboCountry.getValue();
     	total = User.gameDistributionPerCountry(country);
         
-    	XYChart.Series dataSeries1 = new XYChart.Series();
-        dataSeries1.setName(country + " statistics");
-        
-        
+    	XYChart.Series<String, Number> dataSeries1 = new XYChart.Series<String, Number>();    
+        xAxe.setTickLabelRotation(90);
 
         for(Document d: total) {
-        	
-        	dataSeries1.getData().add(new XYChart.Data(d.getString("_id"), d.getLong("count")));
+        	Data data = new XYChart.Data<String, Number>(d.getString("_id"), d.getLong("count"));
+        	dataSeries1.getData().add(data);
         	games.add(d.getString("_id"));
-        }
-        
+        }        
         xAxe.setCategories(games);
-        chart.getData().addAll(dataSeries1);
-           	
+        chart.getData().add(dataSeries1);
+        chart.setLegendVisible(false); 	
     }
-    
-    
+       
     public void initialize() {
     	try {
-    		 chart.setCategoryGap(100);
+    		 chart.setCategoryGap(10);
     		 chart.setTitle("Country Stats");
     		 xAxe.setLabel("Games");   
              yAxe.setLabel("Number of games owned");
-             
-     	    
-     	  
-            
+
 			List<String> countries1 = Files.readAllLines(
 					new File("src/main/resources/countries.txt").toPath(), 
 					Charset.defaultCharset());
