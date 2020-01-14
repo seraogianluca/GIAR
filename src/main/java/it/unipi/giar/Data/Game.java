@@ -404,9 +404,15 @@ public class Game {
 		for (Document r : ratings) {
 			ratingCount = r.getInteger("count");
 			totalRatingCount = getTotalRating();
+			double percent = (double)(ratingCount / totalRatingCount) * 100;
+			
+			String perc = String.format("%.2f", percent);
+			perc = perc.replace(",", ".");
+			percent = Double.valueOf(perc);
+			
 
 			collection.updateOne(and(eq("name", this.name), eq("ratings.title", ratingid)),
-					Updates.set("ratings.$.percent", (ratingCount / totalRatingCount) * 100));
+					Updates.set("ratings.$.percent", percent));
 		}
 	}
 
