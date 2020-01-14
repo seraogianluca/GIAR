@@ -719,12 +719,7 @@ public class User {
 		int follow = getFollow();	//tot relations in the graphdb
 		int following = getFollowing(nickname);	//followers of this user
 		double threshold = (double)follow / (double)players;	//ratio
-		
-		/*System.out.println(follow);
-		System.out.println(players);
-		System.out.println(threshold);
-		System.out.println(following);
-		*/
+
 		if(following >= threshold) {	//if my followers > threshold -> PRO
 			return setPro(nickname);
 		}
