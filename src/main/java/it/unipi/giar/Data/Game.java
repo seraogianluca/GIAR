@@ -85,9 +85,10 @@ public class Game {
 		this.rating = (document.get("rating") == null) ? 0 : document.getDouble("rating");
 		
 		
-		Document d= (Document)document.get("added_by_status");
+		Document d = (Document)document.get("added_by_status");
 		this.addedWishlist = Long.parseLong(d.get("wishlist").toString());
-		this.addedMyGames = Long.parseLong(d.get("mygames").toString());	
+		this.addedMyGames = Long.parseLong(d.get("mygames").toString());
+			
 		
 		//this.added = (this.addedWishlist + this.addedMyGames);
 
@@ -592,17 +593,23 @@ public class Game {
 		ArrayList<Document> genresList;
 		ArrayList<Document> developersList;
 		Double rating = 0.0;
+		Document added;
 		Document game;
 		
 		platformList = createPlatformList(platforms);
 		genresList = createGenresList(genres);
 		developersList = createDevelopersList(developers);
 		
+		added = new Document();
+		added.append("wishlist", 0);
+		added.append("mygames", 0);
+		
 		game = new Document();
 		game.append("name", name);
 		game.append("released", date);
 		game.append("description_raw", description);
 		game.append("rating", rating);
+		game.append("added_by_status", added);
 		game.append("platforms", platformList);
 		game.append("genres", genresList);
 		game.append("developers", developersList);
