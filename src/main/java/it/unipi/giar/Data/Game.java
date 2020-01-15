@@ -742,6 +742,7 @@ public class Game {
 		    collection.dropIndexes();
 		    //recreate all
 		    collection.createIndex(Indexes.ascending("year"));
+		    collection.createIndex(Indexes.ascending("name"));
 		    collection.createIndex(Indexes.ascending("genres.name"));
 		    collection.createIndex(Indexes.ascending("platforms.platform.name"));
 		} catch(Exception e) {
