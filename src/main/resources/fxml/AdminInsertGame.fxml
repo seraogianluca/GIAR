@@ -20,18 +20,18 @@
          <top>
             <AnchorPane prefHeight="66.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="New Game" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0">
+                  <Label layoutX="29.0" layoutY="7.0" prefHeight="52.0" prefWidth="117.0" text="New Game" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="7.0">
                      <font>
-                        <Font size="48.0" />
+                        <Font size="24.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
          </top>
          <center>
-            <ScrollPane BorderPane.alignment="CENTER">
+            <ScrollPane style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
                <content>
-                  <AnchorPane prefHeight="724.0" prefWidth="632.0">
+                  <AnchorPane style="-fx-background-color: transparent;" prefHeight="724.0" prefWidth="632.0">
                      <children>
                         <JFXTextField fx:id="name" focusColor="#e5e54e" layoutX="34.0" layoutY="15.0" prefHeight="32.0" prefWidth="260.0" promptText="Name" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="52.0" />
                         <JFXTextField fx:id="date" focusColor="#e5e54e" layoutX="337.0" layoutY="20.0" prefHeight="32.0" prefWidth="260.0" promptText="Release date (dd/mm/yyyy)" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="52.0" />
@@ -85,8 +85,7 @@
                                  </font>
                               </Label>
                               <JFXListView fx:id="developersList" layoutY="20.0" prefHeight="96.0" prefWidth="160.0" />
-                              <JFXComboBox fx:id="developersCombo" editable="true" focusColor="#e5e54e" layoutX="176.0" layoutY="48.0" prefHeight="32.0" prefWidth="160.0" />
-                              <Label layoutX="176.0" layoutY="20.0" text="Choose one or insert new:" />
+                              <JFXTextField fx:id="developersCombo" editable="true" focusColor="#e5e54e" layoutX="176.0" layoutY="48.0" prefHeight="32.0" prefWidth="160.0" promptText="Developer Name"/>
                               <JFXButton fx:id="devAddButton" layoutX="352.0" layoutY="51.0" onAction="#insertDeveloper" style="-fx-background-color: #7bd500;" text="Add" textFill="WHITE" />
                               <JFXButton fx:id="devRemoveButton" layoutX="410.0" layoutY="51.0" onAction="#removeDeveloper" style="-fx-background-color: #db524b;" text="Remove" textFill="WHITE" />
                            </children>

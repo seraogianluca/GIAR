@@ -12,14 +12,14 @@
          <top>
           <AnchorPane prefHeight="100.0" prefWidth="650.0" BorderPane.alignment="CENTER">
                <children>
-                  <Text fx:id="top" layoutX="196.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Top" wrappingWidth="258.890625">
+                  <Text fx:id="top" layoutX="41.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Top" wrappingWidth="53.890625">
                      <font>
-                        <Font size="40.0" />
+                        <Font size="24.0" />
                      </font>
                   </Text>
-                  <Text fx:id="plat" layoutX="302.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" " wrappingWidth="258.890625">
+                  <Text fx:id="plat" layoutX="95.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" " wrappingWidth="354.890625">
                      <font>
-                        <Font size="56.0" />
+                        <Font size="24.0" />
                      </font>
                   </Text>
                </children>

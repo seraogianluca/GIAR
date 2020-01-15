@@ -484,7 +484,7 @@ public class User {
 		ArrayList<User> following = new ArrayList<User>();		
 		Neo4jDriver nd = Neo4jDriver.getInstance();
 		try (Session session = nd.getDriver().session()) {
-			session.writeTransaction(
+			session.readTransaction(
 					new TransactionWork<Boolean>() {
 						@Override
 						public Boolean execute(Transaction tx) {

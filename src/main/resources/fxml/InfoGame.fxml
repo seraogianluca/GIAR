@@ -15,11 +15,11 @@
    <children>
       <BorderPane prefHeight="600.0" prefWidth="650.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <AnchorPane prefHeight="46.0" prefWidth="650.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="69.0" prefWidth="650.0" BorderPane.alignment="CENTER">
                <children>
-                  <Text fx:id="name" layoutX="230.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" AnchorPane.leftAnchor="60.0">
+                  <Text fx:id="name" layoutX="36.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GAMENAME" wrappingWidth="561.0" AnchorPane.leftAnchor="36.0">
                      <font>
-                        <Font name="System Bold" size="33.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Text>
                </children>
