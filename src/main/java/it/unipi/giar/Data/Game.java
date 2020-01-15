@@ -22,7 +22,6 @@ import org.neo4j.driver.v1.StatementResult;
 import org.neo4j.driver.v1.Transaction;
 import org.neo4j.driver.v1.TransactionWork;
 
-import it.unipi.giar.GiarSession;
 import it.unipi.giar.MongoDriver;
 import it.unipi.giar.Neo4jDriver;
 
@@ -387,7 +386,7 @@ public class Game {
 	}
 
 	@SuppressWarnings("unchecked")
-	private void updatePercentage(String ratingid) {
+	private void updatePercentage() {
 		MongoDriver md;
 		MongoCollection<Document> collection;
 		ArrayList<Document> ratings;
@@ -405,9 +404,10 @@ public class Game {
 		for (Document r : ratings) {
 			ratingCount = r.getInteger("count");
 			totalRatingCount = getTotalRating();
+			double percent = (double)((double)ratingCount / totalRatingCount) * 100;
 
-			collection.updateOne(and(eq("name", this.name), eq("ratings.title", ratingid)),
-					Updates.set("ratings.$.percent", (ratingCount / totalRatingCount) * 100));
+			collection.updateOne(and(eq("name", this.name), eq("ratings.title", r.getString("title"))),
+					Updates.set("ratings.$.percent", percent));
 		}
 	}
 
@@ -430,8 +430,12 @@ public class Game {
 			num += (Integer.parseInt(r.getString("title")) * r.getInteger("count"));
 			den += r.getInteger("count");
 		}
-
-		this.rating = num / den;
+	
+		double average = (double)num / den;
+		
+		String rate = String.format("%.2f", average);
+		rate = rate.replace(",", ".");
+		this.rating = Double.valueOf(rate);
 
 		collection.updateOne(eq("name", this.name), Updates.set("rating", this.rating));
 	}
@@ -464,7 +468,7 @@ public class Game {
 			collection.updateOne(eq("name", this.name), Updates.addToSet("ratings", rate));
 		}
 
-		updatePercentage(newRate);
+		updatePercentage();
 		calculateRating();
 	}
 	
@@ -534,24 +538,6 @@ public class Game {
 		}
 	}
 
-  
-	public static List<String> getAllDevelopers() {
-		MongoDriver driver = null;
-		MongoCollection<Document> collection = null;
-		List<String> items = new ArrayList<>();		
-		try {
-			driver = MongoDriver.getInstance();
-			collection = driver.getCollection("games");
-			MongoCursor<Document> cursor = collection.aggregate(Arrays.asList(unwind("$developers"), group("$developers.name"), sort(ascending("_id")))).iterator();
-			while (cursor.hasNext()) {
-				items.add(cursor.next().getString("_id"));
-			}
-			cursor.close();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		return items;	
-	}
 	
 	private static ArrayList<Document> createPlatformList(ArrayList<String> platforms) {
 		ArrayList<Document> platformDoc = new ArrayList<Document>();
@@ -651,7 +637,7 @@ public class Game {
 		}
 	}
 	
-	public static void updateGame(Game game, String oldName) {
+	public static void updateGame(Game game) {
 		MongoDriver driver;
 		MongoCollection<Document> collection;
 		
@@ -689,37 +675,14 @@ public class Game {
 		collection = driver.getCollection("games");
 		
 		
-		collection.updateOne(eq("name", oldName), 
+		collection.updateOne(eq("name", game.name), 
 				Updates.combine(
-						Updates.set("name", game.name),
 						Updates.set("description_raw", game.description),
 						Updates.set("released", released),
 						Updates.set("platforms", platList),
 						Updates.set("developers", devList),
 						Updates.set("year", year),
-						Updates.set("genres", genList)));
-		
-		if(!game.name.equals(oldName)) {
-			updateGameNode(oldName, game.name);
-		}	
-	}
-	
-	private static void updateGameNode(String gameName, String newName){
-		
-		Neo4jDriver nd = Neo4jDriver.getInstance();
-		try (Session session = nd.getDriver().session()) {
-			session.writeTransaction(
-					new TransactionWork<Boolean>() {
-						@Override
-						public Boolean execute(Transaction tx) {
-							tx.run("MATCH (n:Game {name: $name}) "
-									+ "SET n.name = $newName"
-									, parameters("name", gameName, "newName", newName));
-							return true;
-						}
-					}
-			);
-		}
+						Updates.set("genres", genList)));	
 	}
 	
 	public static ArrayList<Document> TopPerPlatform(String value) {
@@ -730,7 +693,7 @@ public class Game {
 		try {
 			driver = MongoDriver.getInstance();
 			collection = driver.getCollection("games");
-			MongoCursor<Document> cursor = collection.aggregate(Arrays.asList(match(and(eq("platforms.platform.name", value), gt("rating", 3L))), unwind("$ratings"), group("$id", sum("ratings_count", "$ratings.count"), first("rating", "$rating"), first("name", "$name")), sort(descending("ratings_count")), limit(10), sort(descending("rating")))).iterator();
+			MongoCursor<Document> cursor = collection.aggregate(Arrays.asList(match(and(eq("platforms.platform.name", value), gt("rating", 3L))), unwind("$ratings"), group("$_id", sum("ratings_count", "$ratings.count"), first("rating", "$rating"), first("name", "$name")), sort(descending("ratings_count")), limit(10), sort(descending("rating")))).iterator();
 			
 			try {
 				while (cursor.hasNext()) {
@@ -761,6 +724,7 @@ public class Game {
 		    collection.dropIndexes();
 		    //recreate all
 		    collection.createIndex(Indexes.ascending("year"));
+		    collection.createIndex(Indexes.ascending("name"));
 		    collection.createIndex(Indexes.ascending("genres.name"));
 		    collection.createIndex(Indexes.ascending("platforms.platform.name"));
 		} catch(Exception e) {
