@@ -1,4 +1,4 @@
-# Workgroup task 2 - Design document
+# Work-group task 2 - Design document
 
 ## Table of contents
 1) [Introduction](#1-introduction)
@@ -68,7 +68,7 @@ Non-functional requirements describe only attributes of the system or attributes
 Availability Requirement | Description
 ------------ | -------------
 AVA-001 | The system shall be always available.
-AVA-002 | The system shall be tolerant to data lost using an original dataset and two replicas.
+AVA-002 | The system shall be tolerant to data lost using at least a replica of the original data.
 
 ### 4.2 Reliability
 Reliability Requirement | Description
@@ -105,7 +105,7 @@ In the first schema there is the Use Case diagram for the player side, in the se
 
 ![Player Use Case](./resources/player-use-case-diagram.png)
 
-![Admin Use Case](./resources/admin-use-cases-diagram.png)
+![Admin Use Case](./resources/admin-use-cases.png)
 
 ## 6. Analysis Classes Diagram
 
