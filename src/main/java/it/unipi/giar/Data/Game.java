@@ -537,24 +537,6 @@ public class Game {
 		}
 	}
 
-  
-	public static List<String> getAllDevelopers() {
-		MongoDriver driver = null;
-		MongoCollection<Document> collection = null;
-		List<String> items = new ArrayList<>();		
-		try {
-			driver = MongoDriver.getInstance();
-			collection = driver.getCollection("games");
-			MongoCursor<Document> cursor = collection.aggregate(Arrays.asList(unwind("$developers"), group("$developers.name"), sort(ascending("_id")))).iterator();
-			while (cursor.hasNext()) {
-				items.add(cursor.next().getString("_id"));
-			}
-			cursor.close();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		return items;	
-	}
 	
 	private static ArrayList<Document> createPlatformList(ArrayList<String> platforms) {
 		ArrayList<Document> platformDoc = new ArrayList<Document>();

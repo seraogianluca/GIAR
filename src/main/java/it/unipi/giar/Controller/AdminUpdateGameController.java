@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
+import javax.swing.SwingUtilities;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
@@ -12,11 +14,11 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
 import it.unipi.giar.Data.Developer;
-import it.unipi.giar.Data.Platform;
 import it.unipi.giar.Data.Game;
 import it.unipi.giar.Data.Genre;
-import javafx.collections.FXCollections;
+import it.unipi.giar.Data.Platform;
 import javafx.collections.ObservableList;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -107,44 +109,74 @@ public class AdminUpdateGameController {
 	@FXML
 	private JFXButton devRemoveButton;
 
-	public void initialize(String gameName) {
-		ObservableList<String> platforms;
-		ObservableList<String> genres;
-		ObservableList<String> developers;
+	public void initialize(final String gameName) {
 		DateFormat dateForm;
-
-		platforms = FXCollections.observableArrayList(Game.getAllPlatform());	
-		genres = FXCollections.observableArrayList(Game.getAllGenres());		
-		developers = FXCollections.observableArrayList(Game.getAllDevelopers());
 		dateForm = new SimpleDateFormat("dd/mm/yyyy");
 
-		platformCombo.setItems(platforms);
-		genresCombo.setItems(genres);
-
-		platList = FXCollections.observableArrayList();	
-		genList = FXCollections.observableArrayList();
-		devList = FXCollections.observableArrayList();
-		
 		game = Game.findGame(gameName);
 		gameTitle.setText(gameName);
 		date.setText(dateForm.format(game.getReleased()));
 		description.setText(game.getDescription());
-		
-		for (Platform plat : game.getPlatforms()) {
-			platList.add(plat.getName());
-		}
-		
-		for (Genre genre : game.getGenres()) {
-			genList.add(genre.getName());
-		}
-		
-		for (Developer dev : game.getDevelopers()) {
-			devList.add(dev.getName());
-		}
-		
-		platformList.setItems(platList);
-		genresList.setItems(genList);
-		developersList.setItems(devList);
+
+		final Runnable chargePlatforms = new Runnable() {
+			public void run() {
+				javafx.application.Platform.runLater(() -> {
+					ObservableList<String> platforms;
+					platforms = FXCollections.observableArrayList(Game.getAllPlatform());
+					platformCombo.setItems(platforms);
+					platList = FXCollections.observableArrayList();
+
+					for (final Platform plat : game.getPlatforms()) {
+						platList.add(plat.getName());
+					}
+					platformList.setItems(platList);
+				});
+			}
+		};
+
+		final Runnable chargeGenres = new Runnable() {
+			public void run() {
+				javafx.application.Platform.runLater(() -> {
+					ObservableList<String> genres;
+					genres = FXCollections.observableArrayList(Game.getAllGenres());
+					genresCombo.setItems(genres);
+					genList = FXCollections.observableArrayList();
+
+					for (Genre genre : game.getGenres()) {
+						genList.add(genre.getName());
+					}
+					genresList.setItems(genList);
+				});
+			}
+		};
+
+		final Runnable chargeDevList = new Runnable() {
+			public void run() {
+				javafx.application.Platform.runLater(() -> {
+					ObservableList<String> developers;
+					devList = FXCollections.observableArrayList();
+
+					for (Developer dev : game.getDevelopers()) {
+						devList.add(dev.getName());
+					}
+					developersList.setItems(devList);
+				});
+			}
+		};
+		final Thread pickerLoad = new Thread() {
+			public void run() {
+				try {
+					SwingUtilities.invokeLater(chargePlatforms);
+					SwingUtilities.invokeLater(chargeGenres);
+					SwingUtilities.invokeLater(chargeDevList);
+				} catch (final Exception e) {
+					e.printStackTrace();
+				}
+			}
+		};
+
+		pickerLoad.start();
+
 	}
 
 	@FXML
