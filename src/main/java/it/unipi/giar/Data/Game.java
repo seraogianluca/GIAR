@@ -386,7 +386,7 @@ public class Game {
 	}
 
 	@SuppressWarnings("unchecked")
-	private void updatePercentage(String ratingid) {
+	private void updatePercentage() {
 		MongoDriver md;
 		MongoCollection<Document> collection;
 		ArrayList<Document> ratings;
@@ -404,9 +404,10 @@ public class Game {
 		for (Document r : ratings) {
 			ratingCount = r.getInteger("count");
 			totalRatingCount = getTotalRating();
+			double percent = (double)((double)ratingCount / totalRatingCount) * 100;
 
-			collection.updateOne(and(eq("name", this.name), eq("ratings.title", ratingid)),
-					Updates.set("ratings.$.percent", (ratingCount / totalRatingCount) * 100));
+			collection.updateOne(and(eq("name", this.name), eq("ratings.title", r.getString("title"))),
+					Updates.set("ratings.$.percent", percent));
 		}
 	}
 
@@ -467,7 +468,7 @@ public class Game {
 			collection.updateOne(eq("name", this.name), Updates.addToSet("ratings", rate));
 		}
 
-		updatePercentage(newRate);
+		updatePercentage();
 		calculateRating();
 	}
 	
@@ -692,7 +693,7 @@ public class Game {
 		try {
 			driver = MongoDriver.getInstance();
 			collection = driver.getCollection("games");
-			MongoCursor<Document> cursor = collection.aggregate(Arrays.asList(match(and(eq("platforms.platform.name", value), gt("rating", 3L))), unwind("$ratings"), group("$id", sum("ratings_count", "$ratings.count"), first("rating", "$rating"), first("name", "$name")), sort(descending("ratings_count")), limit(10), sort(descending("rating")))).iterator();
+			MongoCursor<Document> cursor = collection.aggregate(Arrays.asList(match(and(eq("platforms.platform.name", value), gt("rating", 3L))), unwind("$ratings"), group("$_id", sum("ratings_count", "$ratings.count"), first("rating", "$rating"), first("name", "$name")), sort(descending("ratings_count")), limit(10), sort(descending("rating")))).iterator();
 			
 			try {
 				while (cursor.hasNext()) {
@@ -723,6 +724,7 @@ public class Game {
 		    collection.dropIndexes();
 		    //recreate all
 		    collection.createIndex(Indexes.ascending("year"));
+		    collection.createIndex(Indexes.ascending("name"));
 		    collection.createIndex(Indexes.ascending("genres.name"));
 		    collection.createIndex(Indexes.ascending("platforms.platform.name"));
 		} catch(Exception e) {
