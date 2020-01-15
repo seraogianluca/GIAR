@@ -25,7 +25,7 @@ FNC-020 | The system shall set as PRO a `player` who has an high centrality meas
 There aren't additional non-functional requirements.
 
 # 4. Snapshot of the graph
-![Graph](./resources/graph-database-entities.png)
+![Graph](./resources/graph-entities.png)
 
 # 5. Analysis Classes Diagram
 The are no substantial differences with the classes diagram defined in [Design](./Design.md).
