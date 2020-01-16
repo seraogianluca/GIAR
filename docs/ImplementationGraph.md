@@ -4,8 +4,8 @@
 1. [Introduction](#1-introduction)
 2. [Architecture](#2-architecture)
 3. [Main Classes](#3-main-classes)
-4. [CRUD operations](#4-CRUDoperations)
-5. [On-graph queries](#5-On-graph)
+4. [CRUD operations](#4-CRUD-operations)
+5. [On-graph queries](#5-On-graph-queries)
 
 ## 1. Introduction
 In this document are described the highlights of the implementation. Starting from a description of the main functionalities of the solution and then discussing about the package and the main classes providing some example of code.
