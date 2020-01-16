@@ -11,9 +11,7 @@
 In this document are described the highlights of the implementation. Starting from a description of the main functionalities of the solution and then discussing about the package and the main classes providing some example of code.
 
 ## 2. Architecture
-The Graph Database used is Neo4j. The Neo4j server instance is deployed on a single server (standalone instance) with no replicas.
-This database supports the social network in the GIAR application. The graph database is consistent with the document database.
-
+The Graph Database used is Neo4j. The Neo4j server instance is deployed on a single server (standalone instance) with no replicas. This database supports the social network in the GIAR application.
 ## 3. Main Classes
 The solution contains three packages:
 - it.unipi.giar that contains the javaFX main class, the session class and the databases drivers.
