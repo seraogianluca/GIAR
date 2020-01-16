@@ -18,7 +18,7 @@ The solution contains three packages:
 - it.unipi.Data that contains the classes of the application objects such as User, Games, Platform, Genre and Developers.
 - it.unipi.Controller that contains the javaFx controllers for the GUI.
 
-The `Neo4jDriver` class contains the Driver instance. Since the application need only one Driver instance (Driver is a pool of connections to Neo4j), the class is written using the Singleton pattern.
+The `Neo4jDriver` class contains the Driver instance. Since the application only needs one Driver instance (Driver is a pool of connections to Neo4j), the class is written using the Singleton pattern.
 
 The `User` class contains all the informations about a user such as the profile informations (nickname, email and country), the games lists (wishlist and mygames) and the list of the rating of the user. The class contains methods for support the social network, such as assign the pro badge or get the friends list. 
 
