@@ -4,16 +4,14 @@
 1. [Introduction](#1-introduction)
 2. [Architecture](#2-architecture)
 3. [Main Classes](#3-main-classes)
-4. [CRUD operations](#4-CRUDoperations)
-5. [On-graph queries](#5-On-graph)
+4. [CRUD operations](#4-CRUD-operations)
+5. [On-graph queries](#5-On-graph-queries)
 
 ## 1. Introduction
 In this document are described the highlights of the implementation. Starting from a description of the main functionalities of the solution and then discussing about the package and the main classes providing some example of code.
 
 ## 2. Architecture
-The Graph Database used is Neo4j. The Neo4j server instance is deployed on a single server (standalone instance) with no replicas.
-This database supports the social network in the GIAR application. The graph database is consistent with the document database.
-
+The Graph Database used is Neo4j. The Neo4j server instance is deployed on a single server (standalone instance) with no replicas. This database supports the social network in the GIAR application.
 ## 3. Main Classes
 The solution contains three packages:
 - it.unipi.giar that contains the javaFX main class, the session class and the databases drivers.
@@ -26,7 +24,7 @@ The `User` class contains all the informations about a user such as the profile 
 
 The `Game` class contains all the information about a game such as name, release date, description, average rating, list of available platforms, list of genres and list of developers. The class contains methods for supporting the social network, such as retrieving a friend wishlist.
 
-## 4.CRUD operations
+## 4. CRUD operations
 ### 4.1 Create
 When a new user sign-up to the application, a new node labeled as Player in the database is created. An auto-commit transaction is used to create the node.
 ```java
@@ -70,7 +68,7 @@ public static ArrayList<User> getFollowingList(String nickname) {
     }
 ``` 
 
-## 4.3 Update
+### 4.3 Update
 The method above set the PRO badge to the users that deserve it. The PRO badge is a boolean property of Players nodes. If a user is recognized as a PRO, the pro property is set to true. A transaction is used to update the value.
 ```java
 private static boolean setPro(String nickname) {
@@ -93,7 +91,7 @@ private static boolean setPro(String nickname) {
     }
 ```
 
-## 4.4 Delete
+### 4.4 Delete
 The method is called everytime an admin delete a game. The system have to delete also the corresponding game node to ensure consistency between the two databases. The `MATCH (n:Game {name: $name}) DETACH DELETE n` query provides also to delete all the relations connected to the node.
 ```java
 public void deleteGameNode(String gameName){
@@ -115,7 +113,7 @@ public void deleteGameNode(String gameName){
     }
 ```
 
-## 5.On-graph queries
+## 5. On-graph queries
 
 N°| Domain specific | Graphic-centric
 --|------------ | -------------
