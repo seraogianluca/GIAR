@@ -20,15 +20,15 @@ After the log-in the user is redirected to the homepage.
 
 A user can search a game by name using the search bar on the top of the homepage.
 
-A user can browse a list of games choosing one of these filters: platform, year or genre. The user can sort the list of the games by date, name or rating. A user can browse the top rated games per platform.
+A user can browse a list of games choosing one of these filters: platform, year or genre. The user can sort the list of the games by name or rating. A user can browse the top rated games per platform.
 
 A user can access a specific page for every game that contains all the information about it and on which a user can rate the game.
 
 A user has two personal lists: MyGames and WishList. The first is referred to the games that the user has bought, the second is a list of games that the user want to buy in the future. The user can add a game in one of these lists from the specific page of the game, and delete one game from a list accessing to the relative section.
 
-Administrator is a special user who can insert, modify and delete games from the system. Administrator doesn't have the possibility to rate a game or have a list of personal games.
+An Administrator is a special user who can insert, modify and delete games from the system. An Administrator doesn't have the possibility to rate a game or have a list of personal games.
 
-Administrator can also see information about users' games preferences grouped by country and how many users added a game in the Wishlists or in MyGames lists.
+An Administrator can also see information about users' games preferences grouped by country and how many users added a game in the Wishlists or in MyGames lists.
 
 ## 2. Actors of the system
 
@@ -47,18 +47,17 @@ FNC-002 | Each user email shall be associated up to one account.
 FNC-003 | A `player` shall be able to delete his account.
 FNC-004 | The user nickname shall be unique.
 FNC-005 | A user shall be able to search a game using a search bar.
-FNC-006 | A `player` shall be able to browse a list of videogames previews choosing a year, platform or genre filter, and sort them by date, name or rating.
-FNC-007 | A user shall be able to see all the information regarding a videogame, in a dedicated page, clicking on the corresponding preview.
+FNC-006 | A `player` shall be able to browse a list of videogames choosing a year, platform or genre filter, and sort them by name or rating.
+FNC-007 | A user shall be able to see all the information regarding a videogame, in a dedicated page, clicking on the corresponding name.
 FNC-008 | The system shall provide to the user the rate for a videogame both from a specialized entity and from the average users' rate.
-FNC-009 | The `player` shall be able to see statistics regarding the top games per platform. 
-FNC-010 | The `player` shall be able to rate a videogame or change his previous rating.
-FNC-011 | The `player` user shall be able to add and remove a game from the MyGames list.
-FNC-012 | The `player` user shall be able to add and remove a game from the Wishlist.
+FNC-009 | A `player` shall be able to see statistics regarding the top ten games per platform. 
+FNC-010 | A `player` shall be able to rate a videogame or change his previous rating.
+FNC-011 | A `player` user shall be able to add and remove a game from the MyGames list.
+FNC-012 | A `player` user shall be able to add and remove a game from the Wishlist.
 FNC-013 | A game shall not be in a `player` Wishlist and MyGames list at the same time. 
 FNC-014 | The `administrator` shall be able to insert, modify and delete games from the system.
 FNC-015 | The `administrator` shall be able to see statistics about the distribution of the most added games in the MyGames list grouped by country.
 FNC-016 | The `administrator` shall be able to see statistics regarding how many users added a game in the Wishlists or Mygames lists.
-FNC-017 | The user shall be able to see the version of the data updated to his last interaction.
 
 ## 4. Non-functional requirements
 
