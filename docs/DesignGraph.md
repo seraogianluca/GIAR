@@ -45,5 +45,5 @@ Operation | Description
 ----------|------------
 Create | The system creates a player vertex for each player registered to the application.
 Read | The system reads if a player is a PRO at the player log-in to show the PRO badge.
-Update | The system updates the `has in:` relation if a player puts a game from the Wishlist to MyGames. The system updates the PRO property if a player becomes pro.
-Delete | If a player deletes the profile, the system deletes the player vertex. If an administrator deletes a game, the system deletes the game vertex. 
+Update | The system updates the PRO property if a player becomes pro.
+Delete | If a player deletes the profile, the system deletes the player vertex. If an administrator deletes a game, the system deletes the game vertex. The system delete the `has in:` relation if a player puts a game from the Wishlist to MyGames.
