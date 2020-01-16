@@ -720,7 +720,7 @@ public class User {
 		int following = getFollowing(nickname);	//followers of this user
 		double threshold = (double)follow / (double)players;	//ratio
 
-		if(following >= threshold) {	//if my followers > threshold -> PRO
+		if(following > threshold) {	//if my followers > threshold -> PRO
 			return setPro(nickname);
 		}
 		
