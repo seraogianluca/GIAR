@@ -10,7 +10,6 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import it.unipi.giar.GiarSession;
-import it.unipi.giar.Controller.UserSocialController.UserTable;
 import it.unipi.giar.Data.Game;
 import it.unipi.giar.Data.User;
 import javafx.beans.property.SimpleStringProperty;

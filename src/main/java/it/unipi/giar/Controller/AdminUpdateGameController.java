@@ -153,7 +153,6 @@ public class AdminUpdateGameController {
 		final Runnable chargeDevList = new Runnable() {
 			public void run() {
 				javafx.application.Platform.runLater(() -> {
-					ObservableList<String> developers;
 					devList = FXCollections.observableArrayList();
 
 					for (Developer dev : game.getDevelopers()) {

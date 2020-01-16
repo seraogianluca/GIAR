@@ -2,7 +2,6 @@ package it.unipi.giar;
 
 import java.io.IOException;
 
-import it.unipi.giar.Data.Game;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;

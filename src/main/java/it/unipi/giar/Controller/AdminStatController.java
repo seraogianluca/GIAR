@@ -3,7 +3,6 @@ package it.unipi.giar.Controller;
 import java.io.File;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.Document;
@@ -21,7 +20,6 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Data;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class AdminStatController {
@@ -75,7 +73,7 @@ public class AdminStatController {
         xAxe.setTickLabelRotation(90);
 
         for(Document d: total) {
-        	Data data = new XYChart.Data<String, Number>(d.getString("_id"), d.getLong("count"));
+        	Data<String, Number> data = new XYChart.Data<String, Number>(d.getString("_id"), d.getLong("count"));
         	dataSeries1.getData().add(data);
         	games.add(d.getString("_id"));
         }        
