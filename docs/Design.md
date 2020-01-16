@@ -120,6 +120,6 @@ In the User documents, the MyGames, the Wishlist and Ratings are embedded docume
 
 ## 8. Software Architecture
 
-The application is a client-server application. The client provide to the user the interface for interacting with the database. On the server side there is a document database. The document database is a MongoDB server which is composed by an original dataset and two replicas.
+The application is a client-server application. The client provide to the user the interface for interacting with the database. On the server side there is a document database. The document database is a MongoDB replica set.
 
 ![Architecture](./resources/architecture.png)
