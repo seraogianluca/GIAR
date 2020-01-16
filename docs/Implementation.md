@@ -350,7 +350,7 @@ public static void register(String registNick, String registEmail, String regist
 The method is called every time a user inserts a character into the SearchBar in the graphic interface. The `collection.find(regex(key, search, "i")).batchSize(1500).iterator()` function makes a query on the database in order to retrive games that contains the key in the name. The option `i` allows the case-insensitive matching. The results will appear in the table below the SearchBar.
 
 ```java
-public static ArrayList<Game> searchGames(String key, String search, Boolean searchAll) {
+public static ArrayList<Game> searchGames(String key, String search, int searchAll) {
 		ArrayList<Game> listGames = new ArrayList<Game>();
 		MongoDriver driver = null;
 		MongoCollection<Document> collection = null;
@@ -358,8 +358,8 @@ public static ArrayList<Game> searchGames(String key, String search, Boolean sea
 		try {
 			driver = MongoDriver.getInstance();
 			collection = driver.getCollection("games");
-			if (searchAll) {
-				cursor = collection.find(regex(key, search, "i")).batchSize(1500).iterator();
+			if (searchAll > 0) {
+				cursor = collection.find(regex(key, search, "i")).limit(10*(searchAll+1)).iterator();
 			} else {
 				cursor = collection.find(regex(key, search, "i")).limit(10).batchSize(10).iterator();
 			}

@@ -4,13 +4,9 @@ import java.util.ArrayList;
 
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableRow;
-import com.jfoenix.controls.JFXProgressBar;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-
-import javafx.application.Platform;
-import javax.swing.SwingUtilities;
 
 import it.unipi.giar.Data.Game;
 import javafx.beans.property.SimpleStringProperty;
@@ -31,176 +27,150 @@ import javafx.util.Callback;
 
 public class UserBrowseController {
 
-    private ObservableList<GameTable> games;
-    private String type;
-    private String value;
+	private ObservableList<GameTable> games;
+	private String type;
+	private String value;
+	private int viewClick;
 
-    @FXML
-    private Text browse;
+	@FXML
+	private Text browse;
 
-    @FXML
-    private Text browseType;
+	@FXML
+	private Text browseType;
 
-    @FXML
-    private JFXTreeTableView<GameTable> gamesTable1;
+	@FXML
+	private JFXTreeTableView<GameTable> gamesTable1;
 
-    @FXML
-    private Hyperlink searchAllGames;
+	@FXML
+	private Hyperlink searchAllGames;
 
-    @FXML
-    private JFXProgressBar progressBar;
+	@SuppressWarnings("unchecked")
+	public void initialize(String value, String type) {
+		this.type = type;
+		this.value = value; 
+		viewClick = 0;
+		searchAllGames.setVisible(false);
+		browseType.setText(value);
 
-    @SuppressWarnings("unchecked")
-    public void initialize(String value, String type) {
-        this.type = type;
-        this.value = value; 
+		JFXTreeTableColumn<GameTable, String> gameName = new JFXTreeTableColumn<GameTable, String>("Name");
+		gameName.prefWidthProperty().bind(gamesTable1.widthProperty().divide(4).multiply(3));
+		gameName.setCellValueFactory(
+				new Callback<TreeTableColumn.CellDataFeatures<GameTable, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<GameTable, String> param) {
+						return param.getValue().getValue().name;
+					}
+				});
+		JFXTreeTableColumn<GameTable, String> gameRating = new JFXTreeTableColumn<GameTable, String>("Rating");
+		gameRating.prefWidthProperty().bind(gamesTable1.widthProperty().divide(4));
+		gameRating.setCellValueFactory(
+				new Callback<TreeTableColumn.CellDataFeatures<GameTable, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<GameTable, String> param) {
+						return param.getValue().getValue().rating;
+					}
+				});
 
-        searchAllGames.setVisible(false);
-        progressBar.setVisible(false);
-        browseType.setText(value);
+		gamesTable1.setRowFactory(tv -> {
+			JFXTreeTableRow<GameTable> row = new JFXTreeTableRow<>();
+			row.setOnMouseClicked(event -> {
+				GameTable rowData = row.getItem();
+				if (rowData != null) {
+					openGameInfo(rowData.name.get());
+				}
+			});
+			return row;
+		});
 
-        JFXTreeTableColumn<GameTable, String> gameName = new JFXTreeTableColumn<GameTable, String>("Name");
-        gameName.prefWidthProperty().bind(gamesTable1.widthProperty().divide(4).multiply(3));
-        gameName.setCellValueFactory(
-                new Callback<TreeTableColumn.CellDataFeatures<GameTable, String>, ObservableValue<String>>() {
-                    @Override
-                    public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<GameTable, String> param) {
-                        return param.getValue().getValue().name;
-                    }
-                });
-        JFXTreeTableColumn<GameTable, String> gameRating = new JFXTreeTableColumn<GameTable, String>("Rating");
-        gameRating.prefWidthProperty().bind(gamesTable1.widthProperty().divide(4));
-        gameRating.setCellValueFactory(
-                new Callback<TreeTableColumn.CellDataFeatures<GameTable, String>, ObservableValue<String>>() {
-                    @Override
-                    public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<GameTable, String> param) {
-                        return param.getValue().getValue().rating;
-                    }
-                });
+		games = FXCollections.observableArrayList();
 
-        gamesTable1.setRowFactory(tv -> {
-            JFXTreeTableRow<GameTable> row = new JFXTreeTableRow<>();
-            row.setOnMouseClicked(event -> {
-                GameTable rowData = row.getItem();
-                if (rowData != null) {
-                    openGameInfo(rowData.name.get());
-                }
-            });
-            return row;
-        });
+		final TreeItem<GameTable> root = new RecursiveTreeItem<GameTable>(games, RecursiveTreeObject::getChildren);
+		gamesTable1.getColumns().setAll(gameName, gameRating);
+		gamesTable1.setRoot(root);
+		gamesTable1.setShowRoot(false);
 
-        games = FXCollections.observableArrayList();
+		ArrayList<Game> browseResult = null;
+		if (type == "platform") {
+			browseResult = Game.browseGamesPerPlatform(value, viewClick);
 
-        final TreeItem<GameTable> root = new RecursiveTreeItem<GameTable>(games, RecursiveTreeObject::getChildren);
-        gamesTable1.getColumns().setAll(gameName, gameRating);
-        gamesTable1.setRoot(root);
-        gamesTable1.setShowRoot(false);
+		} else if (type == "year") {
+			browseResult = Game.browseGamesPerYear(value, viewClick);
 
-        ArrayList<Game> browseResult = null;
-        if (type == "platform") {
-            browseResult = Game.browseGamesPerPlatform(value, false);
+		} else if (type == "genre") {
+			browseResult = Game.browseGamesPerGenre(value, viewClick);
+		}
 
-        } else if (type == "year") {
-            browseResult = Game.browseGamesPerYear(value, false);
+		for (Game game : browseResult) {
+			games.add(new GameTable(game.getName(), Double.toString(game.getRating())));
+		}
 
-        } else if (type == "genre") {
-            browseResult = Game.browseGamesPerGenre(value, false);
-        }
+		if (browseResult.size() >= 10) {
+			searchAllGames.setVisible(true);
+		} else {
+			searchAllGames.setVisible(false);
+		}
+	}
 
-        for (Game game : browseResult) {
-            games.add(new GameTable(game.getName(), Double.toString(game.getRating())));
-        }
+	void openGameInfo(String gameName) {
+		try {
+			if (!gameName.isEmpty()) {
+				FXMLLoader loader;
+				InfoGameController controller;
+				Scene scene;
+				AnchorPane pane;
+				AnchorPane newPane;
 
-        if (browseResult.size() >= 10) {
-            searchAllGames.setVisible(true);
-        } else {
-            searchAllGames.setVisible(false);
-        }
-    }
+				scene = browse.getScene();
+				pane = (AnchorPane) scene.lookup("#anchorPaneRight");
 
-    void openGameInfo(String gameName) {
-        try {
-            if (!gameName.isEmpty()) {
-                FXMLLoader loader;
-                InfoGameController controller;
-                Scene scene;
-                AnchorPane pane;
-                AnchorPane newPane;
+				loader = new FXMLLoader();
+				loader.setLocation(getClass().getResource("/fxml/InfoGame.fxml"));
+				newPane = loader.load();
 
-                scene = browse.getScene();
-                pane = (AnchorPane) scene.lookup("#anchorPaneRight");
+				controller = loader.getController();
+				controller.initialize(gameName);
 
-                loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/fxml/InfoGame.fxml"));
-                newPane = loader.load();
+				pane.getChildren().setAll(newPane);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-                controller = loader.getController();
-                controller.initialize(gameName);
+	class GameTable extends RecursiveTreeObject<GameTable> {
 
-                pane.getChildren().setAll(newPane);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+		StringProperty name;
+		StringProperty rating;
 
-    class GameTable extends RecursiveTreeObject<GameTable> {
+		public GameTable(String name, String rating) {
+			this.name = new SimpleStringProperty(name);
+			this.rating = new SimpleStringProperty(rating);
+		}
+	}
 
-        StringProperty name;
-        StringProperty rating;
+	@FXML
+	void searchAllGames() {
+		try {
+			games.clear();
+			viewClick += 1;
+			ArrayList<Game> browseResult = null;
+			if (type == "platform") {
+				browseResult = Game.browseGamesPerPlatform(value, viewClick);
 
-        public GameTable(String name, String rating) {
-            this.name = new SimpleStringProperty(name);
-            this.rating = new SimpleStringProperty(rating);
-        }
-    }
+			} else if (type == "year") {
+				browseResult = Game.browseGamesPerYear(value, viewClick);
 
-    @FXML
-    void searchAllGames() {
-        final Runnable chargeAll = new Runnable() {
-            public void run() {
-                Platform.runLater(() -> {
-                    try {
-                        games.clear();
+			} else if (type == "genre") {
+				browseResult = Game.browseGamesPerGenre(value, viewClick);
+			}
 
-                        ArrayList<Game> browseResult = null;
-                        if (type == "platform") {
-                            browseResult = Game.browseGamesPerPlatform(value, true);
+			for (Game game : browseResult) {
+				games.add(new GameTable(game.getName(), Double.toString(game.getRating())));
+			}
 
-                        } else if (type == "year") {
-                            browseResult = Game.browseGamesPerYear(value, true);
-
-                        } else if (type == "genre") {
-                            browseResult = Game.browseGamesPerGenre(value, true);
-                        }
-
-                        for (Game game : browseResult) {
-                            games.add(new GameTable(game.getName(), Double.toString(game.getRating())));
-                        }
-
-                        progressBar.setVisible(false);
-                        searchAllGames.setVisible(true);
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        System.out.println("index exception");
-                    }
-                });
-            }
-        };
-
-        Thread stockPicker = new Thread() {
-            public void run() {
-                try {
-                    progressBar.setVisible(true);
-                    searchAllGames.setVisible(false);
-
-                    SwingUtilities.invokeAndWait(chargeAll);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-        };
-        stockPicker.start();
-    }
-
+			searchAllGames.setVisible(true);
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("index exception");
+		}
+	}
 }
