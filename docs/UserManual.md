@@ -11,30 +11,45 @@
 ## 2. Startup and log in
 ## 3. Administration Overview
 
+### Stats
+![Stats Player](./resources/admin-stats.gif)
 
+
+### Adding Game
+![Adding Player](./resources/admin-newGame.gif)
+
+### Delete Game
+![Delete Player](./resources/admin-deleteGame.gif)
+
+
+### Update Game
+![Update Player](./resources/admin-updateGame.gif)
 
 
 ## 4. Player Overview
 
 
 ### Search
-![Search Player](./resources/search-player.gif)
+![Seach Player](./resources/player-search.gif)
 
 
 
 ### Rating 
-![Search Player](./resources/rating-player.png)
+![Rating Player](./resources/player-rating.png)
 
 
 ### Adding to MyGames
 
 
-![Search Player](./resources/addMyGames-player.gif)
+![MyGames Player](./resources/player-addMyGames.gif)
 
 
 
 ### Adding to MyWish
 
+![WishList Player](./resources/player-addMyWishlist.gif)
 
 
+### Delete Profile
 
+![Delete Profile](./resources/player-deleteProfile.png)
