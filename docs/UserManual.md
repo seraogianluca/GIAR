@@ -14,12 +14,12 @@ The System Allows:
 
 **An Administrator to:**
 
-- View the Stats by Country
+- View statistics
 - Adding a New Game
 - Update Game
 - Delete Game
 
-**An Player User to:**
+**A Player User to:**
 
 - Register an Account
 - Delete the owner account
@@ -36,23 +36,36 @@ Administrator is a special user who can insert, modify and delete games from the
 
 ### 2.1 Log in
 
+A database user named `admin` is created upon installation of GIAR. It's the only one user with Administrator access on the system.
+
+- User name: `admin`
+- Credentials: `admin`
+
 ![Login Player](./resources/admin-login.png)
 
 ### 2.2 Stats
 
 Administrator can also see information about users games preferences grouped by country and how many users added a game in the Wishlists or in MyGames lists.
 
+Click on `Stats` on the left section. Select a country according your needs.
+
 ![Stats Player](./resources/admin-stats.gif)
 
 ### 2.3 Adding Game
+
+For register a new game click on `Insert New Game` on the left section. Complete the form. Enter the name, release date, description, platforms, genres and developers.
 
 ![Adding Player](./resources/admin-newGame.gif)
 
 ### 2.4 Update Game
 
+The Administrator user can change the game information. Can change the release date, description, platforms, genres and developers.
+
 ![Update Player](./resources/admin-updateGame.gif)
 
 ### 2.5 Delete Game
+
+For delete a game, the administrator have to click on the `Delete/Update Game` on the left section. Search the game you want to delete. Open the information of the game and press the `Delete` button.
 
 ![Delete Player](./resources/admin-deleteGame.gif)
 
@@ -61,6 +74,13 @@ Administrator can also see information about users games preferences grouped by 
 A Player user has two personal lists: MyGames and WishList. The first is referred to the games that the user has bought, the second is a list of games that the user want to buy in the future. The user can add a game in one of these lists from the specific page of the game, and delete one game from a list accessing to the relative section.
 
 ### 3.1 Sign up
+
+If you are a new user, you can register your own account.
+On the Login page, click on the link `Not registered yet? Sign up now!`
+
+![Signup Player](./resources/player-signuplink.gif)
+
+Fill all the Sign Up form with your name, email, country, and Password.
 
 ![Signup Player](./resources/player-signup.png)
 
@@ -76,33 +96,33 @@ A user can search a game by name using the search bar on the top of the homepage
 
 ![Seach Player](./resources/player-search.gif)
 
-#### Rating
+### 3.4 Social Network
+
+![MyGames Player](./resources/player-social.png)
+
+### 3.5 Rating
 
 A user can access a specific page for every game that contains all the information about it and on which a user can rate the game.
 
 ![Rating Player](./resources/player-rating.png)
 
-### 3.4 Social Network
-
-![MyGames Player](./resources/player-social.png)
-
-### 3.5 Adding to MyGames
+### 3.6 Adding to MyGames
 
 ![MyGames Player](./resources/player-addMyGames.gif)
 
-### 3.6 Adding to MyWish
+### 3.7 Adding to Wishlist
 
 ![WishList Player](./resources/player-addMyWishlist.gif)
 
-### 3.7 Top Game by Platform
+### 3.8 Top Game by Platform
 
 A user can browse the top rated games per platform.
 
-![WishList Player](./resources/player-topAndroid.png)
+![Top Player](./resources/player-topAndroid.png)
 
 ### Browse Section
 
-A user can browse a list of games choosing one of these filters: platform, year or genre. The user can sort the list of the games by date,name or rating.
+A user can browse a list of games choosing one of these filters: platform, year or genre. The user can sort the list of the games by name or rating.
 
 #### Browse by Platform
 
