@@ -2,9 +2,6 @@ package it.unipi.giar.Controller;
 
 import java.util.ArrayList;
 
-import javax.swing.SwingUtilities;
-
-import com.jfoenix.controls.JFXProgressBar;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableRow;
@@ -13,7 +10,6 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import it.unipi.giar.Data.Game;
-import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
@@ -33,6 +29,7 @@ import javafx.util.Callback;
 public class UserHomepageController {
 
     private ObservableList<GameTable> games;
+    private int viewClick;
 
     @FXML
     private JFXTextField searchGames;
@@ -43,13 +40,10 @@ public class UserHomepageController {
     @FXML
     private Hyperlink searchAllGames;
 
-    @FXML
-    private JFXProgressBar progressBar;
-
     @SuppressWarnings("unchecked")
     public void initialize() {
         searchAllGames.setVisible(false);
-        progressBar.setVisible(false);
+        viewClick = 0;
 
         JFXTreeTableColumn<GameTable, String> gameName = new JFXTreeTableColumn<GameTable, String>("Name");
         gameName.prefWidthProperty().bind(gamesTable.widthProperty().divide(4).multiply(3));
@@ -101,7 +95,7 @@ public class UserHomepageController {
             } else if (event.getCode().name().equals("BACK_SPACE") || (searchGames.getText()
                     .charAt(searchGames.getText().length() - 1) == (event.getText().charAt(0)))) {
 
-                ArrayList<Game> searchResult = Game.searchGames(searchGames.getText(), false);
+                ArrayList<Game> searchResult = Game.searchGames(searchGames.getText(), viewClick);
                 if (searchResult.size() >= 10) {
                     searchAllGames.setVisible(true);
                 } else {
@@ -116,41 +110,19 @@ public class UserHomepageController {
 
     @FXML
     void searchAllGames() {
-        final Runnable chargeAll = new Runnable() {
-            public void run() {
-                Platform.runLater(() -> {
-                    try {
-                        games.clear();
+        try {
+            games.clear();
+            viewClick += 1;
+            ArrayList<Game> searchResult = Game.searchGames(searchGames.getText(), viewClick);
 
-                        ArrayList<Game> searchResult = Game.searchGames(searchGames.getText(), true);
-
-                        for (Game game : searchResult) {
-                            games.add(new GameTable(game.getName(), Double.toString(game.getRating())));
-                        }
-
-                        progressBar.setVisible(false);
-                        searchAllGames.setVisible(true);
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        System.out.println("index exception");
-                    }
-                });
+            for (Game game : searchResult) {
+                games.add(new GameTable(game.getName(), Double.toString(game.getRating())));
             }
-        };
 
-        Thread stockPicker = new Thread() {
-            public void run() {
-                try {
-                    progressBar.setVisible(true);
-                    searchAllGames.setVisible(false);
-
-                    SwingUtilities.invokeAndWait(chargeAll);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-        };
-        stockPicker.start();
+            searchAllGames.setVisible(true);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("index exception");
+        }
     }
 
     void openGameInfo(String gameName) {

@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import com.jfoenix.controls.JFXTreeTableView?>
-<?import com.jfoenix.controls.JFXProgressBar?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="650.0" 
-   xmlns="http://javafx.com/javafx/8.0.171" 
-   xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipi.giar.Controller.UserBrowseController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipi.giar.Controller.UserBrowseController">
    <children>
       <BorderPane layoutX="250.0" prefHeight="600.0" prefWidth="650.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -35,7 +31,6 @@
                <children>
                   <JFXTreeTableView fx:id="gamesTable1" layoutX="40.0" layoutY="21.0" prefHeight="465.0" prefWidth="600.0" AnchorPane.bottomAnchor="59.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="21.0" />
                   <Hyperlink fx:id="searchAllGames" layoutX="40.0" layoutY="458.0" onMouseClicked="#searchAllGames" prefHeight="29.0" prefWidth="112.0" text="View more ..." />
-                  <JFXProgressBar fx:id="progressBar" layoutX="40.0" layoutY="457.0" prefHeight="0.0" prefWidth="571.0" />
                </children>
             </AnchorPane>
          </center>

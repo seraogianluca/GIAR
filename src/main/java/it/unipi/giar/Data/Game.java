@@ -281,24 +281,24 @@ public class Game {
 		return items;
 	}
 
-	public static ArrayList<Game> browseGamesPerPlatform(String value, Boolean searchAll) {
+	public static ArrayList<Game> browseGamesPerPlatform(String value, int searchAll) {
 		return searchGames("platforms.platform.name", value, searchAll);
 	}
 
-	public static ArrayList<Game> browseGamesPerGenre(String value, Boolean searchAll) {
+	public static ArrayList<Game> browseGamesPerGenre(String value, int searchAll) {
 		return searchGames("genres.name", value, searchAll);
 	}
 
-	public static ArrayList<Game> browseGamesPerYear(String value, Boolean searchAll) {
+	public static ArrayList<Game> browseGamesPerYear(String value, int searchAll) {
 		return searchGames("year", value, searchAll);
 	}
 
-	public static ArrayList<Game> searchGames(String search, Boolean searchAll) {
+	public static ArrayList<Game> searchGames(String search, int searchAll) {
 		return searchGames("name", search, searchAll);
 	}
 
 	// Flag SearchAll. True return all the results without limit
-	public static ArrayList<Game> searchGames(String key, String search, Boolean searchAll) {
+	public static ArrayList<Game> searchGames(String key, String search, int searchAll) {
 		ArrayList<Game> listGames = new ArrayList<Game>();
 		MongoDriver driver = null;
 		MongoCollection<Document> collection = null;
@@ -306,8 +306,8 @@ public class Game {
 		try {
 			driver = MongoDriver.getInstance();
 			collection = driver.getCollection("games");
-			if (searchAll) {
-				cursor = collection.find(regex(key, search, "i")).batchSize(1500).iterator();
+			if (searchAll > 0) {
+				cursor = collection.find(regex(key, search, "i")).limit(10*(searchAll+1)).iterator();
 			} else {
 				cursor = collection.find(regex(key, search, "i")).limit(10).batchSize(10).iterator();
 			}
