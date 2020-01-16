@@ -214,7 +214,7 @@ The method below counts the incoming relations to a player vertex.
 		}
 	}
 ```
-The method below uses the previous results to calculate a `threshold` as the ratio between the number of the total relations and the number of the players. If the degree of a node Player is greater or equal than the threshold, the Player is a PRO, and the setPro function is called in order to set the pro property to true.
+The method below uses the previous results to calculate a `threshold` as the ratio between the number of the total relations and the number of the players. If the degree of a node Player is greater than the threshold, the Player is a PRO, and the setPro function is called in order to set the pro property to true.
 ```java
 	public static boolean checkPro(String nickname) {
 		int players = getPlayers();
@@ -222,7 +222,7 @@ The method below uses the previous results to calculate a `threshold` as the rat
 		int following = getFollowing(nickname);	//degree of the node (incoming edges, followers)
 		double threshold = (double)follow / (double)players;	//ratio
 
-		if(following >= threshold) {	//if my followers > threshold -> PRO
+		if(following > threshold) {	//if my followers > threshold -> PRO
 			return setPro(nickname);
 		}
 		
