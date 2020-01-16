@@ -16,8 +16,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -147,40 +150,59 @@ public class AdminInsertGameController {
 
 	@FXML
 	void insertNewGame(MouseEvent event) {
-		ArrayList<String> platformsString = new ArrayList<String>();
-		ArrayList<String> genresString = new ArrayList<String>();
-		ArrayList<String> developersString = new ArrayList<String>();
-		String dateIns;
-		String nameIns;
-		String descIns;
-		String yearIns;
+		try {
+			ArrayList<String> platformsString = new ArrayList<String>();
+			ArrayList<String> genresString = new ArrayList<String>();
+			ArrayList<String> developersString = new ArrayList<String>();
+			String dateIns;
+			String nameIns;
+			String descIns;
+			String yearIns;
 
-		nameIns = name.getText();
-		dateIns = date.getText();
-		descIns = description.getText();
+			nameIns = name.getText();
+			dateIns = date.getText();
+			descIns = description.getText();
 
-		if (!Pattern.matches("(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](19|20)\\d\\d", dateIns)) {
-			setErrorMessage("Please insert a valid date.");
-		} else if (platList.size() == 0) {
-			setErrorMessage("Please insert at least a platform.");
-		} else if (genList.size() == 0) {
-			setErrorMessage("Please insert at least a genre.");
-		} else if (devList.size() == 0) {
-			setErrorMessage("Please insert at least a developer.");
-		} else {
-			message.setText("");
+			if (!Pattern.matches("(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](19|20)\\d\\d", dateIns)) {
+				setErrorMessage("Please insert a valid date.");
+			} else if (platList.size() == 0) {
+				setErrorMessage("Please insert at least a platform.");
+			} else if (genList.size() == 0) {
+				setErrorMessage("Please insert at least a genre.");
+			} else if (devList.size() == 0) {
+				setErrorMessage("Please insert at least a developer.");
+			} else {
+				message.setText("");
 
-			String[] dateString = dateIns.split("/");
-			String mongoDateString = dateString[2] + "-" + dateString[1] + "-" + dateString[0];
-			yearIns = dateString[2];
-			platformsString.addAll(platList);
-			genresString.addAll(genList);
-			developersString.addAll(devList);
+				String[] dateString = dateIns.split("/");
+				String mongoDateString = dateString[2] + "-" + dateString[1] + "-" + dateString[0];
+				yearIns = dateString[2];
+				platformsString.addAll(platList);
+				genresString.addAll(genList);
+				developersString.addAll(devList);
 
-			Game.insertGame(nameIns, mongoDateString, descIns, platformsString, genresString, developersString,
-					yearIns);
-			Game.updateIndexes();
-			setAcknowledgement("Game correctly added.");
+				Game.insertGame(nameIns, mongoDateString, descIns, platformsString, genresString, developersString,
+						yearIns);
+				Game.updateIndexes();
+				
+				AlertBoxController.display("Game correctly added!");
+				
+				FXMLLoader loader;
+				Scene scene;
+				AnchorPane pane;
+				AnchorPane newPane;
+
+				scene = name.getScene();
+				pane = (AnchorPane) scene.lookup("#anchorPaneRight");
+
+				loader = new FXMLLoader();
+				loader.setLocation(getClass().getResource("/fxml/AdminHomepage.fxml"));
+				newPane = loader.load();
+
+				pane.getChildren().setAll(newPane);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -220,11 +242,6 @@ public class AdminInsertGameController {
 	private void setErrorMessage(String msg) {
 		message.setText(msg);
 		message.setFill(Color.web("#db524b"));
-	}
-
-	private void setAcknowledgement(String msg) {
-		message.setText(msg);
-		message.setFill(Color.web("#7bd500"));
 	}
 
 }

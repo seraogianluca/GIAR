@@ -118,7 +118,7 @@ public class AdminInfoGameController {
 			game.deleteGame(game.getName());
 			Game.updateIndexes();
 			
-			AlertBoxController.display();
+			AlertBoxController.display("Game succesfully deleted!");
 			
 			FXMLLoader loader;
 			Scene scene;

@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 public class AlertBoxController {
 
 
-	public static void display() {
+	public static void display(String msg) {
 		Stage window= new Stage();
 		
 		window.initModality(Modality.APPLICATION_MODAL);
@@ -20,7 +20,7 @@ public class AlertBoxController {
 		window.setResizable(false);
 		
 		Text label = new Text();
-		label.setText("Game succesfully deleted!");
+		label.setText(msg);
 		
 		JFXButton closeButton = new JFXButton ("Close");
 		closeButton.setOnAction(e-> window.close());

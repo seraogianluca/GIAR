@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
@@ -27,9 +28,6 @@ public class AdminMenuController {
 
     @FXML
     private AnchorPane homepageMenuPane;
-
-    @FXML
-    private JFXButton adminNameMenuPanel;
 
     @FXML
     private JFXButton statisticMenuPanel;
@@ -102,6 +100,12 @@ public class AdminMenuController {
     
     public void initialize() {  		
 		try {
+			statisticMenuPanel.setCursor(Cursor.HAND);
+			newgameMenuPanel.setCursor(Cursor.HAND);
+			deleteUpdateMenuPanel.setCursor(Cursor.HAND);
+			logout.setCursor(Cursor.HAND);
+			
+			
 			AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/AdminStat.fxml"));
 			anchorPaneRight.getChildren().setAll(pane);
     	

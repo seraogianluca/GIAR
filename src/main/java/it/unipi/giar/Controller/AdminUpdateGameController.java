@@ -235,7 +235,21 @@ public class AdminUpdateGameController {
 
 				Game.updateGame(game);
 				Game.updateIndexes();
-				setAcknowledgement("Game correctly updated.");
+				
+				AlertBoxController.display("Game correctly updated!");
+				FXMLLoader loader;
+				Scene scene;
+				AnchorPane pane;
+				AnchorPane newPane;
+
+				scene = gameTitle.getScene();
+				pane = (AnchorPane) scene.lookup("#anchorPaneRight");
+
+				loader = new FXMLLoader();
+				loader.setLocation(getClass().getResource("/fxml/AdminHomepage.fxml"));
+				newPane = loader.load();
+
+				pane.getChildren().setAll(newPane);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -278,11 +292,6 @@ public class AdminUpdateGameController {
 	private void setErrorMessage(String msg) {
 		message.setText(msg);
 		message.setFill(Color.web("#db524b"));
-	}
-
-	private void setAcknowledgement(String msg) {
-		message.setText(msg);
-		message.setFill(Color.web("#7bd500"));
 	}
 
 }
