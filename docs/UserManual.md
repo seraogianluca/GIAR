@@ -59,7 +59,7 @@ For register a new game click on `Insert New Game` on the left section. Complete
 
 ### 2.4 Update Game
 
-The Administrator user can change the game information. Can change the release date, description, platforms, genres and developers.
+The Administrator user can change the game information. He can change the release date, description, platforms, genres and developers.
 
 ![Update Player](./resources/admin-updateGame.gif)
 
@@ -71,7 +71,7 @@ For delete a game, the administrator have to click on the `Delete/Update Game` o
 
 ## 3. Player Overview
 
-A Player user has two personal lists: MyGames and WishList. The first is referred to the games that the user has bought, the second is a list of games that the user want to buy in the future. The user can add a game in one of these lists from the specific page of the game, and delete one game from a list accessing to the relative section.
+A Player user has two personal lists: MyGames and WishList. The first is referred to the games that the user has bought, the second is a list of games that the user wants to buy in the future. The user can add a game in one of these lists from the specific page of the game, and delete one game from a list accessing to the relative section.
 
 ### 3.1 Sign up
 
@@ -86,7 +86,7 @@ Fill all the Sign Up form with your name, email, country, and Password.
 
 ### 3.2 Sign in
 
-A user needs an account to access the platform. If a user already has an account, he will insert his Email and Password to access. Otherwise, he has to fill a form composed by Nickname, Email, Password and Country to create a new account.
+A user needs an account to access the platform. If a user already has an account, insert the Nickname and the Password to access. Otherwise, view the previus section (3.1 Sign up).
 
 ![Login Player](./resources/player-login.png)
 
@@ -98,21 +98,42 @@ A user can search a game by name using the search bar on the top of the homepage
 
 ### 3.4 Social Network
 
+Go to `Social` on the left section. In this section you can access on a Private Social Network specially made for create a community-powered. 
+
 ![MyGames Player](./resources/player-social.png)
+
+You can access and see the WishList of all your other friends just clicking on the gray button Wishlist.
+
+![MyGames Player](./resources/player-socialwishlist.png)
+
+For adding more friends, you just have to search by nickname your friends and click on the following button.
+
+![MyGames Player](./resources/player-socialfollowing.png)
 
 ### 3.5 Rating
 
-A user can access a specific page for every game that contains all the information about it and on which a user can rate the game.
+The users with the Player role can rate every games. Click on the game information and add your preference rating.
+When you add or change your rating number, instantanly change the global general rating. Amazing!
 
 ![Rating Player](./resources/player-rating.png)
 
 ### 3.6 Adding to MyGames
 
+Giar is the best place for administrate your games list. When you buy a game, you can added to your list of `My Games`.
+
+For do that, search your game name and click on the button `Add to MyGames`.
+
 ![MyGames Player](./resources/player-addMyGames.gif)
 
 ### 3.7 Adding to Wishlist
 
+Giar is the best place for community games. You have the option to add to your `My Wish` list for make a public list with all the games you like but don't have.
+
+For do that, search your game name and click on the button `Add to Wishlist`.
+
 ![WishList Player](./resources/player-addMyWishlist.gif)
+
+**Note:** For view the wishlist of your friends, click on `Social` section on the left of the menu. Click on the button of the wishlist of your friends. Otherwise, view the Social section (3.4 Social Network).
 
 ### 3.8 Top Game by Platform
 
@@ -120,7 +141,7 @@ A user can browse the top rated games per platform.
 
 ![Top Player](./resources/player-topAndroid.png)
 
-### Browse Section
+### 3.9 Browse Section
 
 A user can browse a list of games choosing one of these filters: platform, year or genre. The user can sort the list of the games by name or rating.
 
