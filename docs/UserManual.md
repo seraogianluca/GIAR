@@ -5,11 +5,27 @@
 2. [Administration Overview](#2-administration-overview)
 3. [Player Overview](#3-player-overview)
 
-
 ## 1. System Overview
 
 GIAR (Games information and Ratings) is an application that collects information and ratings about videogames.
 
+The System Allows:
+
+**An Administrator to:**
+- View the Stats all User Preferences by Country
+- Adding a New Game
+- Update Game
+- Delete Game
+
+**An Player User to:**
+- Register an Account
+- Delete the owner account
+- Search a Game
+- View the Top List by Platform of all register Games
+- Connecting with other players by the private social network
+- Make a Wishlist
+- Make a List with your Games
+- Preference Browse options
 
 
 ## 2. Administration Overview
@@ -25,17 +41,14 @@ Administrator can also see information about users games preferences grouped by 
 
 ![Stats Player](./resources/admin-stats.gif)
 
-
 ### Adding Game
 ![Adding Player](./resources/admin-newGame.gif)
 
 ### Delete Game
 ![Delete Player](./resources/admin-deleteGame.gif)
 
-
 ### Update Game
 ![Update Player](./resources/admin-updateGame.gif)
-
 
 ## 3. Player Overview
 
@@ -67,21 +80,18 @@ A user can access a specific page for every game that contains all the informati
 
 ![Rating Player](./resources/player-rating.png)
 
-
 ### Adding to MyGames
 
-
 ![MyGames Player](./resources/player-addMyGames.gif)
-
-
 
 ### Adding to MyWish
 
 ![WishList Player](./resources/player-addMyWishlist.gif)
 
+### Top Game by Platform
+
+![WishList Player](./resources/player-topAndroid.png)
 
 ### Delete Profile
 
 ![Delete Profile](./resources/player-deleteProfile.png)
-
-
