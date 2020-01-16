@@ -59,13 +59,13 @@ For register a new game click on `Insert New Game` on the left section. Complete
 
 ### 2.4 Update Game
 
-The Administrator user can change the game information. He can change the release date, description, platforms, genres and developers.
+The Administrator user can change the game information. He can change the release date, description, platforms, genres and developers. A confirmation message displays.
 
 ![Update Player](./resources/admin-updateGame.gif)
 
 ### 2.5 Delete Game
 
-For delete a game, the administrator have to click on the `Delete/Update Game` on the left section. Search the game you want to delete. Open the information of the game and press the `Delete` button.
+For delete a game, the administrator have to click on the `Delete/Update Game` on the left section. Search the game you want to delete. Open the information of the game and press the `Delete` button. A confirmation message displays.
 
 ![Delete Player](./resources/admin-deleteGame.gif)
 
@@ -137,7 +137,7 @@ For do that, search your game name and click on the button `Add to Wishlist`.
 
 ### 3.8 Top Game by Platform
 
-A user can browse the top rated games per platform.
+Depend on the Global Rating, you can vizualice the Top Games by Platform. For show the best 10 games on the GIAR Platform, click on `Top Per Platform` section on the left menu.
 
 ![Top Player](./resources/player-topAndroid.png)
 
@@ -147,10 +147,18 @@ A user can browse a list of games choosing one of these filters: platform, year 
 
 #### Browse by Platform
 
+You can search all the games with an specific Platform.
+
 #### Browse by Year
+
+You can search all the games with an specific Year.
 
 #### Browse by Genre
 
+You can search all the games with an specific Genre.
+
 ### Delete Profile
+
+For Delete your Profile, on the left menu, click on you nickname. Your personal information will be display. Click on the `Delete Profile` button. A confirmation message displays.
 
 ![Delete Profile](./resources/player-deleteProfile.png)
