@@ -12,14 +12,45 @@
 ## 1. Introduction
 In this document are described the highlights of the implementation. Starting from a description of the main functionalities of the solution and then discussing about the package and the main classes providing some example of code.
 
-## 2. Architecture
-The solution is implemented as a client-server application. The client side, that is a desktop application, includes the solution logic exchanging messages with the server side only for performing operation on the databases (i.e. CRUD operations). The server side contains the databases instances (a document database and a graph database). The document database used is MongoDB.
-
-The MongoDB server instance is deployed on a cluster of three nodes as a replica set with one primary and two secondary nodes (two replicas). A write operation on the database, due to the availability requirements expressed in [design document](./Design.md), will return the control to the application after two acknowledgements of write operations (write concern: majority). This means that, a primary and at least a secondary are updated with each write operation. A read operation on the database is directed to the primary server and on the secondary server in case of primary fails. The replica set will elect a new primary server if the primary fails.
-
-The MongoDB replica set is by default partition tolerant and consistent. The availability setting allows the system to be available even if a primary fails. When a fail occurs a read operation can return stale data. For more information about replica sets read [MongoDB Replication Documentation](https://docs.mongodb.com/manual/replication/).
+The application is implemented as client-server. The client side, that is a desktop application, includes the application logic and exchange messages with the server side only to perform operations on the databases (i.e. CRUD operations). The server side contains the databases instances (a document database and a graph database).
 
 For information about the graph database see [graph database implementation document](./ImplementationGraph.md).
+
+## 2. Architecture
+The document database used is MongoDB, deployed as a replica set with three data bearing nodes (no arbiters). Let's consider a list of tipical use cases to choose the most suitable write and read options for the replica set:
+
+**Player:**
+Query | Read | Write
+----- | ---- | -----
+Sign-up | Once each nickname and email character pressed | One
+Sign-in | Two | None
+Search a game | One each character pressed | None
+Get game informations | One | None
+Rate a game | None | Ten
+Browse a list | One | None
+Add game to a list | None | Four
+Remove game from a list | None | Two
+Browse games | One each index entry | None
+Top ten per platform | Pipeline execution | None
+
+**Administrator:**
+Query | Read | Write
+----- | ---- | -----
+Search a game | One each character pressed | None
+Get game informations | One | None
+Insert a game | None | One
+Delete a game | None | One
+Update a game | None | One
+Owned game distribution per country | Pipeline execution | None
+
+**N.B.**
+Read and write volumes are calculated considering the worst case.
+
+The application has less frequent and more simple write operations (at most one document created or updated). Contrarily, read operations are more frequent and performed on a huge number of documents. Furthermore the system has availability and data lost tolerance requirements (expressed in design document](./Design.md)).
+
+Therefore the system is tuned as follow:
+- Write concern: 3, Write timeout: 5s. Since write operations are fast and simple the system has a strict consistency (each write updates all the replicas), this let the system to accept read operations on all the nodes of the cluster (writes are accepted only by the primary node).
+- Read preference: nearest. Read operations are performed on the node with the lowest network latency to have the fastest response.
 
 ## 3. Main Classes
 The solution contains three packages:
@@ -43,45 +74,40 @@ The classes belonging to the Controller package contains functions and object fo
 
 ## 4. Indexes
 
-Indexes support the efficient execution of queries in MongoDB.
+Indexes support the efficient execution of queries. MongoDB defines indexes at the collection level and supports them on any field, sub-field or set of fields of the documents. Indexes come with a performance cost but are more than worth the cost for frequent queries on large data sets.
 
-The prerequisites for working with Indexes on Java application are include the following import statements:
+Indexes are created on the most used fields during read operations, such as game name, platform, year of release and genre.
 
-```java
- import com.mongodb.MongoClient;
- import com.mongodb.client.MongoDatabase;
- import com.mongodb.client.MongoCollection;
- import org.bson.Document;
+The Mongo shell commands to create the indexes are shown below.
 
- import com.mongodb.client.model.Indexes;
- import com.mongodb.client.model.Filters;
+In the `games` collection, four single field indexes were created apart from the default `_id` one:
+
+- `name`: the index is created on the `name` field in order to increase the performances during the search operation. The search operation is performed on `OnKeyPress` event, so it occurs every time a letter that compose the game name is typed in the search bar. 
+
+Mongo shell:
+```shell
+db.games.createIndex({ name: 1 })
 ```
 
-Fundamentally, indexes in MongoDB are similar to indexes in other Database System. MongoDB defines indexes at the collection level and supports indexes on any field or sub-field of the documents in a MongoDB collection.
+- `platform`: the index is created on the `platforms.platform.name` field of the game. It is used every time a user performs a browse by platform. 
 
-Developing an index strategy for GIAR Application, before building indexes, we made a map out the types of queries we will run so that we can build indexes that reference those fields. Indexes come with a performance cost but are more than worth the cost for frequent queries on large data sets.
+Mongo shell:
+```shell
+db.games.createIndex({ platforms.platform.name: 1 })
+```
 
-The following section provide methods to preserve indexes on GIAR Application when executing Create, Update and Delete operations on a Game. To modify an existing index, you need to drop and recreate the index. In the following code we manage this recreation of the indexes:
+- `genres`: the index is created on the `genres.name` field of the game. It is used every time a user performs a browse by genre.
 
-```java
-public static void updateIndexes(){
-    MongoDriver driver = null;
-    MongoCollection<Document> collection = null;	
-    try {
-        driver = MongoDriver.getInstance();
-        collection = driver.getCollection("games");
-        //remove all
-        collection.dropIndexes();
-        //recreate all
-        collection.createIndex(Indexes.ascending("year"));
-        collection.createIndex(Indexes.ascending("name"));
-        collection.createIndex(Indexes.ascending("genres.name"));
-        collection.createIndex(Indexes.ascending("platforms.platform.name"));
-    } catch(Exception e) {
-        e.printStackTrace();
-    }
-    return;	
-}
+Mongo shell:
+```shell
+db.games.createIndex({ genres.name: 1 })
+```
+
+- `year`: the index is created on the `year` field of the game. It is used every time a user performs a browse by year of release.
+
+Mongo shell:
+```shell
+db.games.createIndex( { year: 1 } )
 ```
 
 ### 4.1 Indexes Query Performance

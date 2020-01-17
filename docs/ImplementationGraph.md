@@ -10,8 +10,13 @@
 ## 1. Introduction
 In this document are described the highlights of the implementation. Starting from a description of the main functionalities of the solution and then discussing about the package and the main classes providing some example of code.
 
+Since the graph database are more suitable for handling social networking relationships, this kind of database is choosed to support the GIAR social network.
+
 ## 2. Architecture
-The Graph Database used is Neo4j. The Neo4j server instance is deployed on a single server (standalone instance) with no replicas. This database supports the social network in the GIAR application.
+The Graph Database used is Neo4j. The Neo4j server instance is deployed on a single server (standalone instance) with no replicas and it is deployed on the same server of the document database that supports the main application features (for details see [GIAR design document](./Design.md)). 
+
+Since the graph database share information with the document database, such as users nickname and wished games, the databases must be strictly consistent.
+
 ## 3. Main Classes
 The solution contains three packages:
 - it.unipi.giar that contains the javaFX main class, the session class and the databases drivers.
@@ -119,7 +124,6 @@ N°| Domain specific | Graphic-centric
 --|------------ | -------------
 1|Which games has `player_nickname` in his Wishlist? |Which vertices with `wished` edges are incident to `player_nickname` vertex?
 2|How important is `player_nickname` in the system? |What is the degree centrality of `player_nickname`?
-
 
 ### 5.1 Query 1
  The first query is used to retrive all the games that a friend of a user has in his wishlist. A user can see the list of the players he follows and query for the wished games of those players.

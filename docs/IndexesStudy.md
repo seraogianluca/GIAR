@@ -20,8 +20,8 @@ In the following tables the `Average Actual Query Execution Time(ms)` field is t
 In this section we study the index on the `name` field of the games collection.
 The queries executed for the complete name or for only a part of the name : 
 ````
-{"name": "Just Dance 3"}
-{"name": {$regex: '^J' , $options: "i" }}
+giar.games.find({"name": "Just Dance 3"})
+giar.games.find({"name": {$regex: '^J' , $options: "i" }})
 ````
 
 ### 2.1 Just Dance 3 Query Performances Summary
@@ -85,8 +85,6 @@ Without index:
 ![pc](./resources/platPCnoindex.png)
 With index:
 ![pc no index](./resources/platPCindex.png)
-
-
 
 
 ## 4. Genres Name
