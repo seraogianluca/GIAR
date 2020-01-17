@@ -2,6 +2,7 @@ package it.unipi.giar;
 
 import java.io.IOException;
 
+import it.unipi.giar.Data.Game;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +27,7 @@ public class GiarGui extends Application {
 	
 	@Override
 	public void stop() {
+		Game.updateIndexes();
 		MongoDriver md = MongoDriver.getInstance();
 		Neo4jDriver nd = Neo4jDriver.getInstance();
 		md.close();

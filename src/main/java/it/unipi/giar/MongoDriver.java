@@ -17,7 +17,7 @@ public class MongoDriver {
 				+ "replicaSet=res0&"
 				+ "w=3&wtimeoutMS=5000&"
 				+ "readPreference=nearest");
-		database  = client.getDatabase("giar");
+		database = client.getDatabase("giar");
 	}
 	
 	public static MongoDriver getInstance() {

@@ -234,7 +234,6 @@ public class AdminUpdateGameController {
 				game.setDevelopers(developersString);
 
 				Game.updateGame(game);
-				Game.updateIndexes();
 				
 				AlertBoxController.display("Game correctly updated!");
 				FXMLLoader loader;

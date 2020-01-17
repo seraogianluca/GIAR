@@ -183,7 +183,6 @@ public class AdminInsertGameController {
 
 				Game.insertGame(nameIns, mongoDateString, descIns, platformsString, genresString, developersString,
 						yearIns);
-				Game.updateIndexes();
 				
 				AlertBoxController.display("Game correctly added!");
 				

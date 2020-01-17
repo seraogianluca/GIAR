@@ -3,6 +3,7 @@ package it.unipi.giar.Controller;
 import java.io.IOException;
 import com.jfoenix.controls.JFXButton;
 
+import it.unipi.giar.Data.Game;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -52,6 +53,7 @@ public class AdminMenuController {
     @FXML
     void logout(MouseEvent event) {
     	try {
+    		Game.updateIndexes();
     		Parent root;
     		Stage stage;
     		
