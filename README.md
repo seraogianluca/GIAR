@@ -7,7 +7,7 @@ A service for the workgroup tasks of the Large-Scale and Multi-Structured Databa
 
 1) [Design](/docs/Design.md)
 2) [Implementation](/docs/Implementation.md)
-3) [Indexes Study](/docs/IndexesStudy.md)
+3) [Indexes Performance Study](/docs/IndexesStudy.md)
 4) [User Manual](/docs/UserManual.md)
 
 ## Task 3
