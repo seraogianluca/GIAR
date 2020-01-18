@@ -38,9 +38,9 @@ Query | Read | Write
 ----- | ---- | -----
 Search a game | One each character pressed | None
 Get game informations | One | None
-Insert a game | None | One
+Insert a game | 2 | One
 Delete a game | None | One
-Update a game | None | One
+Update a game | 2 | One
 Owned game distribution per country | Pipeline execution | None
 
 **N.B.**
@@ -51,6 +51,11 @@ The application has less frequent and more simple write operations (at most one 
 Therefore the system is tuned as follow:
 - Write concern: 3, Write timeout: 5s. Since write operations are fast and simple the system has a strict consistency (each write updates all the replicas), this let the system to accept read operations on all the nodes of the cluster (writes are accepted only by the primary node).
 - Read preference: nearest. Read operations are performed on the node with the lowest network latency to have the fastest response.
+
+To set those options, the following connection string is used in the MongoDb Java Driver:
+```java
+"mongodb://server1_ip,server2_ip,server3_ip/?replicaSet=res0&w=3&wtimeoutMS=5000&readPreference=nearest"
+```
 
 ## 3. Main Classes
 The solution contains three packages:

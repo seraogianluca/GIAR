@@ -1,32 +1,32 @@
+# Work-group activity report - Test
+
+## Table of contents
+1. [Introduction](#1-introduction)
+2. [Test](#2-test)
+3. [Replica set status](#3-replica-set-status)
+
+## 1. Introduction
+The MongoDB database for the GIAR application is deployed on a replica set. MongoDB replica set has a primary node and several secondary nodes (our database has one primary and two secondary as stated in [Implementation Document](./Implementation.md)). Write operations are routed only to the primary node. If the primary node fails, an election protocol starts between the online secondary nodes to elect a new primary node. In our database, if the primary node is offline for ten seconds the election protocol start.
+
+## 2. Test
+To test if the system is tolerant to a primary fault, the following test is performed:
+- Three users log-in into the application and start to use it.
+- Shutdown the primary server.
+- Three users continue to use the application.
+- Restart the server.
+
+After the shutdown of the primary and before the new primary election the system didn't accept write operations, due to the read preference setting the system will continue to accept read operations. The application was still online even with an higher latency on reads. Conversely, the writes performed on the database during the shutdown were lost. The database is still consistent.
+
+## 3. Replica set status
+To see the status of the replica set the following command is performed:
+```
 res0:PRIMARY> rs.status()
+```
+
+The initial status of the replica set was:
+```
 {
-	"set" : "res0",
-	"date" : ISODate("2020-01-17T14:19:47.915Z"),
-	"myState" : 1,
-	"term" : NumberLong(1),
-	"syncingTo" : "",
-	"syncSourceHost" : "",
-	"syncSourceId" : -1,
-	"heartbeatIntervalMillis" : NumberLong(2000),
-	"optimes" : {
-		"lastCommittedOpTime" : {
-			"ts" : Timestamp(1579270781, 1),
-			"t" : NumberLong(1)
-		},
-		"readConcernMajorityOpTime" : {
-			"ts" : Timestamp(1579270781, 1),
-			"t" : NumberLong(1)
-		},
-		"appliedOpTime" : {
-			"ts" : Timestamp(1579270781, 1),
-			"t" : NumberLong(1)
-		},
-		"durableOpTime" : {
-			"ts" : Timestamp(1579270781, 1),
-			"t" : NumberLong(1)
-		}
-	},
-	"lastStableCheckpointTimestamp" : Timestamp(1579270761, 1),
+	...
 	"members" : [
 		{
 			"_id" : 0,
@@ -105,48 +105,19 @@ res0:PRIMARY> rs.status()
 			"configVersion" : 5
 		}
 	],
-	"ok" : 1,
-	"operationTime" : Timestamp(1579270781, 1),
-	"$clusterTime" : {
-		"clusterTime" : Timestamp(1579270781, 1),
-		"signature" : {
-			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
-			"keyId" : NumberLong(0)
-		}
-	}
+	...
 }
+```
 
+To shutdown the primary the following command is performed:
+```
+db.adminCommand({"shutdown" : 1})
+```
 
-
-res0:PRIMARY> rs.status()
+The status of the replica set after the election of the new primary was:
+```
 {
-	"set" : "res0",
-	"date" : ISODate("2020-01-17T14:25:21.336Z"),
-	"myState" : 1,
-	"term" : NumberLong(2),
-	"syncingTo" : "",
-	"syncSourceHost" : "",
-	"syncSourceId" : -1,
-	"heartbeatIntervalMillis" : NumberLong(2000),
-	"optimes" : {
-		"lastCommittedOpTime" : {
-			"ts" : Timestamp(1579271117, 1),
-			"t" : NumberLong(2)
-		},
-		"readConcernMajorityOpTime" : {
-			"ts" : Timestamp(1579271117, 1),
-			"t" : NumberLong(2)
-		},
-		"appliedOpTime" : {
-			"ts" : Timestamp(1579271117, 1),
-			"t" : NumberLong(2)
-		},
-		"durableOpTime" : {
-			"ts" : Timestamp(1579271117, 1),
-			"t" : NumberLong(2)
-		}
-	},
-	"lastStableCheckpointTimestamp" : Timestamp(1579271074, 1),
+	...
 	"electionCandidateMetrics" : {
 		"lastElectionReason" : "stepUpRequestSkipDryRun",
 		"lastElectionDate" : ISODate("2020-01-17T14:24:33.457Z"),
@@ -245,47 +216,14 @@ res0:PRIMARY> rs.status()
 			"configVersion" : 5
 		}
 	],
-	"ok" : 1,
-	"operationTime" : Timestamp(1579271117, 1),
-	"$clusterTime" : {
-		"clusterTime" : Timestamp(1579271117, 1),
-		"signature" : {
-			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
-			"keyId" : NumberLong(0)
-		}
-	}
+	...
 }
+```
 
-
-res0:SECONDARY> rs.status()
+The replica set status after the server restart:
+```
 {
-	"set" : "res0",
-	"date" : ISODate("2020-01-17T14:27:28.299Z"),
-	"myState" : 2,
-	"term" : NumberLong(2),
-	"syncingTo" : "172.16.0.72:27017",
-	"syncSourceHost" : "172.16.0.72:27017",
-	"syncSourceId" : 2,
-	"heartbeatIntervalMillis" : NumberLong(2000),
-	"optimes" : {
-		"lastCommittedOpTime" : {
-			"ts" : Timestamp(1579271247, 4),
-			"t" : NumberLong(2)
-		},
-		"readConcernMajorityOpTime" : {
-			"ts" : Timestamp(1579271247, 4),
-			"t" : NumberLong(2)
-		},
-		"appliedOpTime" : {
-			"ts" : Timestamp(1579271247, 4),
-			"t" : NumberLong(2)
-		},
-		"durableOpTime" : {
-			"ts" : Timestamp(1579271247, 4),
-			"t" : NumberLong(2)
-		}
-	},
-	"lastStableCheckpointTimestamp" : Timestamp(1579271065, 2),
+	...
 	"members" : [
 		{
 			"_id" : 0,
@@ -364,13 +302,6 @@ res0:SECONDARY> rs.status()
 			"configVersion" : 5
 		}
 	],
-	"ok" : 1,
-	"operationTime" : Timestamp(1579271247, 4),
-	"$clusterTime" : {
-		"clusterTime" : Timestamp(1579271247, 4),
-		"signature" : {
-			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
-			"keyId" : NumberLong(0)
-		}
-	}
+	...
 }
+```
