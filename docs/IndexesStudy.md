@@ -42,10 +42,10 @@ No index used | 1077 | 0 | 79670 | 126
 Example images of the results on an execution:
 
 Without index:
-![justdance](./resources/justdanceNOindex.png)
+![justdance](./resources/justdanceNOindex.PNG)
 
 With index:
-![Justdancenoindex](./resources/justdanceindex.png)
+![Justdancenoindex](./resources/justdanceindex.PNG)
 
 
 ## 3. Platforms Platform name
