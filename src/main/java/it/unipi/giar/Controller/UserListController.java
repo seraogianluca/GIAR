@@ -47,7 +47,7 @@ public class UserListController {
     	listType.setText(type);
     	
     	JFXTreeTableColumn<GameTable, String> gameName = new JFXTreeTableColumn<GameTable, String>("Name"); 
-    	gameName.prefWidthProperty().bind(gamesTable2.widthProperty().divide(4).multiply(3));
+    	gameName.prefWidthProperty().bind(gamesTable2.widthProperty().divide(6).multiply(3)); // or divide(4)
         gameName.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<GameTable, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<GameTable, String> param) {
