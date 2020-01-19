@@ -48,7 +48,7 @@ Owned game distribution per country | Pipeline execution | 0
 **N.B.**
 Read and write volumes are calculated considering the worst case.
 
-The application has less frequent and simpler write operations (at most one document created or updated). Contrarily, read operations are more frequent and performed on a huge number of documents. Furthermore the system has availability and data lost tolerance requirements [expressed in design document](./Design.md)).
+The application has less frequent and simple write operations (at most one document created or updated). Contrarily, read operations are more frequent and performed on a huge number of documents. Furthermore the system has availability and data lost tolerance requirements ([expressed in design document](./Design.md)).
 
 Therefore the system is tuned as follow:
 - Write concern: 3, Write timeout: 5s. Since write operations are fast and simple the system has a strict consistency (each write updates all the replicas), this let the system to accept read operations on all the nodes of the cluster (writes are accepted only by the primary node).
