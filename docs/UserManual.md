@@ -16,18 +16,18 @@ The System Allows:
 
 - View statistics
 - Adding a New Game
-- Update Game
-- Delete Game
+- Update a Game
+- Delete a Game
 
 **A Player User to:**
 
 - Register an Account
-- Delete the owner account
+- Delete the account
 - Search a Game
-- View the Top List by Platform of all register Games
-- Connecting with other players by the private social network
+- View the Top List by Platform of all registered Games
+- Connecting with other players with the private social network
 - Make a Wishlist
-- Make a List with your Games
+- Make a List with his own Games
 - Preference Browse options
 
 ## 2. Administration Overview
@@ -36,7 +36,7 @@ Administrator is a special user who can insert, modify and delete games from the
 
 ### 2.1 Log in
 
-A database user named `admin` is created upon installation of GIAR. It's the only one user with Administrator access on the system.
+A database user named `admin` is the only one user with Administrator access on the system.
 
 - User name: `admin`
 - Credentials: `admin`
@@ -53,7 +53,7 @@ Click on `Stats` on the left section. Select a country according your needs.
 
 ### 2.3 Adding Game
 
-For register a new game click on `Insert New Game` on the left section. Complete the form. Enter the name, release date, description, platforms, genres and developers.
+To register a new game click on `Insert New Game` on the left section. Complete the form. Enter the name, release date, description, platforms, genres and developers.
 
 ![Adding Player](./resources/admin-newGame.gif)
 
