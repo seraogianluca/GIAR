@@ -159,6 +159,6 @@ You can search all the games with an specific Genre.
 
 ### Delete Profile
 
-For Delete your Profile, on the left menu, click on you nickname. Your personal information will be display. Click on the `Delete Profile` button. A confirmation message displays.
+For Delete your Profile, on the left menu, click on you nickname. Your personal information will be display. Click on the `Delete Profile` button. A confirmation message will be displayed.
 
 ![Delete Profile](./resources/player-deleteProfile.png)
