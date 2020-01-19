@@ -29,6 +29,8 @@ The `User` class contains all the informations about a user such as the profile 
 
 The `Game` class contains all the information about a game such as name, release date, description, average rating, list of available platforms, list of genres and list of developers. The class contains methods for supporting the social network, such as retrieving a friend wishlist.
 
+The classes belonging to the Controller package contains functions and object for the GUI.
+
 ## 4. CRUD operations
 ### 4.1 Create
 When a new user sign-up to the application, a new node labeled as Player in the database is created. An auto-commit transaction is used to create the node.
