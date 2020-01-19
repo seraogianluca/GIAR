@@ -67,7 +67,7 @@ The solution contains three packages:
 - it.unipi.Data that contains the classes of the application objects such as User, Games, Platform, Genre and Developers.
 - it.unipi.Controller that contains the javaFx controllers for the GUI.
 
-The `GiarSession` class contains the logged user object. The object is used for various operations during an application session (i.e. save a game to the wishlist). So, the object is often needed in the application controllers, for this reason this class is written using the Singleton pattern.
+The `GiarSession` class contains the logged user object. This object is used for various operations during an application session (i.e. save a game to the wishlist), so it is often needed in the application controllers. For this reason this class is written using the Singleton pattern.
 
 The `MongoDriver` class contains the MongoClient instance. Since the application need only one MongoClient instance (MongoClient is a pool of connections to MongoDB), the class is written using the Singleton pattern.
 
