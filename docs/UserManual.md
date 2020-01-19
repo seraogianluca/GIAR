@@ -53,13 +53,13 @@ Click on `Stats` on the left section. Select a country according your needs.
 
 ### 2.3 Adding Game
 
-To register a new game click on `Insert New Game` on the left section. Complete the form. Enter the name, release date, description, platforms, genres and developers.
+To register a new game click on `Insert New Game` on the left section. Complete the form. Enter the name, release date, metacritic, description, platforms, genres and developers.
 
 ![Adding Player](./resources/admin-newGame.gif)
 
 ### 2.4 Update Game
 
-The Administrator user can change the game information. He can change the release date, description, platforms, genres and developers. A confirmation message is displayed.
+The Administrator user can change the game information. He can change the release date, metacritic, description, platforms, genres and developers. A confirmation message is displayed.
 
 ![Update Player](./resources/admin-updateGame.gif)
 
