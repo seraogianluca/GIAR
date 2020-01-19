@@ -20,8 +20,8 @@ In the following tables the `Average Actual Query Execution Time(ms)` field is t
 In this section we study the index on the `name` field of the games collection.
 The queries executed for the complete name or for only a part of the name are: 
 ````
-giar.games.find({"name": "Just Dance 3"})
-giar.games.find({"name": {$regex: '^J' , $options: "i" }})
+2.1) giar.games.find({"name": "Just Dance 3"})
+2.2) giar.games.find({"name": {$regex: '^J' , $options: "i" }})
 ````
 
 ### 2.1 Just Dance 3 Query Performances Summary
@@ -52,9 +52,9 @@ With index:
 In this section we study the index on the `platforms.platform.name` field of the games collection.
 The queries executed for different values are: 
 ````
-giar.games.find({platforms.platform.name: "PC"})
-giar.games.find({platforms.platform.name: "PlayStation 3"})
-giar.games.find({platforms.platform.name: "Xbox"})
+3.1) giar.games.find({platforms.platform.name: "PC"})
+3.2) giar.games.find({platforms.platform.name: "PlayStation 3"})
+3.3) giar.games.find({platforms.platform.name: "Xbox"})
 ````
 
 ### 3.1 PC
@@ -91,8 +91,8 @@ With index:
 In this section we study the index on the `genres.name` field of the games collection.
 The queries executed for different values are: 
 ````
-giar.games.find({genres.name: "Action"})
-giar.games.find({genres.name: "Shooter"})
+4.1) giar.games.find({genres.name: "Action"})
+4.2) giar.games.find({genres.name: "Shooter"})
 ````
 
 ### 4.1 Action Query Performances Summary
@@ -122,7 +122,7 @@ With index:
 In this section we study the index on the `year` field of the games collection.
 The query executed is: 
 ````
-giar.games.find({year: "2013"})
+5.1) giar.games.find({year: "2013"})
 ````
 
 ### 5.1 Action Query Performances Summary
