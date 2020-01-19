@@ -56,4 +56,4 @@ Delete | If a player deletes the profile, the system deletes the player vertex. 
 
 The application is a client-server application. The client provide to the user the interface for interacting with the database. On the server side there is a document database and a graph database. The document database is a MongoDB. The graph database is Neo4j.
 
-![Architecture](./resources/grapharchitecture.png)
+![Architecture](./resources/graphArchitecture.png)
