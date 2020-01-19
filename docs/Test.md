@@ -15,7 +15,7 @@ To test if the system is tolerant to a primary fault, the following test is perf
 - Three users continue to use the application.
 - Restart the server.
 
-After the shutdown of the primary and before the new primary election the system didn't accept write operations, due to the read preference setting the system will continue to accept read operations. The application was still online even with an higher latency on reads. Conversely, the writes performed on the database during the shutdown were lost. The database is still consistent.
+After the shutdown of the primary and before the new primary election, due to the read preference setting, accept reads on secondaries, the system will continue to accept read operations. The application was still working even with an higher latency on reads. Conversely, the replica set cannot process write operations until the election completes successfully. However, the MongoDB drivers can detect the loss of the primary and automatically retry certain write operations a single time if they encounter network errors, or if they cannot find a healthy primary in the replica set. Thus, the application will apply write operations when the election concludes succesfully. The official MongoDB 4.2-compatible drivers enable Retryable Writes by default.
 
 ## 3. Replica set status
 To see the status of the replica set the following command is performed:
