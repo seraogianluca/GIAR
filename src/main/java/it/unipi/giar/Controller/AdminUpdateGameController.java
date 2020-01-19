@@ -39,6 +39,9 @@ public class AdminUpdateGameController {
 
 	@FXML
 	private JFXTextField date;
+	
+    @FXML
+    private JFXTextField metacritic;
 
 	@FXML
 	private JFXTextArea description;
@@ -116,6 +119,7 @@ public class AdminUpdateGameController {
 		game = Game.findGame(gameName);
 		gameTitle.setText(gameName);
 		date.setText(dateForm.format(game.getReleased()));
+		metacritic.setText(Integer.toString(game.getMetacritic()));
 		description.setText(game.getDescription());
 
 		final Runnable chargePlatforms = new Runnable() {
@@ -224,6 +228,7 @@ public class AdminUpdateGameController {
 
 				game.setDescription(description.getText());
 				game.setReleased(formatDate.parse(date.getText()));
+				game.setMetacritic(Integer.parseInt(metacritic.getText()));
 
 				platformsString.addAll(platList);
 				genresString.addAll(genList);

@@ -33,8 +33,9 @@
                <content>
                   <AnchorPane prefHeight="724.0" prefWidth="632.0" style="-fx-background-color: transparent;">
                      <children>
-                        <JFXTextField fx:id="date" focusColor="#e5e54e" layoutX="337.0" layoutY="20.0" prefHeight="32.0" prefWidth="260.0" promptText="Release date (dd/mm/yyyy)" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="52.0" />
-                        <JFXTextArea fx:id="description" focusColor="#e5e54e" layoutX="35.0" layoutY="85.0" prefHeight="120.0" prefWidth="550.0" promptText="Description" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="116.0" />
+                        <JFXTextField fx:id="date" focusColor="#e5e54e" layoutX="35.0" layoutY="30.0" prefHeight="32.0" prefWidth="260.0" promptText="Release date (dd/mm/yyyy)" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="30.0" />
+                        <JFXTextField fx:id="metacritic" focusColor="#e5e54e" layoutX="35.0" layoutY="85.0" prefHeight="32.0" promptText="Metacritic" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" />
+                        <JFXTextArea fx:id="description" focusColor="#e5e54e" layoutX="35.0" layoutY="132.0" prefHeight="120.0" prefWidth="550.0" promptText="Description" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="132.0" />
                         <JFXButton fx:id="updateButton" layoutX="518.0" layoutY="675.0" onMouseClicked="#update" prefHeight="32.0" prefWidth="82.0" style="-fx-background-color: #7bd500;" text="Update" textAlignment="CENTER" textFill="WHITE" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="675.0">
                            <font>
                               <Font size="16.0" />
@@ -92,7 +93,7 @@
                                  </font>
                               </Label>
                               <JFXListView fx:id="developersList" layoutY="20.0" prefHeight="96.0" prefWidth="160.0" />
-                              <JFXTextField fx:id="developersCombo" editable="true" focusColor="#e5e54e" layoutX="176.0" layoutY="48.0" prefHeight="32.0" prefWidth="160.0" promptText="Developer Name"/>
+                              <JFXTextField fx:id="developersCombo" editable="true" focusColor="#e5e54e" layoutX="176.0" layoutY="48.0" prefHeight="32.0" prefWidth="160.0" promptText="Developer Name" />
                               <JFXButton fx:id="devAddButton" layoutX="352.0" layoutY="51.0" onAction="#insertDeveloper" style="-fx-background-color: #7bd500;" text="Add" textFill="WHITE" />
                               <JFXButton fx:id="devRemoveButton" layoutX="410.0" layoutY="51.0" onAction="#removeDeveloper" style="-fx-background-color: #db524b;" text="Remove" textFill="WHITE" />
                            </children>

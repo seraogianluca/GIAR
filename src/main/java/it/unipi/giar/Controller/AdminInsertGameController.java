@@ -99,6 +99,9 @@ public class AdminInsertGameController {
 
 	@FXML
 	private JFXButton devRemoveButton;
+	
+	@FXML
+    private JFXTextField metacritic;
 
 	public void initialize() {
 		final Runnable chargePlatforms = new Runnable() {
@@ -158,10 +161,16 @@ public class AdminInsertGameController {
 			String nameIns;
 			String descIns;
 			String yearIns;
+			int meta;
 
 			nameIns = name.getText();
 			dateIns = date.getText();
 			descIns = description.getText();
+			if(metacritic.getText().equals("")) {
+				meta = 0;
+			} else {
+				meta = Integer.parseInt(metacritic.getText());
+			}	
 
 			if (!Pattern.matches("(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](19|20)\\d\\d", dateIns)) {
 				setErrorMessage("Please insert a valid date.");
@@ -182,7 +191,7 @@ public class AdminInsertGameController {
 				developersString.addAll(devList);
 
 				Game.insertGame(nameIns, mongoDateString, descIns, platformsString, genresString, developersString,
-						yearIns);
+						yearIns, meta);
 				
 				AlertBoxController.display("Game correctly added!");
 				
