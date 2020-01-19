@@ -92,6 +92,9 @@ A user needs an account to access the platform. If a user already has an account
 
 ### 3.3 Search
 
+On the left Menu, Click `GIAR Logo` for open the `Search` section. 
+![Giar Logo](./resources/logo.png)
+
 A user can search a game by name using the search bar on the top of the homepage clicking on the logo of the app.
 
 ![Seach Player](./resources/player-search.gif)
