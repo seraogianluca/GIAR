@@ -434,6 +434,7 @@ public static void updateGame(Game game) {
 		String released = dateFormat.format(game.released);
 		String[] dateString = released.split("-");
 		String year = dateString[0];
+		int metacritic = 0;
 		 
 		for(Platform p: game.platforms) {
 			names.add(p.getName());
@@ -458,17 +459,19 @@ public static void updateGame(Game game) {
 		
 		driver = MongoDriver.getInstance();
 		collection = driver.getCollection("games");
+		metacritic = game.metacritic;
 		
 		
 		collection.updateOne(eq("name", game.name), 
 				Updates.combine(
 						Updates.set("description_raw", game.description),
 						Updates.set("released", released),
+						Updates.set("metacritic", metacritic),
 						Updates.set("platforms", platList),
 						Updates.set("developers", devList),
 						Updates.set("year", year),
 						Updates.set("genres", genList)));	
-    }
+	}
 ```
 
 ### 7.4 Delete
