@@ -571,7 +571,7 @@ public class Game {
 	}
 	
 	public static void insertGame(String name, String date, String description, 
-		ArrayList<String> platforms, ArrayList<String> genres, ArrayList<String> developers, String year) {
+		ArrayList<String> platforms, ArrayList<String> genres, ArrayList<String> developers, String year, int metacritic) {
 		MongoDriver md;
 		MongoCollection<Document> collection;
 		ArrayList<Document> platformList;
@@ -593,6 +593,7 @@ public class Game {
 		game.append("name", name);
 		game.append("released", date);
 		game.append("description_raw", description);
+		game.append("metacritic", metacritic);
 		game.append("rating", rating);
 		game.append("added_by_status", added);
 		game.append("platforms", platformList);
@@ -648,6 +649,7 @@ public class Game {
 		String released = dateFormat.format(game.released);
 		String[] dateString = released.split("-");
 		String year = dateString[0];
+		int metacritic = 0;
 		 
 		for(Platform p: game.platforms) {
 			names.add(p.getName());
@@ -672,12 +674,14 @@ public class Game {
 		
 		driver = MongoDriver.getInstance();
 		collection = driver.getCollection("games");
+		metacritic = game.metacritic;
 		
 		
 		collection.updateOne(eq("name", game.name), 
 				Updates.combine(
 						Updates.set("description_raw", game.description),
 						Updates.set("released", released),
+						Updates.set("metacritic", metacritic),
 						Updates.set("platforms", platList),
 						Updates.set("developers", devList),
 						Updates.set("year", year),

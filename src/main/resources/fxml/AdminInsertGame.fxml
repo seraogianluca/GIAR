@@ -35,7 +35,8 @@
                      <children>
                         <JFXTextField fx:id="name" focusColor="#e5e54e" layoutX="34.0" layoutY="15.0" prefHeight="32.0" prefWidth="260.0" promptText="Name" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="52.0" />
                         <JFXTextField fx:id="date" focusColor="#e5e54e" layoutX="337.0" layoutY="20.0" prefHeight="32.0" prefWidth="260.0" promptText="Release date (dd/mm/yyyy)" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="52.0" />
-                        <JFXTextArea fx:id="description" focusColor="#e5e54e" layoutX="35.0" layoutY="85.0" prefHeight="120.0" prefWidth="550.0" promptText="Description" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="116.0" />
+                        <JFXTextField fx:id="metacritic" focusColor="#e5e54e" layoutX="35.0" layoutY="100.0" prefHeight="32.0" prefWidth="260.0" promptText="Metacritic" AnchorPane.leftAnchor="35.0" />
+                        <JFXTextArea fx:id="description" focusColor="#e5e54e" layoutX="35.0" layoutY="143.0" prefHeight="120.0" prefWidth="550.0" promptText="Description" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="143.0" />
                         <JFXButton fx:id="insertGame" layoutX="529.0" layoutY="674.0" onMouseClicked="#insertNewGame" prefHeight="32.0" prefWidth="64.0" style="-fx-background-color: #7bd500;" text="Save" textAlignment="CENTER" textFill="WHITE" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="674.0">
                            <font>
                               <Font size="16.0" />
