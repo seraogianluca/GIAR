@@ -133,11 +133,11 @@ For do that, search your game name and click on the button `Add to Wishlist`.
 
 ![WishList Player](./resources/player-addMyWishlist.gif)
 
-**Note:** For view the wishlist of your friends, click on `Social` section on the left of the menu. Click on the button of the wishlist of your friends. Otherwise, view the Social section (3.4 Social Network).
+**Note:** To view the wishlist of your friends, click on `Social` section on the left of the menu. Click on the button of the wishlist of your friends. Otherwise, view the Social section (3.4 Social Network).
 
 ### 3.8 Top Game by Platform
 
-Depend on the Global Rating, you can vizualice the Top Games by Platform. For show the best 10 games on the GIAR Platform, click on `Top Per Platform` section on the left menu.
+Depending on the Global Rating, you can visualize the Top Games by Platform. To show the best 10 games, click on `Top Per Platform` section on the left menu.
 
 ![Top Player](./resources/player-topAndroid.png)
 
