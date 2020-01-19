@@ -20,6 +20,7 @@ For information about the graph database see [graph database implementation docu
 The document database used is MongoDB, deployed as a replica set with three data bearing nodes (no arbiters). Let's consider a list of tipical use cases to choose the most suitable write and read options for the replica set:
 
 **Player:**
+
 Query | Read | Write
 ----- | ---- | -----
 Sign-up | Once each nickname and email character pressed | One
@@ -34,6 +35,7 @@ Browse games | One each index entry | None
 Top ten per platform | Pipeline execution | None
 
 **Administrator:**
+
 Query | Read | Write
 ----- | ---- | -----
 Search a game | One each character pressed | None
