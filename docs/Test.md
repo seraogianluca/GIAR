@@ -6,7 +6,7 @@
 3. [Replica set status](#3-replica-set-status)
 
 ## 1. Introduction
-The MongoDB database for the GIAR application is deployed on a replica set. MongoDB replica set has a primary node and several secondary nodes (our database has one primary and two secondary as stated in [Implementation Document](./Implementation.md)). Write operations are routed only to the primary node. If the primary node fails, an election protocol starts between the online secondary nodes to elect a new primary node. In our database, if the primary node is offline for ten seconds the election protocol start.
+The MongoDB database for the GIAR application is deployed on a replica set. MongoDB replica set has a primary node and several secondary nodes (our database has one primary and two secondary as stated in [Implementation Document](./Implementation.md)). Write operations are routed only to the primary node. Read operations are routed on the node with the lowest network latency to have the fastest response. If the primary node fails, an election protocol starts between the online secondary nodes to elect a new primary node. In our database, if the primary node is offline for ten seconds the election protocol start.
 
 ## 2. Test
 To test if the system is tolerant to a primary fault, the following test is performed:
