@@ -127,9 +127,9 @@ To do that, search your game name and click on the button `Add to MyGames`.
 
 ### 3.7 Adding to Wishlist
 
-Giar is the best place for community games. You have the option to add to your `My Wish` list for make a public list with all the games you like but don't have.
+Giar is the best place for community games. You have the option to add to your `Wishlist` to make a public list with all the games you like but you don't have.
 
-For do that, search your game name and click on the button `Add to Wishlist`.
+To do that, search your game name and click on the button `Add to Wishlist`.
 
 ![WishList Player](./resources/player-addMyWishlist.gif)
 
