@@ -23,27 +23,27 @@ The document database used is MongoDB, deployed as a replica set with three data
 
 Query | Read | Write
 ----- | ---- | -----
-Sign-up | Once each nickname and email character pressed | One
-Sign-in | Two | None
-Search a game | One each character pressed | None
-Get game informations | One | None
-Rate a game | None | Ten
-Browse a list | One | None
-Add game to a list | None | Four
-Remove game from a list | None | Two
-Browse games | One each index entry | None
-Top ten per platform | Pipeline execution | None
+Sign-up | 1 each nickname and email character pressed | 1
+Sign-in | 2 | 0
+Search a game | 1 each character pressed | 0
+Get game informations | 1 | 0
+Rate a game | 0 | 10
+Browse a list | 1 | 0
+Add game to a list | 0 | 4
+Remove game from a list | 0 | 2
+Browse games | 1 each index entry | 0
+Top ten per platform | Pipeline execution | 0
 
 **Administrator:**
 
 Query | Read | Write
 ----- | ---- | -----
-Search a game | One each character pressed | None
-Get game informations | One | None
-Insert a game | 2 | One
-Delete a game | None | One
-Update a game | 2 | One
-Owned game distribution per country | Pipeline execution | None
+Search a game | 1 each character pressed | 0
+Get game informations | 1 | 0
+Insert a game | 2 | 1
+Delete a game | 0 | 1
+Update a game | 2 | 1
+Owned game distribution per country | Pipeline execution | 0
 
 **N.B.**
 Read and write volumes are calculated considering the worst case.
