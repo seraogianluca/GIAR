@@ -18,7 +18,7 @@ In the following tables the `Average Actual Query Execution Time(ms)` field is t
 
 ## 2. Index Game Name
 In this section we study the index on the `name` field of the games collection.
-The queries executed for the complete name or for only a part of the name : 
+The queries executed for the complete name or for only a part of the name are: 
 ````
 giar.games.find({"name": "Just Dance 3"})
 giar.games.find({"name": {$regex: '^J' , $options: "i" }})
