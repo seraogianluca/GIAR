@@ -121,11 +121,11 @@ db.games.createIndex( { year: 1 } )
 To read about the performance of the system exploiting or not the indexes please refer to [Indexes Performance Study](./IndexesStudy.md)
 
 ## 5. Aggregations
-Several aggregations are used in the application. These aggregations are useful to obtain a list of values used for supporting browse functions. Aggregations are used for having a list of `year`, `platform` and `genres` field values. 
+Several aggregations are used in the application. These aggregations are useful to obtain a list of values used to support browse functions. Aggregations are used to have a list of `year`, `platform` and `genres` field values. In the next `Analytics and statistics` paragraph other two different pipelines are shown.
 
-In the following an example of aggregation for the `platforms` field:
+In the following an example of aggregation divided per stages for the `platforms` field:
 
-First stage: Deconstructs an array field from the game documents to output a game document for each element. Each output document is the input document with the value of the `platforms` array field replaced by the element.
+**First stage**: Deconstructs an array field from the game documents to output a game document for each element. Each output document is the input document with the value of the `platforms` array field replaced by the element.
 ```
 [{
     $unwind: {
@@ -133,7 +133,7 @@ First stage: Deconstructs an array field from the game documents to output a gam
     }
 },
 ```
-Second stage: Groups by platform name.
+**Second stage**: Groups by platform name.
 ```
  {
     $group: {
@@ -142,7 +142,7 @@ Second stage: Groups by platform name.
     }
 },
 ```
-Third stage: Sorts for platform name value in alfabetical order.
+**Third stage**: Sorts for platform name value in alfabetical order.
 ```
  {
     $sort: {
@@ -172,15 +172,16 @@ In the following the code with the Mongo java driver:
 		}
 		return items;
 	}
-```	
+```
+
 
 ## 6. Analytics and statistics
-In the following the two pipelines aggregations used to extract interesting information from data are described. In particular, the top ten games per platform gives information about the most rated games grouped by platform (i.e. PC, Xbox and PlayStation). Then, the distribution of games per country gives information about the ten most owned games in a selected country.
+In the following the two pipelines aggregations used to extract interesting information from data are described. In particular, the `top ten games per platform` gives information about the most rated games grouped by platform (i.e. PC, Xbox and PlayStation). Then, the `distribution of games per country` gives information about the ten most owned games in a selected country.
 
 ### 6.1 Top 10 games per platform
 This pipeline is performed on the `games` collection by the player side of the application. It returns the list of the ten most voted games between the games with rating greater than three.
 
-First stage: Selects games of a specific platform with a rate greater than three.
+**First stage**: Selects games of a specific platform with a rate greater than three.
 ```
 [{
     $match: {
@@ -192,7 +193,7 @@ First stage: Selects games of a specific platform with a rate greater than three
 },
 ```
 
-Second stage: Deconstructs an array field from the game documents to output a game document for each element. Each output document is the input document with the value of the `ratings` array field replaced by the element.
+**Second stage**: Deconstructs an array field from the game documents to output a game document for each element. Each output document is the input document with the value of the `ratings` array field replaced by the element.
 
 **N.B.**
 The `ratings` field is an array of embedded document that contains a document for each possible rating value (from 1 to 5). Each document contains the rating value, and the number of times that the rating was given to the game.
@@ -204,7 +205,7 @@ The `ratings` field is an array of embedded document that contains a document fo
 },
 ``` 
 
-Third stage: Groups games by `_id` and Projects useful fields for the next stages. In particular, the game name (`name`), the total number of votes expressed (`ratings_count`) and the average rating (`rating`).
+**Third stage**: Groups games by `_id` and Projects useful fields for the next stages. In particular, the game name (`name`), the total number of votes expressed (`ratings_count`) and the average rating (`rating`).
 ```
 {
     $group: {
@@ -225,7 +226,7 @@ Third stage: Groups games by `_id` and Projects useful fields for the next stage
 },
 ```
 
-Forth stage: Sorts for total count value in decreasing order.
+**Forth stage**: Sorts for total count value in decreasing order.
 ```
  {
     $sort: {
@@ -234,14 +235,14 @@ Forth stage: Sorts for total count value in decreasing order.
 }, 
 ```
 
-Fifth stage: Selects the first 10 games.
+**Fifth stage**: Selects the first 10 games.
 ```
 {
     $limit: 10
 },
 ```
 
-Sixth stage: Sorts for average rating value in decreasing order. 
+**Sixth stage**: Sorts for average rating value in decreasing order. 
 ```
 {
     $sort: {
@@ -281,12 +282,13 @@ The variable `value` is the name of the platform requested by the user on which 
 		}
 		return null;
 	}
-```			
+	
+```
 
 ### 6.2 Distribution of games per country
 This pipeline is performed on the `users` collection by the admin side of the application. It returns the list of the ten most added games in the myGames list of users coming from a specific country.
 
-First stage: Selects all the users of a specific Country.
+**First stage**: Selects all the users of a specific Country.
 ```
 [{
     $match: {
@@ -295,7 +297,7 @@ First stage: Selects all the users of a specific Country.
 },
 ```
 
-Second stage: Deconstructs an array field from the user documents to output a user document for each element. Each output document is the input document with the value of the `mygames` array field replaced by the element.
+**Second stage**: Deconstructs an array field from the user documents to output a user document for each element. Each output document is the input document with the value of the `mygames` array field replaced by the element.
 
 ```
  {
@@ -305,7 +307,7 @@ Second stage: Deconstructs an array field from the user documents to output a us
 },
 ```
 
-Third stage: Groups and counts users by `mygames.name`. 
+**Third stage**: Groups and counts users by `mygames.name`. 
 ```
  {
     $group: {
@@ -316,7 +318,7 @@ Third stage: Groups and counts users by `mygames.name`.
     }
 },
 ```
-Fourth stage: Sorts for count in decreasing order.
+**Fourth stage**: Sorts for count in decreasing order.
 ```
  {
     $sort: {
@@ -325,7 +327,7 @@ Fourth stage: Sorts for count in decreasing order.
 },
 ```
 
-Fifth stage: Selects the first ten results games.
+**Fifth stage**: Selects the first ten results games.
 ```
 {
     $limit: 10
@@ -348,7 +350,7 @@ In the following the code with the Mongo java driver:
 		
 		return total;	
 	}
-```	
+```
 
 ## 7. CRUD Operations
 
