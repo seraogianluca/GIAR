@@ -16,18 +16,18 @@ The System Allows:
 
 - View statistics
 - Adding a New Game
-- Update Game
-- Delete Game
+- Update a Game
+- Delete a Game
 
 **A Player User to:**
 
 - Register an Account
-- Delete the owner account
+- Delete the account
 - Search a Game
-- View the Top List by Platform of all register Games
-- Connecting with other players by the private social network
+- View the Top List by Platform of all registered Games
+- Connecting with other players with the private social network
 - Make a Wishlist
-- Make a List with your Games
+- Make a List with his own Games
 - Preference Browse options
 
 ## 2. Administration Overview
@@ -36,7 +36,7 @@ Administrator is a special user who can insert, modify and delete games from the
 
 ### 2.1 Log in
 
-A database user named `admin` is created upon installation of GIAR. It's the only one user with Administrator access on the system.
+A database user named `admin` is the only one user with Administrator access on the system.
 
 - User name: `admin`
 - Credentials: `admin`
@@ -53,19 +53,19 @@ Click on `Stats` on the left section. Select a country according your needs.
 
 ### 2.3 Adding Game
 
-For register a new game click on `Insert New Game` on the left section. Complete the form. Enter the name, release date, description, platforms, genres and developers.
+To register a new game click on `Insert New Game` on the left section. Complete the form. Enter the name, release date, description, platforms, genres and developers.
 
 ![Adding Player](./resources/admin-newGame.gif)
 
 ### 2.4 Update Game
 
-The Administrator user can change the game information. He can change the release date, description, platforms, genres and developers. A confirmation message displays.
+The Administrator user can change the game information. He can change the release date, description, platforms, genres and developers. A confirmation message is displayed.
 
 ![Update Player](./resources/admin-updateGame.gif)
 
 ### 2.5 Delete Game
 
-For delete a game, the administrator have to click on the `Delete/Update Game` on the left section. Search the game you want to delete. Open the information of the game and press the `Delete` button. A confirmation message displays.
+To delete a game, the administrator has to click on the `Delete/Update Game` button on the left section. Search the game you want to delete. Open the information of the game and press the `Delete` button. A confirmation message is displayed.
 
 ![Delete Player](./resources/admin-deleteGame.gif)
 
@@ -80,13 +80,13 @@ On the Login page, click on the link `Not registered yet? Sign up now!`
 
 ![Signup Player](./resources/player-signuplink.gif)
 
-Fill all the Sign Up form with your name, email, country, and Password.
+Fill all the Sign Up form with your name, email, country, and password.
 
 ![Signup Player](./resources/player-signup.png)
 
 ### 3.2 Sign in
 
-A user needs an account to access the platform. If a user already has an account, insert the Nickname and the Password to access. Otherwise, view the previus section (3.1 Sign up).
+A user needs an account to access the platform. If a user already has an account, insert the Nickname and the Password to access. Otherwise, view the previous section (3.1 Sign up).
 
 ![Login Player](./resources/player-login.png)
 
@@ -98,38 +98,38 @@ A user can search a game by name using the search bar on the top of the homepage
 
 ### 3.4 Social Network
 
-Go to `Social` on the left section. In this section you can access on a Private Social Network specially made for create a community-powered. 
+Go to `Social` on the left section. In this section you can access on a Private Social Network specially made to create a community. 
 
 ![MyGames Player](./resources/player-social.png)
 
-You can access and see the WishList of all your other friends just clicking on the gray button Wishlist.
+You can access and see the WishList of all your friends just clicking on the grey Wishlist button.
 
 ![MyGames Player](./resources/player-socialwishlist.png)
 
-For adding more friends, you just have to search by nickname your friends and click on the following button.
+To add more friends, you just have to search your friends by nickname and click on the following button.
 
 ![MyGames Player](./resources/player-socialfollowing.png)
 
 ### 3.5 Rating
 
-The users with the Player role can rate every games. Click on the game information and add your preference rating.
+The users with the Player role can rate every games. Click on the game information and add your favourite rating.
 When you add or change your rating number, instantanly change the global general rating. Amazing!
 
 ![Rating Player](./resources/player-rating.png)
 
 ### 3.6 Adding to MyGames
 
-Giar is the best place for administrate your games list. When you buy a game, you can added to your list of `My Games`.
+Giar is the best place to administrate your games list. When you buy a game, you can add it to your list of `My Games`.
 
-For do that, search your game name and click on the button `Add to MyGames`.
+To do that, search your game name and click on the button `Add to MyGames`.
 
 ![MyGames Player](./resources/player-addMyGames.gif)
 
 ### 3.7 Adding to Wishlist
 
-Giar is the best place for community games. You have the option to add to your `My Wish` list for make a public list with all the games you like but don't have.
+Giar is the best place for community games. You have the option to add to your `Wishlist` to make a public list with all the games you like but you don't have.
 
-For do that, search your game name and click on the button `Add to Wishlist`.
+To do that, search your game name and click on the button `Add to Wishlist`.
 
 ![WishList Player](./resources/player-addMyWishlist.gif)
 
