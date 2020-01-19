@@ -176,12 +176,12 @@ In the following the code with the Mongo java driver:
 
 
 ## 6. Analytics and statistics
-In the following the two pipelines aggregations used to extract interesting information from data are described. In particular, the `top ten games per platform` gives information about the most rated games grouped by platform (i.e. PC, Xbox and PlayStation). Then, the `distribution of games per country` gives information about the ten most owned games in a selected country.
+In the following the two pipelines aggregations used to extract interesting information from data are described. In particular, the `top ten games per platform` gives information about the most rated games grouped by platform (i.e. PC, Xbox or PlayStation). Then, the `distribution of games per country` gives information about the ten most owned games in a selected country.
 
 ### 6.1 Top 10 games per platform
-This pipeline is performed on the `games` collection by the player side of the application. It returns the list of the ten most voted games between the games with rating greater than three.
+This pipeline is performed on the `games` collection by the player side of the application. It returns the list of the ten most voted games between the games with rating greater than `3`.
 
-**First stage**: Selects games of a specific platform with a rate greater than three.
+**First stage**: Selects games of a specific platform with a rate greater than `3`.
 ```
 [{
     $match: {
@@ -379,7 +379,7 @@ public static void register(String registNick, String registEmail, String regist
 			e.printStackTrace();
 		}
 	}
-```	
+```
 
 ### 7.2 Read
 The method is called every time a user inserts a character into the SearchBar in the graphic interface. The `collection.find(regex(key, search, "i")).batchSize(1500).iterator()` function makes a query on the database in order to retrive games that contains the key in the name. The option `i` allows the case-insensitive matching. The results will appear in the table below the SearchBar.
