@@ -6,6 +6,9 @@
 3) [Non-Functional requirements](#3-non-functional-requirements)
 4) [Snapshot of the graph](#4-snapshot-of-the-graph)
 5) [Analysis Classes Diagram](#5-analysis-classes-diagram)
+6) [Use Cases Diagram](#6-use-cases-diagram)
+7) [Queries](#7-queries)
+8) [Software Architecture](#8-software-architecture)
 
 
 # 1. Introduction
@@ -47,3 +50,10 @@ Create | The system creates a player vertex for each player registered to the ap
 Read | The system reads if a player is a PRO at the player log-in to show the PRO badge.
 Update | The system updates the PRO property if a player becomes pro.
 Delete | If a player deletes the profile, the system deletes the player vertex. If an administrator deletes a game, the system deletes the game vertex. The system delete the `has in:` relation if a player puts a game from the Wishlist to MyGames.
+
+
+## 8. Software Architecture
+
+The application is a client-server application. The client provide to the user the interface for interacting with the database. On the server side there is a document database and a graph database. The document database is a MongoDB. The graph database is Neo4j.
+
+![Architecture](./resources/grapharchitecture.png)
