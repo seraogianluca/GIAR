@@ -1,0 +1,19 @@
+@relation tweets
+
+@attribute text string
+@attribute class {positive,negative,none}
+
+@data
+' Folgado esse Gunner hein WTF Men? Respect Brazil !!!! 5X world Cup FIFA. Country for Pelé, Romario, Ronaldos and more. Respect kid!',?
+'Fifa 97 Ps one ',?
+' We Iranian Turks demand an end to racist acts and slogans in Iranian stadiums.On January 26,Perspolis fans cast racial slurs against Turks and as ever they were dubbed a video named \"donkeys\".The video has been sent to AFC and FIFA Please put an end to racism ',?
+'Important to note that there have been no changes to the FIFA Regs. UK will be outside EU on 1/2/20 and accordingly UK clubs will be prohibited from signing minors from abroad even though they might still be legally allowed work in the UK. Key difference between law and FIFA regs ',?
+' my quick sell didnt work, and me and 2 other players from 128 had to reset fifa every time we wanted to put fitness on squad XD',?
+'We Iranian Turks demand an end to racist acts and slogans in Iranian stadiums. On January 26, Perspolis fans cast racial slurs against Turks and as ever they were dubbed \"donkeys\". The video has been sent to AFC and FIFA. Please put an end to racism. ',?
+' We demand an end to racist acts and slogans in Iranian stadiums. On January 26, fans cast racial slurs against and as ever they were dubbed \" \". The video has been sent to and . Please put an end to . ',?
+' We Iranian Turks demand an end to racist acts and slogans in Iranian stadiums.On January 26,Perspolis fans cast racial slurs against Turks and as ever they were dubbed a video named \"donkeys\".The video has been sent to AFC and FIFA Please put an end to racism ',?
+'FIFA 20 TOTW 19 lineup revealed featuring Virgil van Dijk and Kylian Mbappe in-forms ',?
+'Wait are Fifa points down? ',?
+'Heineken 24 , FIFA and my niggas ',?
+' All EU countries. They are no longer entitled to avail of the exemption of the international transfer of 16-18 year olds which FIFA allows only between countries within the EU or European Economic Area.',?
+'Some fifa why not ',?

@@ -1,5 +1,8 @@
 package it.unipi.giar;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.io.FileInputStream;
 import org.tartarus.snowball.ext.englishStemmer;
 
@@ -15,6 +18,11 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.UserMentionEntity;
+import weka.core.Attribute;
+import weka.core.DenseInstance;
+import weka.core.Instance;
+import weka.core.Instances;
+import weka.core.converters.ArffSaver;
 import weka.classifiers.Classifier;
 import weka.classifiers.meta.FilteredClassifier;
 import weka.classifiers.trees.RandomForest;
@@ -30,12 +38,14 @@ public class TwitterConnector {
 			query.setCount(50);
 			QueryResult result = twitter.search(query);
 
+			ArrayList<String> tweets = new ArrayList<String>();
 			for (Status status : result.getTweets()) {
 				if(!status.isRetweet()) {
-					System.out.println("Original: \n" + status.getText() + "\n");					
-					System.out.println("Cleaned:\n" + tweetCleaning(status) + "\n");
+					tweets.add(tweetCleaning(status));
 				}
 			}
+			
+			createDataset(tweets);
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
@@ -60,6 +70,38 @@ public class TwitterConnector {
 		return cleanedTweet;
 	}
 	
+	private static void createDataset(ArrayList<String> tweets) {
+		Attribute text = new Attribute("text", true);
+		ArrayList<String> labels = new ArrayList<String>();
+		labels.add("positive");
+		labels.add("negative");
+		labels.add("none");
+		Attribute clas = new Attribute("class", labels);
+		ArrayList<Attribute> attributes = new ArrayList<Attribute>();
+		attributes.add(text);
+		attributes.add(clas);
+		Instances dataset = new Instances("tweets", attributes, tweets.size());
+		dataset.setClassIndex(dataset.numAttributes()-1);
+		
+		for(int i = 0; i < tweets.size(); i++) {
+			double[] value = new double[dataset.numAttributes()];
+			value[0] = dataset.attribute(0).addStringValue(tweets.get(i));
+			Instance inst = new DenseInstance(1.0, value);
+			dataset.add(inst);
+			dataset.instance(i).setClassMissing();
+			System.out.println(dataset.instance(i));
+		}
+		
+		try {
+			ArffSaver saver = new ArffSaver();
+			saver.setInstances(dataset);
+			saver.setFile(new File("./tweets.arff"));
+			saver.writeBatch();
+		} catch(IOException io) {
+			io.printStackTrace();
+		}
+		
+		//aaaa
 	public static void loadModel() {
 		try {
 		
