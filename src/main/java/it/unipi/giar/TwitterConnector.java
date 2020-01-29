@@ -1,13 +1,6 @@
 package it.unipi.giar;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.io.FileInputStream;
-import org.tartarus.snowball.ext.englishStemmer;
-
-import java.io.ObjectInputStream;
-
 import com.vdurmont.emoji.EmojiParser;
 
 import twitter4j.HashtagEntity;
@@ -22,10 +15,7 @@ import weka.core.Attribute;
 import weka.core.DenseInstance;
 import weka.core.Instance;
 import weka.core.Instances;
-import weka.core.converters.ArffSaver;
-import weka.classifiers.Classifier;
 import weka.classifiers.meta.FilteredClassifier;
-import weka.classifiers.trees.RandomForest;
 import weka.core.SerializationHelper;
 
 public class TwitterConnector {
@@ -89,28 +79,39 @@ public class TwitterConnector {
 			Instance inst = new DenseInstance(1.0, value);
 			dataset.add(inst);
 			dataset.instance(i).setClassMissing();
-			System.out.println(dataset.instance(i));
 		}
 		
 		try {
-			ArffSaver saver = new ArffSaver();
-			saver.setInstances(dataset);
-			saver.setFile(new File("./tweets.arff"));
-			saver.writeBatch();
-		} catch(IOException io) {
-			io.printStackTrace();
-		}
-		
-		//aaaa
-	public static void loadModel() {
-		try {
-		
 			FilteredClassifier classifier;
-			classifier = (FilteredClassifier) SerializationHelper.read("C:\\Users\\bari9\\git\\GIAR_datamining\\src\\main\\resources\\classifier.model");
+			classifier = (FilteredClassifier)SerializationHelper.read("/Users/gianluca/GitHub/GIAR_datamining/src/main/resources/classifier.model");
 			
-			
-			
-		}catch(Exception e) {e.printStackTrace();}
+			for(int i = 0; i < tweets.size(); i++) {
+				classifier.classifyInstance(dataset.instance(i));
+				System.out.println(dataset.instance(i));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+//		try {
+//			ArffSaver saver = new ArffSaver();
+//			saver.setInstances(dataset);
+//			saver.setFile(new File("./tweets.arff"));
+//			saver.writeBatch();
+//		} catch(IOException io) {
+//			io.printStackTrace();
+//		}
 		
 	}
+	
+//	public static void loadModel() {
+//		try {
+//		
+//			FilteredClassifier classifier;
+//			classifier = (FilteredClassifier) SerializationHelper.read("C:\\Users\\bari9\\git\\GIAR_datamining\\src\\main\\resources\\classifier.model");
+//			
+//			
+//		}catch(Exception e) {e.printStackTrace();}
+//		
+//	}
 }
