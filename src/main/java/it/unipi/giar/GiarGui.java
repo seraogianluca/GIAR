@@ -21,8 +21,7 @@ public class GiarGui extends Application {
 	}
 
 	public static void main(String[] args) {
-		TwitterConnector.searchTweets("fifa");
-		//TwitterConnector.loadModel();
+		TwitterConnector.searchTweets("death stranding");
 		launch(args);
 	}
 	

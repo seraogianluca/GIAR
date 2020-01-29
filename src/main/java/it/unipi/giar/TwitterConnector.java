@@ -1,5 +1,7 @@
 package it.unipi.giar;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import com.vdurmont.emoji.EmojiParser;
 
@@ -17,6 +19,7 @@ import weka.core.Instance;
 import weka.core.Instances;
 import weka.classifiers.meta.FilteredClassifier;
 import weka.core.SerializationHelper;
+import weka.core.converters.ArffSaver;
 
 public class TwitterConnector {
 	public static void searchTweets(String searchTerm) {
@@ -25,16 +28,23 @@ public class TwitterConnector {
 
 			Query query = new Query(searchTerm);
 			query.setLang("en");
-			query.setCount(50);
+			query.setCount(1000);
 			QueryResult result = twitter.search(query);
-
+			
 			ArrayList<String> tweets = new ArrayList<String>();
-			for (Status status : result.getTweets()) {
-				if(!status.isRetweet()) {
-					tweets.add(tweetCleaning(status));
+			
+			while(result.hasNext()) {
+				for (Status status : result.getTweets()) {
+					if(!status.isRetweet()) {
+						tweets.add(tweetCleaning(status));
+					}
 				}
+				
+				Query q = result.nextQuery();
+				result = twitter.search(q);
 			}
 			
+			System.out.println(tweets.size());
 			createDataset(tweets);
 		} catch (TwitterException e) {
 			e.printStackTrace();
@@ -86,21 +96,20 @@ public class TwitterConnector {
 			classifier = (FilteredClassifier)SerializationHelper.read("/Users/gianluca/GitHub/GIAR_datamining/src/main/resources/classifier.model");
 			
 			for(int i = 0; i < tweets.size(); i++) {
-				classifier.classifyInstance(dataset.instance(i));
-				System.out.println(dataset.instance(i));
+				dataset.instance(i).setClassValue(classifier.classifyInstance(dataset.instance(i)));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-//		try {
-//			ArffSaver saver = new ArffSaver();
-//			saver.setInstances(dataset);
-//			saver.setFile(new File("./tweets.arff"));
-//			saver.writeBatch();
-//		} catch(IOException io) {
-//			io.printStackTrace();
-//		}
+		try {
+			ArffSaver saver = new ArffSaver();
+			saver.setInstances(dataset);
+			saver.setFile(new File("./tweets.arff"));
+			saver.writeBatch();
+		} catch(IOException io) {
+			io.printStackTrace();
+		}
 		
 	}
 	
