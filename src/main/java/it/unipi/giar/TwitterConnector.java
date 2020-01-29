@@ -18,35 +18,36 @@ public class TwitterConnector {
 
 			Query query = new Query(searchTerm);
 			query.setLang("en");
-			query.setCount(10);
+			query.setCount(50);
 			QueryResult result = twitter.search(query);
 
 			for (Status status : result.getTweets()) {
 				if(!status.isRetweet()) {
-					System.out.println("Original: \n" + status.getText() + "\n");
-					String tweet = EmojiParser.removeAllEmojis(status.getText()).replace("RT", "");
-					HashtagEntity[] hashtags = status.getHashtagEntities();
-					UserMentionEntity[] mentions = status.getUserMentionEntities();
-					
-					for(HashtagEntity h: hashtags) {
-						tweet = tweet.replace(h.getText(), "");
-					
-					}
-				
-					for(UserMentionEntity m: mentions) {
-						tweet = tweet.replace(m.getScreenName(), "");
-					}
-				
-					tweet = tweet.replaceAll("@", "");
-					tweet = tweet.replaceAll("#", "");
-					tweet = tweet.replaceAll("\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]\\b", "");
-					tweet = tweet.replaceAll("\\s+", " ");
-				
-					System.out.println("Cleaned:\n" + tweet + "\n");
+					System.out.println("Original: \n" + status.getText() + "\n");					
+					System.out.println("Cleaned:\n" + tweetCleaning(status) + "\n");
 				}
 			}
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private static String tweetCleaning(Status tweet) {
+		String cleanedTweet = EmojiParser.removeAllEmojis(tweet.getText());
+		HashtagEntity[] hashtags = tweet.getHashtagEntities();
+		UserMentionEntity[] mentions = tweet.getUserMentionEntities();
+		
+		for(HashtagEntity h: hashtags) {
+			cleanedTweet = cleanedTweet.replaceAll("#" + h.getText() + "\\b", " ");
+		}
+	
+		for(UserMentionEntity m: mentions) {
+			cleanedTweet = cleanedTweet.replaceAll("@" + m.getScreenName() + "\\b", " ");
+		}
+	
+		cleanedTweet = cleanedTweet.replaceAll("(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]", " ");
+		cleanedTweet = cleanedTweet.replaceAll("\\s+", " ");
+		
+		return cleanedTweet;
 	}
 }
