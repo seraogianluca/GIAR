@@ -1,5 +1,10 @@
 package it.unipi.giar;
 
+import java.io.FileInputStream;
+import org.tartarus.snowball.ext.englishStemmer;
+
+import java.io.ObjectInputStream;
+
 import com.vdurmont.emoji.EmojiParser;
 
 import twitter4j.HashtagEntity;
@@ -10,6 +15,10 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.UserMentionEntity;
+import weka.classifiers.Classifier;
+import weka.classifiers.meta.FilteredClassifier;
+import weka.classifiers.trees.RandomForest;
+import weka.core.SerializationHelper;
 
 public class TwitterConnector {
 	public static void searchTweets(String searchTerm) {
@@ -49,5 +58,17 @@ public class TwitterConnector {
 		cleanedTweet = cleanedTweet.replaceAll("\\s+", " ");
 		
 		return cleanedTweet;
+	}
+	
+	public static void loadModel() {
+		try {
+		
+			FilteredClassifier classifier;
+			classifier = (FilteredClassifier) SerializationHelper.read("C:\\Users\\bari9\\git\\GIAR_datamining\\src\\main\\resources\\classifier.model");
+			
+			
+			
+		}catch(Exception e) {e.printStackTrace();}
+		
 	}
 }

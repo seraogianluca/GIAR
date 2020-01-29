@@ -48,7 +48,7 @@
 			<groupId>nz.ac.waikato.cms.weka</groupId>
 			<artifactId>weka-stable</artifactId>
 			<version>3.8.3</version>
-		</dependency>
+		</dependency>	
 	</dependencies>
 
 </project>
