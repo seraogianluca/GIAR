@@ -48,5 +48,21 @@ The data come from the same source, so we don't need to process this phase.
 
 The dataset we prepared cointains a lot of different instances of the 3 classes. Because we find only 333 instances of postive class (minority class), in order to build a balanced dataset, we decided to reduce numerosity of the data applying a random sampling without replacement to the other 2 classes till we have the same amount of istances for each class.
 
+(immagine di weka con le 3 colonne uguali?)
+
+We need now to transform our stream of characters into a stream of processing units, called `tokens`. During this step, after removing punctuation marks, non-text characters and special symbols, each text is represented as a set of words. 
+
+(immagine di esempio prima-dopo?)
+
+At this point we need to handle noise removing `stop-words`. Those are words providing little or no useful information to the text analysis, for this reason they can be considered as noise. Stop-words are:
+- Common stop-words include articles, conjunctions, prepositions, pronouns...
+- Other stop-words are those typically appearing very often in sentences of the considered language (language-specific stop-words), or in the particular context
+analyzed (domain-specific stop-words);
+- At the end of this step, each text is cleaned from stop-words, and thus reduced to a sequence of relevant tokens.
+
+(immagine di esempio prima-dopo?)
+
+
+
 
 
