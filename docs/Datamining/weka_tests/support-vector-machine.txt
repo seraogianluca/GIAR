@@ -1,0 +1,3230 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.meta.FilteredClassifier -F "weka.filters.MultiFilter -F \"weka.filters.unsupervised.attribute.StringToWordVector -R first-last -W 1000 -prune-rate -1.0 -I -N 0 -L -stemmer \\\"weka.core.stemmers.SnowballStemmer -S english\\\" -stopwords-handler \\\"weka.core.stopwords.WordsFromFile -stopwords /Users/gianluca/GitHub/GIAR_datamining/src/main/resources/stopwords.txt\\\" -M 2 -tokenizer weka.core.tokenizers.AlphabeticTokenizer\" -F \"weka.filters.supervised.attribute.AttributeSelection -E \\\"weka.attributeSelection.InfoGainAttributeEval \\\" -S \\\"weka.attributeSelection.Ranker -T -10.0 -N -1\\\"\"" -S 1 -W weka.classifiers.functions.LibLINEAR -- -S 1 -C 1.0 -E 0.001 -B 1.0 -L 0.1 -I 1000
+Relation:     _Users_gianluca_dataset
+Instances:    999
+Attributes:   2
+              text
+              @@class@@
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+FilteredClassifier using weka.classifiers.functions.LibLINEAR -S 1 -C 1.0 -E 0.001 -B 1.0 -L 0.1 -I 1000 on data filtered through weka.filters.MultiFilter -F "weka.filters.unsupervised.attribute.StringToWordVector -R 1 -W 1000 -prune-rate -1.0 -I -N 0 -L -stemmer \"weka.core.stemmers.SnowballStemmer -S english\" -stopwords-handler \"weka.core.stopwords.WordsFromFile -stopwords /Users/gianluca/GitHub/GIAR_datamining/src/main/resources/stopwords.txt\" -M 2 -tokenizer weka.core.tokenizers.AlphabeticTokenizer" -F "weka.filters.supervised.attribute.AttributeSelection -E \"weka.attributeSelection.InfoGainAttributeEval \" -S \"weka.attributeSelection.Ranker -T -10.0 -N -1\""
+
+Filtered Header
+@relation '_Users_gianluca_dataset-weka.filters.unsupervised.attribute.StringToWordVector-R1-W1000-prune-rate-1.0-I-N0-L-stemmerweka.core.stemmers.SnowballStemmer -S english-stopwords-handlerweka.core.stopwords.WordsFromFile -stopwords /Users/gianluca/GitHub/GIAR_datamining/src/main/resources/stopwords.txt-M2-tokenizerweka.core.tokenizers.AlphabeticTokenizer-weka.filters.supervised.attribute.AttributeSelection-Eweka.attributeSelection.InfoGainAttributeEval-Sweka.attributeSelection.Ranker -T -10.0 -N -1-weka.filters.MultiFilter-Fweka.filters.unsupervised.attribute.StringToWordVector -R 1 -W 1000 -prune-rate -1.0 -I -N 0 -L -stemmer \"weka.core.stemmers.SnowballStemmer -S english\" -stopwords-handler \"weka.core.stopwords.WordsFromFile -stopwords /Users/gianluca/GitHub/GIAR_datamining/src/main/resources/stopwords.txt\" -M 2 -tokenizer weka.core.tokenizers.AlphabeticTokenizer-Fweka.filters.supervised.attribute.AttributeSelection -E \"weka.attributeSelection.InfoGainAttributeEval \" -S \"weka.attributeSelection.Ranker -T -10.0 -N -1\"'
+
+@attribute live numeric
+@attribute check numeric
+@attribute playstat numeric
+@attribute broadcast numeric
+@attribute game numeric
+@attribute shit numeric
+@attribute stream numeric
+@attribute worst numeric
+@attribute love numeric
+@attribute fuck numeric
+@attribute amaz numeric
+@attribute great numeric
+@attribute good numeric
+@attribute realli numeric
+@attribute ever numeric
+@attribute bore numeric
+@attribute fun numeric
+@attribute finish numeric
+@attribute best numeric
+@attribute player numeric
+@attribute thank numeric
+@attribute beauti numeric
+@attribute bad numeric
+@attribute stori numeric
+@attribute server numeric
+@attribute trash numeric
+@attribute follow numeric
+@attribute fix numeric
+@attribute make numeric
+@attribute peopl numeric
+@attribute ve numeric
+@attribute garbag numeric
+@attribute masterpiec numeric
+@attribute pack numeric
+@attribute twitch numeric
+@attribute hate numeric
+@attribute year numeric
+@attribute via numeric
+@attribute mixer numeric
+@attribute duti numeric
+@attribute pretti numeric
+@attribute even numeric
+@attribute becaus numeric
+@attribute enjoy numeric
+@attribute much numeric
+@attribute definit numeric
+@attribute updat numeric
+@attribute underground numeric
+@attribute joke numeric
+@attribute class numeric
+@attribute favorit numeric
+@attribute emot numeric
+@attribute far numeric
+@attribute ea numeric
+@attribute ani numeric
+@attribute world numeric
+@attribute gameplay numeric
+@attribute awesom numeric
+@attribute wors numeric
+@attribute delay numeric
+@attribute soundtrack numeric
+@attribute link numeric
+@attribute featur numeric
+@attribute warfar numeric
+@attribute lot numeric
+@attribute watch numeric
+@attribute eerienc numeric
+@attribute know numeric
+@attribute recommend numeric
+@attribute broken numeric
+@attribute match numeric
+@attribute anymor numeric
+@attribute solid numeric
+@attribute biggest numeric
+@attribute fantast numeric
+@attribute problem numeric
+@attribute cri numeric
+@attribute youtub numeric
+@attribute clip numeric
+@attribute didn numeric
+@attribute absolut numeric
+@attribute get numeric
+@attribute think numeric
+@attribute say numeric
+@attribute ps numeric
+@attribute pleas numeric
+@attribute week numeric
+@attribute kojima numeric
+@attribute mani numeric
+@attribute modern numeric
+@attribute race numeric
+@attribute lost numeric
+@attribute terribl numeric
+@attribute wasn numeric
+@attribute veri numeric
+@attribute team numeric
+@attribute thing numeric
+@attribute final numeric
+@attribute aw numeric
+@attribute dont numeric
+@attribute utter numeric
+@attribute els numeric
+@attribute money numeric
+@attribute goal numeric
+@attribute channel numeric
+@attribute pick numeric
+@attribute overr numeric
+@attribute earli numeric
+@attribute fut numeric
+@attribute well numeric
+@attribute liter numeric
+@attribute late numeric
+@attribute someth numeric
+@attribute ball numeric
+@attribute min numeric
+@attribute note numeric
+@attribute doesn numeric
+@attribute ass numeric
+@attribute incred numeric
+@attribute win numeric
+@attribute mayb numeric
+@attribute underr numeric
+@attribute fail numeric
+@attribute dope numeric
+@attribute histori numeric
+@attribute elor numeric
+@attribute load numeric
+@attribute surpris numeric
+@attribute squad numeric
+@attribute save numeric
+@attribute kind numeric
+@attribute lag numeric
+@attribute luck numeric
+@attribute stuff numeric
+@attribute overhyp numeric
+@attribute shame numeric
+@attribute recent numeric
+@attribute hype numeric
+@attribute ma numeric
+@attribute hang numeric
+@attribute depui numeric
+@attribute vid numeric
+@attribute consult numeric
+@attribute diffus numeric
+@attribute v numeric
+@attribute bundl numeric
+@attribute weapon numeric
+@attribute crossbow numeric
+@attribute sniper numeric
+@attribute object numeric
+@attribute spill numeric
+@attribute fill numeric
+@attribute abl numeric
+@attribute plz numeric
+@attribute skill numeric
+@attribute date numeric
+@attribute phenomen numeric
+@attribute matter numeric
+@attribute lvl numeric
+@attribute previous numeric
+@attribute champ numeric
+@attribute sbc numeric
+@attribute compens numeric
+@attribute script numeric
+@attribute saw numeric
+@attribute nfs numeric
+@attribute thrill numeric
+@attribute shield numeric
+@attribute ridicul numeric
+@attribute proper numeric
+@attribute compani numeric
+@attribute run numeric
+@attribute journey numeric
+@attribute defens numeric
+@attribute hook numeric
+@attribute camo numeric
+@attribute unplay numeric
+@attribute ad numeric
+@attribute half numeric
+@attribute brilliant numeric
+@attribute hold numeric
+@attribute pro numeric
+@attribute januari numeric
+@attribute psn numeric
+@attribute code numeric
+@attribute gap numeric
+@attribute step numeric
+@attribute franchis numeric
+@attribute slot numeric
+@attribute idk numeric
+@attribute atm numeric
+@attribute earn numeric
+@attribute readi numeric
+@attribute kick numeric
+@attribute montag numeric
+@attribute straight numeric
+@attribute bt numeric
+@attribute dislik numeric
+@attribute destroy numeric
+@attribute ultim numeric
+@attribute crazi numeric
+@attribute unfair numeric
+@attribute touch numeric
+@attribute mean numeric
+@attribute metal numeric
+@attribute silent numeric
+@attribute look numeric
+@attribute kinda numeric
+@attribute listen numeric
+@attribute may numeric
+@attribute moment numeric
+@attribute keep numeric
+@attribute kill numeric
+@attribute mode numeric
+@attribute might numeric
+@attribute minut numeric
+@attribute mind numeric
+@attribute larg numeric
+@attribute ll numeric
+@attribute lol numeric
+@attribute littl numeric
+@attribute made numeric
+@attribute lie numeric
+@attribute man numeric
+@attribute life numeric
+@attribute like numeric
+@attribute long numeric
+@attribute learn numeric
+@attribute last numeric
+@attribute m numeric
+@attribute list numeric
+@attribute shoothous numeric
+@attribute setup numeric
+@attribute silver numeric
+@attribute later numeric
+@attribute less numeric
+@attribute ig numeric
+@attribute month numeric
+@attribute remind numeric
+@attribute rememb numeric
+@attribute prob numeric
+@attribute respect numeric
+@attribute return numeric
+@attribute right numeric
+@attribute rn numeric
+@attribute rock numeric
+@attribute remain numeric
+@attribute reason numeric
+@attribute realist numeric
+@attribute quit numeric
+@attribute progress numeric
+@attribute put numeric
+@attribute rare numeric
+@attribute real numeric
+@attribute rather numeric
+@attribute re numeric
+@attribute roll numeric
+@attribute rush numeric
+@attribute said numeric
+@attribute simul numeric
+@attribute quad numeric
+@attribute show numeric
+@attribute sinc numeric
+@attribute seri numeric
+@attribute slept numeric
+@attribute pulak numeric
+@attribute serious numeric
+@attribute sens numeric
+@attribute san numeric
+@attribute scale numeric
+@attribute satisfi numeric
+@attribute sbmm numeric
+@attribute season numeric
+@attribute seem numeric
+@attribute second numeric
+@attribute see numeric
+@attribute probabl numeric
+@attribute rifl numeric
+@attribute movi numeric
+@attribute normal numeric
+@attribute night numeric
+@attribute possibl numeric
+@attribute noth numeric
+@attribute offici numeric
+@attribute okay numeric
+@attribute old numeric
+@attribute omg numeric
+@attribute nice numeric
+@attribute next numeric
+@attribute new numeric
+@attribute must numeric
+@attribute scope numeric
+@attribute multiplay numeric
+@attribute mw numeric
+@attribute never numeric
+@attribute near numeric
+@attribute need numeric
+@attribute onc numeric
+@attribute job numeric
+@attribute onli numeric
+@attribute place numeric
+@attribute photo numeric
+@attribute physic numeric
+@attribute plat numeric
+@attribute person numeric
+@attribute play numeric
+@attribute riot numeric
+@attribute pes numeric
+@attribute road numeric
+@attribute onlin numeric
+@attribute origin numeric
+@attribute open numeric
+@attribute order numeric
+@attribute pace numeric
+@attribute payback numeric
+@attribute part numeric
+@attribute parti numeric
+@attribute one numeric
+@attribute hard numeric
+@attribute isn numeric
+@attribute connect numeric
+@attribute concept numeric
+@attribute interest numeric
+@attribute consid numeric
+@attribute content numeric
+@attribute continu numeric
+@attribute control numeric
+@attribute cool numeric
+@attribute complet numeric
+@attribute complain numeric
+@attribute come numeric
+@attribute challeng numeric
+@attribute career numeric
+@attribute cast numeric
+@attribute chang numeric
+@attribute close numeric
+@attribute chapter numeric
+@attribute charact numeric
+@attribute cop numeric
+@attribute could numeric
+@attribute couldn numeric
+@attribute deserv numeric
+@attribute defend numeric
+@attribute unlock numeric
+@attribute design numeric
+@attribute day numeric
+@attribute true numeric
+@attribute direct numeric
+@attribute decad numeric
+@attribute damn numeric
+@attribute coupl numeric
+@attribute upload numeric
+@attribute creat numeric
+@attribute credit numeric
+@attribute current numeric
+@attribute d numeric
+@attribute custom numeric
+@attribute cutscen numeric
+@attribute care numeric
+@attribute car numeric
+@attribute cant numeric
+@attribute art numeric
+@attribute anoth numeric
+@attribute around numeric
+@attribute attent numeric
+@attribute xcobra numeric
+@attribute awhil numeric
+@attribute babi numeric
+@attribute amp numeric
+@attribute alway numeric
+@attribute ward numeric
+@attribute affect numeric
+@attribute actual numeric
+@attribute add numeric
+@attribute ago numeric
+@attribute also numeric
+@attribute almost numeric
+@attribute alreadi numeric
+@attribute back numeric
+@attribute base numeric
+@attribute cannot numeric
+@attribute buy numeric
+@attribute bring numeric
+@attribute bro numeric
+@attribute bye numeric
+@attribute bodi numeric
+@attribute call numeric
+@attribute campaign numeric
+@attribute botw numeric
+@attribute bit numeric
+@attribute bb numeric
+@attribute befor numeric
+@attribute beat numeric
+@attribute vs numeric
+@attribute believ numeric
+@attribute big numeric
+@attribute better numeric
+@attribute bf numeric
+@attribute divis numeric
+@attribute doe numeric
+@attribute done numeric
+@attribute hand numeric
+@attribute gt numeric
+@attribute guy numeric
+@attribute special numeric
+@attribute snipe numeric
+@attribute snd numeric
+@attribute haven numeric
+@attribute greatest numeric
+@attribute graphic numeric
+@attribute heart numeric
+@attribute go numeric
+@attribute genuin numeric
+@attribute give numeric
+@attribute gonna numeric
+@attribute gotten numeric
+@attribute got numeric
+@attribute gotta numeric
+@attribute heard numeric
+@attribute hell numeric
+@attribute gear numeric
+@attribute impress numeric
+@attribute immers numeric
+@attribute imo numeric
+@attribute improv numeric
+@attribute hour numeric
+@attribute instead numeric
+@attribute intens numeric
+@attribute im numeric
+@attribute hord numeric
+@attribute hero numeric
+@attribute higg numeric
+@attribute hey numeric
+@attribute hideo numeric
+@attribute high numeric
+@attribute hope numeric
+@attribute holi numeric
+@attribute honest numeric
+@attribute gen numeric
+@attribute soon numeric
+@attribute trophi numeric
+@attribute everyon numeric
+@attribute told numeric
+@attribute everi numeric
+@attribute everyth numeric
+@attribute epic numeric
+@attribute excit numeric
+@attribute face numeric
+@attribute episod numeric
+@attribute entir numeric
+@attribute fallen numeric
+@attribute troll numeric
+@attribute easiest numeric
+@attribute easili numeric
+@attribute treyarch numeric
+@attribute enough numeric
+@attribute end numeric
+@attribute tomorrow numeric
+@attribute fair numeric
+@attribute fan numeric
+@attribute stay numeric
+@attribute found numeric
+@attribute forc numeric
+@attribute forget numeric
+@attribute front numeric
+@attribute subscrib numeric
+@attribute stealth numeric
+@attribute full numeric
+@attribute footbal numeric
+@attribute first numeric
+@attribute tb numeric
+@attribute sumt numeric
+@attribute switch numeric
+@attribute fav numeric
+@attribute favourit numeric
+@attribute success numeric
+@attribute feel numeric
+@attribute felt numeric
+@attribute publish numeric
+@attribute video numeric
+@attribute speed numeric
+@attribute releas numeric
+@attribute receiv numeric
+@attribute regret numeric
+@attribute respons numeric
+@attribute r numeric
+@attribute reward numeric
+@attribute rig numeric
+@attribute random numeric
+@attribute quick numeric
+@attribute post numeric
+@attribute promot numeric
+@attribute press numeric
+@attribute lt numeric
+@attribute punish numeric
+@attribute qualiti numeric
+@attribute pure numeric
+@attribute push numeric
+@attribute rubbish numeric
+@attribute ruin numeric
+@attribute sad numeric
+@attribute shot numeric
+@attribute shoot numeric
+@attribute short numeric
+@attribute singl numeric
+@attribute scene numeric
+@attribute size numeric
+@attribute slide numeric
+@attribute shitti numeric
+@attribute shittest numeric
+@attribute sh numeric
+@attribute london numeric
+@attribute score numeric
+@attribute screen numeric
+@attribute screw numeric
+@attribute self numeric
+@attribute semi numeric
+@attribute pray numeric
+@attribute possess numeric
+@attribute someon numeric
+@attribute lose numeric
+@attribute locat numeric
+@attribute longer numeric
+@attribute loss numeric
+@attribute legit numeric
+@attribute manag numeric
+@attribute market numeric
+@attribute let numeric
+@attribute least numeric
+@attribute poor numeric
+@attribute kid numeric
+@attribute map numeric
+@attribute k numeric
+@attribute ladi numeric
+@attribute leagu numeric
+@attribute lala numeric
+@attribute latest numeric
+@attribute matchmak numeric
+@attribute mechan numeric
+@attribute mega numeric
+@attribute piec numeric
+@attribute patch numeric
+@attribute perfect numeric
+@attribute pile numeric
+@attribute mess numeric
+@attribute plot numeric
+@attribute point numeric
+@attribute past numeric
+@attribute pass numeric
+@attribute p numeric
+@attribute overpr numeric
+@attribute move numeric
+@attribute nomin numeric
+@attribute obvious numeric
+@attribute ok numeric
+@attribute oppon numeric
+@attribute slow numeric
+@attribute song numeric
+@attribute stadium numeric
+@attribute item numeric
+@attribute clan numeric
+@attribute jacket numeric
+@attribute clutchx numeric
+@attribute jme numeric
+@attribute convers numeric
+@attribute damascus numeric
+@attribute bronz numeric
+@attribute aug numeric
+@attribute won numeric
+@attribute yall numeric
+@attribute join numeric
+@attribute wrong numeric
+@attribute yesterday numeric
+@attribute assist numeric
+@attribute ask numeric
+@attribute assault numeric
+@attribute descript numeric
+@attribute integr numeric
+@attribute elain numeric
+@attribute gta numeric
+@attribute grind numeric
+@attribute ground numeric
+@attribute gun numeric
+@attribute entertain numeric
+@attribute h numeric
+@attribute hear numeric
+@attribute g numeric
+@attribute fps numeric
+@attribute infin numeric
+@attribute flak numeric
+@attribute exclus numeric
+@attribute extra numeric
+@attribute insan numeric
+@attribute film numeric
+@attribute flag numeric
+@attribute ke numeric
+@attribute wl numeric
+@attribute sorri numeric
+@attribute term numeric
+@attribute suck numeric
+@attribute target numeric
+@attribute tie numeric
+@attribute stretch numeric
+@attribute titl numeric
+@attribute tonight numeric
+@attribute stupid numeric
+@attribute stress numeric
+@attribute within numeric
+@attribute spend numeric
+@attribute sort numeric
+@attribute specif numeric
+@attribute spent numeric
+@attribute steer numeric
+@attribute sport numeric
+@attribute stand numeric
+@attribute took numeric
+@attribute total numeric
+@attribute tournament numeric
+@attribute wast numeric
+@attribute walkout numeric
+@attribute war numeric
+@attribute weekend numeric
+@attribute track numeric
+@attribute wire numeric
+@attribute wise numeric
+@attribute w numeric
+@attribute us numeric
+@attribute ur numeric
+@attribute upgrad numeric
+@attribute light numeric
+@attribute tweet numeric
+@attribute unbeliev numeric
+@attribute understand numeric
+@attribute la numeric
+@attribute ive numeric
+@attribute issu numeric
+@attribute includ numeric
+@attribute wtf numeric
+@attribute would numeric
+@attribute wow numeric
+@attribute yeah numeric
+@attribute pistol numeric
+@attribute opti numeric
+@attribute yes numeric
+@attribute worth numeric
+@attribute work numeric
+@attribute playlist numeric
+@attribute whole numeric
+@attribute weird numeric
+@attribute whi numeric
+@attribute wife numeric
+@attribute word numeric
+@attribute without numeric
+@attribute wonder numeric
+@attribute yet numeric
+@attribute yo numeric
+@attribute account numeric
+@attribute atroci numeric
+@attribute appear numeric
+@attribute aren numeric
+@attribute award numeric
+@attribute agre numeric
+@attribute away numeric
+@attribute basic numeric
+@attribute ye numeric
+@attribute anyth numeric
+@attribute anyon numeric
+@attribute annoy numeric
+@attribute ai numeric
+@attribute aim numeric
+@attribute along numeric
+@attribute amount numeric
+@attribute op numeric
+@attribute way numeric
+@attribute want numeric
+@attribute imposs numeric
+@attribute tell numeric
+@attribute take numeric
+@attribute talk numeric
+@attribute terrain numeric
+@attribute sure numeric
+@attribute th numeric
+@attribute though numeric
+@attribute sweat numeric
+@attribute support numeric
+@attribute wanna numeric
+@attribute still numeric
+@attribute star numeric
+@attribute start numeric
+@attribute stop numeric
+@attribute super numeric
+@attribute pt numeric
+@attribute stun numeric
+@attribute thought numeric
+@attribute time numeric
+@attribute today numeric
+@attribute version numeric
+@attribute usual numeric
+@attribute pm numeric
+@attribute hello numeric
+@attribute top numeric
+@attribute wait numeric
+@attribute walk numeric
+@attribute user numeric
+@attribute use numeric
+@attribute uniqu numeric
+@attribute u numeric
+@attribute travers numeric
+@attribute tri numeric
+@attribute turn numeric
+@attribute two numeric
+@attribute type numeric
+@attribute battl numeric
+@attribute bc numeric
+@attribute becom numeric
+@attribute fifa numeric
+@attribute father numeric
+@attribute fed numeric
+@attribute fire numeric
+@attribute fact numeric
+@attribute flop numeric
+@attribute fock numeric
+@attribute faster numeric
+@attribute f numeric
+@attribute beggar numeric
+@attribute earth numeric
+@attribute dumb numeric
+@attribute dumbest numeric
+@attribute easi numeric
+@attribute exist numeric
+@attribute elit numeric
+@attribute evil numeric
+@attribute focus numeric
+@attribute friend numeric
+@attribute frisbe numeric
+@attribute headlin numeric
+@attribute guess numeric
+@attribute happen numeric
+@attribute horrend numeric
+@attribute futur numeric
+@attribute horribl numeric
+@attribute idea numeric
+@attribute graft numeric
+@attribute gold numeric
+@attribute god numeric
+@attribute goalkeep numeric
+@attribute gb numeric
+@attribute ghost numeric
+@attribute gk numeric
+@attribute glad numeric
+@attribute glitch numeric
+@attribute due numeric
+@attribute drop numeric
+@attribute drift numeric
+@attribute built numeric
+@attribute broke numeric
+@attribute morn numeric
+@attribute bullshit numeric
+@attribute caus numeric
+@attribute bunch numeric
+@attribute came numeric
+@attribute break numeric
+@attribute box numeric
+@attribute bought numeric
+@attribute mp numeric
+@attribute belief numeric
+@attribute bigger numeric
+@attribute nd numeric
+@attribute blame numeric
+@attribute bloodi numeric
+@attribute cargo numeric
+@attribute cod numeric
+@attribute draft numeric
+@attribute deliveri numeric
+@attribute decid numeric
+@attribute delet numeric
+@attribute die numeric
+@attribute communiti numeric
+@attribute difficult numeric
+@attribute disappoint numeric
+@attribute decent numeric
+@attribute dead numeric
+@attribute daili numeric
+@attribute cut numeric
+@attribute compar numeric
+@attribute complic numeric
+@attribute consum numeric
+@attribute contact numeric
+@attribute cunt numeric
+@attribute anyway numeric
+@attribute @@class@@ {positive,negative,none}
+
+@data
+
+
+Classifier Model
+LibLINEAR wrapper
+
+Model bias=1.0 nr_class=3 nr_feature=791 solverType=L2R_L2LOSS_SVC_DUAL
+
+Model for class positive
+
+-        0.23 * live
+-        0.17 * check
+-        0.04 * playstat
++        0    * broadcast
++        0.47 * game
+-        0.56 * shit
+-        0.15 * stream
+-        0.31 * worst
++        0.7  * love
+-        0.15 * fuck
++        0.25 * amaz
++        0.54 * great
++        0.56 * good
+-        0.3  * realli
++        0.12 * ever
+-        0.28 * bore
++        0.07 * fun
++        0.16 * finish
++        0.32 * best
+-        0.4  * player
++        0.44 * thank
++        0.35 * beauti
+-        0.21 * bad
++        0.37 * stori
+-        0.18 * server
+-        0.17 * trash
+-        0.05 * follow
+-        0.26 * fix
+-        0.78 * make
+-        0.11 * peopl
++        0.02 * ve
+-        0.49 * garbag
++        0.33 * masterpiec
+-        0.11 * pack
++        0    * twitch
+-        0.12 * hate
++        0.11 * year
+-        0.18 * via
++        0    * mixer
+-        0.14 * duti
++        0.35 * pretti
++        0.01 * even
+-        0.12 * becaus
++        0.41 * enjoy
+-        0.13 * much
++        0.15 * definit
+-        0.26 * updat
++        0.08 * underground
+-        0.17 * joke
+-        0.2  * class
++        0.22 * favorit
++        0.31 * emot
++        0.12 * far
++        0.16 * ea
+-        0.18 * ani
++        0.22 * world
+-        0.11 * gameplay
++        0.43 * awesom
++        0.01 * wors
+-        0.12 * delay
++        0.16 * soundtrack
+-        0.1  * link
+-        0    * featur
+-        0.07 * warfar
++        0.12 * lot
+-        0.11 * watch
++        0.21 * eerienc
++        0.07 * know
++        0.08 * recommend
+-        0.14 * broken
+-        0.3  * match
+-        0.07 * anymor
++        0.14 * solid
+-        0.01 * biggest
++        0.34 * fantast
+-        0.09 * problem
++        0.15 * cri
+-        0.11 * youtub
+-        0.12 * clip
+-        0.09 * didn
++        0.33 * absolut
+-        0.06 * get
++        0.01 * think
++        0.06 * say
+-        0.1  * ps
+-        0.11 * pleas
+-        0.11 * week
++        0.22 * kojima
++        0.09 * mani
+-        0.07 * modern
++        0.22 * race
+-        0.01 * lost
+-        0.2  * terribl
+-        0.11 * wasn
++        0.11 * veri
+-        0.06 * team
++        0.08 * thing
++        0.46 * final
+-        0.19 * aw
+-        0.1  * dont
+-        0.16 * utter
+-        0.17 * els
+-        0.08 * money
+-        0.02 * goal
+-        0.2  * channel
++        0.06 * pick
+-        0.18 * overr
+-        0    * earli
+-        0.03 * fut
++        0.08 * well
++        0.02 * liter
+-        0.05 * late
+-        0.23 * someth
+-        0.09 * ball
++        0.07 * min
+-        0.14 * note
+-        0.1  * doesn
+-        0.14 * ass
++        0.1  * incred
++        0    * win
+-        0.14 * mayb
++        0.08 * underr
+-        0.18 * fail
++        0.28 * dope
+-        0.01 * histori
++        0.03 * elor
+-        0.01 * load
++        0.14 * surpris
+-        0.05 * squad
+-        0    * save
+-        0.18 * kind
+-        0.06 * lag
+-        0.07 * luck
++        0.11 * stuff
+-        0.2  * overhyp
+-        0.05 * shame
++        0.19 * recent
+-        0.12 * hype
+-        0    * ma
+-        0.04 * hang
+-        0    * depui
+-        0.07 * vid
+-        0    * consult
+-        0    * diffus
+-        0.08 * v
+-        0.04 * bundl
+-        0    * weapon
+-        0.01 * crossbow
+-        0.12 * sniper
++        0    * object
++        0    * spill
++        0.25 * fill
+-        0.03 * abl
+-        0.01 * plz
+-        0.15 * skill
++        0.02 * date
++        0.21 * phenomen
+-        0.02 * matter
+-        0.25 * lvl
+-        0.09 * previous
+-        0    * champ
+-        0.07 * sbc
+-        0.03 * compens
+-        0    * script
+-        0.13 * saw
++        0.07 * nfs
++        0    * thrill
+-        0.27 * shield
++        0    * ridicul
+-        0.21 * proper
+-        0.09 * compani
+-        0.04 * run
++        0.1  * journey
+-        0.01 * defens
++        0.16 * hook
+-        0.25 * camo
++        0    * unplay
+-        0.01 * ad
+-        0    * half
++        0.61 * brilliant
++        0    * hold
+-        0.04 * pro
+-        0.01 * januari
+-        0.15 * psn
+-        0    * code
+-        0.15 * gap
++        0.04 * step
+-        0.01 * franchis
+-        0.02 * slot
++        0.11 * idk
++        0.38 * atm
+-        0.15 * earn
+-        0.27 * readi
+-        0    * kick
+-        0.09 * montag
+-        0    * straight
++        0    * bt
++        0    * dislik
+-        0.14 * destroy
+-        0.01 * ultim
++        0.17 * crazi
++        0    * unfair
+-        0.11 * touch
++        0.03 * mean
++        0    * metal
+-        0.03 * silent
++        0.3  * look
++        0    * kinda
+-        0.04 * listen
++        0.15 * may
+-        0.08 * moment
++        0.21 * keep
+-        0.3  * kill
++        0.01 * mode
+-        0.12 * might
+-        0.11 * minut
++        0.06 * mind
++        0.07 * larg
++        0.19 * ll
+-        0.15 * lol
+-        0.09 * littl
+-        0.67 * made
+-        0.01 * lie
+-        0.09 * man
+-        0.06 * life
++        0.4  * like
++        0.02 * long
++        0.23 * learn
++        0.01 * last
+-        0.16 * m
++        0.03 * list
+-        0.04 * shoothous
+-        0    * setup
+-        0.16 * silver
+-        0.04 * later
++        0    * less
+-        0    * ig
+-        0.07 * month
++        0    * remind
+-        0.02 * rememb
++        0.07 * prob
++        0.12 * respect
++        0.01 * return
++        0.11 * right
++        0    * rn
++        0.14 * rock
++        0.08 * remain
+-        0.08 * reason
+-        0.08 * realist
+-        0.03 * quit
+-        0.18 * progress
++        0.1  * put
++        0.22 * rare
+-        0.06 * real
++        0.15 * rather
++        0.19 * re
++        0.08 * roll
++        0.25 * rush
+-        0.43 * said
+-        0.09 * simul
+-        0.11 * quad
++        0.14 * show
+-        0.06 * sinc
+-        0.12 * seri
++        0    * slept
+-        0.05 * pulak
+-        0.45 * serious
++        0.6  * sens
++        0    * san
++        0.07 * scale
++        0.02 * satisfi
+-        0.11 * sbmm
+-        0.09 * season
++        0.04 * seem
+-        0.04 * second
+-        0.18 * see
+-        0    * probabl
++        0    * rifl
++        0.08 * movi
++        0.03 * normal
+-        0.05 * night
++        0.11 * possibl
+-        0.02 * noth
+-        0.01 * offici
+-        0.01 * okay
+-        0.21 * old
++        0.23 * omg
++        0.3  * nice
++        0.04 * next
++        0.01 * new
++        0.04 * must
+-        0.04 * scope
++        0.07 * multiplay
+-        0.25 * mw
+-        0.17 * never
++        0.02 * near
++        0.05 * need
++        0.09 * onc
+-        0    * job
++        0.03 * onli
+-        0.09 * place
+-        0    * photo
+-        0.08 * physic
++        0    * plat
++        0.04 * person
+-        0.27 * play
++        0    * riot
++        0.01 * pes
+-        0.04 * road
+-        0.08 * onlin
++        0    * origin
++        0.12 * open
++        0.06 * order
++        0.01 * pace
++        0.07 * payback
+-        0.12 * part
++        0    * parti
+-        0.13 * one
+-        0.16 * hard
+-        0.03 * isn
++        0.04 * connect
+-        0.27 * concept
++        0.3  * interest
++        0    * consid
++        0.07 * content
++        0    * continu
++        0.14 * control
++        0.34 * cool
++        0.16 * complet
++        0.11 * complain
+-        0.09 * come
++        0.03 * challeng
+-        0.2  * career
+-        0.02 * cast
+-        0.18 * chang
++        0    * close
++        0.11 * chapter
+-        0.11 * charact
++        0    * cop
+-        0    * could
++        0.08 * couldn
++        0.09 * deserv
+-        0.08 * defend
++        0    * unlock
++        0.15 * design
++        0.29 * day
++        0.26 * true
++        0.04 * direct
+-        0    * decad
+-        0.06 * damn
+-        0.07 * coupl
+-        0.04 * upload
++        0.08 * creat
+-        0.03 * credit
++        0    * current
+-        0.02 * d
+-        0.02 * custom
++        0    * cutscen
+-        0.1  * care
++        0    * car
++        0.37 * cant
++        0.08 * art
++        0.05 * anoth
+-        0.18 * around
++        0.03 * attent
++        0    * xcobra
++        0.14 * awhil
+-        0.04 * babi
++        0.03 * amp
++        0.07 * alway
+-        0.02 * ward
++        0.2  * affect
++        0.32 * actual
++        0.01 * add
++        0.17 * ago
+-        0.22 * also
++        0.19 * almost
++        0.02 * alreadi
+-        0.04 * back
++        0    * base
++        0.09 * cannot
++        0.33 * buy
++        0    * bring
++        0    * bro
++        0.17 * bye
++        0.04 * bodi
++        0.21 * call
+-        0.04 * campaign
++        0.03 * botw
++        0.13 * bit
++        0    * bb
++        0.19 * befor
++        0.09 * beat
+-        0.03 * vs
++        0.03 * believ
+-        0.15 * big
+-        0.16 * better
++        0.11 * bf
++        0.02 * divis
++        0.01 * doe
+-        0.01 * done
++        0    * hand
++        0    * gt
+-        0.03 * guy
+-        0.09 * special
+-        0.08 * snipe
++        0    * snd
++        0    * haven
++        0.18 * greatest
++        0.07 * graphic
++        0.06 * heart
+-        0.39 * go
++        0.08 * genuin
+-        0.04 * give
+-        0    * gonna
++        0.32 * gotten
++        0    * got
++        0.09 * gotta
+-        0.05 * heard
++        0.24 * hell
++        0    * gear
++        0.09 * impress
++        0.08 * immers
++        0.36 * imo
++        0.17 * improv
+-        0.12 * hour
++        0.21 * instead
++        0.04 * intens
+-        0    * im
++        0.05 * hord
++        0.03 * hero
++        0    * higg
++        0.05 * hey
+-        0.01 * hideo
++        0.05 * high
++        0.04 * hope
++        0.43 * holi
+-        0.13 * honest
+-        0    * gen
+-        0.12 * soon
++        0.16 * trophi
+-        0.11 * everyon
++        0.08 * told
++        0.13 * everi
+-        0.11 * everyth
++        0.27 * epic
++        0.02 * excit
++        0.3  * face
+-        0.17 * episod
++        0.11 * entir
++        0.07 * fallen
++        0    * troll
++        0    * easiest
++        0.56 * easili
+-        0.02 * treyarch
++        0.28 * enough
+-        0.05 * end
+-        0.04 * tomorrow
++        0    * fair
+-        0.08 * fan
+-        0.24 * stay
+-        0.1  * found
++        0.18 * forc
+-        0    * forget
++        0.02 * front
++        0    * subscrib
++        0    * stealth
+-        0.2  * full
+-        0.03 * footbal
+-        0.06 * first
+-        0.04 * tb
+-        0    * sumt
+-        0.05 * switch
++        0.12 * fav
++        0.39 * favourit
+-        0.19 * success
++        0.05 * feel
++        0.07 * felt
+-        0.06 * publish
+-        0.22 * video
++        0.07 * speed
+-        0    * releas
++        0    * receiv
+-        0.09 * regret
+-        0.01 * respons
++        0.02 * r
++        0    * reward
++        0    * rig
+-        0.06 * random
+-        0.03 * quick
+-        0.09 * post
+-        0.39 * promot
+-        0.02 * press
+-        0.02 * lt
+-        0.06 * punish
+-        0.18 * qualiti
+-        0    * pure
+-        0.11 * push
+-        0.07 * rubbish
+-        0.21 * ruin
+-        0.04 * sad
+-        0.14 * shot
++        0    * shoot
+-        0.06 * short
+-        0.04 * singl
+-        0.05 * scene
+-        0.13 * size
+-        0.15 * slide
+-        0.02 * shitti
++        0    * shittest
++        0.01 * sh
+-        0.04 * london
+-        0.01 * score
+-        0.07 * screen
+-        0.1  * screw
++        0    * self
+-        0.04 * semi
++        0.04 * pray
+-        0    * possess
+-        0.17 * someon
++        0.01 * lose
++        0    * locat
+-        0.09 * longer
+-        0.09 * loss
++        0.06 * legit
+-        0.01 * manag
++        0    * market
++        0.31 * let
+-        0.64 * least
+-        0.01 * poor
+-        0.02 * kid
++        0.03 * map
+-        0.13 * k
+-        0.05 * ladi
+-        0.02 * leagu
++        0    * lala
+-        0.38 * latest
++        0    * matchmak
+-        0.11 * mechan
+-        0.05 * mega
+-        0.17 * piec
+-        0.11 * patch
++        0.02 * perfect
++        0    * pile
+-        0.08 * mess
+-        0.08 * plot
+-        0.19 * point
+-        0.1  * past
++        0.09 * pass
+-        0.17 * p
+-        0.27 * overpr
+-        0.07 * move
+-        0.04 * nomin
+-        0.08 * obvious
+-        0.05 * ok
++        0    * oppon
+-        0.03 * slow
++        0    * song
++        0    * stadium
++        0    * item
+-        0.04 * clan
+-        0.13 * jacket
++        0    * clutchx
+-        0.04 * jme
++        0    * convers
++        0    * damascus
+-        0.07 * bronz
+-        0    * aug
+-        0.13 * won
++        0    * yall
++        0.1  * join
+-        0.05 * wrong
++        0.09 * yesterday
++        0    * assist
+-        0.22 * ask
++        0    * assault
++        0    * descript
+-        0.04 * integr
++        0    * elain
+-        0.16 * gta
+-        0.02 * grind
+-        0.11 * ground
+-        0.15 * gun
++        0    * entertain
+-        0.05 * h
++        0    * hear
++        0    * g
++        0.14 * fps
+-        0.02 * infin
+-        0.13 * flak
++        0    * exclus
+-        0.06 * extra
++        0.02 * insan
+-        0.04 * film
++        0    * flag
++        0    * ke
+-        0.02 * wl
+-        0.16 * sorri
+-        0.05 * term
+-        0.11 * suck
+-        0.03 * target
++        0    * tie
++        0    * stretch
+-        0.09 * titl
+-        0.04 * tonight
+-        0.32 * stupid
++        0.02 * stress
+-        0.11 * within
+-        0.03 * spend
+-        0    * sort
++        0    * specif
++        0.02 * spent
++        0    * steer
+-        0.03 * sport
++        0.24 * stand
+-        0.14 * took
++        0.05 * total
++        0    * tournament
+-        0.11 * wast
++        0    * walkout
+-        0.11 * war
++        0.05 * weekend
++        0    * track
+-        0.01 * wire
+-        0.06 * wise
++        0    * w
++        0.05 * us
++        0    * ur
+-        0.1  * upgrad
+-        0    * light
+-        0.01 * tweet
+-        0.06 * unbeliev
+-        0.23 * understand
+-        0.05 * la
+-        0.01 * ive
+-        0.24 * issu
++        0    * includ
++        0.19 * wtf
+-        0.11 * would
++        0.09 * wow
++        0.12 * yeah
++        0.05 * pistol
++        0    * opti
+-        0.04 * yes
++        0.05 * worth
++        0.13 * work
++        0.02 * playlist
+-        0.04 * whole
+-        0.05 * weird
++        0.33 * whi
++        0    * wife
++        0.18 * word
++        0.31 * without
++        0.19 * wonder
+-        0.01 * yet
++        0.41 * yo
+-        0.07 * account
+-        0.01 * atroci
+-        0.18 * appear
++        0    * aren
+-        0.02 * award
+-        0.07 * agre
+-        0.1  * away
+-        0    * basic
++        0    * ye
++        0    * anyth
+-        0.18 * anyon
+-        0.03 * annoy
+-        0.04 * ai
+-        0.49 * aim
++        0.02 * along
++        0.05 * amount
++        0.1  * op
++        0.4  * way
++        0.16 * want
+-        0.05 * imposs
++        0.09 * tell
++        0.06 * take
+-        0.18 * talk
++        0.04 * terrain
+-        0.1  * sure
++        0.02 * th
+-        0.1  * though
++        0.23 * sweat
++        0    * support
+-        0.02 * wanna
+-        0.09 * still
++        0.02 * star
++        0.05 * start
++        0.02 * stop
++        0.37 * super
++        0    * pt
++        0.15 * stun
+-        0.19 * thought
++        0.08 * time
++        0.29 * today
+-        0.02 * version
+-        0.04 * usual
+-        0.02 * pm
+-        0.08 * hello
++        0.08 * top
++        0.16 * wait
+-        0.03 * walk
++        0    * user
++        0    * use
++        0.2  * uniqu
++        0.02 * u
+-        0    * travers
+-        0.09 * tri
+-        0.08 * turn
+-        0    * two
++        0.1  * type
++        0.01 * battl
+-        0    * bc
+-        0.17 * becom
+-        0.07 * fifa
+-        0.02 * father
+-        0.22 * fed
++        0.08 * fire
++        0.01 * fact
+-        0.07 * flop
+-        0.02 * fock
++        0    * faster
++        0.09 * f
+-        0.05 * beggar
+-        0.13 * earth
+-        0.08 * dumb
++        0    * dumbest
+-        0.03 * easi
+-        0.13 * exist
++        0    * elit
+-        0.31 * evil
+-        0.12 * focus
+-        0.05 * friend
+-        0.02 * frisbe
++        0    * headlin
+-        0.07 * guess
+-        0.02 * happen
+-        0    * horrend
+-        0.1  * futur
+-        0.17 * horribl
+-        0.19 * idea
+-        0.05 * graft
++        0.31 * gold
+-        0.04 * god
++        0    * goalkeep
+-        0.11 * gb
++        0    * ghost
++        0    * gk
+-        0.03 * glad
+-        0.36 * glitch
+-        0    * due
+-        0.09 * drop
++        0.22 * drift
++        0    * built
+-        0.07 * broke
+-        0.06 * morn
+-        0    * bullshit
++        0    * caus
++        0.03 * bunch
+-        0.01 * came
++        0    * break
++        0.06 * box
+-        0.04 * bought
+-        0    * mp
+-        0.05 * belief
+-        0.16 * bigger
++        0    * nd
+-        0.02 * blame
+-        0.1  * bloodi
++        0    * cargo
+-        0.26 * cod
+-        0.03 * draft
++        0    * deliveri
+-        0.03 * decid
+-        0.13 * delet
+-        0.09 * die
+-        0.01 * communiti
+-        0.06 * difficult
+-        0.09 * disappoint
+-        0.09 * decent
++        0    * dead
+-        0.14 * daili
+-        0.05 * cut
+-        0.08 * compar
+-        0.19 * complic
+-        0    * consum
+-        0.09 * contact
++        0    * cunt
+-        0.31 * anyway
+-        0.55 * 1.0
+
+Model for class negative
+
+-        0.3  * live
+-        0.24 * check
+-        0    * playstat
+-        0    * broadcast
++        0.14 * game
++        0.75 * shit
+-        0.45 * stream
++        0.53 * worst
+-        0.6  * love
++        0.32 * fuck
+-        0.2  * amaz
+-        0.5  * great
+-        0.49 * good
++        0.33 * realli
+-        0.17 * ever
++        0.46 * bore
++        0.14 * fun
+-        0.05 * finish
+-        0.42 * best
++        0.16 * player
+-        0.17 * thank
+-        0.17 * beauti
++        0.38 * bad
+-        0.31 * stori
++        0.2  * server
++        0.31 * trash
+-        0.09 * follow
++        0.13 * fix
++        0.68 * make
++        0.17 * peopl
++        0.03 * ve
++        0.36 * garbag
+-        0.33 * masterpiec
++        0.13 * pack
+-        0.05 * twitch
++        0.36 * hate
++        0.05 * year
+-        0.12 * via
+-        0.14 * mixer
++        0    * duti
+-        0.45 * pretti
++        0.02 * even
++        0.02 * becaus
+-        0.21 * enjoy
+-        0.02 * much
+-        0.08 * definit
+-        0.06 * updat
+-        0.07 * underground
++        0.19 * joke
+-        0.02 * class
+-        0.15 * favorit
+-        0.27 * emot
++        0.08 * far
++        0    * ea
++        0.26 * ani
+-        0.17 * world
++        0.08 * gameplay
+-        0.13 * awesom
++        0.02 * wors
++        0.09 * delay
+-        0    * soundtrack
+-        0.03 * link
+-        0.03 * featur
+-        0    * warfar
+-        0.11 * lot
+-        0.07 * watch
+-        0.08 * eerienc
++        0.02 * know
++        0.02 * recommend
++        0.18 * broken
++        0.15 * match
++        0.07 * anymor
+-        0.03 * solid
++        0.04 * biggest
+-        0.41 * fantast
++        0.09 * problem
+-        0.09 * cri
+-        0.13 * youtub
+-        0.13 * clip
++        0.09 * didn
+-        0.11 * absolut
+-        0.16 * get
+-        0    * think
+-        0    * say
+-        0.24 * ps
++        0.06 * pleas
++        0.13 * week
+-        0.11 * kojima
++        0.01 * mani
+-        0.04 * modern
+-        0.26 * race
++        0.01 * lost
++        0.24 * terribl
++        0.1  * wasn
+-        0.01 * veri
++        0.13 * team
++        0.13 * thing
+-        0.27 * final
++        0.23 * aw
++        0.16 * dont
++        0.09 * utter
++        0.19 * els
++        0.14 * money
+-        0    * goal
++        0    * channel
++        0    * pick
++        0.27 * overr
++        0    * earli
++        0.01 * fut
++        0.13 * well
++        0.07 * liter
+-        0.01 * late
++        0.15 * someth
++        0.01 * ball
++        0.11 * min
++        0.04 * note
++        0.06 * doesn
++        0.11 * ass
+-        0.16 * incred
+-        0.1  * win
++        0.1  * mayb
+-        0.1  * underr
++        0.13 * fail
+-        0.1  * dope
++        0    * histori
+-        0    * elor
++        0.01 * load
+-        0.16 * surpris
++        0.14 * squad
++        0.01 * save
++        0.23 * kind
++        0.09 * lag
++        0.02 * luck
+-        0.07 * stuff
++        0.28 * overhyp
++        0.07 * shame
+-        0.08 * recent
++        0.14 * hype
+-        0    * ma
+-        0.09 * hang
+-        0    * depui
++        0    * vid
+-        0    * consult
+-        0    * diffus
+-        0.1  * v
+-        0.04 * bundl
+-        0.03 * weapon
+-        0.04 * crossbow
++        0    * sniper
++        0    * object
+-        0.01 * spill
+-        0.27 * fill
++        0.19 * abl
++        0.09 * plz
++        0.08 * skill
+-        0.05 * date
+-        0.12 * phenomen
++        0.07 * matter
+-        0.01 * lvl
++        0.12 * previous
++        0.01 * champ
++        0.02 * sbc
++        0.01 * compens
++        0.06 * script
++        0.09 * saw
+-        0.01 * nfs
+-        0.01 * thrill
+-        0.08 * shield
++        0.03 * ridicul
++        0.2  * proper
++        0.07 * compani
++        0.12 * run
+-        0.04 * journey
++        0.08 * defens
++        0    * hook
+-        0    * camo
++        0    * unplay
+-        0.04 * ad
++        0    * half
+-        0.46 * brilliant
++        0    * hold
+-        0.03 * pro
+-        0    * januari
+-        0    * psn
+-        0.17 * code
++        0.08 * gap
+-        0    * step
++        0.01 * franchis
+-        0.02 * slot
+-        0.07 * idk
+-        0.28 * atm
+-        0    * earn
+-        0.08 * readi
++        0.07 * kick
+-        0.1  * montag
++        0    * straight
++        0.01 * bt
++        0.06 * dislik
+-        0    * destroy
+-        0    * ultim
+-        0.13 * crazi
++        0.03 * unfair
++        0.09 * touch
+-        0.07 * mean
++        0    * metal
+-        0.01 * silent
+-        0.12 * look
+-        0    * kinda
++        0.15 * listen
+-        0.05 * may
++        0    * moment
++        0.01 * keep
+-        0.1  * kill
+-        0.09 * mode
+-        0.07 * might
++        0.22 * minut
+-        0.26 * mind
+-        0.04 * larg
+-        0.01 * ll
++        0.03 * lol
+-        0.03 * littl
++        0.16 * made
++        0.09 * lie
++        0.22 * man
++        0.08 * life
+-        0.26 * like
+-        0.1  * long
++        0    * learn
++        0.12 * last
++        0.11 * m
++        0    * list
+-        0.05 * shoothous
++        0    * setup
++        0.03 * silver
+-        0.05 * later
+-        0.04 * less
+-        0.03 * ig
++        0.04 * month
++        0    * remind
++        0.09 * rememb
+-        0.08 * prob
+-        0.07 * respect
+-        0.06 * return
+-        0.24 * right
++        0.06 * rn
+-        0.03 * rock
+-        0.01 * remain
+-        0.08 * reason
++        0.29 * realist
+-        0.02 * quit
++        0    * progress
++        0.05 * put
+-        0.13 * rare
++        0.22 * real
+-        0.12 * rather
+-        0.08 * re
+-        0.03 * roll
+-        0.09 * rush
++        0.45 * said
++        0.29 * simul
+-        0.03 * quad
+-        0.24 * show
++        0.05 * sinc
++        0.1  * seri
+-        0.06 * slept
+-        0.06 * pulak
++        0.33 * serious
+-        0.66 * sens
++        0    * san
+-        0.04 * scale
+-        0    * satisfi
++        0    * sbmm
+-        0.12 * season
+-        0.05 * seem
++        0.07 * second
++        0.15 * see
++        0.09 * probabl
++        0    * rifl
++        0.05 * movi
+-        0.02 * normal
++        0.02 * night
+-        0.06 * possibl
++        0.16 * noth
++        0    * offici
+-        0    * okay
++        0.03 * old
+-        0.18 * omg
+-        0.16 * nice
++        0.03 * next
+-        0.09 * new
+-        0.23 * must
+-        0.08 * scope
+-        0.15 * multiplay
+-        0.06 * mw
++        0.25 * never
++        0    * near
++        0.09 * need
+-        0.15 * onc
++        0.01 * job
+-        0.06 * onli
++        0.06 * place
++        0    * photo
++        0.04 * physic
++        0    * plat
+-        0.05 * person
++        0.19 * play
+-        0.09 * riot
+-        0.06 * pes
++        0    * road
+-        0.03 * onlin
++        0.02 * origin
+-        0.02 * open
+-        0.01 * order
+-        0    * pace
+-        0.13 * payback
++        0.12 * part
++        0    * parti
+-        0.29 * one
++        0.12 * hard
++        0.07 * isn
++        0.07 * connect
++        0.39 * concept
+-        0.11 * interest
+-        0.06 * consid
+-        0.13 * content
+-        0.18 * continu
+-        0.08 * control
+-        0.23 * cool
+-        0.07 * complet
+-        0.15 * complain
+-        0.12 * come
++        0    * challeng
++        0.08 * career
++        0    * cast
+-        0.05 * chang
+-        0    * close
++        0    * chapter
++        0.09 * charact
+-        0.05 * cop
++        0.03 * could
+-        0    * couldn
+-        0.1  * deserv
+-        0.16 * defend
+-        0.01 * unlock
+-        0.02 * design
++        0.07 * day
+-        0.33 * true
+-        0.04 * direct
++        0    * decad
+-        0.09 * damn
++        0.11 * coupl
+-        0.14 * upload
+-        0.08 * creat
++        0.01 * credit
+-        0.16 * current
++        0.12 * d
+-        0.02 * custom
+-        0.03 * cutscen
++        0.05 * care
++        0.02 * car
+-        0.31 * cant
+-        0.09 * art
++        0.11 * anoth
+-        0.05 * around
++        0.04 * attent
++        0    * xcobra
++        0    * awhil
++        0.03 * babi
++        0.12 * amp
+-        0.06 * alway
+-        0    * ward
+-        0.15 * affect
+-        0.23 * actual
+-        0    * add
+-        0.14 * ago
++        0.25 * also
+-        0.07 * almost
++        0.01 * alreadi
++        0.23 * back
+-        0.04 * base
+-        0.01 * cannot
++        0    * buy
++        0    * bring
+-        0.01 * bro
+-        0.09 * bye
+-        0.02 * bodi
+-        0.18 * call
++        0.17 * campaign
+-        0.09 * botw
+-        0.19 * bit
++        0    * bb
+-        0.01 * befor
+-        0.05 * beat
+-        0.03 * vs
++        0.04 * believ
++        0.11 * big
++        0.4  * better
+-        0.16 * bf
++        0    * divis
++        0    * doe
+-        0.03 * done
+-        0.04 * hand
+-        0.04 * gt
++        0.04 * guy
+-        0.08 * special
+-        0.09 * snipe
++        0    * snd
++        0.02 * haven
+-        0.11 * greatest
++        0.01 * graphic
+-        0.02 * heart
+-        0.16 * go
+-        0.09 * genuin
++        0.04 * give
+-        0.04 * gonna
+-        0.19 * gotten
+-        0.09 * got
+-        0.2  * gotta
++        0    * heard
+-        0.17 * hell
++        0    * gear
+-        0.07 * impress
+-        0.09 * immers
+-        0.32 * imo
+-        0.11 * improv
+-        0.22 * hour
+-        0.24 * instead
+-        0    * intens
+-        0.07 * im
+-        0.01 * hord
+-        0    * hero
++        0    * higg
+-        0.08 * hey
+-        0.08 * hideo
++        0.05 * high
+-        0.06 * hope
+-        0.38 * holi
++        0.2  * honest
+-        0    * gen
++        0    * soon
+-        0.19 * trophi
++        0.08 * everyon
+-        0.34 * told
+-        0.05 * everi
++        0    * everyth
+-        0.1  * epic
++        0.01 * excit
+-        0.33 * face
+-        0.02 * episod
+-        0.13 * entir
++        0    * fallen
+-        0.24 * troll
+-        0    * easiest
+-        0.34 * easili
+-        0    * treyarch
+-        0.07 * enough
++        0.03 * end
+-        0.11 * tomorrow
++        0    * fair
++        0.26 * fan
+-        0    * stay
++        0.17 * found
++        0    * forc
++        0    * forget
++        0.01 * front
+-        0.16 * subscrib
+-        0.06 * stealth
+-        0.15 * full
++        0.04 * footbal
++        0.08 * first
+-        0.03 * tb
+-        0.03 * sumt
+-        0.08 * switch
+-        0.08 * fav
+-        0.11 * favourit
+-        0.1  * success
++        0.08 * feel
+-        0.03 * felt
+-        0.04 * publish
++        0.22 * video
+-        0.08 * speed
++        0    * releas
++        0.01 * receiv
++        0.16 * regret
++        0.18 * respons
++        0.03 * r
++        0    * reward
++        0    * rig
++        0.02 * random
+-        0.01 * quick
+-        0.07 * post
++        0.29 * promot
++        0.02 * press
+-        0.02 * lt
++        0.25 * punish
++        0.11 * qualiti
++        0    * pure
++        0.04 * push
++        0.02 * rubbish
++        0.15 * ruin
++        0.14 * sad
++        0.14 * shot
++        0    * shoot
++        0.06 * short
++        0.07 * singl
++        0.07 * scene
++        0.19 * size
+-        0    * slide
++        0.1  * shitti
+-        0    * shittest
++        0.09 * sh
++        0    * london
+-        0.03 * score
++        0.13 * screen
++        0.06 * screw
+-        0    * self
++        0.01 * semi
++        0    * pray
+-        0.01 * possess
++        0.3  * someon
++        0.03 * lose
++        0    * locat
++        0.18 * longer
++        0.13 * loss
++        0    * legit
++        0.05 * manag
++        0.02 * market
+-        0.08 * let
++        0.46 * least
++        0.29 * poor
+-        0    * kid
+-        0.2  * map
+-        0.19 * k
++        0.04 * ladi
+-        0    * leagu
++        0    * lala
++        0.48 * latest
+-        0    * matchmak
++        0.01 * mechan
++        0.05 * mega
++        0.13 * piec
+-        0.01 * patch
+-        0.06 * perfect
++        0    * pile
+-        0.05 * mess
++        0.16 * plot
++        0.03 * point
++        0.01 * past
++        0.03 * pass
++        0    * p
++        0.37 * overpr
++        0.09 * move
++        0.06 * nomin
++        0.19 * obvious
++        0.09 * ok
++        0    * oppon
+-        0.06 * slow
+-        0    * song
++        0    * stadium
+-        0.01 * item
+-        0.05 * clan
++        0    * jacket
++        0    * clutchx
++        0    * jme
+-        0.04 * convers
+-        0.09 * damascus
++        0.06 * bronz
++        0    * aug
++        0.12 * won
++        0    * yall
+-        0.23 * join
++        0.04 * wrong
+-        0.05 * yesterday
+-        0    * assist
+-        0.1  * ask
++        0    * assault
+-        0    * descript
++        0    * integr
+-        0    * elain
++        0.11 * gta
+-        0.11 * grind
++        0    * ground
+-        0.07 * gun
++        0    * entertain
++        0.02 * h
++        0    * hear
+-        0.04 * g
+-        0.09 * fps
+-        0    * infin
++        0    * flak
+-        0.01 * exclus
+-        0.02 * extra
++        0    * insan
++        0    * film
+-        0    * flag
++        0    * ke
++        0.04 * wl
++        0.21 * sorri
+-        0.01 * term
++        0.27 * suck
+-        0    * target
++        0    * tie
++        0.01 * stretch
++        0.13 * titl
+-        0.04 * tonight
++        0.26 * stupid
+-        0.02 * stress
++        0    * within
++        0    * spend
++        0    * sort
++        0.04 * specif
++        0.01 * spent
++        0    * steer
++        0.09 * sport
+-        0    * stand
++        0.05 * took
+-        0.04 * total
+-        0    * tournament
++        0.21 * wast
++        0.03 * walkout
++        0.1  * war
+-        0.01 * weekend
++        0    * track
++        0.18 * wire
++        0.02 * wise
++        0    * w
+-        0.12 * us
++        0    * ur
++        0.17 * upgrad
+-        0.03 * light
++        0.07 * tweet
++        0.04 * unbeliev
++        0.08 * understand
+-        0.06 * la
++        0.01 * ive
++        0.11 * issu
+-        0    * includ
+-        0.45 * wtf
++        0.01 * would
+-        0.11 * wow
+-        0.05 * yeah
+-        0.02 * pistol
++        0    * opti
++        0.02 * yes
++        0.14 * worth
+-        0.08 * work
++        0    * playlist
++        0.18 * whole
++        0.14 * weird
+-        0.1  * whi
+-        0.01 * wife
+-        0.01 * word
+-        0.23 * without
+-        0.42 * wonder
+-        0.01 * yet
+-        0.34 * yo
++        0.16 * account
++        0.18 * atroci
++        0.11 * appear
++        0    * aren
++        0    * award
++        0.09 * agre
+-        0.03 * away
++        0.1  * basic
++        0    * ye
++        0    * anyth
+-        0.01 * anyon
++        0.12 * annoy
++        0.05 * ai
++        0.04 * aim
+-        0    * along
+-        0    * amount
+-        0.24 * op
+-        0.29 * way
+-        0.11 * want
++        0.04 * imposs
++        0.04 * tell
+-        0.04 * take
++        0.19 * talk
++        0    * terrain
++        0.14 * sure
++        0    * th
++        0.18 * though
+-        0.03 * sweat
++        0    * support
++        0.08 * wanna
+-        0.08 * still
++        0.04 * star
+-        0.09 * start
+-        0.09 * stop
+-        0.29 * super
+-        0    * pt
+-        0.09 * stun
+-        0.1  * thought
+-        0.22 * time
+-        0.03 * today
++        0.06 * version
++        0.02 * usual
++        0    * pm
++        0.05 * hello
+-        0.01 * top
+-        0.1  * wait
++        0.11 * walk
+-        0.04 * user
+-        0.03 * use
+-        0.15 * uniqu
+-        0.02 * u
+-        0    * travers
+-        0.04 * tri
++        0.03 * turn
+-        0.06 * two
+-        0.18 * type
+-        0.09 * battl
++        0    * bc
++        0.13 * becom
++        0.08 * fifa
++        0.01 * father
++        0    * fed
+-        0.01 * fire
+-        0.03 * fact
++        0.23 * flop
++        0    * fock
+-        0    * faster
++        0.02 * f
++        0.04 * beggar
++        0.15 * earth
++        0.18 * dumb
++        0    * dumbest
++        0.01 * easi
++        0.1  * exist
++        0.02 * elit
++        0.3  * evil
++        0.01 * focus
+-        0.08 * friend
++        0    * frisbe
++        0.11 * headlin
++        0.08 * guess
++        0.04 * happen
++        0    * horrend
++        0.01 * futur
++        0    * horribl
++        0.13 * idea
++        0.02 * graft
+-        0.2  * gold
+-        0.03 * god
++        0    * goalkeep
+-        0.12 * gb
++        0    * ghost
++        0    * gk
+-        0    * glad
++        0.2  * glitch
++        0    * due
++        0.09 * drop
+-        0.17 * drift
++        0    * built
++        0.08 * broke
+-        0.17 * morn
++        0.21 * bullshit
++        0    * caus
++        0.02 * bunch
++        0.05 * came
++        0.02 * break
+-        0.16 * box
++        0.14 * bought
+-        0.03 * mp
++        0.04 * belief
++        0.09 * bigger
++        0.08 * nd
++        0    * blame
++        0.04 * bloodi
++        0    * cargo
++        0.12 * cod
++        0.01 * draft
++        0.01 * deliveri
+-        0.16 * decid
++        0.19 * delet
++        0.07 * die
++        0.12 * communiti
++        0.1  * difficult
++        0.07 * disappoint
++        0.1  * decent
+-        0    * dead
++        0.17 * daili
++        0.07 * cut
+-        0.02 * compar
++        0.21 * complic
++        0.14 * consum
++        0.05 * contact
+-        0    * cunt
++        0.11 * anyway
+-        0.42 * 1.0
+
+Model for class none
+
+         0.53 * live
++        0.12 * check
++        0.02 * playstat
+-        0    * broadcast
+-        0.88 * game
+-        0.36 * shit
++        0.3  * stream
+-        0.34 * worst
+-        0.39 * love
+-        0.36 * fuck
+-        0.17 * amaz
+-        0.27 * great
+-        0.01 * good
+-        0.13 * realli
+-        0.2  * ever
+-        0.24 * bore
+-        0.18 * fun
+-        0.17 * finish
+-        0.04 * best
+-        0.08 * player
+-        0.27 * thank
+-        0.22 * beauti
+-        0.26 * bad
+-        0.09 * stori
+-        0.18 * server
+-        0.21 * trash
++        0.1  * follow
++        0.08 * fix
+-        0.07 * make
+-        0.05 * peopl
+-        0.08 * ve
+-        0.21 * garbag
+-        0.2  * masterpiec
+-        0.07 * pack
+-        0    * twitch
+-        0.25 * hate
+-        0.13 * year
++        0.24 * via
++        0    * mixer
++        0.05 * duti
+-        0.11 * pretti
+-        0.06 * even
+-        0.07 * becaus
+-        0.18 * enjoy
+-        0.01 * much
+-        0.08 * definit
++        0.2  * updat
+-        0.03 * underground
+-        0.02 * joke
++        0.29 * class
+-        0.06 * favorit
+-        0.02 * emot
+-        0.28 * far
+-        0.19 * ea
+-        0.44 * ani
+-        0.05 * world
++        0.1  * gameplay
+-        0.24 * awesom
+-        0.07 * wors
+-        0.11 * delay
+-        0.19 * soundtrack
++        0.09 * link
++        0.01 * featur
++        0.05 * warfar
+-        0.1  * lot
++        0.19 * watch
+-        0.15 * eerienc
+-        0.02 * know
+-        0.07 * recommend
++        0.01 * broken
++        0.04 * match
+-        0.02 * anymor
+-        0.25 * solid
+-        0.01 * biggest
++        0    * fantast
+-        0.1  * problem
+-        0.02 * cri
++        0.1  * youtub
++        0.2  * clip
+-        0.04 * didn
+-        0.23 * absolut
++        0.2  * get
+-        0.14 * think
+-        0.07 * say
++        0.26 * ps
++        0.04 * pleas
+-        0.05 * week
+-        0.12 * kojima
+-        0.11 * mani
++        0.05 * modern
+-        0    * race
+-        0.02 * lost
++        0    * terribl
+-        0.06 * wasn
+-        0    * veri
++        0    * team
+-        0.43 * thing
+-        0.22 * final
+-        0.13 * aw
+-        0.07 * dont
+-        0.06 * utter
+-        0.04 * els
+-        0.07 * money
+-        0.04 * goal
++        0.07 * channel
+-        0.02 * pick
+-        0.18 * overr
++        0    * earli
++        0    * fut
+-        0.23 * well
+-        0.17 * liter
++        0.01 * late
+-        0.01 * someth
+-        0.06 * ball
+-        0.1  * min
++        0.16 * note
++        0.07 * doesn
+-        0.01 * ass
+-        0.08 * incred
++        0.15 * win
+-        0    * mayb
+-        0.14 * underr
+-        0    * fail
+-        0.17 * dope
+-        0.06 * histori
+-        0.04 * elor
+-        0.07 * load
+-        0.01 * surpris
+-        0.02 * squad
+-        0.14 * save
+-        0.01 * kind
+-        0.1  * lag
+-        0    * luck
+-        0.05 * stuff
+-        0.17 * overhyp
+-        0.01 * shame
+-        0    * recent
++        0    * hype
++        0    * ma
++        0.11 * hang
++        0    * depui
++        0.08 * vid
++        0    * consult
++        0    * diffus
++        0.19 * v
++        0.05 * bundl
++        0    * weapon
++        0.02 * crossbow
++        0.14 * sniper
+-        0.07 * object
++        0.01 * spill
+-        0.04 * fill
+-        0.1  * abl
+-        0.03 * plz
++        0    * skill
++        0    * date
++        0    * phenomen
+-        0.07 * matter
++        0.3  * lvl
+-        0.05 * previous
+-        0.03 * champ
+-        0    * sbc
++        0    * compens
+-        0.06 * script
+-        0    * saw
++        0    * nfs
++        0.01 * thrill
++        0.35 * shield
++        0    * ridicul
+-        0.12 * proper
++        0    * compani
+-        0    * run
+-        0.03 * journey
+-        0.07 * defens
+-        0.06 * hook
++        0.3  * camo
+-        0    * unplay
++        0.02 * ad
+-        0.07 * half
+-        0.1  * brilliant
++        0    * hold
++        0.06 * pro
++        0    * januari
++        0.09 * psn
++        0.11 * code
++        0    * gap
+-        0.02 * step
+-        0.03 * franchis
++        0.1  * slot
+-        0.01 * idk
+-        0.12 * atm
++        0.09 * earn
++        0.42 * readi
+-        0.08 * kick
++        0.18 * montag
+-        0    * straight
+-        0    * bt
++        0    * dislik
+-        0.04 * destroy
++        0    * ultim
+-        0    * crazi
+-        0.02 * unfair
++        0    * touch
++        0.05 * mean
++        0    * metal
++        0.06 * silent
+-        0.18 * look
+-        0.02 * kinda
+-        0.13 * listen
+-        0.07 * may
+-        0    * moment
+-        0.09 * keep
++        0.21 * kill
++        0.08 * mode
++        0.04 * might
+-        0.15 * minut
++        0.15 * mind
++        0    * larg
+-        0.08 * ll
++        0    * lol
++        0.25 * littl
++        0.45 * made
+-        0.1  * lie
+-        0.31 * man
+-        0.04 * life
+-        0.06 * like
+-        0    * long
+-        0.21 * learn
++        0.04 * last
++        0.05 * m
+-        0.07 * list
++        0.08 * shoothous
++        0    * setup
++        0.07 * silver
++        0.19 * later
+-        0.03 * less
++        0.01 * ig
++        0    * month
+-        0    * remind
+-        0.04 * rememb
+-        0.05 * prob
++        0    * respect
++        0    * return
+-        0    * right
+-        0.07 * rn
+-        0.02 * rock
++        0    * remain
++        0.13 * reason
+-        0.29 * realist
+-        0.04 * quit
++        0.07 * progress
+-        0.16 * put
+-        0.03 * rare
+-        0.16 * real
+-        0.06 * rather
+-        0.17 * re
+-        0.07 * roll
+-        0.15 * rush
+-        0.07 * said
+-        0.19 * simul
++        0.05 * quad
++        0.08 * show
++        0.08 * sinc
++        0    * seri
++        0    * slept
++        0.14 * pulak
+-        0.06 * serious
+-        0.01 * sens
++        0    * san
++        0    * scale
+-        0.04 * satisfi
++        0.02 * sbmm
++        0.21 * season
+-        0    * seem
+-        0.03 * second
++        0.11 * see
+-        0.11 * probabl
++        0    * rifl
+-        0.04 * movi
++        0    * normal
+-        0.1  * night
+-        0.08 * possibl
+-        0.13 * noth
+-        0    * offici
+-        0.08 * okay
++        0.1  * old
+-        0.07 * omg
+-        0.18 * nice
+-        0.15 * next
++        0.1  * new
++        0.18 * must
++        0.1  * scope
++        0    * multiplay
++        0.26 * mw
+-        0.16 * never
+-        0    * near
+-        0.19 * need
++        0.13 * onc
++        0    * job
++        0.03 * onli
++        0.02 * place
+-        0.03 * photo
+-        0.08 * physic
++        0    * plat
+-        0.04 * person
++        0.08 * play
++        0.08 * riot
++        0    * pes
++        0.02 * road
++        0.03 * onlin
+-        0.01 * origin
+-        0.02 * open
+-        0.01 * order
+-        0.06 * pace
++        0    * payback
+-        0.04 * part
++        0    * parti
++        0.34 * one
++        0.04 * hard
+-        0.03 * isn
+-        0.17 * connect
+-        0.15 * concept
+-        0.19 * interest
+-        0.07 * consid
++        0.1  * content
+-        0    * continu
+-        0.02 * control
+-        0.3  * cool
+-        0.07 * complet
++        0    * complain
++        0.12 * come
+-        0.04 * challeng
++        0    * career
++        0    * cast
++        0.08 * chang
++        0.07 * close
+-        0.14 * chapter
+-        0.05 * charact
++        0    * cop
+-        0    * could
+-        0.03 * couldn
++        0    * deserv
++        0.2  * defend
++        0    * unlock
+-        0.13 * design
+-        0.15 * day
+-        0    * true
+-        0    * direct
++        0    * decad
++        0.01 * damn
+-        0    * coupl
++        0.18 * upload
++        0.01 * creat
+-        0.07 * credit
++        0.03 * current
+-        0.22 * d
++        0.01 * custom
++        0    * cutscen
+-        0.09 * care
+-        0.03 * car
++        0.02 * cant
+-        0.13 * art
+-        0.18 * anoth
++        0.04 * around
+-        0.09 * attent
++        0    * xcobra
+-        0.28 * awhil
+-        0.02 * babi
+-        0.06 * amp
+-        0.01 * alway
++        0.05 * ward
++        0    * affect
+-        0.1  * actual
++        0    * add
++        0.15 * ago
++        0.03 * also
+-        0.25 * almost
++        0    * alreadi
+-        0.16 * back
++        0    * base
+-        0.2  * cannot
+-        0.26 * buy
++        0    * bring
+-        0.16 * bro
++        0    * bye
+-        0.01 * bodi
++        0.08 * call
+-        0.01 * campaign
+-        0.06 * botw
++        0.15 * bit
+-        0    * bb
+-        0.23 * befor
+-        0.01 * beat
++        0.13 * vs
++        0    * believ
++        0.11 * big
+-        0.38 * better
+-        0.08 * bf
+-        0.09 * divis
++        0    * doe
+-        0.09 * done
++        0.01 * hand
++        0    * gt
+-        0.17 * guy
++        0.22 * special
++        0.17 * snipe
++        0    * snd
+-        0    * haven
++        0.02 * greatest
++        0.06 * graphic
+-        0.09 * heart
++        0.57 * go
+-        0.02 * genuin
++        0.06 * give
++        0.04 * gonna
+-        0.05 * gotten
++        0.06 * got
+-        0.05 * gotta
+-        0.02 * heard
+-        0.09 * hell
++        0    * gear
+-        0.04 * impress
++        0    * immers
+-        0    * imo
+-        0.05 * improv
++        0.1  * hour
+-        0.04 * instead
+-        0.02 * intens
++        0.01 * im
+-        0.03 * hord
++        0    * hero
++        0    * higg
+-        0.04 * hey
++        0    * hideo
+-        0.01 * high
+-        0.08 * hope
++        0    * holi
++        0.04 * honest
++        0    * gen
++        0.11 * soon
++        0.08 * trophi
++        0.15 * everyon
++        0.22 * told
+-        0.13 * everi
++        0.03 * everyth
+-        0.17 * epic
+-        0.1  * excit
++        0    * face
++        0.16 * episod
+-        0    * entir
+-        0.01 * fallen
++        0.25 * troll
++        0    * easiest
+-        0.02 * easili
++        0.05 * treyarch
+-        0.05 * enough
+-        0.04 * end
++        0.14 * tomorrow
+-        0.05 * fair
+-        0.18 * fan
++        0.17 * stay
+-        0.02 * found
+-        0.11 * forc
+-        0.05 * forget
+-        0.02 * front
++        0.14 * subscrib
++        0    * stealth
++        0.42 * full
+-        0.11 * footbal
+-        0.02 * first
++        0.06 * tb
++        0.05 * sumt
++        0.15 * switch
+-        0.07 * fav
+-        0.13 * favourit
++        0.14 * success
+-        0.16 * feel
+-        0.01 * felt
++        0.09 * publish
+-        0.05 * video
+-        0    * speed
+-        0.11 * releas
+-        0    * receiv
+-        0.05 * regret
+-        0.12 * respons
+-        0.1  * r
++        0    * reward
++        0    * rig
++        0.05 * random
++        0.08 * quick
++        0.14 * post
++        0    * promot
+-        0    * press
++        0.09 * lt
+-        0.07 * punish
++        0    * qualiti
++        0    * pure
++        0.04 * push
++        0    * rubbish
++        0    * ruin
+-        0.07 * sad
++        0.07 * shot
++        0    * shoot
++        0.04 * short
++        0    * singl
++        0    * scene
+-        0.01 * size
++        0    * slide
+-        0.03 * shitti
++        0    * shittest
+-        0.07 * sh
++        0.02 * london
+-        0.04 * score
++        0    * screen
+-        0.01 * screw
+-        0    * self
++        0    * semi
+-        0.02 * pray
+-        0    * possess
+-        0.09 * someon
+-        0.06 * lose
++        0    * locat
++        0.03 * longer
++        0    * loss
++        0    * legit
+-        0.04 * manag
+-        0    * market
+-        0.26 * let
++        0    * least
+-        0.17 * poor
++        0    * kid
++        0.15 * map
++        0.31 * k
++        0    * ladi
++        0    * leagu
+-        0.07 * lala
+-        0.12 * latest
++        0    * matchmak
++        0    * mechan
+-        0.02 * mega
++        0    * piec
++        0.02 * patch
++        0    * perfect
++        0    * pile
++        0.14 * mess
++        0    * plot
++        0.13 * point
+-        0.03 * past
+-        0.04 * pass
++        0.1  * p
+-        0.08 * overpr
+-        0.07 * move
++        0    * nomin
+-        0.12 * obvious
++        0.03 * ok
++        0    * oppon
++        0.08 * slow
++        0    * song
++        0    * stadium
++        0    * item
++        0.08 * clan
++        0.15 * jacket
++        0    * clutchx
++        0.02 * jme
++        0    * convers
++        0.24 * damascus
++        0    * bronz
++        0    * aug
+-        0.08 * won
++        0    * yall
++        0.05 * join
+-        0.03 * wrong
+-        0    * yesterday
++        0    * assist
++        0.23 * ask
++        0    * assault
++        0    * descript
++        0.02 * integr
+-        0    * elain
++        0.02 * gta
+-        0.03 * grind
++        0.1  * ground
++        0.18 * gun
++        0    * entertain
++        0    * h
++        0    * hear
++        0    * g
+-        0.03 * fps
++        0.05 * infin
++        0.15 * flak
++        0    * exclus
++        0.06 * extra
+-        0.04 * insan
++        0.02 * film
++        0    * flag
++        0.04 * ke
++        0    * wl
+-        0.08 * sorri
++        0    * term
+-        0.18 * suck
++        0    * target
+-        0.05 * tie
++        0    * stretch
+-        0.12 * titl
++        0.03 * tonight
++        0.06 * stupid
+-        0.12 * stress
++        0.05 * within
+-        0.07 * spend
++        0    * sort
+-        0.01 * specif
+-        0.03 * spent
+-        0.04 * steer
+-        0.03 * sport
+-        0.34 * stand
++        0.03 * took
+-        0.04 * total
+-        0.01 * tournament
+-        0    * wast
++        0    * walkout
++        0.08 * war
+-        0.04 * weekend
++        0    * track
+-        0.11 * wire
++        0    * wise
++        0    * w
++        0.07 * us
++        0    * ur
+-        0.07 * upgrad
++        0.05 * light
++        0    * tweet
+-        0.1  * unbeliev
++        0.07 * understand
++        0.14 * la
++        0    * ive
+-        0.09 * issu
++        0    * includ
++        0.27 * wtf
++        0.08 * would
+-        0.04 * wow
++        0.01 * yeah
++        0.06 * pistol
++        0    * opti
++        0    * yes
+-        0.21 * worth
+-        0.11 * work
++        0    * playlist
+-        0.09 * whole
+-        0.16 * weird
+-        0.06 * whi
+-        0    * wife
+-        0.16 * word
+-        0.1  * without
++        0.13 * wonder
+-        0.08 * yet
+-        0.09 * yo
++        0    * account
+-        0.11 * atroci
+-        0.01 * appear
+-        0.16 * aren
++        0    * award
+-        0.01 * agre
++        0.19 * away
+-        0.01 * basic
++        0    * ye
+-        0.04 * anyth
++        0.07 * anyon
+-        0.02 * annoy
+-        0.05 * ai
++        0.09 * aim
+-        0    * along
+-        0.03 * amount
++        0.12 * op
+-        0.02 * way
+-        0.08 * want
+-        0.01 * imposs
+-        0.18 * tell
+-        0.09 * take
++        0.03 * talk
+-        0.04 * terrain
++        0    * sure
+-        0.1  * th
+-        0.03 * though
+-        0.01 * sweat
++        0    * support
+-        0    * wanna
++        0.18 * still
++        0    * star
+-        0.06 * start
+-        0    * stop
++        0.03 * super
++        0    * pt
++        0    * stun
++        0.2  * thought
++        0.17 * time
+-        0.35 * today
+-        0.05 * version
+-        0.03 * usual
++        0.15 * pm
++        0.11 * hello
+-        0    * top
++        0    * wait
+-        0.02 * walk
++        0    * user
++        0    * use
++        0    * uniqu
+-        0.08 * u
++        0    * travers
++        0.05 * tri
++        0.02 * turn
+-        0.02 * two
++        0.14 * type
+-        0.02 * battl
++        0    * bc
+-        0.14 * becom
++        0    * fifa
+-        0.03 * father
++        0    * fed
++        0    * fire
++        0    * fact
+-        0.15 * flop
++        0    * fock
+-        0.01 * faster
+-        0.05 * f
++        0    * beggar
+-        0    * earth
+-        0.04 * dumb
++        0    * dumbest
+-        0.03 * easi
++        0    * exist
+-        0.02 * elit
+-        0.04 * evil
++        0    * focus
++        0.04 * friend
++        0    * frisbe
+-        0.1  * headlin
++        0    * guess
+-        0    * happen
++        0    * horrend
++        0    * futur
+-        0.21 * horribl
++        0.11 * idea
+-        0.07 * graft
+-        0.18 * gold
++        0.06 * god
++        0    * goalkeep
++        0.1  * gb
+-        0    * ghost
++        0    * gk
++        0.04 * glad
++        0.01 * glitch
++        0    * due
++        0.07 * drop
+-        0.07 * drift
++        0    * built
++        0    * broke
++        0.11 * morn
+-        0.2  * bullshit
++        0    * caus
+-        0.11 * bunch
+-        0.03 * came
+-        0.01 * break
+-        0.02 * box
+-        0.04 * bought
++        0.09 * mp
++        0    * belief
++        0    * bigger
+-        0.13 * nd
+-        0    * blame
+-        0.16 * bloodi
++        0    * cargo
++        0.15 * cod
++        0.05 * draft
+-        0.06 * deliveri
++        0.07 * decid
+-        0.13 * delet
+-        0.03 * die
+-        0.1  * communiti
+-        0.07 * difficult
+-        0.01 * disappoint
++        0    * decent
+-        0.01 * dead
+-        0.04 * daili
++        0    * cut
++        0.1  * compar
++        0    * complic
+-        0    * consum
+-        0.01 * contact
++        0    * cunt
+-        0.03 * anyway
+-        0.05 * 1.0
+
+
+
+Time taken to build model: 0.42 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         770               77.0771 %
+Incorrectly Classified Instances       229               22.9229 %
+Kappa statistic                          0.6562
+Mean absolute error                      0.1528
+Root mean squared error                  0.3909
+Relative absolute error                 34.384  %
+Root relative squared error             82.9261 %
+Total Number of Instances              999     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,745    0,144    0,721      0,745    0,733      0,596    0,800     0,622     positive
+                 0,721    0,108    0,769      0,721    0,744      0,623    0,806     0,647     negative
+                 0,847    0,092    0,822      0,847    0,834      0,750    0,878     0,747     none
+Weighted Avg.    0,771    0,115    0,771      0,771    0,770      0,656    0,828     0,672     
+
+=== Confusion Matrix ===
+
+   a   b   c   <-- classified as
+ 248  53  32 |   a = positive
+  64 240  29 |   b = negative
+  32  19 282 |   c = none
+
