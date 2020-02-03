@@ -1,6 +1,5 @@
 package it.unipi.giar;
 
-import java.io.File;
 import java.util.ArrayList;
 import com.vdurmont.emoji.EmojiParser;
 
@@ -18,10 +17,9 @@ import weka.core.Instance;
 import weka.core.Instances;
 import weka.classifiers.meta.FilteredClassifier;
 import weka.core.SerializationHelper;
-import weka.core.converters.ArffSaver;
 
 public class TwitterConnector {
-	public static void searchTweets(String searchTerm) {
+	public static ArrayList<String> searchTweets(String searchTerm) {
 		try {
 			Twitter twitter;
 			Query query;
@@ -35,7 +33,7 @@ public class TwitterConnector {
 			query.setCount(1000);
 			result = twitter.search(query);
 			
-			while (tweets.size() < 10) {
+			while (tweets.size() < 50) {
 				for (Status status : result.getTweets()) {
 					if (!status.isRetweet()) {
 						tweets.add(tweetCleaning(status));
@@ -47,11 +45,12 @@ public class TwitterConnector {
 				result = twitter.search(query);
 			}
 			
-			System.out.println(tweets.size());
-			createDataset(tweets);
+			return tweets;
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
+		
+		return null;
 	}
 	
 	private static String tweetCleaning(Status tweet) {
@@ -85,8 +84,9 @@ public class TwitterConnector {
 		return cleanedTweet;
 	}
 	
-	private static void createDataset(ArrayList<String> tweets) {
+	private static ArrayList<Integer> classify(ArrayList<String> tweets) {
 		try {
+			ArrayList<Integer> opinions;
 			ArrayList<String> classLabels;
 			Attribute text;
 			Attribute clas;
@@ -94,7 +94,11 @@ public class TwitterConnector {
 			Instances dataset;
 			Instance inst;
 			FilteredClassifier classifier;
-						
+			
+			opinions = new ArrayList<Integer>();
+			opinions.add(0);
+			opinions.add(0);
+			
 			classLabels = new ArrayList<String>();
 			classLabels.add("positive");
 			classLabels.add("negative");
@@ -120,16 +124,43 @@ public class TwitterConnector {
 			classifier = (FilteredClassifier)SerializationHelper.read("./src/main/resources/classifier.model");
 			
 			for(int i = 0; i < tweets.size(); i++) {
+				double predicted;
+				
 				dataset.instance(i).setClassValue(classifier.classifyInstance(dataset.instance(i)));
-				System.out.println(dataset.instance(i).toString());
+				predicted = dataset.instance(i).classValue();
+				if(predicted == 0) { //Index of the class label array
+					opinions.set(0, opinions.get(0) + 1);
+				} else if (predicted == 1) {
+					opinions.set(1, opinions.get(1) + 1);
+				}
+				//System.out.println(dataset.instance(i).toString());
 			}
 			
-			ArffSaver saver = new ArffSaver();
-			saver.setInstances(dataset);
-			saver.setFile(new File("./tweets.arff"));
-			saver.writeBatch();
+//			ArffSaver saver = new ArffSaver();
+//			saver.setInstances(dataset);
+//			saver.setFile(new File("./tweets.arff"));
+//			saver.writeBatch();
+			
+			return opinions;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		return null;
+	}
+	
+	public static ArrayList<Integer> sentimentAnalysis(String game) {
+		ArrayList<String> tweets;
+		ArrayList<Integer> opinions = new ArrayList<Integer>();
+		
+		tweets = searchTweets(game.toLowerCase());
+		
+		if(tweets == null) {
+			System.out.println("No opinions found.\n");
+		} else {
+			opinions.addAll(classify(tweets));
+		}
+		
+		return opinions;
 	}
 }
