@@ -26,7 +26,7 @@ The first containing the timestamp of the tweet, the second the text field of th
 For our analysis purpose, we ignore the date fields.
 
 ## 3 Data Preprocessing
-### 3.1 Data Cleaning
+
 To mine a sentiment in tweets, raw text must be cleaned. In this process we need to discard some common elements you find usually in tweets that are not interesting for our aim, like:
 - hashtags
 - mentions
@@ -42,11 +42,11 @@ At this point we need to assign a label to each tweet in order to build our trai
 - negative
 - none (means that there is no opinion in that tweet)
 
-### 3.2 Data Integration
+
 The data come from the same source, so we don't need to process this phase.
 
-### 3.3 Data Reduction
-The dataset we prepared cointains a lot of different instances of the 3 classes. Because we find only 333 instances of postive class (minority class),, in order to build a balanced dataset, we decided to reduce numerosity of the data applying a random sampling without replacement to the other 2 classes till we have the same amount of istances for each class.
+
+The dataset we prepared cointains a lot of different instances of the 3 classes. Because we find only 333 instances of postive class (minority class), in order to build a balanced dataset, we decided to reduce numerosity of the data applying a random sampling without replacement to the other 2 classes till we have the same amount of istances for each class.
 
 
 
