@@ -5,6 +5,7 @@
 1. [Intoduction](#1-intoduction)
 2. [Dataset description](#2-dataset-description)
 3. [Data Preprocessing](#3-data-preprocessing)
+4. [Classification](#4-classification)
 
 
 ## 1. Introduction
@@ -50,7 +51,7 @@ The dataset we prepared cointains a lot of different instances of the 3 classes.
 
 (immagine di weka con le 3 colonne uguali?)
 
-We need now to transform our stream of characters into a stream of processing units, called `tokens`. During this step, after removing punctuation marks, non-text characters and special symbols, each text is represented as a set of words. 
+We need now to transform our stream of characters into a stream of processing units, called `tokens`. During this step, after removing punctuation marks, non-text characters and special symbols, each text is represented as a set of words. We use the `AlphabeticTokenizer` as tokenizer in weka.
 
 (immagine di esempio prima-dopo?)
 
@@ -60,9 +61,20 @@ At this point we need to handle noise removing `stop-words`. Those are words pro
 analyzed (domain-specific stop-words);
 - At the end of this step, each text is cleaned from stop-words, and thus reduced to a sequence of relevant tokens.
 
+We choose to use a list of most common stop-words we found on internet instead of use the proposed list in weka. We also decided to dont't remove badwords because they can be usefull for our analysis as they might be very expressive regarding an opionion.
+
 (immagine di esempio prima-dopo?)
 
+We operate now `stemming`: the process of reducing
+each token to its stem or root form, by removing its suffix, in order to group words having closely
+related semantics. At the end of this step each text
+is represented as a sequence of stems. We installed the `snowballStemmer` and used it with "english" as language.
 
+(immagine di esempio prima-dopo?)
+
+(immagine schematica di tutti i passaggi ?)
+
+## 4.Classification
 
 
 
