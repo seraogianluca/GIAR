@@ -76,5 +76,7 @@ is represented as a sequence of stems. We installed the `snowballStemmer` and us
 
 ## 4.Classification
 
+Once the dataset is ready we perform several tests on different classifier and different parameters.
+
 
 
