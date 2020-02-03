@@ -19,99 +19,148 @@ import weka.classifiers.meta.FilteredClassifier;
 import weka.core.SerializationHelper;
 
 public class TwitterConnector {
-	public static void searchTweets(String searchTerm) {
+	public static ArrayList<String> searchTweets(String searchTerm) {
 		try {
-			Twitter twitter = TwitterFactory.getSingleton();
-
-			Query query = new Query(searchTerm);
+			Twitter twitter;
+			Query query;
+			QueryResult result;
+			ArrayList<String> tweets;
+			
+			twitter = TwitterFactory.getSingleton();
+			tweets = new ArrayList<String>();
+			query = new Query(searchTerm);
 			query.setLang("en");
-			query.setCount(50);
-			QueryResult result = twitter.search(query);
-
-			ArrayList<String> tweets = new ArrayList<String>();
-			for (Status status : result.getTweets()) {
-				if(!status.isRetweet()) {
-					tweets.add(tweetCleaning(status));
+			query.setCount(1000);
+			result = twitter.search(query);
+			
+			while (tweets.size() < 50) {
+				for (Status status : result.getTweets()) {
+					if (!status.isRetweet()) {
+						tweets.add(tweetCleaning(status));
+					}
 				}
+				
+				//Query for the next pages
+				query = result.nextQuery();
+				result = twitter.search(query);
 			}
 			
-			createDataset(tweets);
+			return tweets;
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
+		
+		return null;
 	}
 	
 	private static String tweetCleaning(Status tweet) {
-		String cleanedTweet = EmojiParser.removeAllEmojis(tweet.getText());
-		HashtagEntity[] hashtags = tweet.getHashtagEntities();
-		UserMentionEntity[] mentions = tweet.getUserMentionEntities();
+		String cleanedTweet;
+		HashtagEntity[] hashtags;
+		UserMentionEntity[] mentions;
 		
-		for(HashtagEntity h: hashtags) {
+		//Remove emojis
+		cleanedTweet = EmojiParser.removeAllEmojis(tweet.getText());
+		
+		//Remove hashtags
+		hashtags = tweet.getHashtagEntities();
+	
+		for (HashtagEntity h: hashtags) {
 			cleanedTweet = cleanedTweet.replaceAll("#" + h.getText() + "\\b", " ");
 		}
 	
-		for(UserMentionEntity m: mentions) {
+		//Remove mentions
+		mentions = tweet.getUserMentionEntities();
+		
+		for (UserMentionEntity m: mentions) {
 			cleanedTweet = cleanedTweet.replaceAll("@" + m.getScreenName() + "\\b", " ");
 		}
 	
+		//Remove links
 		cleanedTweet = cleanedTweet.replaceAll("(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]", " ");
+		
+		//Collapse multiple spaces
 		cleanedTweet = cleanedTweet.replaceAll("\\s+", " ");
 		
 		return cleanedTweet;
 	}
 	
-	private static void createDataset(ArrayList<String> tweets) {
-		Attribute text = new Attribute("text", true);
-		ArrayList<String> labels = new ArrayList<String>();
-		labels.add("positive");
-		labels.add("negative");
-		labels.add("none");
-		Attribute clas = new Attribute("class", labels);
-		ArrayList<Attribute> attributes = new ArrayList<Attribute>();
-		attributes.add(text);
-		attributes.add(clas);
-		Instances dataset = new Instances("tweets", attributes, tweets.size());
-		dataset.setClassIndex(dataset.numAttributes()-1);
-		
-		for(int i = 0; i < tweets.size(); i++) {
-			double[] value = new double[dataset.numAttributes()];
-			value[0] = dataset.attribute(0).addStringValue(tweets.get(i));
-			Instance inst = new DenseInstance(1.0, value);
-			dataset.add(inst);
-			dataset.instance(i).setClassMissing();
-		}
-		
+	private static ArrayList<Integer> classify(ArrayList<String> tweets) {
 		try {
+			ArrayList<Integer> opinions;
+			ArrayList<String> classLabels;
+			Attribute text;
+			Attribute clas;
+			ArrayList<Attribute> attributes;
+			Instances dataset;
+			Instance inst;
 			FilteredClassifier classifier;
-			classifier = (FilteredClassifier)SerializationHelper.read("/Users/gianluca/GitHub/GIAR_datamining/src/main/resources/classifier.model");
+			
+			opinions = new ArrayList<Integer>();
+			opinions.add(0);
+			opinions.add(0);
+			
+			classLabels = new ArrayList<String>();
+			classLabels.add("positive");
+			classLabels.add("negative");
+			classLabels.add("none");
+			
+			text = new Attribute("text", true);
+			clas = new Attribute("class", classLabels);
+			attributes = new ArrayList<Attribute>();
+			attributes.add(text);
+			attributes.add(clas);
+			
+			dataset = new Instances("tweets", attributes, tweets.size());
+			dataset.setClassIndex(dataset.numAttributes()-1);
+		
+			for(int i = 0; i < tweets.size(); i++) {
+				double[] value = new double[dataset.numAttributes()];
+				value[0] = dataset.attribute(0).addStringValue(tweets.get(i));
+				inst = new DenseInstance(1.0, value);
+				dataset.add(inst);
+				dataset.instance(i).setClassMissing();
+			}
+						
+			classifier = (FilteredClassifier)SerializationHelper.read("./src/main/resources/classifier.model");
 			
 			for(int i = 0; i < tweets.size(); i++) {
-				classifier.classifyInstance(dataset.instance(i));
-				System.out.println(dataset.instance(i));
+				double predicted;
+				
+				dataset.instance(i).setClassValue(classifier.classifyInstance(dataset.instance(i)));
+				predicted = dataset.instance(i).classValue();
+				if(predicted == 0) { //Index of the class label array
+					opinions.set(0, opinions.get(0) + 1);
+				} else if (predicted == 1) {
+					opinions.set(1, opinions.get(1) + 1);
+				}
+				//System.out.println(dataset.instance(i).toString());
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-//		try {
+			
 //			ArffSaver saver = new ArffSaver();
 //			saver.setInstances(dataset);
 //			saver.setFile(new File("./tweets.arff"));
 //			saver.writeBatch();
-//		} catch(IOException io) {
-//			io.printStackTrace();
-//		}
+			
+			return opinions;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
+		return null;
 	}
 	
-//	public static void loadModel() {
-//		try {
-//		
-//			FilteredClassifier classifier;
-//			classifier = (FilteredClassifier) SerializationHelper.read("C:\\Users\\bari9\\git\\GIAR_datamining\\src\\main\\resources\\classifier.model");
-//			
-//			
-//		}catch(Exception e) {e.printStackTrace();}
-//		
-//	}
+	public static ArrayList<Integer> sentimentAnalysis(String game) {
+		ArrayList<String> tweets;
+		ArrayList<Integer> opinions = new ArrayList<Integer>();
+		
+		tweets = searchTweets(game.toLowerCase());
+		
+		if(tweets == null) {
+			System.out.println("No opinions found.\n");
+		} else {
+			opinions.addAll(classify(tweets));
+		}
+		
+		return opinions;
+	}
 }

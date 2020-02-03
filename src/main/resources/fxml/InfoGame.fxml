@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
@@ -42,7 +43,7 @@
                      <font>
                         <Font size="18.0" />
                      </font></Text>
-                  <JFXComboBox fx:id="yourRating" focusColor="#ffff0d" layoutX="464.0" layoutY="165.0" onAction="#rateGame" prefHeight="31.0" prefWidth="133.0" promptText="Rate this game" />
+                  <JFXComboBox fx:id="yourRating" focusColor="#ffff0d" layoutX="463.0" layoutY="165.0" onAction="#rateGame" prefHeight="31.0" prefWidth="133.0" promptText="Rate this game" />
                   <Text layoutX="61.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rating:" AnchorPane.leftAnchor="61.0">
                  
                      <font>
@@ -53,12 +54,12 @@
                         <Font name="System Bold Italic" size="27.0" />
                      </font>
                   </Text>
-                  <Text layoutX="338.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Rating:" AnchorPane.leftAnchor="338.0">
+                  <Text layoutX="327.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Rating:" AnchorPane.leftAnchor="327.0">
                      <font>
                         <Font size="18.0" />
                      </font></Text>
-                  <JFXButton fx:id="addToWishlistButton" focusTraversable="false" layoutX="57.0" layoutY="14.0" onAction="#addToWishlist" prefHeight="33.0" prefWidth="138.0" style="-fx-background-color: #ffff0d;" text="Add To Wishlist" AnchorPane.leftAnchor="60.0" />
-                  <JFXButton fx:id="addToMyGamesButton" focusTraversable="false" layoutX="220.0" layoutY="14.0" onAction="#addToMyGames" prefHeight="33.0" prefWidth="138.0" style="-fx-background-color: #ffff0d;" text="Add To MyGames" AnchorPane.leftAnchor="220.0" />
+                  <JFXButton fx:id="addToWishlistButton" focusTraversable="false" layoutX="217.0" layoutY="14.0" onAction="#addToWishlist" prefHeight="33.0" prefWidth="138.0" style="-fx-background-color: #ffff0d;" text="Add To Wishlist" AnchorPane.leftAnchor="217.0" />
+                  <JFXButton fx:id="addToMyGamesButton" focusTraversable="false" layoutX="375.0" layoutY="14.0" onAction="#addToMyGames" prefHeight="33.0" prefWidth="138.0" style="-fx-background-color: #ffff0d;" text="Add To MyGames" AnchorPane.leftAnchor="375.0" />
                   <Text layoutX="60.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of release:" AnchorPane.leftAnchor="60.0">
                      <font>
                         <Font size="18.0" />
@@ -92,6 +93,37 @@
                      <font>
                         <Font size="18.0" />
                      </font></Text>
+                  <ImageView fitHeight="27.0" fitWidth="32.0" layoutX="313.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Twitter_bird_logo.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="326.0" layoutY="118.0" text="Opinions:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="479.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/like.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="positive" layoutX="435.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="581.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/dislike.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="negative" layoutX="540.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Text>
+                  <JFXButton fx:id="back" focusTraversable="false" layoutX="59.0" layoutY="14.0" onAction="#back" prefHeight="33.0" prefWidth="138.0" style="-fx-background-color: #ffff0d;" text="back" />
                </children>
             </AnchorPane>
          </center></BorderPane>
