@@ -59,7 +59,8 @@ At this point we need to handle noise removing `stop-words`. Those are words pro
 - Common stop-words include articles, conjunctions, prepositions, pronouns...
 - Other stop-words are those typically appearing very often in sentences of the considered language (language-specific stop-words), or in the particular context
 analyzed (domain-specific stop-words);
-- At the end of this step, each text is cleaned from stop-words, and thus reduced to a sequence of relevant tokens.
+
+At the end of this step, each text is cleaned from stop-words, and thus reduced to a sequence of relevant tokens.
 
 We choose to use a list of most common stop-words we found on internet instead of use the proposed list in weka. We also decided to dont't remove badwords because they can be usefull for our analysis as they might be very expressive regarding an opionion.
 
