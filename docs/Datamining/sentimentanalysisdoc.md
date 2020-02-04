@@ -327,7 +327,7 @@ positive |  negative |  none |  <-- classified as
 
 ### 4.8 Comparison of classification models
 
-<-- Da scrivere -->
+![Classifiers-Comparison](./classifiers.png)
 
 ## 3 Application
 
