@@ -57,10 +57,6 @@ For each test we performed the `10-Fold-Cross-Validation`. A summarization of ea
 
 ### 4.1 J48
 
-=== Stratified cross-validation ===
-
-=== Summary ===
-
 **Correctly Classified Instances:** 672 (67.2673%)
 
 **Incorrectly Classified Instances:** 327 (32.7327%)
@@ -77,7 +73,7 @@ For each test we performed the `10-Fold-Cross-Validation`. A summarization of ea
 
 **Total Number of Instances:** 999     
 
-=== Detailed Accuracy By Class ===
+**Detailed Accuracy By Class**
 
  .|TP Rate | FP Rate|  Precision | Recall  | F-Measure | MCC  |    ROC Area | PRC Area | Class
  ---|----|----|----|----|----|----|----|----|----|
@@ -86,7 +82,7 @@ For each test we performed the `10-Fold-Cross-Validation`. A summarization of ea
   -|0,715  |  0,114  |  0,758   |   0,715   | 0,736  |    0,610 |   0,877   |  0,795  |   none
 Weighted Avg. |   0,673 |   0,164   | 0,680  |    0,673  |  0,674   |   0,512 |   0,825    | 0,702     
 
-=== Confusion Matrix ===
+**Confusion Matrix**
 
    positive|  negative|  none |  <-- classified as
    --|--|--|-------|
@@ -94,11 +90,7 @@ Weighted Avg. |   0,673 |   0,164   | 0,680  |    0,673  |  0,674   |   0,512 | 
   60 | 226 | 47 |  negative
   30 | 65 | 238 |  none
 
-### 4.2 Bayes Multinominal
-
-=== Stratified cross-validation ===
-
-=== Summary ===
+### 4.2 Naive Bayes Multinominal Text
 
 **Correctly Classified Instances:** 811 (81.1812%)
 
@@ -116,7 +108,7 @@ Weighted Avg. |   0,673 |   0,164   | 0,680  |    0,673  |  0,674   |   0,512 | 
 
 **Total Number of Instances:** 999     
 
-=== Detailed Accuracy By Class ===
+**Detailed Accuracy By Class**
 
  .|TP Rate | FP Rate|  Precision | Recall  | F-Measure | MCC  |    ROC Area | PRC Area | Class
  ---|----|----|----|----|----|----|----|----|----|
@@ -125,7 +117,7 @@ Weighted Avg. |   0,673 |   0,164   | 0,680  |    0,673  |  0,674   |   0,512 | 
 . | 0,832 |   0,023  |  0,949   |   0,832  |  0,886   |   0,839  |  0,967  |   0,957  |   none
 Weighted Avg.  |  0,812  |  0,094  |  0,825  |    0,812  |  0,814 |     0,724 |   0,938  |   0,892     
 
-=== Confusion Matrix ===
+**Confusion Matrix**
 
    positive |  negative |  none |  <-- classified as
    --|--|--|-------|
@@ -134,10 +126,6 @@ Weighted Avg.  |  0,812  |  0,094  |  0,825  |    0,812  |  0,814 |     0,724 | 
   33 | 23  | 277 |   none
 
 ### 4.3 3-Nearest-Neighbors
-
-=== Stratified cross-validation ===
-
-=== Summary ===
 
 **Correctly Classified Instances:** 695 (69.5696%)
 
@@ -155,7 +143,7 @@ Weighted Avg.  |  0,812  |  0,094  |  0,825  |    0,812  |  0,814 |     0,724 | 
 
 **Total Number of Instances:** 999    
 
-=== Detailed Accuracy By Class ===
+**Detailed Accuracy By Class**
 
  .|TP Rate | FP Rate|  Precision | Recall  | F-Measure | MCC  |    ROC Area | PRC Area | Class
  ---|----|----|----|----|----|----|----|----|----|
@@ -164,7 +152,7 @@ Weighted Avg.  |  0,812  |  0,094  |  0,825  |    0,812  |  0,814 |     0,724 | 
  . | 0,889 |   0,221 |   0,668   |   0,889  |  0,763  |    0,634  |  0,916   |  0,870   |  none
 Weighted Avg. |   0,696  |  0,152  |  0,723  |    0,696  |  0,684   |   0,559  |  0,863   |  0,766     
 
-=== Confusion Matrix ===
+**Confusion Matrix**
 
    positive |  negative |  none |  <-- classified as
    --|--|--|-------|
@@ -173,10 +161,6 @@ Weighted Avg. |   0,696  |  0,152  |  0,723  |    0,696  |  0,684   |   0,559  |
   29 |  8  | 296 | none
 
 ### 4.4 RandomForest
-  
-=== Stratified cross-validation ===
-
-=== Summary ===
 
 **Correctly Classified Instances:** 804 (80.4805%)
 
@@ -194,7 +178,7 @@ Weighted Avg. |   0,696  |  0,152  |  0,723  |    0,696  |  0,684   |   0,559  |
 
 **Total Number of Instances:** 999  
 
-=== Detailed Accuracy By Class ===
+**Detailed Accuracy By Class**
 
  .|TP Rate | FP Rate|  Precision | Recall  | F-Measure | MCC  |    ROC Area | PRC Area | Class
  ---|----|----|----|----|----|----|----|----|----|
@@ -203,7 +187,7 @@ Weighted Avg. |   0,696  |  0,152  |  0,723  |    0,696  |  0,684   |   0,559  |
  . | 0,841  |  0,072  |  0,854   |   0,841   | 0,847    |  0,772   | 0,942  |   0,916  |   none
 Weighted Avg. |   0,805  |  0,098 |   0,811  |    0,805  |  0,804   |   0,711  |  0,916   |  0,852 
 
-=== Confusion Matrix ===
+**Confusion Matrix**
 
    positive |  negative |  none |  <-- classified as
    --|--|--|-------|
@@ -212,10 +196,6 @@ Weighted Avg. |   0,805  |  0,098 |   0,811  |    0,805  |  0,804   |   0,711  |
   36 | 17  | 280 | none
 
 ### 4.5 HoeffdingTree
-
-=== Stratified cross-validation ===
-
-=== Summary ===
 
 **Correctly Classified Instances:** 429 (42.9429%)
 
@@ -233,7 +213,7 @@ Weighted Avg. |   0,805  |  0,098 |   0,811  |    0,805  |  0,804   |   0,711  |
 
 **Total Number of Instances:** 999  
 
-=== Detailed Accuracy By Class ===
+**Detailed Accuracy By Class**
 
  .|TP Rate | FP Rate|  Precision | Recall  | F-Measure | MCC  |    ROC Area | PRC Area | Class
  ---|----|----|----|----|----|----|----|----|----|
@@ -242,7 +222,7 @@ Weighted Avg. |   0,805  |  0,098 |   0,811  |    0,805  |  0,804   |   0,711  |
  . | 0,997  |  0,797 |   0,385   |   0,997  |   0,555  |    0,275  |   0,604 |    0,387 |    none
 Weighted Avg.  |  0,429 |   0,285 |   0,647   |   0,429   | 0,339   |   0,240 |   0,682  |   0,500     
 
-=== Confusion Matrix ===
+**Confusion Matrix**
 
    positive |  negative |  none |  <-- classified as
    --|--|--|-------|
@@ -252,9 +232,6 @@ Weighted Avg.  |  0,429 |   0,285 |   0,647   |   0,429   | 0,339   |   0,240 | 
 
 ### 4.6 Naive Bayes
 
-=== Stratified cross-validation ===
-
-=== Summary ===
 
 **Correctly Classified Instances:** 753 (75.3754%)
 
@@ -272,7 +249,7 @@ Weighted Avg.  |  0,429 |   0,285 |   0,647   |   0,429   | 0,339   |   0,240 | 
 
 **Total Number of Instances:** 999  
 
-=== Detailed Accuracy By Class ===
+**Detailed Accuracy By Class**
 
  .|TP Rate | FP Rate|  Precision | Recall  | F-Measure | MCC  |    ROC Area | PRC Area | Class
  ---|----|----|----|----|----|----|----|----|----|
@@ -281,7 +258,7 @@ Weighted Avg.  |  0,429 |   0,285 |   0,647   |   0,429   | 0,339   |   0,240 | 
 . | 0,658 |   0,002 |   0,995  |    0,658 |   0,792   |   0,746 |   0,931  |   0,910  |   none
 Weighted Avg. |   0,754  |  0,123 |   0,792  |    0,754  |  0,757 |     0,649  |  0,905  |   0,846     
 
-=== Confusion Matrix ===
+**Confusion Matrix**
 
    positive |  negative |  none |  <-- classified as
    --|--|--|-------|
@@ -291,8 +268,6 @@ Weighted Avg. |   0,754  |  0,123 |   0,792  |    0,754  |  0,757 |     0,649  |
 
 ### 4.7 Support Vector Machine
 
-== Stratified cross-validation ===
-=== Summary ===
 
 **Correctly Classified Instances:** 770 (77.0771%)
 
@@ -310,6 +285,8 @@ Weighted Avg. |   0,754  |  0,123 |   0,792  |    0,754  |  0,757 |     0,649  |
 
 **Total Number of Instances:** 999   
 
+**Detailed Accuracy By Class**
+
  .|TP Rate | FP Rate|  Precision | Recall  | F-Measure | MCC  |    ROC Area | PRC Area | Class
  ---|----|----|----|----|----|----|----|----|----|
 . | 0,745 |   0,144  |  0,721  |    0,745  |  0,733   |   0,596  |  0,800  |   0,622  |   positive
@@ -317,7 +294,7 @@ Weighted Avg. |   0,754  |  0,123 |   0,792  |    0,754  |  0,757 |     0,649  |
   . |0,847 |   0,092 |   0,822   |   0,847 |   0,834  |    0,750  |  0,878  |   0,747  |   none
 Weighted Avg.  |  0,771  |  0,115  |  0,771   |   0,771  |  0,770  |    0,656 |   0,828   |  0,672 
 
-=== Confusion Matrix ===
+**Confusion Matrix**
 
 positive |  negative |  none |  <-- classified as
    --|--|--|-------|  
