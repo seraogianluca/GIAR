@@ -307,16 +307,87 @@ positive |  negative |  none |  <-- classified as
 ![Classifiers-Comparison](./classifiers.png)
 
 ## 3 Application
+### 3.1 Data Acquisition
+Tweets are fetched whenever a user look for information about a game. To download tweets we used the official Twitter API with the `Twitter4j` java library.
 
-### 3.1 Data Preprocessing
+To connect with Twitter we need to create a `Twitter` object from a `TwitterFactory`. The Twitter object is retrieved as a Singleton, so we have only one connection during a session. The query is performed using a `Query` object on which several paramenters can be specified. As for the training-set we fetched english tweets based on the game title.
 
-To mine a sentiment in tweets, raw text must be cleaned. In this process we need to discard some common elements you find usually in tweets that are not interesting for our aim, like:
+An example of the fetching code:
+```java
+Twitter twitter;
+Query query;
+QueryResult result;
+			
+twitter = TwitterFactory.getSingleton();
+tweets = new ArrayList<String>();
+query = new Query(searchTerm);
+query.setLang("en");
+query.setCount(1000);
+result = twitter.search(query);
+```
+
+The `setCount` option let specify the maximum number of tweets to return.
+
+### 3.2 Data Preprocessing
+To perform a sentiment analysis on tweets raw text must be cleaned. 
+
+An example of raw tweet:
+```
+@MainManPepe @MattHDGamer By uninstalling Fifa 20 as it’s terrible 😄
+```
+
+In this process we need to delete some noisy elements you find usually in tweets that are not interesting for our aim, such as:
 - hashtags
 - mentions
 - links
-- emoji
+- emojis
 
-Those elements are our noise. To do this we built some java methods using regoular expressions to remove hastags, mentions and links. To discard emoji we use a library for java `Emoji-Java`
+The tweet after cleaning process:
+```
+By uninstalling Fifa 20 as it’s terrible 
+```
+
+To do this we used regular expressions to remove hastags, mentions and links. To remove emojis we used the `Emoji-Java` library.
+
+Our tweet cleaning function:
+```java
+private static String tweetCleaning(Status tweet) {
+	String cleanedTweet;
+	HashtagEntity[] hashtags;
+	UserMentionEntity[] mentions;
+	
+	//Remove emojis
+	cleanedTweet = EmojiParser.removeAllEmojis(tweet.getText());
+	
+	//Remove hashtags
+	hashtags = tweet.getHashtagEntities();
+	
+	for (HashtagEntity h: hashtags) {
+		cleanedTweet = cleanedTweet.replaceAll("#" + h.getText() + "\\b", " ");
+	}
+
+	//Remove mentions
+	mentions = tweet.getUserMentionEntities();
+	
+	for (UserMentionEntity m: mentions) {
+		cleanedTweet = cleanedTweet.replaceAll("@" + m.getScreenName() + "\\b", " ");
+	}
+
+	//Remove links
+	cleanedTweet = cleanedTweet.replaceAll("(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]", " ");
+	
+	//Collapse multiple spaces
+	cleanedTweet = cleanedTweet.replaceAll("\\s+", " ");
+	
+	return cleanedTweet;
+}
+```
+
+```
+'By uninstalling Fifa 20 as it’s terrible',negative
+```
+
+ 
 that allows us to find and remove emoji from text. 
 Mettere esempio di prima-dopo?
 
