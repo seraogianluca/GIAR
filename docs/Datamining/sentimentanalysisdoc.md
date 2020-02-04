@@ -4,8 +4,8 @@
 
 1. [Intoduction](#1-intoduction)
 2. [Dataset description](#2-dataset-description)
-3. [Application](#3-application)
-4. [Classification](#4-classification)
+3. [Classification](#3-classification)
+4. [Application](#4-application)
 
 
 ## 1. Introduction
@@ -46,7 +46,7 @@ We noticed that the words composing the title of the games we looked for were mo
 ![Word-Cloud-2](./word_cloud_2.png)
 
 
-## 4 Classification
+## 3 Classification
 
 Once the dataset is ready we perform several tests using different classifiers. We used a `filteredClassifier` to perform tests.
 We used a multi-filter with the following filters:
@@ -55,7 +55,7 @@ We used a multi-filter with the following filters:
 
 For each test we performed the `10-Fold-Cross-Validation`. A summarization of each test is below shown:
 
-### 4.1 J48
+### 3.1 J48
 
 **Correctly Classified Instances:** 672 (67.2673%)
 
@@ -90,7 +90,7 @@ Weighted Avg. |   0,673 |   0,164   | 0,680  |    0,673  |  0,674   |   0,512 | 
   60 | 226 | 47 |  negative
   30 | 65 | 238 |  none
 
-### 4.2 Naive Bayes Multinominal Text
+### 3.2 Naive Bayes Multinominal Text
 
 **Correctly Classified Instances:** 811 (81.1812%)
 
@@ -125,7 +125,7 @@ Weighted Avg.  |  0,812  |  0,094  |  0,825  |    0,812  |  0,814 |     0,724 | 
   84 | 243  | 6 |  negative
   33 | 23  | 277 |   none
 
-### 4.3 3-Nearest-Neighbors
+### 3.3 3-Nearest-Neighbors
 
 **Correctly Classified Instances:** 695 (69.5696%)
 
@@ -160,7 +160,7 @@ Weighted Avg. |   0,696  |  0,152  |  0,723  |    0,696  |  0,684   |   0,559  |
  100 | 152 | 81 | negative
   29 |  8  | 296 | none
 
-### 4.4 RandomForest
+### 3.4 RandomForest
 
 **Correctly Classified Instances:** 804 (80.4805%)
 
@@ -195,7 +195,7 @@ Weighted Avg. |   0,805  |  0,098 |   0,811  |    0,805  |  0,804   |   0,711  |
   67 | 237  | 29 | negative
   36 | 17  | 280 | none
 
-### 4.5 HoeffdingTree
+### 3.5 HoeffdingTree
 
 **Correctly Classified Instances:** 429 (42.9429%)
 
@@ -230,7 +230,7 @@ Weighted Avg.  |  0,429 |   0,285 |   0,647   |   0,429   | 0,339   |   0,240 | 
   35 |  23 | 275 |negative
    1 |  0 | 332 |none
 
-### 4.6 Naive Bayes
+### 3.6 Naive Bayes
 
 
 **Correctly Classified Instances:** 753 (75.3754%)
@@ -266,7 +266,7 @@ Weighted Avg. |   0,754  |  0,123 |   0,792  |    0,754  |  0,757 |     0,649  |
   55 | 278 |  0 |negative
   38  | 76 | 219 |none
 
-### 4.7 Support Vector Machine
+### 3.7 Support Vector Machine
 
 
 **Correctly Classified Instances:** 770 (77.0771%)
@@ -302,7 +302,7 @@ positive |  negative |  none |  <-- classified as
   64  | 240 |  29 |negative
   32 | 19 | 282 |none
 
-### 4.8 Comparison of classification models
+### 3.8 Comparison of classification models
 
 ![Classifiers-Comparison](./classifiers.png)
 
