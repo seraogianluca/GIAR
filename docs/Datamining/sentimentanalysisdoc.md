@@ -358,15 +358,15 @@ The `setCount` option let specify the maximum number of tweets to return. The re
 A set of at least 50 tweets are selected to perform the classification faster. The retweets are discarded:
 ```java
 while (tweets.size() < 50) {
-				for (Status status : result.getTweets()) {
-					if (!status.isRetweet()) {
-						tweets.add(tweetCleaning(status));
-					}
-				}
+	for (Status status : result.getTweets()) {
+		if (!status.isRetweet()) {
+			tweets.add(tweetCleaning(status));
+		}
+	}
 				
-				//Query for the next pages
-				query = result.nextQuery();
-				result = twitter.search(query);
+	//Query for the next pages
+	query = result.nextQuery();
+	result = twitter.search(query);
 }
 ```
 
