@@ -318,8 +318,20 @@ positive |  negative |  none |  <-- classified as
   32 | 19 | 282 |none
 
 ### 3.8 Comparison of classification models
+A short summary of the accurancy of the classifiers:
 
 ![Classifiers-Comparison](./classifiers.png)
+
+The table below relates the various classifiers with the matching measures:
+
+Classifier | Accurancy|  K-statistic | Precision  | Recall | F-Measure  |    ROC 
+----|----|----|----|----|----|----|
+Bayes Multinomial |  81.1812% | 0.7177 | 0,825  |    0,812  |  0,814 | 0,938
+Random Forest | 81.0811% | 0.7162 | 0,818   |   0,811  |  0,810  | 0,933
+Naive Bayes |  75.3754% | 0.6306 | 0,792  |    0,754  |  0,757 | 0,905
+SVM | 77.0771% | 0.6562 | 0,771   |   0,771  |  0,770 | 0,828
+J48 | 67.2673% | 0.509 | 0,680  | 0,673  |  0,674 | 0,825
+1-NN |  63.964 % | 0.4595 | 0,645 | 0,640 | 0,642 | 0,850
 
 ## 4 Application
 ### 4.1 Data Acquisition
@@ -526,4 +538,3 @@ For this reason we decided to create a thread and run the sentiment analysis in 
 		sentimentAnalysis.start();
   }
   ```
-
