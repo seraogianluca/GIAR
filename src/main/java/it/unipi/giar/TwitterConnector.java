@@ -15,7 +15,7 @@ import weka.core.Attribute;
 import weka.core.DenseInstance;
 import weka.core.Instance;
 import weka.core.Instances;
-import weka.classifiers.meta.FilteredClassifier;
+import weka.classifiers.bayes.NaiveBayesMultinomialText;
 import weka.core.SerializationHelper;
 
 public class TwitterConnector {
@@ -93,7 +93,7 @@ public class TwitterConnector {
 			ArrayList<Attribute> attributes;
 			Instances dataset;
 			Instance inst;
-			FilteredClassifier classifier;
+			NaiveBayesMultinomialText classifier;
 			
 			opinions = new ArrayList<Integer>();
 			opinions.add(0);
@@ -121,7 +121,7 @@ public class TwitterConnector {
 				dataset.instance(i).setClassMissing();
 			}
 						
-			classifier = (FilteredClassifier)SerializationHelper.read("./src/main/resources/classifier.model");
+			classifier = (NaiveBayesMultinomialText)SerializationHelper.read("./src/main/resources/classifier.model");
 			
 			for(int i = 0; i < tweets.size(); i++) {
 				double predicted;
