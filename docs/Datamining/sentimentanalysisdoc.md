@@ -306,8 +306,8 @@ positive |  negative |  none |  <-- classified as
 
 ![Classifiers-Comparison](./classifiers.png)
 
-## 3 Application
-### 3.1 Data Acquisition
+## 4 Application
+### 4.1 Data Acquisition
 Tweets are fetched whenever a user look for information about a game. To download tweets we used the official Twitter API with the `Twitter4j` java library.
 
 To connect with Twitter we need to create a `Twitter` object from a `TwitterFactory`. The Twitter object is retrieved as a Singleton, so we have only one connection during a session. The query is performed using a `Query` object on which several paramenters can be specified. As for the training-set we fetched english tweets based on the game title.
@@ -328,7 +328,7 @@ result = twitter.search(query);
 
 The `setCount` option let specify the maximum number of tweets to return.
 
-### 3.2 Data Preprocessing
+### 4.2 Data Preprocessing
 To perform a sentiment analysis on tweets raw text must be cleaned. 
 
 An example of raw tweet:
