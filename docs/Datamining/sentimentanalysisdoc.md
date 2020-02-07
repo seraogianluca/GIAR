@@ -540,4 +540,5 @@ For this reason we decided to create a thread and run the sentiment analysis in 
   ```
   
   In the following the example of performed analysis on the GUI:
+  
   ![Screen](./user_screen.png)
