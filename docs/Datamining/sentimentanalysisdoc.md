@@ -333,7 +333,7 @@ Naive Bayes |  75.3754% | 0.6306 | 0,792  |    0,754  |  0,757 | 0,905
 J48 | 67.2673% | 0.509 | 0,680  | 0,673  |  0,674 | 0,825
 1-NN |  63.964 % | 0.4595 | 0,645 | 0,640 | 0,642 | 0,850
 
-To choose the best classifier we performed a paired t-test on the best two classifier obtained during the tests phase. So we performed the t-test between the `Random Forest`and `Naive Bayes Multinomial` in Weka. The result of the test is shown below:
+To choose the best classifier we performed a paired t-test on the best two classifier obtained during the tests phase. So we performed the t-test between the `Random Forest` and `Naive Bayes Multinomial` in Weka. The result of the test is shown below:
 
 ```
 Tester:     weka.experiment.PairedCorrectedTTester -G 4,5,6 -D 1 -R 2 -S 0.05 -result-matrix "weka.experiment.ResultMatrixPlainText -mean-prec 4 -stddev-prec 5 -col-name-width 0 -row-name-width 25 -mean-width 0 -stddev-width 0 -sig-width 0 -count-width 5 -print-col-names -print-row-names -enum-col-names"
