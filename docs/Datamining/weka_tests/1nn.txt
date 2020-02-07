@@ -1,0 +1,97 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.meta.FilteredClassifier -F "weka.filters.MultiFilter -F \"weka.filters.unsupervised.attribute.StringToWordVector -R first-last -W 1000 -prune-rate -1.0 -I -N 0 -L -stemmer \\\"weka.core.stemmers.SnowballStemmer -S english\\\" -stopwords-handler \\\"weka.core.stopwords.WordsFromFile -stopwords /Users/gianluca/stopwords.txt\\\" -M 1 -tokenizer weka.core.tokenizers.AlphabeticTokenizer\" -F \"weka.filters.supervised.attribute.AttributeSelection -E \\\"weka.attributeSelection.CfsSubsetEval -P 1 -E 1\\\" -S \\\"weka.attributeSelection.BestFirst -D 1 -N 5\\\"\"" -S 1 -W weka.classifiers.lazy.IBk -- -K 1 -W 0 -A "weka.core.neighboursearch.LinearNNSearch -A \"weka.core.EuclideanDistance -R first-last\""
+Relation:     _Users_gianluca_dataset
+Instances:    999
+Attributes:   2
+              text
+              @@class@@
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+FilteredClassifier using weka.classifiers.lazy.IBk -K 1 -W 0 -A "weka.core.neighboursearch.LinearNNSearch -A \"weka.core.EuclideanDistance -R first-last\"" on data filtered through weka.filters.MultiFilter -F "weka.filters.unsupervised.attribute.StringToWordVector -R 1 -W 1000 -prune-rate -1.0 -I -N 0 -L -stemmer \"weka.core.stemmers.SnowballStemmer -S english\" -stopwords-handler \"weka.core.stopwords.WordsFromFile -stopwords /Users/gianluca/stopwords.txt\" -M 1 -tokenizer weka.core.tokenizers.AlphabeticTokenizer" -F "weka.filters.supervised.attribute.AttributeSelection -E \"weka.attributeSelection.CfsSubsetEval -P 1 -E 1\" -S \"weka.attributeSelection.BestFirst -D 1 -N 5\""
+
+Filtered Header
+@relation '_Users_gianluca_dataset-weka.filters.unsupervised.attribute.StringToWordVector-R1-W1000-prune-rate-1.0-I-N0-L-stemmerweka.core.stemmers.SnowballStemmer -S english-stopwords-handlerweka.core.stopwords.WordsFromFile -stopwords /Users/gianluca/stopwords.txt-M1-tokenizerweka.core.tokenizers.AlphabeticTokenizer-weka.filters.supervised.attribute.AttributeSelection-Eweka.attributeSelection.CfsSubsetEval -P 1 -E 1-Sweka.attributeSelection.BestFirst -D 1 -N 5-weka.filters.MultiFilter-Fweka.filters.unsupervised.attribute.StringToWordVector -R 1 -W 1000 -prune-rate -1.0 -I -N 0 -L -stemmer \"weka.core.stemmers.SnowballStemmer -S english\" -stopwords-handler \"weka.core.stopwords.WordsFromFile -stopwords /Users/gianluca/stopwords.txt\" -M 1 -tokenizer weka.core.tokenizers.AlphabeticTokenizer-Fweka.filters.supervised.attribute.AttributeSelection -E \"weka.attributeSelection.CfsSubsetEval -P 1 -E 1\" -S \"weka.attributeSelection.BestFirst -D 1 -N 5\"'
+
+@attribute amaz numeric
+@attribute awesom numeric
+@attribute bad numeric
+@attribute beauti numeric
+@attribute bore numeric
+@attribute check numeric
+@attribute dope numeric
+@attribute far numeric
+@attribute fuck numeric
+@attribute fun numeric
+@attribute game numeric
+@attribute great numeric
+@attribute live numeric
+@attribute love numeric
+@attribute masterpiec numeric
+@attribute playstat numeric
+@attribute server numeric
+@attribute shit numeric
+@attribute solid numeric
+@attribute wasn numeric
+@attribute biggest numeric
+@attribute els numeric
+@attribute overhyp numeric
+@attribute pack numeric
+@attribute previous numeric
+@attribute trash numeric
+@attribute worst numeric
+@attribute broadcast numeric
+@attribute camo numeric
+@attribute code numeric
+@attribute crossbow numeric
+@attribute earli numeric
+@attribute earn numeric
+@attribute hang numeric
+@attribute lvl numeric
+@attribute montag numeric
+@attribute pro numeric
+@attribute spill numeric
+@attribute stream numeric
+@attribute via numeric
+@attribute warfar numeric
+@attribute @@class@@ {positive,negative,none}
+
+@data
+
+
+Classifier Model
+IB1 instance-based classifier
+using 1 nearest neighbour(s) for classification
+
+
+Time taken to build model: 4.02 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         639               63.964  %
+Incorrectly Classified Instances       360               36.036  %
+Kappa statistic                          0.4595
+Mean absolute error                      0.2488
+Root mean squared error                  0.362 
+Relative absolute error                 55.9741 %
+Root relative squared error             76.7899 %
+Total Number of Instances              999     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,652    0,179    0,646      0,652    0,649      0,472    0,844     0,741     positive
+                 0,586    0,245    0,545      0,586    0,564      0,335    0,804     0,702     negative
+                 0,682    0,117    0,744      0,682    0,712      0,578    0,902     0,860     none
+Weighted Avg.    0,640    0,180    0,645      0,640    0,642      0,462    0,850     0,767     
+
+=== Confusion Matrix ===
+
+   a   b   c   <-- classified as
+ 217  87  29 |   a = positive
+  89 195  49 |   b = negative
+  30  76 227 |   c = none
+

@@ -4,7 +4,7 @@
 
 1. [Intoduction](#1-intoduction)
 2. [Dataset description](#2-dataset-description)
-3. [Classification](#3-classification)
+3. [Classification in Weka](#3-classification-in-weka)
 4. [Application](#4-application)
 
 
@@ -46,14 +46,29 @@ We noticed that the words composing the title of the games we looked for were mo
 ![Word-Cloud-2](./word_cloud_2.png)
 
 
-## 3 Classification
+## 3 Classification in Weka
 
-Once the dataset is ready we perform several tests using different classifiers. We used a `filteredClassifier` to perform tests.
-We used a multi-filter with the following filters:
-- **attributeSelection**, with evaluator `InfoGainAttributeEval` and search `Ranker` with a threshold of -1000.
-- **StringToWordVector**, setting as stemmer, stopwordshandler and tokenizer respectively english `SnowBallStemmer`, the NLTK's list of common english stop words, and `AlphabeticTokenizer`.
+### 3.1 Data pre-processing in Weka
+In order to transform the cleaned tweets of the dataset into a `bag of words` representation we perform a three step pre-processing.
 
-For each test we performed the `10-Fold-Cross-Validation`. A summarization of each test is below shown:
+**First step:** we need to transform our stream of characters into a stream of processing units, called `tokens`. During this step, after removing punctuation marks, non-text characters and special symbols, each text is represented as a set of words. For removing redundancies between words tokens are converted in lower case. We use the `AlphabeticTokenizer` as tokenizer in Weka.
+
+**Second step:** At this point we need to remove `stop-words`. Those are words providing little or no useful information to the sentiment analysis, for this reason they can be considered as noise. Stop-words are:
+- Common stop-words include articles, conjunctions, prepositions, pronouns, etc.
+- Other stop-words are those typically appearing very often in sentences of the considered language (language-specific stop-words), or in the particular context analyzed (domain-specific stop-words).
+- We also included as stop-words the names of the console such as: `Playstation`, `Xbox`, `Pc`.
+
+We use the `WordsFromFile` as stop-words handler in Weka. We used as list of the NLTK's list of common english stop words, including in the list the console names.
+
+At the end of this step, each text is cleaned from stop-words, and thus reduced to a sequence of relevant tokens. We decided to dont't remove badwords from relevant tokens, because they can be usefull for our analysis as they might be very expressive regarding an opionion.
+
+**Third step:** The last step is the `stemming`: the process of reducing each token to its stem or root form by removing its suffix, in order to group words having closely related semantics. At the end of this step each tweet is represented as a sequence of stems. We use the `english snowballStemmer` as stemmer.
+
+At the end of this step we obtain the `bag of words` representation of the dataset. The attributes so transformed are selected using the `InfoGainAttributeEval` as evaluator and search `Ranker` with a threshold of -1000.
+
+After the pre-processing we perform several tests with different classifiers and for each performing a `10-Fold-Cross-Validation`. We used a `filteredClassifier` to perform tests. A summarization of each test is below shown:
+
+The `Naive Bayes Multinomial Text` don't need to be used as filtered classifier, the attribute selection with this classifier is not performed.
 
 ### 3.1 J48
 
@@ -125,21 +140,21 @@ Weighted Avg.  |  0,812  |  0,094  |  0,825  |    0,812  |  0,814 |     0,724 | 
   84 | 243  | 6 |  negative
   33 | 23  | 277 |   none
 
-### 3.3 3-Nearest-Neighbors
+### 3.3 1-Nearest-Neighbors
 
-**Correctly Classified Instances:** 695 (69.5696%)
+**Correctly Classified Instances:** 639 (63.964 %)
 
-**Incorrectly Classified Instances:** 304 (30.4304%)
+**Incorrectly Classified Instances:** 360 (36.036%)
 
-**Kappa statistic:** 0.5435
+**Kappa statistic:** 0.4595
 
-**Mean absolute error:** 0.2199
+**Mean absolute error:** 0.2488
 
-**Root mean squared error:** 0.3935
+**Root mean squared error:** 0.362
 
-**Relative absolute error:** 49.4705%
+**Relative absolute error:** 55.9741%
 
-**Root relative squared error:** 83.468%
+**Root relative squared error:** 76.7899%
 
 **Total Number of Instances:** 999    
 
@@ -147,18 +162,18 @@ Weighted Avg.  |  0,812  |  0,094  |  0,825  |    0,812  |  0,814 |     0,724 | 
 
  .|TP Rate | FP Rate|  Precision | Recall  | F-Measure | MCC  |    ROC Area | PRC Area | Class
  ---|----|----|----|----|----|----|----|----|----|
-  .|0,742 |   0,194  |  0,657   |   0,742  |  0,697   |   0,533  |  0,849   |  0,713  |   positive
- . |0,456  |  0,042  |  0,844   |   0,456  |  0,593   |   0,508  |  0,823  |   0,716  |   negative
- . | 0,889 |   0,221 |   0,668   |   0,889  |  0,763  |    0,634  |  0,916   |  0,870   |  none
-Weighted Avg. |   0,696  |  0,152  |  0,723  |    0,696  |  0,684   |   0,559  |  0,863   |  0,766     
+  .|0,652 |   0,179  |  0,646   |   0,652  |  0,649   |   0,472  |  0,844   |  0,741  |   positive
+ . |0,586  |  0,245  |  0,545   |   0,586  |  0,564   |   0,335  |  0,804  |   0,702  |   negative
+ . | 0,682 |   0,117 |   0,744   |   0,682  |  0,712  |    0,578  |  0,902   |  0,860   |  none
+Weighted Avg. |   0,640  |  0,180  |  0,645  |    0,640  |  0,642   |   0,462  |  0,850   |  0,767     
 
 **Confusion Matrix**
 
    positive |  negative |  none |  <-- classified as
    --|--|--|-------|
-   247 | 20 | 66 | positive
- 100 | 152 | 81 | negative
-  29 |  8  | 296 | none
+   217 | 87 | 29 | positive
+ 89 | 195 | 49 | negative
+  30 |  76  | 227 | none
 
 ### 3.4 RandomForest
 
@@ -304,7 +319,7 @@ positive |  negative |  none |  <-- classified as
 
 ### 3.8 Comparison of classification models
 
-![Classifiers-Comparison](./classifiers_comparison.png)
+![Classifiers-Comparison](./classifiers.png)
 
 ## 4 Application
 ### 4.1 Data Acquisition
@@ -326,7 +341,22 @@ query.setCount(1000);
 result = twitter.search(query);
 ```
 
-The `setCount` option let specify the maximum number of tweets to return.
+The `setCount` option let specify the maximum number of tweets to return. The result of the query is divided in pages that need to be iterated.
+
+A set of at least 50 tweets are selected to perform the classification faster. The retweets are discarded:
+```java
+while (tweets.size() < 50) {
+				for (Status status : result.getTweets()) {
+					if (!status.isRetweet()) {
+						tweets.add(tweetCleaning(status));
+					}
+				}
+				
+				//Query for the next pages
+				query = result.nextQuery();
+				result = twitter.search(query);
+}
+```
 
 ### 4.2 Data Preprocessing
 To perform a sentiment analysis on tweets raw text must be cleaned. 
@@ -382,48 +412,118 @@ private static String tweetCleaning(Status tweet) {
 	return cleanedTweet;
 }
 ```
-The cleaned tweet, after being labeled by hand:
+
+The tokenization, stop-word removal and stemming pre-processing is performed by the model we use.
+
+### 4.3 Classification
+In this section we present the most code relevant part concerning the dataset creation and the implementation of the classifying process. To classify the cleaned unlabeled instances we need to first create the dataset with the class attribute unlabeled, then we can classify each instance of the dataset.
+
+To build the dataset we create a dataset with two attributes: `Text` and `Class`, the names of the attribute are self-explaining. 
+```java
+//Create the class values array
+ArrayList<String> classLabels;
+classLabels = new ArrayList<String>();
+classLabels.add("positive");
+classLabels.add("negative");
+classLabels.add("none");
+  
+//Attributes
+Attribute clas;
+Attribute text;
+text = new Attribute("text", true);
+clas = new Attribute("class", classLabels);
+
+//List of attributes
+ArrayList<Attribute> attributes;
+attributes = new ArrayList<Attribute>();
+attributes.add(text);
+attributes.add(clas);
+
+//Dataset
+Instances dataset;
+Instance inst;
+dataset = new Instances("tweets", attributes, tweets.size());
+dataset.setClassIndex(dataset.numAttributes()-1);
+
+//Creation of the instances of the dataset and set the class as missing (unlabeled)
+for(int i = 0; i < tweets.size(); i++) {
+	double[] value = new double[dataset.numAttributes()];
+	value[0] = dataset.attribute(0).addStringValue(tweets.get(i));
+	inst = new DenseInstance(1.0, value);
+	dataset.add(inst);
+	dataset.instance(i).setClassMissing();
+}
 ```
-'By uninstalling Fifa 20 as it’s terrible',negative
+
+We proceed in the following code to importing the classifier model and classify the unlabeled istances:
+```java
+//Loading the trained classifier
+FilteredClassifier classifier;
+classifier = (FilteredClassifier)SerializationHelper.read("./src/main/resources/classifier.model");
+
+ArrayList<Integer> opinions;
+opinions = new ArrayList<Integer>();
+opinions.add(0);
+opinions.add(0);
+
+			
+for(int i = 0; i < tweets.size(); i++) {
+	double predicted;
+	dataset.instance(i).setClassValue(classifier.classifyInstance(dataset.instance(i)));
+	predicted = dataset.instance(i).classValue();
+	if(predicted == 0) { //Index of the class label array -> 0: positive. 1: negative.
+		opinions.set(0, opinions.get(0) + 1);
+	} else if (predicted == 1) {
+		opinions.set(1, opinions.get(1) + 1);
+	}
+}
 ```
 
- 
-that allows us to find and remove emoji from text. 
-Mettere esempio di prima-dopo?
+An example of classified tweet:
+```
+  'By uninstalling Fifa 20 as it’s terrible',negative
+```
 
-At this point we need to assign a label to each tweet in order to build our training set. In particular we manually assign to every tweet a class:
-- positive
-- negative
-- none (means that there is no opinion in that tweet)
+### 4.4 Sentiment Analysis 
+The following method, that uses the previous one, is called from the user's interface in the game's information page:
 
+```java
+public static ArrayList<Integer> sentimentAnalysis(String game) {
+	ArrayList<String> tweets;
+	ArrayList<Integer> opinions = new ArrayList<Integer>();
+  
+  //Download the tweets of the game
+	tweets = searchTweets(game.toLowerCase());
+  
+	if(tweets == null) {
+		System.out.println("No opinions found.\n");
+	} else {
+		opinions.addAll(classify(tweets));
+	}
+	
+	return opinions;
+}
+```
 
-The data come from the same source, so we don't need to process this phase.
+Due to the limitations of the Twitter API, the process of retrieve tweets is so much slow.
+For this reason we decided to create a thread and run the sentiment analysis in this thread:
+  
+```java
+  	//Search for opinions on twitter
+		final Thread sentimentAnalysis = new Thread() {
+			public void run() {
+				ArrayList<Integer> opinions = TwitterConnector.sentimentAnalysis(gameName);
+				if(opinions.size() == 0) {
+					positive.setText(Integer.toString(0));
+					negative.setText(Integer.toString(0));
+				} else {
+					positive.setText(opinions.get(0).toString());
+					negative.setText(opinions.get(1).toString());
+				}
+			}
+		};
+		
+		sentimentAnalysis.start();
+  }
+  ```
 
-
-The dataset we prepared cointains a lot of different instances of the 3 classes. Because we find only 333 instances of postive class (minority class), in order to build a balanced dataset, we decided to reduce numerosity of the data applying a random sampling without replacement to the other 2 classes till we have the same amount of istances for each class.
-
-(immagine di weka con le 3 colonne uguali?)
-
-We need now to transform our stream of characters into a stream of processing units, called `tokens`. During this step, after removing punctuation marks, non-text characters and special symbols, each text is represented as a set of words. We use the `AlphabeticTokenizer` as tokenizer in weka.
-
-(immagine di esempio prima-dopo?)
-
-At this point we need to handle noise removing `stop-words`. Those are words providing little or no useful information to the text analysis, for this reason they can be considered as noise. Stop-words are:
-- Common stop-words include articles, conjunctions, prepositions, pronouns...
-- Other stop-words are those typically appearing very often in sentences of the considered language (language-specific stop-words), or in the particular context
-analyzed (domain-specific stop-words);
-
-At the end of this step, each text is cleaned from stop-words, and thus reduced to a sequence of relevant tokens.
-
-We choose to use a list of most common stop-words we found on internet instead of use the proposed list in weka. We also decided to dont't remove badwords because they can be usefull for our analysis as they might be very expressive regarding an opionion.
-
-(immagine di esempio prima-dopo?)
-
-We operate now `stemming`: the process of reducing
-each token to its stem or root form, by removing its suffix, in order to group words having closely
-related semantics. At the end of this step each text
-is represented as a sequence of stems. We installed the `snowballStemmer` and used it with "english" as language.
-
-(immagine di esempio prima-dopo?)
-
-(immagine schematica di tutti i passaggi ?)
