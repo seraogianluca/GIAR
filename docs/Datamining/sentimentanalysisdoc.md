@@ -304,7 +304,7 @@ positive |  negative |  none |  <-- classified as
 
 ### 3.8 Comparison of classification models
 
-
+![Classifiers-Comparison](./classifiers.png)
 
 ## 4 Application
 ### 4.1 Data Acquisition
