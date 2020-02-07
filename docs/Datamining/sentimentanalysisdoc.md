@@ -333,6 +333,32 @@ SVM | 77.0771% | 0.6562 | 0,771   |   0,771  |  0,770 | 0,828
 J48 | 67.2673% | 0.509 | 0,680  | 0,673  |  0,674 | 0,825
 1-NN |  63.964 % | 0.4595 | 0,645 | 0,640 | 0,642 | 0,850
 
+To choose the best classifier we performed a paired t-test on the best two classifier obtained during the tests phase. So we performed the t-test between the `Random Forest`and `Naive Bayes Multinomial` in Weka. The result of the test is shown below:
+
+```
+Tester:     weka.experiment.PairedCorrectedTTester -G 4,5,6 -D 1 -R 2 -S 0.05 -result-matrix "weka.experiment.ResultMatrixPlainText -mean-prec 4 -stddev-prec 5 -col-name-width 0 -row-name-width 25 -mean-width 0 -stddev-width 0 -sig-width 0 -count-width 5 -print-col-names -print-row-names -enum-col-names"
+Analysing:  Percent_correct
+Datasets:   1
+Resultsets: 2
+Confidence: 0.05 (two tailed)
+Sorted by:  Percent_correct
+Date:       07/02/20 15.11
+
+
+Dataset                   (1) meta.Filte | (2) bayes.N
+------------------------------------------------------
+_Users_gianluca_dataset  (100)   80.2507 |   80.7201  
+------------------------------------------------------
+                                 (v/ /*) |     (0/1/0)
+
+
+Key:
+(1) meta.FilteredClassifier '-F \"MultiFilter -F \\\"unsupervised.attribute.StringToWordVector -R first-last -W 1000 -prune-rate -1.0 -I -N 0 -L -stemmer \\\\\\\"weka.core.stemmers.SnowballStemmer -S english\\\\\\\" -stopwords-handler \\\\\\\"weka.core.stopwords.WordsFromFile -stopwords /Users/gianluca/stopwords.txt\\\\\\\" -M 1 -tokenizer weka.core.tokenizers.AlphabeticTokenizer\\\" -F \\\"supervised.attribute.AttributeSelection -E \\\\\\\"InfoGainAttributeEval \\\\\\\" -S \\\\\\\"Ranker -T -1000.0 -N -1\\\\\\\"\\\"\" -S 1 -W trees.RandomForest -- -P 100 -I 100 -num-slots 1 -K 0 -M 1.0 -V 0.001 -S 1' -4523450618538717400
+(2) bayes.NaiveBayesMultinomialText '-W -P 0 -M 2.0 -norm 1.0 -lnorm 2.0 -lowercase -stopwords-handler \"weka.core.stopwords.WordsFromFile -stopwords /Users/gianluca/stopwords.txt\" -tokenizer weka.core.tokenizers.AlphabeticTokenizer -stemmer \"weka.core.stemmers.SnowballStemmer -S porter\"' 2139025532014821394
+````
+
+The best classifier is still the `Naive Bayes Multinomial Text`.
+
 ## 4 Application
 ### 4.1 Data Acquisition
 Tweets are fetched whenever a user look for information about a game. To download tweets we used the official Twitter API with the `Twitter4j` java library.
@@ -470,8 +496,8 @@ for(int i = 0; i < tweets.size(); i++) {
 We proceed in the following code to importing the classifier model and classify the unlabeled istances:
 ```java
 //Loading the trained classifier
-FilteredClassifier classifier;
-classifier = (FilteredClassifier)SerializationHelper.read("./src/main/resources/classifier.model");
+NaiveBayesMultinomialText classifier;
+classifier = (NaiveBayesMultinomialText)SerializationHelper.read("./src/main/resources/classifier.model");
 
 ArrayList<Integer> opinions;
 opinions = new ArrayList<Integer>();
