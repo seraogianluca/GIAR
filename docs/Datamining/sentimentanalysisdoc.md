@@ -521,24 +521,23 @@ Due to the limitations of the Twitter API, the process of retrieve tweets is so 
 For this reason we decided to create a thread and run the sentiment analysis in this thread:
   
 ```java
-  	//Search for opinions on twitter
-		final Thread sentimentAnalysis = new Thread() {
-			public void run() {
-				ArrayList<Integer> opinions = TwitterConnector.sentimentAnalysis(gameName);
-				if(opinions.size() == 0) {
-					positive.setText(Integer.toString(0));
-					negative.setText(Integer.toString(0));
-				} else {
-					positive.setText(opinions.get(0).toString());
-					negative.setText(opinions.get(1).toString());
-				}
-			}
-		};
+ //Search for opinions on twitter
+final Thread sentimentAnalysis = new Thread() {
+	public void run() {
+		ArrayList<Integer> opinions = TwitterConnector.sentimentAnalysis(gameName);
+		if(opinions.size() == 0) {
+			positive.setText(Integer.toString(0));
+			negative.setText(Integer.toString(0));
+		} else {
+			positive.setText(opinions.get(0).toString());
+			negative.setText(opinions.get(1).toString());
+		}
+	}
+	};
 		
-		sentimentAnalysis.start();
-  }
+sentimentAnalysis.start();
   ```
   
-  In the following the example of performed analysis on the GUI:
+In the following the example of performed analysis on the GUI:
   
   ![Screen](./user_screen.png)
