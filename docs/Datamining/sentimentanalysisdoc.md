@@ -382,7 +382,7 @@ private static String tweetCleaning(Status tweet) {
 	return cleanedTweet;
 }
 ```
-
+The cleaned tweet, after being labeled by hand:
 ```
 'By uninstalling Fifa 20 as it’s terrible',negative
 ```
