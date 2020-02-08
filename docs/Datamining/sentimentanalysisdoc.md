@@ -6,9 +6,10 @@
 2. [Dataset description](#2-dataset-description)
 3. [Classification in Weka](#3-classification-in-weka)
 4. [Application](#4-application)
+5. [Test of the Classifier](#5-test)
 
 
-## 1. Introduction
+## 1 Introduction
 GIAR (Games information and Ratings) is an application that collects information and ratings about videogames. A user can search a game by name using the search bar on the top of the homepage and then access to a page that contain informations about the game. 
 
 The purpose of the project is to implement a sentiment analysis feature that gives to the user information about the players community opinions on the game. The opinions are obtained through tweets of the players around the world.
@@ -35,6 +36,11 @@ The dataset used for train the model contains tweets about several games. First,
 For the purpose of our analysis we stored only the text, that contains the effective tweet as displayed on Twitter.
 
 Then, we labeled by hand the tweets in three classes: positive for tweets that contains good opinions about the game, negative for the tweets that contains bad opinions and none for the tweets that contains neutral opinion and/or spam. Since the dataset was strongly unbalanced, to obtain a balanced dataset we selected 333 instances per each minority class (positive and negative) from the labeled tweets and than we randomly picked 333 instances from the majority class (none) discarding the others. The dataset is so composed by 999 instances.
+
+The distribution of tweets per game contained in the dataset is shown in the following chart:
+![Distribution-Game-Chart](./dataset_tweets_distribution.png)
+
+The none class tweets are randonmly sampled from the last analized game only, because all the none tweets founded in all the games are very similar (i.e. game session tweets, streaming invitations, market advertisement, etc.). 
 
 The instances were cleaned and stored together in an arff file. The cleaning process was performed with the python library `tweet-preprocessor`, removing useless informations such as: mentions, hashtags and links.
 
@@ -357,9 +363,10 @@ Key:
 (2) bayes.NaiveBayesMultinomialText '-W -P 0 -M 2.0 -norm 1.0 -lnorm 2.0 -lowercase -stopwords-handler \"weka.core.stopwords.WordsFromFile -stopwords /Users/gianluca/stopwords.txt\" -tokenizer weka.core.tokenizers.AlphabeticTokenizer -stemmer \"weka.core.stemmers.SnowballStemmer -S porter\"' 2139025532014821394
 ````
 
-The best classifier is still the `Naive Bayes Multinomial Text`.
+The performed test has no statistic significance, so we decided to use the `Naive Bayes Multinomial Text` because is the faster to build (0.3 seconds).
 
 ## 4 Application
+
 ### 4.1 Data Acquisition
 Tweets are fetched whenever a user look for information about a game. To download tweets we used the official Twitter API with the `Twitter4j` java library.
 
@@ -567,3 +574,19 @@ sentimentAnalysis.start();
 In the following the example of performed analysis on the GUI:
   
   ![Screen](./user_screen.png)
+
+
+## 5 Test
+To test the effective goodness of the classifier we collected classified data from ten games, checked the class by hand and generated the confusion matrix for each game. We collected classified data of the games:
+- Assassin's Creed: Odyssey
+- Star Wars: Jedi Fallen Order
+- Borderlands 3
+- Mass Effect: Andromeda
+- Horizon Zero Dawn
+- Batman: Arkham Asylum
+- God of War: Ascension
+- Fifa 18
+- Bioshock
+
+The game are choosen randomly.
+
