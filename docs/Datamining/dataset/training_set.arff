@@ -1,0 +1,1005 @@
+@relation _Users_gianluca_dataset
+
+@attribute text string
+@attribute @@class@@ {positive,negative,none}
+
+@data
+'Thanks EA!',positive
+'Legit is the worst out of them all',negative
+'JOB INTERVIEWS & SMELLY SMELLS! Just released Episode of my new gaming podcast “Don’t trip, just Tr1p” FULL EPISODE -',none
+' is great',positive
+'Goodbye, the evil you have done is enough.',negative
+'.....spills, kill, and thrills.',none
+'.....spills, kill, and thrills.',none
+'.....spills, kill, and thrills.',none
+'is so interesting',positive
+' is by far the worst game. Its so bad',negative
+'Check out this clip! xCobra_Clutchx streaming !',none
+'Check out this clip! xCobra_Clutchx streaming !',none
+'Kh really said looks pretty cool',positive
+'The servers are exceptionally bad tonight',negative
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+'Check out my broadcast from my PlayStation !  live at',none
+' is amazing! Definitely worth the buy! I just hope that we gonna get a whole new variety of body kits,spoilers,goods etc because there\'s still very few in the game which i think is a must! But nether the less a great game!',positive
+'I love how I have to delete games on my Xbox because  takes up all my storage with updates the size of a whole game',negative
+'Big  update 3 today i will try to cover it today but will share patch notes once they become available. Have a good day everyone.',none
+'I\'m actually loving the first time I heard the baby cries come through the speaker on the controller scared the ish outta me.',positive
+'Fuck this game',negative
+'Check out my broadcast from my PlayStation ! live at',none
+'Check out my broadcast from my PlayStation ! live at',none
+'Check out my broadcast from my PlayStation ! live at',none
+'Check out my broadcast from my PlayStation ! live at',none
+'Check out my broadcast from my PlayStation ! live at',none
+'Check out my broadcast from my PlayStation ! live at',none
+'Check out my broadcast from my PlayStation ! live at',none
+'Check out my broadcast from my PlayStation ! live at',none
+'Check out my broadcast from my PlayStation ! live at',none
+'Check out my broadcast from my PlayStation ! live at',none
+'Check out my broadcast from my PlayStation ! live at',none
+'Limit your story telling! is a damn masterpiece',positive
+'Hi, i have a problem in , i win a match and my oponent leave the game, but the match dont count in my champions',negative
+'Check out my broadcast from my PlayStation !  Follows Deep?! live at',none
+'playing  and man years later and i still love this game',positive
+'Why is the matchmaking so fucking shit in this game? I was just -6 and got matched with someone -2 who destroyed me. I’m trying to get gold for the first time ever while this guy is on track for elite . We should never be matching',negative
+'. Thank you for a beautiful eerience with ',positive
+'will need to upgrade his accuracy',negative
+'I’m playing  atm. It’s fun!',positive
+'was kinda shit',negative
+'is my favorite game!',positive
+' is such a shitty game, plz fix everything',negative
+'Create a Class in Call... -of-duty-guides -of-duty-tips-and-tricks -of-duty-modern-warfare -of-duty-modern-warfare-character-classes -of-duty-modern-warfare-create-a-class',none
+'story kinda interesting with the cops',positive
+'i hate delivery',negative
+'Okay me and my bros just successfully completed Zetsubou EE. hrs later, we on for a few rounds, before bed. Come watch!',none
+'If anything I think it would affect the way he markets the game next time. is a great game',positive
+'fuck is shit',negative
+'HiNTER DEN FELSEN CAMPEN !  Blackout Alcatraz via',none
+'This game is amazing. What’s do you think about ',positive
+'sucks the story is unecessarly complicated and is more like scribles of a year old that tell you if you can\'t understand it then you can\'t understand art.',negative
+'This is why I love the carbine. NEW video on YouTube coming soon. Check out what’s there at the moment. Link in my page',none
+'I love Photo Mode!',positive
+'I know the GK\'s don\'t catch the ball in game, but not touching the ball at all is something else..',negative
+'That’s too bad. is a fantastic game.',positive
+'-after playing for a couple weeks now, I can confirm that’s its compared to previous years. Why can’t you choose to play against certain teams online on anymore? I want to play against fellow Bronze teams instead of teams with Socrates and Okocha in!',negative
+'I recently played the campaign and I loved it so much. I can’t remember if you’ve tried that or not.',positive
+' drifting is actually awful. No balance between a drift built car and a car not built for it. Maybe I\'m terrible I don\'t know, but I really hate this games drift mechanics.',negative
+'I\'m now streaming on Twitch! Playing ',none
+'I\'m now streaming on Twitch! Playing ',none
+'I\'m now streaming on Twitch! Playing ',none
+'The  soundtrack is so damn good.',positive
+'is overrated',negative
+'Small stream  live at',none
+'I been playing  a little bit lately. It\'s a real fun game. Love how open the open world really is.',positive
+'the weird thing about is that it makes me wanna play mgsv instead',negative
+' is a good game.',positive
+'is good they said... is fun they said....',negative
+'On fire tonight! Didn\'t lose a game. Son + Aguero dream partnership. Meyer and Battaglia rock solid in CDM. Still games remaining. Tempted to play more tomorrow. Siiiiiii',positive
+'was bottom of the barrel dog shit, it wasn’t worthy of a $60 price point I’m glad it dropped by half a month after release',negative
+'Good morning follow me on YouTube Soon a new  video.',none
+'After entire season in career mode I have to say that is much better than I eected. Switch to manual controls and it really shines! Great simulation plus stunning visuals and ..lifelike commentary of Derek Rae &amp; Lee Din . . Bye bye .',positive
+'elain this then.. How does a player with shooting miss this?? Shooting on is diabolical absolutely bullshit get it fucking sorted',negative
+'Bro defence isn\'t shit... It easily means you do not know how to defend.',positive
+'are the servers down I ca r connect to the server on',negative
+'It beats  Payback ( payback had nothing in it No Cops No Customisation really) with it Brought the fun back into a modern day Racer Basically it felt like  but more up to date. I just think the story is less on the long side.',positive
+'Finally got and the damn thing don\'t run properly can\'t get into a game. Just finished watching yesterday video and got all hyped to play',negative
+'I\'ve enjoyed watching you play. It has definitely been a diffrent type of video game but I really do like it',positive
+'I am sorry but this patch is a joke. All my shots in the box gets AI blocked or delayed. What\'s that. I\'m not enjoying this patch',negative
+'Silent Scopes, not so silent',none
+'Just finished by Kojima. Really enjoyed it but takes hours in to start to get the flavor. Very unique game. You play alone but other players actions can affect your world. All about making connections with people.',positive
+'is a failure.',negative
+'Playstation PS4 BRAND NEW',none
+'. I\'m actually having a lot of fun with it!',positive
+'hello, I am facing a severe delay in the movement of the game in playstation since months, knowing that I have contacted the i3d company and I have no problem with the ping and my connection is fiber.',negative
+'It’s pretty good. I haven’t played in awhile because the scale of the game can be overwhelming but it’s still a lot of fun. I’ve been playing lately and that a ton of fun',positive
+'Trying the  campaign for my Star Wars fix and the premise is cool but holy shit is this not fun at all I dont think I can do hours of this',negative
+'Call of duty: Modern Warfare',none
+'god holy fuck i love that game really said gay rights',positive
+'no game has ever stressed me out as much as what the fuck man',negative
+'Playing more today and in terms of story, cutscenes and eition I’m really quite enjoying it.',positive
+'Thanks EA! First game of the day. -0 e min for me. The guy press start. he rage quit the game. “Problems with the ea servers” I get a lose en a focking match gone! EA FIX YOURE FOCKING DAMN GAME',negative
+' fucking good ',positive
+'Well done yous outclassed yourself again found another way to make worse!! Iyodare was ment to have feces for career mode not make players keeper unable to make a single save',negative
+'what a game this is',positive
+'if same this same the servers plz dont produce any more plz',negative
+'Iain Lee is LIVE on Twitch streaming ',none
+'I am loving I really am but did you guys know that it can be both realistic and fun at the same time... Mind blown',positive
+'is so unbelievably broken rn',negative
+' best game',positive
+'lol, I have lost interest in , it is trash, plus the EA server lag.',negative
+'OMG!!! How is still so broken?! Game freezes after some matches forcing me to close the game. In gunfight it will spawn me with no gun in hand. Call outs/voice over stop during match. please fix this!!!',none
+' , seriously i cant get enough of this game',positive
+'What have you done to my account on on ps4? I legit cannot get a walkout!! My -88 gauranteed player was in fact an ! I haven\'t had a walkout all so far!! This has to be a joke!',negative
+' is addicting',positive
+'All that possession because he was dropped right back. So hard to break through as he wasn\'t even trying to press or manually defend. But as its random long balls punted up to mane is effective. Seriously don\'t know how people enjoy playing that way.',negative
+':  (GOLD M4 A1 LVL ) (PC)',none
+' On the PS4 it’s just an awesome game',positive
+'and this is why ladies and gentlemen will never get better nor any other future',negative
+'This isn\'t amateur hour! I\'m still crushing some .',none
+'I\'ll be your best friend! Because I \% agree with this! No hate to BOTW amazing game to! But was my shit! I loved it so much!',positive
+'Kojima is overrated. I enjoyed MSGV but it has a lot of short comings. He can make the worst game possible and still be considered a visionary. The man didn\'t even know wtf his game was offs. For a game that had so much hype around it seemed to have died quietly',negative
+'Not feelin too hot tonight. Probably gonna be a short one.',none
+' is a pretty good racing title and more people should buy it',positive
+'Quick sell its shit the gameplay is trash',negative
+'I mean,  is also an amazing game, but nfs underground just has a special place in my heart. I\'m emotional, man.',positive
+'Did they ever wind up releasing that update for that increased font size? It’s still total garbage.',negative
+'Loving ',positive
+'And isn’t real soccer',negative
+': SUMTING LIGHT!!! LINK:',none
+'Played  again after months of being away from it. Holy crap is it awesome! I know this game got a lot of flack starting out because of EA but it has changed for the better and I’m definitely going to be playing it more!',positive
+'Gameplay is utter garbage right now.',negative
+'Why stress ? Just chip -',positive
+'is the shit, along with Ghost Recon: Breakpoint',negative
+'This game has inspired and motivated me in so many ways Thank you all for your hard work',positive
+'Playing defense in is the dumbest and most boring thing ever.',negative
+'Before we go too far, do I need to buy a new for the PS5',positive
+'Fancy reimbursing me for the amount of contracts I\'ve used today? Had to quit out of or so games now due to horrendous input delay. Sort out the awful servers.',negative
+'Gold Camo Completionist: M13',none
+'isn\'t bad. In fact it\'s better thant the and . But was very good. Ball physics was great (improving from other opus). But since it\'s worse. Disappointing. Try to play PES sometimes. So then you can appreciate more to change game eerience and return to.',positive
+'That doesn’t make any sense. Just because you play on a specific platform doesn’t mean you are open to more or close minded to more. is just garbage. Mostly everyone agrees it’s the biggest disappointment in .',negative
+' - Xbox by Artist Not Provided',none
+'holy fuck  is so much fun',positive
+'Dragon Ball Z Kakarot is better than . One feels like a game, the other a music video.',negative
+'One of my current COD Game Plays',none
+'My first impressions of : UNBELIEVABLE I bought the game yesterday morning and it’s now AM. I have to say it’s definitely difficult to put down! I want to say that if you’re undecided on getting this game it’s understandable /',positive
+'I was not a fan. Ugh.',negative
+'CALL OF DUTY MODERN WARFARE !! …',none
+'The soundtrack was literally one of the best of',positive
+'were good and were ok is shit',negative
+'This is SHOOTHOUSE With DooM Clan...',none
+'Best game you’re playing right now? For me it’s ! The controls are wonky at first, but once you get used to them the story is a lot of fun. It reminds me of a better version of Far Cry.',positive
+'No girl plz don’t play that shitty game ever again but can u play God of War',negative
+'i want to replay just so i can eerience that heartbreak again',positive
+'It\'s really taking me a while to get properly into',negative
+'And thats a V2',none
+' was brilliant. There I said it.',positive
+'Why are the physics in such a fucking joke',negative
+cracked,none
+' multiplayer, i know you played through the story but the multiplayer is soooo much fun now, worth pulling it out again.',positive
+'I call them movies. I mean look at. That shit it\'s a movie with player interaction',negative
+'New Video is live now on YouTube! Head over and watch and also please like and subscribe! Comment done when subscribed and I will subscribe back!',none
+'also so far is wack',negative
+'[]. $38.99 (59.99/35\%). Standard Edition',none
+'Yep that’s true. Don’t think realise that can be both realistic and fun at the same time.',positive
+'obviously suffered some big re-writes.',negative
+'! I might actually do it! (Insane gameplay) via',none
+'Yes dude!!!! I’ve been loving as well!!',positive
+'is not good please tell someone to fix it',negative
+'I\'ve been playing  ! Its in a super good state atm. It might be worth a retrying!',positive
+'Florida Mutineers on preparing for  League season, slide canceling in :',none
+' is one of the best games I\'ve played in years, underground is still amazing but is pretty close!',positive
+'is \% garbage british rap, where and when, and stretch it are probably the worst songs ive ever heard',negative
+'Now LIVE on ',none
+'why am i.... THE ONLY PERSON ON THIS PLANET THAT ENJOYS ?!',positive
+'What piece of shit this server',negative
+' early patch notes, update time, playlist changes, PS4 Xbox One',none
+' early patch notes, update time, playlist changes, PS4 Xbox One',none
+' early patch notes, update time, playlist changes, PS4 Xbox One',none
+' is my favourite game right now',positive
+'is the second worst triple a game of all time, just behind',negative
+'is one of the most fascinating and memorable games I\'ve played in years. In all facets: story',positive
+'is so bad',negative
+'is so bad',negative
+'Come watch while he plays on Twitch!',none
+'I love for the story and I also love eloring. The terrain itself is a challenge and a foe to overcome that requires strategy. I frigging love this game. I have hours logged in and just got to the second region. Been playing for a little over a month now.',positive
+'I bought instead of this and I regret it daily',negative
+' , its a nice game u know lol',positive
+'Feeling like a sucker for not giving more time. I’m sorry. Maybe I’ll try again in a few months but right now I really don’t wanna feel like I’m working for Amazon Prime for free',negative
+'never understand why have ttv tag if you don\'t have a channel or gunna be super rude when ask what it is so I can check it out like we just trying to have some fun out here. btw hows the Molotov',none
+'And finally for part two could be even bigger and better and hands down one of my top games this gen so good',positive
+'is my last. It is fucking abysmal.',negative
+' v3s on Pine! via',none
+'A real Masterpiece. One of the greatest games i‘ve ever played.',positive
+'as been shit played  lost the games cause cause of shit play game mode I got both wired and wireless on and now with this team less than min into first half lost all my coin fix this pls lost over kcoin in less than min',negative
+'Extra custom class slots will be arriving in  today',none
+' is cool, cod is just for console, r6 is possible, ark seems fun',positive
+'is the most overrated game of the decade.',negative
+' January nd update release time for PS4 and Xbox One',none
+' was good. Hating on it because journalists liked it is fake edge.',positive
+'is garbage',negative
+' is on the list as one of my favorite games of all time. Thoroughly enjoyed every minute of that eerience.',positive
+'Lol thanks EA winning -1 and shit servers make me lose because a diconnect',negative
+'Switching to . Get in here.',none
+'Switching to . Get in here.',none
+'I just love this game...',positive
+'looks like the least enjoyable video game of all time',negative
+'woah looks litttt',positive
+'pfft. It doesn\'t make any more interesting....',negative
+'please take a minute to watch and like my new Montage please',none
+'Lol forced me to learn tactical defending',positive
+'I will probably get hate for it',negative
+'I Dey tell you, devil is at work. makes better sense',positive
+'There is absolutely no joy of gaming in !!! Seriously',negative
+' Weapon Conversions/Ideas : G36K A4 via',none
+'Finished , whoa, this was one crazy original story, really wrapped up nicely to have everything make sense, and ending took a couple of hours and felt like I was watching a movie, truly amazing design, concept, and outstanding acting from an all star cast!',positive
+'The officiating in the prem is nearly as bad as it is in hth',negative
+'please give me the code',none
+'please give me the code',none
+'I\'d highly recommend  if you need a great game this year.  definitely returned to form in this one.',positive
+'Lmao this game is so bad. Just destroyed someone a full game. He’s scored th minute on an aids goal to tie and go to extra time. I score th to tie and I win on PK’s. Even when I win I still recognize how shit this game is. Robbed of gold this weekend',negative
+'played (Xbox One) in the last hours',none
+'And you were right about , am doing a career mode with Werder and the stadiums and faces are fantastic! I guess PES has the official license to Euro as an add on so I picked that up as well but haven’t opened it because Fifa is so good!',positive
+'is a weak',negative
+'What’s  BR have to offer especially  that would make the sub genre remotely interesting? I mean we’ve got a taste of plenty of BRs to choose from. Mostly appeals to outside sources who enjoy slow style play which is a reason the fanbase doesn’t like MP',none
+'Finished. And wow. Shook. This game is just. Wow.',positive
+'For me the worst game released in game-wise it\'s fun but there\'s just nothing to do in it there\'s no content',negative
+'If Anything , Ww3 Draft Ask About Eerience ? Ill Give Them This',none
+'Rolled credits on - what an amazing eerience. A game hasn\'t resonated with me',positive
+'Well they can get you I’m takin mine back',negative
+' Best one in awhile',positive
+glitch,negative
+'I had some genuinely ask me why games such as Minecraft or Fortnite are so successful. Because why would anyone want to play a game with such bad graphics compared to games such as  or Assassin\'s creed blackflag. It baffled me.',none
+'hey how u doing today I play  but most enjoy your video I try hard on the game because it best out there',positive
+'is awful. Celebrities aren\'t going to save a bad made video game',negative
+'Ohhhh baby a QUAD HEADSHOT FEED!!! Follow my IG for daily uploads',none
+'You can tell people who call a walking simulator clearly havent played it. One of the best games i have played this gen. So many ways to traverse',positive
+'Americans sure do love shooters. But is still boring AF though',negative
+'Random guy chats then says minat game ke... and i be like yeah cod and r6.. him: cod mobile ke Me: no la  Him: pulak..  lah. Cod. Lol My heart: HAHAHAHAHA kau mw pon tatau takyah main cod la',none
+'So I know is a pretty divisive game, but I’m really loving it. It’s one of the most beautiful games I’ve ever played and it has good pacing. It also discourages killing and remains a lot of fun. Great game, !',positive
+'I was never able to get into mostly because of the gameplay. My attention span is way to short.',negative
+'i might be a little late but i just finished and it was absolutely amazing. Thank you for another masterpiece. Looking forward to the next game you make.',positive
+'Yet again they\'ve made the game worst with the patch',negative
+'Messing around with some ..',none
+' is one of the weirdest games ever...and I kinda like it.',positive
+'Overpriced as hell',negative
+'The pop-off',none
+'Playing again after ages felt good. I really love the cutscenes',positive
+'Fallout was trash and so was IW. is just updated . All sport games are a money scam',negative
+'Sometimes I wonder how I aim like this | , Saudi Arabia',none
+'I love',positive
+'cannot get any more bullshit like this shit is literally unplayable online now how sad, i literally came back to since and i come back to this bullshit',negative
+'Gold funtime',positive
+'I love it when I’m playing a FRIENDLIES game for an objective and I’ve got some try hard kid shushing me every time he scores. Honestly, has the worst community of players.',negative
+'Hello everyone hope you guys enjoy my video I got more coming so please subscribe',none
+'babe i am not trying to fuck your mans, i just really want to play without paying for it. now gtfo of my face.',positive
+'Graphics don’t automatically make a good game for me',negative
+'This game is so pretty',positive
+'I am really worried that I might not finish. I am at a part I really dislike',negative
+'Enjoy the game',positive
+'is an anxiety nightmare &amp; I wish Kojima just made it a movie or series so I can just enjoy the world building &amp; characters without wanting to die. Anyway I’m glad it exists, but it’s not for me, let me know if you’ve found a good Let’s Play or something',negative
+'Wow so is probably the most emotional game I’ve played in a LONG time. This is incredible.',positive
+'Haha will do! Is that bad? It doesn\'t really interest me personally but I have heard mixed things',negative
+'Bored? Check out my best buddy playing ! It’s a phenomenal game. From everything I have heard it’s a lot like the NFS: Underground series!',positive
+',mgs4,doom are very overrated',negative
+' Remastered (1080p fps) | Morning streaaaam',none
+'I honestly think plasma pistol is the best design.',positive
+'This would hold more weight if the worst parts of weren’t combat involved. He’s just salty that people didn’t like his game',negative
+' live at',none
+'Last night my journey through came to an end. It was an often emotional',positive
+sucks,negative
+'Defending B by myself',none
+' games still have the best car customizations and that is probably the easiest part of a racing game to get right. currently has the best customization next to Underground .',positive
+'> is a fuccing snooze fest park the bus simulator',negative
+'Opti316 is Live on Playing:  Stream Title: oops my fault Drop by and join their community of followers!',none
+'I really love and the MGS games...but Hideo writes like someone who\'s been told he\'s a genius his whole life.',positive
+'Great, just found a bug that turns your team into a concept squad. Wtf man.',negative
+'I love photo mode!',positive
+'Better than',negative
+'A BIG Title Update is coming for : Later Today - Including: - New Crossbow Weapon - More Class Loadout Slots - And Much More Stand by for Further Details:',none
+'This is more than just a game thanks for this amazing eerience',positive
+'This is a daily mood when you play this damm game...',negative
+' was so good ouch my heart i cant take this',positive
+'I don’t think I’ll ever understand the story of . It’s basically a walking simulator while defending yourself in it. Give a shot',negative
+'OVERPOWERED AUG WEAPON SETUP  AUG BEST CLASS) via',none
+'Status: Nice',positive
+'My father also brought home a game today. I am gladly enjoying my new frisbee, just kidding isn\'t even good enough to be a frisbee. I don\'t even want to throw it in the garbage because I\'m scared I\'ll make the trash disgusted.',negative
+'Im live streaming call of duty on twitch and just became affiliate please come by and say hello !',none
+'Hello I genuinely love so much. I love the pace',positive
+'lol it took me h to play games in fut champs Left games to save time. Woke up at am to play and it was worth it. A bit better gameplay at night but overall it was horrific lag compensation at times. Job done , so let\'s not complain...',negative
+' is a great eerience',positive
+'The fact that solving the clues is more entertaining than playing the game speeks volume. Please focus on fixing gameplay and more importantly connectivity. How on earth the connection quality is worse on than previous years?!',negative
+'I LOOOOOVE this game and I’ll tear into it once I’m done with',positive
+'Nah. isn’t worth playing at all',negative
+'live at',none
+' is my favorite game!',positive
+'Well i cannot see how you might be right , but i can pretty much say that both were pure shit , even though , in the first week was promising',negative
+'Consulter ma diffusion depuis ma PlayStation !  live at',none
+'Consulter ma diffusion depuis ma PlayStation !  live at',none
+'Consulter ma diffusion depuis ma PlayStation !  live at',none
+'Consulter ma diffusion depuis ma PlayStation !  live at',none
+' is a good game :/',positive
+'is actually actually SHIT',negative
+'Pulled off at stream on that was incredibly some great and some crappy ones all in all it was fun playing with my remember a family that together stays',none
+'&amp; ... Two of the Best Games of this Generation... :',positive
+' is such a poorly made game. Nothing works in that game like who thought this was a good idea to put out',negative
+'I just finished and I cannot go to bed without first saying that this is one of the best games I have ever played. Fuck...man',positive
+'This year Is a really bad game with orrible gameplay.',negative
+'Ready to LVL UP THE GAME? Unlock exclusive item drops in . Just follow us, and then tweet with .',none
+'Ready to LVL UP THE GAME? Unlock exclusive item drops in . Just follow us, and then tweet with .',none
+' is by far the best game I have played',positive
+'I can\'t believe has yet ANOTHER huge mandatory update! This game is fast becoming a parasite on my HDD, consuming it entirely! It\'s just getting ridiculous now!',negative
+' is a good game',positive
+' is a good game',positive
+'is so scary....',negative
+'is my favourite Video Game on the PS4',positive
+'fuck if you have good servers then only you can play properly. that is the most incomplete game ever',negative
+'A NOVA RX570 GB PCYES + GAMEPLAY ',none
+' is so fun omg',positive
+'Squad battles - elite one k points in total Two rare mega packs Ruffier and Pickford and they\'ll be some guy in silver one with a headliner neymar ... Game is seriously unfair !',negative
+'Earned PSN trophy (1 bronze) in ',none
+'Whoah Injust started playing  and this game is phenomenal',positive
+'Not really he just struggling because is dead slow game play gorilla on faster more responsive gameplay will get further in tournaments',negative
+'- I’m continually impressed and even emotional about how immersive the world is that has been built... Even moments like this - *if you know it, y’all know what I’m talking about* - that keep you connected to the entire game world and not just the main story.',positive
+'It’s been months since I last played a game on and I’m so glad. The gameplay+fixing is so stressful and just annoying. Hopefully is good and fun.',negative
+'Controlla le trasmissioni dalla mia PlayStation !  live at',none
+' is the first one I played and I actually like it so far, mustang and a locus sports car so far',positive
+'I went and did the dumb move a month ago, pay one month for Origin Access Premier to try new . Car physics felt so bad, almost impossible to drift. Bad optimization also atleast compared to Forza Horizon and much worse graphics.',negative
+'PapaLeeroyHD is Live on Playing:  Stream Title: Let\'s get Sweaty! Drop by and join their community of followers!',none
+' is a masterpiece and was fun as well',positive
+'I hate',negative
+' is a go',none
+' That\'s the closest we got to a successor to NFS Underground yet. There\'s still a lot of work to do, but the reworked handling model did wonders to make the game a lot more enjoyable than the most recent entries.',positive
+'normally shows a ton of info on screen, more specifically where cargo is, something that is very crucial in terms of gameplay. You can disable the cargo location icons, but this makes the game almost unplayable, mostly because of the vast scale of the environment.',negative
+'Still streaming  [02:59]',none
+'Thank you. was beautiful. Episode broke me. You are the Legend.',positive
+'why at the end of a match (which I have just won) the game crashes and goes off then when I turn it back on its says I disconnected?? Why do I get punished that??',negative
+'I\'m now live playing  over on Mixer:',none
+'I\'m now live playing  over on Mixer:',none
+'I\'m now live playing  over on Mixer:',none
+'I\'m now live playing  over on Mixer:',none
+'I genuinely had a lot of fun with  solely because you can tell the devs actually cared about the game and it does do some impressive stuff (100+ zombies on screen with surprisingly good AI) and while the story was very shlocky, it was B Movie shlock.',positive
+'Still More realistic than',negative
+'I Thought I’d Hate , Instead I Loved It PC',positive
+'Well will make you realize most songs were good',negative
+'We need sniper only maps please ...',none
+' is really a good throwback to the old Underground/Most Wanted days.',positive
+'Not that it needed my stamp of approval, but it\'s definitely official now.  IS THE WORST  IN THE HISTORY OF THE FRANCHISE. CAN POUND SAND.',negative
+'Pt. can you please check in to this issue I am flagging, that showed up in the last days in . It\'s like some issue with aim assist or something. Issue is elained in the youtube description for the vid. Link:',none
+'Pt. can you please check in to this issue I am flagging, that showed up in the last days in . It\'s like some issue with aim assist or something. Issue is elained in the youtube description for the vid. Link:',none
+'Yo real talk I\'ve had so much fun playing. It\'s so easy to get distracted from your own personal issues and just get lost in such a vast open world. Can\'t wait to play more.',positive
+'I can\'t play another minute of. I\'ve tried to get into it',negative
+'Playing . Friend: You should start streaming when you play Call of Duty Me: *dies in game* SON OF A €\%+^€, YOU +^&lt;€+^+, WHAT THE +^¥• Friend: You should not stream when you play .',none
+'its my favorite game',positive
+'This new patch is the biggest load of shit Ive ever played. Gameplay feels fucking dreadful. My Hazard can’t dribble anymore, my Best can’t pass anymore, and my Suarez can’t score. My entire defense feels like they’re semi trucks trying to turn now. Fuck you',negative
+'can i play all my blizzard games on my shield i want to play  but im wondering do i need a external hard drive for geforce now for ',none
+'Wow. Just finished what an incredibly beautiful story. thank you. If there’s a today',positive
+'You gotta record it dude. It\'s fucking terrifying. I don\'t under stand how the guy who made something so awesome also made aka the worst game ever made',negative
+' was a great game not gonna lie it was really good I enjoyed it. But I didn’t like the way it ended, there should have been more missions with Anna because when Taurus became Lieutenant she said she was going to end racing but it was a great game.',positive
+'And got nominated for some many awards. I found it so boring.',negative
+' early patch notes, update time, playlist changes, PS4 Xbox One | Gaming | Entertainment – NEWPAPER24',none
+' is really good and u can roam around and discover stuff which is cool to me. and until dawn (scary game) is suuuper good and feels like ur in a movie!',positive
+'I agree. On u literally have to PRAY for any pass to get to the right Player, players pass the ball around so u cant get it, u have to play drop pack to be able to defend pace wh**** bc pace is broken and winning just depends on luck. On , yes there were more',negative
+'I love the online aspects of ',positive
+'been the story of my eerience, this shit happens so frequently im slowly becoming numb too it',negative
+'LastChanceEbay:  PS4 Pro BUNDLE **USED**',none
+'Welp I’ve beaten . What an amazing story for a game! Easily one of the most emotional games I’ve ever played..I cried a few times playing this and the ending...that was so sad but man was it beautiful the way things played out! Thank you for this game',positive
+'How tight are the packs man buy shit loads before getting a decent +rated player',negative
+'When the random teammates actually do something for a change Thanks for the follows! More clips are coming.',none
+'I really slept on  for like two years. This game is awesome.',positive
+'so i really disliked the drifting in cuz it felt really floaty, and i use keyboard, as a result countersteering always threw me off track. what i didn\'t realise was that they put an option in live tuning for downforce which makes the car steering weightier',negative
+'Finished  last night. I enjoyed it the campaign was solid. On to Catherine Full Body.',positive
+'Let’s agree that both and are the worst in the history of, but come on man, bigger skill gap or not at the end of the day, is a terrible “football” game, was a terrible game that wasn’t even football',negative
+'Late to the party but  completed. Pretty solid campaign for a game that is primarily about the multiplayer.',positive
+'yeah so im playing and fragile is fucking annoying',negative
+'Earned PSN trophies (1 gold and silver) in ',none
+'I fucking love that Conan is in ',positive
+'Is the worst game I’ve ever played, just played Fut champs games had double shots on target and more possession for straight games and lost them all, your game is shit. Worse ever made',negative
+'Playing some . Let\'s go!',none
+'Also,  is a great game. Had a lot of fun on it.',positive
+'yall just too much of dicks to fix the fut gameplay, good I never spent a single penny this year on this stupid ass game. Such a pile of shit',negative
+'hours later and finally finished up . Gotta say what an amazing trip! Beautiful world and great characters. Going to be a hard one to forget!',positive
+'“ art style makes me vomit.”',negative
+'This One\'s A Buzz Kill Omg',none
+'It\'s :40am and I just stoped playing, safe to say I love the  Campaign.',positive
+'might be the worst ever made. This is horrible',negative
+'Check out my broadcast from my PlayStation !live at',none
+' is beautiful',positive
+'Fortnite is more realistic than.',negative
+'I just have to say the ending of was amazing. Now to finish off the last few standard orders on normal',positive
+'Biggest regret of would be me buying and wasting pees on ultimate team',negative
+' [PS4] 5€ \%',none
+' [PS4] 5€ \%',none
+'Honestly the  soundtrack is officially up there as one of my favourites... it’s just so goddamn good. more epic soundtracks pls, ty',positive
+'After I don\'t know how many days i decided to play again to complete the challenges for Ziyech. Laughable! This game is jokes! First of all, LAG! WORSE OF ALL TIME! Secondly, lob passes, through pass, Why the FUCK they don\'t go where I aim them ?',negative
+'I’ve now played  online for hours! It may not seem like much at all, but I rarely get into multiplayer games, so it’s a big deal to me when I do for few of them, usually shooters! I adored the incredible campaign, and I’m in love with the online',positive
+'Same old fucking ea sports ! Fix your broken game',negative
+' is a beautiful game. Very poetic.',positive
+'is garbage altogether',negative
+'The clip I wanted everyone to see. Cannot trim it for some reason.. how is my pistol game??',none
+'i enjoyed and No Man\'s sky from day one, and i still do',positive
+'is nothing more than self indulgent pseudo intellectualism from an overhyped game developer.',negative
+'Insane video coming soon that might just break what if i told u I\'ve made an Insane mp5 ASSAULT RIFLE Class setup that\'s right there is a way to use the mp5 like an assault rifle and it is deadly video coming soon',none
+'I have finished, and I must say, it grew on me. It\'s not a masterpiece, but it\'s the first time  has been genuinely good since . The day/night dynamic is brilliant, the challenge is back, the progression is strong and the physics are fantastic.',positive
+'i can’t play anymore because it’s so stressful running into a BT',negative
+'Miserable. Full tilted the last two pics. (Monday-Saturday)',none
+'Absolutely sensational. Hooked me from start to finish in such a different way. Peaceful, meditative and extraordinary.  is a masterpiece',positive
+'shoudnt be on here that game is pure dumpster fire garbage',negative
+'You cannot compare treyarch to infinity ward at all. While I love infinity ward and modern warfare, the state of stale gameplay and lack of content is so frustrating to the point where I can’t even push myself to play for longer than minutes. Treyarch is very good at engaging.',none
+'some may have been thinking forgers peaked some time ago, but they just keep on making incredible stuff!',positive
+'A/i defending is the biggest problem there is. People shouldnt be helped by the A/i, that makes it easy for everyone to defend. It needs to be like the first week of when a/i didnt really existed',negative
+'tell me something to do against and ... Tell me what I\'m doing wrong. Tell me where is the mistake...',negative
+'AussieRainbow is now live streaming  on Twitch!',none
+'You’re just shit, Nick. gameplay is very good. Stop complaining.',positive
+'is killing mentally you fucking broke the game you should a shamed of your self. the game changer network is a fucking joke',negative
+'Day SBMM take it out The game create a ranked system so the try hards can go there and I can have a nice casual game! it has no place in call Of Duty!!! see u tomorrow',none
+'Actually found out  was the game I played the most on on that PlayStation retrospective. About h. Loved it so much. Congratulations on a great job.',positive
+'is a shite game and doesn\'t deserve any nominations.',negative
+'when will  be on sale?',none
+' has been fucking amazing, I suck at the heroes in the large scale maps (I believe I\'m more than decent in heroes vs villains though) but I\'m pretty good at being a normal ground troop. Considering I don\'t pick heroes, I usually come in th place or above-',positive
+'This sums up why I didn’t play qualifiers I’m shit, the game is shit and is shit at his job',negative
+'Call of duty modern warfare',none
+'is weird. I like it.',positive
+'i really don’t like and it is not fun to play',negative
+'No bullshit! The ending of legit is about hours long! But not a minute of it is a waste and is one of the best endings you\'ll see in a game. It\'s so emotional',positive
+'is trash',negative
+'Hey guys! New Vid is up! We play ! Go check it out!',none
+'M13 grind time, solid gun love it',positive
+'If there\'s one thing that makes me a bit sad, it\'s when games allow the player to turn off the HUD, but aren\'t really design around it. It breaks my heart (I\'m looking at you ) Tiny thread',negative
+'Who’s ready for some Lootin, Shootin and Pootin today in Tarkov?',none
+'You couldn\'t listen other type of songs after you play .. the soundtrack is fantastic.. and I keep listening to it without pausing. omg.',positive
+'According to the logic. is a flop',negative
+'tonight come watch',none
+' games still have the best car customizations and that is the easiest part of these games. takes the cake. Close second is Underground . Other games need to step their customization up.',positive
+'I’m bored...This like that.',negative
+' is astounding. What a RUSH',positive
+'Let’s be real had a much bigger skill gap than . Literally anyone can be good at the game this year',negative
+'was good',positive
+'When you come against a UAE opponent in worst I’ve ever played. Not spent anything on this game and won’t ever. EA you guys are the worst biggest gaming company, but I guess the only thing that matters to yall is the “biggest” part.',negative
+'Playing some  for a bit tonight, stop by to see me get beat up!',none
+'Finally finished I can say it\'s been one of the best games iv played in a long time. Would recommend if you haven\'t given it a try yet',positive
+'It had been quite a while since I have not finished a video game that I have started and gotten into, but I dont know if I can finish it is just getting more and more boring the longer I go.',negative
+'Turns out is a good game',positive
+'is a weird ass game',negative
+'im really enjoying btw i love seeing the small things other players do in my world',positive
+'I Thought I\'d Hate',negative
+'I Thought I\'d Hate',negative
+' is actually dope lol',positive
+'was overhyped just for a post man pat simulator',negative
+'Have you considered  ? Idk if you played it at launch but regardless it\'s a great game now and a must for any  fan.',positive
+'For those who keep asking: I am never playing again. Or The Evil Within. I was bored with both games. I tried',negative
+'Good glitches and',none
+' is a great game! I know lots of people may not like the gameplay but I definitely enjoyed it. \% recommend.',positive
+'THIS IS WHY I HATED ENDING TOO. Again, Mads Mikkelsen being a role of a father and killed IN FRONT OF HIS SON GODDAMNIT. I spent bunch of tissues watching the ending anyway.',negative
+'Tell that to  . That game was rushed out too soon and suffered the lootbox consequences, but now, it\'s truely an amazing game.',positive
+'Fully understand this. For the sake of your sanity you have to take a break or stop playing completely. Gameplay is poor.',negative
+'Beautiful Story. Thanks Kojima.',positive
+'i don\'t like as a concept',negative
+'Hey, installed on my PS4 a few days ago, played a little bit, when I went on today it had uninstalled from my PS4? Can\'t find any fixes online, any idea how to fix this?',none
+' is fairly good. SwSh not having a national DeX means nothing to me Runescape wasn\'t that great The Witcher wasn\'t very fun to me',positive
+' is quickly climbing up my “fav games of all time” list',positive
+'is sooo slow! Would be nice too have a game of that has more than shots on target and some fun football and not only boring possesion',negative
+'Check out my broadcast from my PlayStation !  this gun is the sh!T live at',none
+'just gets more and more beautiful as you progress through the game The traversing through this environment in this chapter was so challenging yet so satisfying Kojima you absolute unit! I\'ll have of whatever you\'re working on next',positive
+'is trash lol',negative
+' drifting is so fun',positive
+'Every day same peak time if I\'m playing there is delay. Every bloody day.Impossible to play. just tell me what I\'m doing wrong',negative
+' is my favorite fucking game RN. You take an open world and haveme elore it by doing tasks that always keep you aware? Sign me the fuck up.',positive
+'Been on this screen for mins. Cheers guys, going to love having a loss on my account because of your game.',negative
+' early patch notes, update time, playlist changes, PS4 Xbox One | Gaming | Entertainment',none
+'Huh?  is the first game to ever make me cry. The story was more emotional than the last of us for me. Please stfu',positive
+'is an awful game',negative
+'Okay  is pretty goood',positive
+'Can say with my chest that is the shittest thing ever created. Burn it and the stupid cunts who make it',negative
+'Ah I see. Well I happened to get  to fill the void I\'ve had a lot of fun on it.',positive
+'Looks like their never gonna fix it bro... It\'s high time we drop this trash of a game... was almost perfect until updates which were supposed to fix the game kept messing it up... My last though cos messing it up is just an update away',negative
+'Honestly, this is the best gun in',none
+'The more I play  the more I absolutely love it',positive
+'Bro WHY TF IS SUCH A GARBAGE GAME',negative
+'Lol SoMeBody Clip That! All ?',none
+'is a great game!',positive
+'Man showed respect in his tweet to a streamer/player who beat him and people come to his tweet saying all kind of sh*t about him... (toxic) community at its best...',negative
+'It\'s really a great game',positive
+'is the worst game I\'ve ever played',negative
+'Great Short Quick Stream, Be Back At pm CST For Another Since I Have Night Class See You Guys Then Thanks For Watching.',none
+'Kojima-san! I live in reverence of ! You are a master of game design! I played the entire Metal Gear solid series! I support you',positive
+'Grinding | I\'M BORED',negative
+'Make a mode on  Map: Speedball Game Type: Grenades only',none
+'Hideo all I want to say is thank you for the amazing metal gear games and , your honestly the best game creator in the world!',positive
+'Come on all week games grafting away for f**king kolrov from a rare mega pack with , yes bloody kits why do I play your game...waste of time',negative
+'New post (It turns out  mentioned the bombing of Piccadilly Circus) has been published on Games to us -',none
+' IS the evangelion of video games imo',positive
+'This game is so dead. I skipped for server &amp; pack luck issues in and after two years i can say that ea has not changed a bit. May be we a getting few more sbc and special cards but they are utterly useless with these delays.',negative
+'New post ( first season gets an extension) has been published on Games to us -',none
+'Currently, i love fantasizing about the feeling of going fast without a care in the world',positive
+'I\'m just praying it\'s not. I\'m sick and tired of people pushing that game down our throats.',negative
+'A bit of , not really into race games but it\'s fun',positive
+'Bro is so boring *plays the last of us*',negative
+'FRIENDLY VS2 WITH MY DUO- ',none
+'I like every structure I pass in  lol oops',positive
+'done with you lot. Bought new, doesn’t even fucking work. Many people have the same problem. Do ... your ..... job!',negative
+'man clutch on Giving away Month just follow like and retweet winner will be announced tomorrow',none
+'is so unique and cool',positive
+'am not happy is rubbish rigged game ever goalkeepers can’t even make saves some players are faster then everybody else so rigged fix it',negative
+' is my favorite game of all time.... But it\'s hard to recommend',positive
+'Was this not fixed in ANY update at all?',negative
+'I\'m  at Come hang out!',none
+'I\'m  at Come hang out!',none
+'Wife picked up need for speed heat for me for Christmas. I have been hooked on it. It’s a nice break from MW.',positive
+'is the most boring game I ever saw. I don\'t care \"how good the story is\" or any of that. It failed to get a lot of people into the game.',negative
+'I have been enjoying  recently its underrated try it out',positive
+'Teach me how to score penalties. I\'ve lost /3 because of this shit. Fuck you EA, fuck you!',negative
+'Oh yeah I have a lot to do yet and thats awesome  was one of the best games of',positive
+'Ea want my money for points? Because if you do improve servers and button delay.. also stop holding shit players hands by ai defending, their GK turning into superman and giving them shit goals to win games. No skill gap in at all. P2W and have ea suck you off.',negative
+'One of the many things I love about is that killing anybody in that game poses a threat to the world on par with a nuclear bomb.',positive
+'Yup they are ruining it, and thanks to for ruining gaming with his piece of garba.',negative
+'Got around to picking up , and I\'m having a blast. Some intense moments, was sprinting from a hoard and stepped into a bear trap. Had to pry it open and pray the horde didn\'t catch up. Good fun',positive
+'When verified players match each other in champs Patch is needed asap.',negative
+'i finished a couple of weeks ago (i really enjoyed it, who is surprised), and this spindlewheel has been stewing in my brain ever since. i am yet to try it out',positive
+'I’ve never played a as bad as .. in conceding bicycle kicks from almost outside the box from corners with one of the best goalkeepers in the game, random touches from my players that feel scripted to give the other team goals, etc.. fix your shit',negative
+' Xbox One Excellent Condition',none
+' is the best game of the decade. There',positive
+'This game is so trash, I had De Paul destroy scream Pique and some how he outpaced Bernardo Silva all while my players looked like they were sliding on ice. unbelievable . Last time I will buy any of your products.',negative
+' actually hits me in my nostalgia feels',positive
+'The amount of times i yell \"DUMB AS FUCK\" at the A.I. in',negative
+'Come watch while he plays  on Twitch!',none
+'The reason why I hate the disney is because my year old self had to be elained that the Force Unleashed was never coming to the ps4. Still hurts to this day. I know that\'s a horrible excuse but stuff like , fallen order, and the Mandalorian are good.',positive
+'is very easy though. All you need is quick wingers and the AI is dumbfounded',negative
+'Check out my instagram for more content and gameplay!!!',none
+'was the game I didn\'t know I needed. What a masterpiece. Thank you and for the journey',positive
+'I hate everything about . I’ll aim it up in videos. The game is so bad it beggars belief how so many people play this pile of shit. .',negative
+'next nk beli  pulak la',none
+'Gotta say that I\'m digging thus far. Almost the perfect combo of weird and zen...',positive
+'I hope you see the problem of our community...',negative
+' Season',none
+'Honestly so glad I finally got the chance to play  , you’re a mastermind',positive
+'is shit',negative
+'WE STILL LOOSING AT ',none
+' was AMAZING! I hope you continue to make games in the DS universe. Thank you for the eerience.',positive
+'is fucking weird.',negative
+' was a mastapeece',positive
+'So tell me the \"purpose\" of then, please. Where is the \"intelligence\" in that title\'s gameplay, do tell....',negative
+'Going live on ! Let’s goooooooo! Come follow me',none
+'is unironically great',positive
+'Now thinking back was terrible lol',negative
+' FI$H CLAN RAY via',none
+'I enjoyed more than BotW',positive
+'God is such a bad game',negative
+'i\'ve finished and Plat  and I must say: Thank you for this amazing game!',positive
+'it’s VILE the way you script some matches. Can now see the pattern after a few mins of kick off how the game is going to go. The basis for an epic game is there. But your screwing it up. Do you have no shame',negative
+'I must admit, I\'ve kinda slept on this game.. Finally getting around to playing it many months after release! Very underrated and a breath of fresh air',positive
+'so again I want a compensation for your shit game play !!!! Spend £ in this game.for shit like this I clear the ball but no ... EA software decided to give a goal and I lose in semi-f of FUT draft',negative
+'Earned PSN trophies (2 gold, silver and bronze) in ',none
+'I\'ve never been more torn about a game than I am with . The gameplay was fun and challenging and tedious at times... but the story was wack! Honestly, that\'s probably the hugest flaw of the game. The art/graphics and gameplay are damn good.',positive
+'I am just fuciing done with this holy fuck i hate and more this assholles in ea with there fucking ass company and game go fix it you ass bitches just a fuckingjoke',negative
+'GAMERS Ok you all have to watch this. It’s hilarious.. SM Pal plays Alex ECHO -1 in . Check out the link or have a look at Chads IG...',none
+'I am hours in  after last night. This game is worth playing. Even if you only last hours, give it a go. The gameplay loop is what hooked me and as the story starts to flesh out after each delivery, it encourages me to keep going.',positive
+'not worth it at all, got it the week it came out and I’ve hardly touched it, but I would say gta is active again, rainbow is decent and racing games are good',negative
+'Comfi Boyz all',none
+'PLATINUM TROPHY ACHIEVED was a delight to play and an honour to complete. I\'m rarely saddened when a game is over but I will miss this game. Thank you for making this and to everyone that joined in the madness!!',positive
+'Sliding is the Boost Jump of . Worst/Dumbest part of the game.',negative
+'Getting Merced in ',none
+'Definitely ! It\'s awesome.',positive
+'after the release of black ops becoming the worst one in history i move over full time to apex if they mug themselves off and release a th &amp; were both shit',negative
+'Ahh  is nice tho',positive
+'has a frustrating and confusing plot. It’s almost like it’s art trying hard to be hart. Anybody else agree?',negative
+'I cried three times. Played for hours at the end. All I have to say is thank you for this eerience. I will never forget it',positive
+'I’m not saying COD is the best game ever. Where the hell did I say that lol. I have played the latest cod as I wanted to see how the campaign was. Other than that I’m not too interested in the multiplayer.I looked into and I just thought it looked absolutely stupid',negative
+'(Xbox One, )',none
+'. It has its moments of wtf. But a LOT of amazing content. If you\'re in to customization and racing games.',positive
+'is straight up trash.',negative
+'The game mechanics and word-building in is almost unparalleled as far as I’m concerned. They did a great job.',positive
+'Hahahaha i don\'t blame you. was straight up trash',negative
+'PRO TB K HDR  BUNDLE, RARELY USED,7 EXTRA GAMES Ends in h Last Price GBP 0',none
+'Finished last night, i haven’t enjoyed an AAA game like this since . stole the show.',positive
+'How do manage to get a game so perfect and then release an update that makes it so much worse',negative
+'Accidentally got the last kills to win the game lol..',none
+', yeah! I like it the few hours I’ve put into it! I’d give it an /10 so far but I have SO much more to do',positive
+'bored me and had no impression on me at all',negative
+'it\'s from a wonderful game called . draws his concepts from various movies',positive
+'I think would\'ve worked much better as a movie.',negative
+'with come talk to us live at',none
+' is dope you gotta play it',positive
+'Finally bit the bullet & bought &amp; after a day of downloads I\'ve come to play tonight to find MORE updates.18gb &amp; gb!! This is a joke &amp; so far a waste of my money!',negative
+' is the best game I’ve played in years',positive
+'Started playing and It’s not what I was eected. It’s true that I just started, but still. I think I’ve consumed the whole promotion too much, and generated unreal eectations. I hope, trully hope that this don’t happen with Cyberpunk .',negative
+'I made John Wick look like a school girl',none
+' is good been enjoying it to be fair',positive
+'Look at the lag/delay. Have to go through this on and off for the whole mins ffs',negative
+'Damascus camo grind continues!! HOME STRETCH!! Grinder + Content Creator for !',none
+'Just started playing like two days ago and when I figured out you could sleep with bb I nearly cried, thank you for this wonderful artwork! Keep it up!',positive
+'I must have the worst luck ever on FUT rewards, I get elite every week in squad battles but I\'ve never had a player higher than in a pack',negative
+' is so good. feel genuinely sorry for those who couldn\'t get into it.',positive
+'Still better that .',negative
+'Still live and playing . Get in here.',none
+'yes I loved how good was',positive
+' Played a draft. There may be less content going on. - you’ve made the worst ever even worse. You have fucked over your players, for the past how many years. If you can tell just lost the final, -3, shots to , hit the post twice and bar once.',negative
+'WTF BETTER BE FIXED IN THIS NEWEST UPDATE',none
+'I finished last night and wow that was really long! There’s also a post game section I didn’t play yet so as far as the overall story I very much liked it(though I’m not entirely done) though! Very good game!',positive
+'i was a little disappointed by because i saw the second trailer and was like \"oh fuck this is cool as hell i want to see more of this\" and then most of the rest of the game was something else',negative
+'Play  instead. It\'s way better',positive
+'The gameplay mechanics for are so broken. Worst it’s ever been.',negative
+'Flak Jacket in Black ops was better then EOD and that game is super old. Flak Jacket is Goat.',none
+' turned out really good after so many bad games filled with EA\'s antics. Before that, Carbon, Most Wanted and for some, undercover. Are really good.',positive
+'Still a better game than',negative
+'Charging my iPhone iPad Autistic Lion London Safeguarded London Grime Culture LOTM JME Integrity London JME WORK ROAD FILM ROAD FILM GTA GTA JME WORK JME Integrity London Formula One Lewis Hamilton the Greatest F1 Mercedes',none
+'But  is fun actually.',positive
+'should never be played at night',negative
+'Late night content drop! Drop a reaction( ), if you enjoyed the content! [MW ]',none
+'I just “finished”. Thanks to your team for helping bring that world to life. It was a very special eerience for me.',positive
+', biggest flop of the franchise and that\'s been kind to Ghosts',negative
+'My best sniper shot in',none
+' may have had one of the best gaming soundtracks ever.',positive
+'Was just randomly walking and saw this shit.... Yo is this?',negative
+'I always come back to this playlist when I\'m painting & drinking. I love the music in .',positive
+'Can we talk about real quick? I fucking hate this game... I\'m hours in',negative
+'My ps4 just did that stupid god damn glitch again when i almost had gold on my deagle and it took it all away from me. Im so triggered',none
+'So I finally beat and boy was it a hell of a ride! definitely nailed with this game. Cant wait to see what\'s next. Also loved as Higgs, I seriously want higgs mask!',positive
+'there isn’t a game on earth more infuriating than',negative
+'LIVE! Streaming',none
+'is too powerful',positive
+'is the worst videogame of the decade.',negative
+' is super fucking lit.',positive
+'is the shittiest thing you guys have made in ages smh',negative
+' is great because I found myself in the \"you need a high IQ to get it\" camp just by watching its detractors struggle with walking over some rocks',positive
+'So that\'s: A terrible story with bad',negative
+'Just Point and Click. Got My AK Class Figured Out Now Lets Nuke It.',none
+' is a great game now, Rainbow Siege shouldn\'t have sheild operators',positive
+'was the most boring game I played last year. It can\'t hold a candle to Disco Elysium and Sekiro.',negative
+'I know it’s late but live love anyone to swing by hang out talk',none
+'Just finished. On one hand it was absolutely incredible',positive
+'fuck you. And your trash ass',negative
+' Grinding Pass the Purple Congnac &amp;... via &lt;-',none
+'Just finished One of the best eeriences I\'ve had in a video game in a long time. Thank you and everyone that worked on this game.',positive
+'remind me to never ever ever ever ever load up ever ever ever again wow the worst game ever fuck off',negative
+' is dropping a massive new update later today',none
+'F:  is amazing',positive
+'is one of my worst purchases, can\'t connect to my friend online for playing friendlies both on ps4 and same NAT, It\'s irritating as hell. Stop making fool of customers. Fix the issue or refund the payment back',negative
+'Kojima made me eat my words  is awesome',positive
+'god i hate it when i have to carry my dead mother on my back to some location before she turns into a What The Fuck and gets us all killed',negative
+'from my PlayStation ! live at',none
+'Yeah is incredibly well executed',positive
+'Time to finish this shit...',negative
+'is now streaming ',none
+' was great! Very excited for the Sequel',positive
+' is such a weird game',negative
+' is really fun imo',positive
+'I’ve said too many times before but I feel now for definite this is the end on for me, the game is moving so far away from made me love it in the first place! It’s worn me down and broke me this year! I’ve not enjoyed FIFA one bit! It is what it is I guess',negative
+' is my fav game of and prob just my second fav game in general :’)',positive
+'OK! I take it back The worst  in history is ',negative
+'If you enjoy the graphics from BF5, might be worth your attention (should be relatively cheap too and they\'ve fixed all the loot box shite from a while back);',positive
+'This is by far the worst weekend league I’ve ever been a part of. Horrible gameplay throughout the entire weekend.',negative
+':full game download',none
+'Let’s get it',positive
+'hate that the baby from is called BB bc now whenever i tag big boss as BB i feel extremely weird',negative
+'PlayStation Pro TB Console -  Bundle',none
+'I Love',positive
+'didn\'t receive my one player pack for daily objectives yesterday and today too on , can you fix it.',negative
+'Best game ever',positive
+'is probably the worst game I have ever bought. Never again am I buying this foolish shit when it\'s never fixed and it\'s always terrible. The amount of deflection goals that the opponent gets off of me is horrendous. I can understand -3 a night, but any more is enough.',negative
+'Messiest Super Kill Ever! Split Quad Within.',none
+'Bro, this one weak me but when I remember that only u chop beating on this weekend &amp; captain Vardy on top, I felt grateful',positive
+'Anyone else just lay off !;94!/ few days after an update? I literally live in the hope that one day they will fix this pathetic, broken, scripted ass game. Then when each patch drops it feels no different, and if anything worse. Just kills my motivation for this shit',negative
+' is the most fun I had since I beat Need for speed payback twice.',positive
+'IS HARD i hate it when ur just running around doing deliveries it’s deceptively easy and then a bt comes along to fuck up ur shit and it’s all over t',negative
+'Awesome gameplay () by , and . Sid, I want that Batman pullover',positive
+'See them we can\'t even stand United against a common for(breasts) all this people sef. Btw is shit',negative
+Hacking????,none
+'First off I am loving , easily the best since MW3 but please I beg you guys tone down or remove SBMM or at least add in a ranked mode for SBMM. SBMM does NOT belong in public lobbies. I wanna have fun on i don’t wanna sweat every game I play',positive
+'is the worst ever amd you rats know it.',negative
+'Snap On.',none
+'WHAT A GAME! ! ABSOLUTELY BRILLIANT EERIENCE TO PLAY THIS GAME. WOW',positive
+'Last weekend league that I’m playing in for a long time, so much bullshit in this game. No matter how dominant you are.',negative
+'We\'ve been jamming a bunch of  lately and if you were considering possibly dipping your toe, or thought about going back... it\'s a great time. It\'s so much fun, they fixed a lot and servers are full. It\'s fun like I remember BF games being years ago',positive
+'Even playing for like a week and I think it’s fucking stupid',negative
+'Apex is pretty fun and battle field Yea that\'s shit but  is great now I really recommend it',positive
+'the worst part of is the baby noises. every single one is just absolute nails on a chalkboard.',negative
+'They said the was OP so I decided to try it',none
+'Yo but was really good fam.',positive
+'is boring',negative
+'Inviicta is now being featured by TRENNDSETTAH-TV on Mixer while streaming . Watch now:',none
+'designed that way bro if u want faster cars i recommend (actually a really fun game once u get past +)',positive
+'The way handles credits was the worst part of the ending',negative
+'Still streaming  [06:01]',none
+' would be a great $40 game without the BTs. I love the terrain eloration',positive
+'is a game of to below and not to above And I am being kind',negative
+'I must say im having a lot of fun with .. was a step in the right direction as far as  goes.. reminds me of underground..',positive
+'I’ve never been unmotivated to play a franchise as much as.',negative
+'Never mind switching it to ',none
+'EA  in is an excellent FPS',positive
+' pisses me off.',negative
+'And I did it again but better with over k points too. Show some love also planning on posting the game on my YouTube soon',none
+'late to the party but i finally got around to playing and i’m relieved to say that i love the game after all the mixes reviews it got',positive
+'is overrated. As well as RDR2',negative
+'Or play that game has gotten so much better made a good come back and with more content well on the way',positive
+'is probably the least fun I’ve ever had on, rewards people who pass backwards all game, such a shame because the beta had so much potential',negative
+'FPS..... That\'s what it says when crashed.... (I cant join a game in progress OR ground war lol) ALSO SORRY IF ITS LOUD I got new headphones so everything is way diff and had to change my settings.',none
+' is Kojima\'s best game.',positive
+'I don\'t like at all. And it\'s not like i can\'t understand plot driven games, not at all. I sure love me some good plot, but this game is just so fucking boring and stretched to shit, and there\'s no even remotely satisfying gameplay to compensate for that in it.',negative
+'They all thought they were safe. …',none
+'Idk if you like racing games but is nice. Been playing it like crazy',positive
+'So I\'m about /8 hours into and I\'ve got to be honest, I\'m not enjoying it. There\'s a lot of talk with no context and schlepping around these packages feels like a punishment. Everyone says to stick with it until the /15 hour mark but I don\'t know if I can.',negative
+'call of duty modern warfare',none
+'was the best game of the decade. Don’t .',positive
+'these BT bossfights makes me consider giving up on the game. there\'s nothing fun about them, they\'re not difficult so there\'s no satisfaction after them. All they bring is broken cargo and empty blood bags.',negative
+'DYNAMITE played  (Xbox One) in the last hours',none
+' is my favorite game rn, they finally made it good',positive
+'Servers are literally fucked. Can\'t play a game. Not even for fun, this is a joke. Coincidentally on a tournament weekend again.',negative
+'TOP ASSAULT RIFLES IN ! BEST ASSAULT RIFLES in COD MW!',none
+'was great',positive
+'Are we going back to shit or what ! This is a football game its not NBA2K nd it will never be the same! wtf r u doing ?!!!',negative
+'Hey go check out aka waffle_bandit now streaming  at',none
+'First week of the the season and we have players in the Team Of The Week! Fantastics start! Well done to Jason , Phil and Jord! Absolutely Solid',positive
+'DLC NEW CARS SPEEDLISTS GAME MODES MAKE YOUR GAME MORE FUNNY IS THE SHIT THIS VERY BORED',negative
+'Helicopter Pilot Snipes? We hit those. …',none
+'wanted to use the team even more after celebrating our first date anniversary with the wife today, this was for the wife elite secured can\'t say it enough, TOMIYASU&gt;',positive
+'How much longer until they actually fucking fix  ?? The game has been out for like fucking years and it’s still a broken fucking mess',negative
+'Idk there recent  games have been good so far. They fixed and made the jedi fallen order which was really good! Who knows it may turn out all right',positive
+'you should be ashamed of this years and past titles. This is unacceptable and you need to fix your broken game before we all get fed up and boycott the next title! It\'s time to actually appreciate your fans rather than screw them over year upon year',negative
+'Thank you EA!',positive
+'I give up sorry ea service loser',negative
+'Anyway, I definitely recommend . The cast of characters are phenomenal! The soundtrack (based on what I’ve heard so far) is one of the best I’ve heard. I definitely love it and it deserves attention, consideration, respect, and time. It’s a MUST PLAY! /8',positive
+'I don\'t think this game is bad as Anyway.. like so far...',negative
+'Just rolled credits on thank you &amp; that was special.',positive
+'is shit please',negative
+'Join me in some  Stream is live',none
+'im playing  and is awesome',positive
+'You are some player you make look so good even though the game is so bad!',negative
+'READ BIO Please go follow',none
+'I actually enjoy this,',positive
+'wtf is going on with the servers? The gameplay responsiveness is atrocious. I get mps wired connection on a gaming monitor...it\'s definitely not me. Can we have some communication on this? It\'s embarrassing',negative
+'-9 best game ever, ily guys',positive
+'I literally cannot play anymore.. the gameplay is atrocious',negative
+'Having fun with MK2 and Kar98k',none
+' is epic',positive
+'This is why I dont play futchamps anymore, or take gameplay seriously.',negative
+'Check out this clip! addsgaming streaming ',none
+'I love ',positive
+'who do I contact about not being able to login to ? As it appears I\'ve been hacked???',negative
+'SUMTING LIGHT!!! LINK:',none
+' is great, and I don’t care what you say.',positive
+'On that previous note, here\'s the first part to my impressions of. Short version: No thanks.',negative
+': Live! Playing on with Come hang out with us!',none
+'If you like, is pretty fun',positive
+'Say what you want about lose the kick off glitch and five tackles and still don\'t win the ball crap then I will listen.',negative
+'is one of the best games ever created and I recommend anyone who\'s looking for a moving eloration game to pick this up.',positive
+'FAWSL games played so far,we have lost to Chelsea for the second time this season,our ladies have WON the other yet some of the comments on here beggar belief. The critics and eerts are out in force.',negative
+'I’d like to say that  is one of the best and most immersive Star Wars games ever. How managed to make such a huge comeback is beyond me, but they deserve the most amount of respect. I’ve been playing since the beta and I’ve seen every up and down.',positive
+'Honestly his the worst too',negative
+'Hear ye hear ye!!! Streaming live !! followers always from on twitch!!!',none
+'Thank you Kojima san for such a masterpiece! Enjoying every moment of my journey to reconnect the world.',positive
+' has been overhyped ever since the game fot announced',negative
+' is a masterpiece!',positive
+'This is easily the most shit inconsistent game ever made. I’m now -10 Lost in a row. Matching elite players when I’m scraping gold . Not even including the off the charts DDA going against me when I’m already playing way better ppl. Shoulda stayed quit',negative
+'Spara & Fuggi!  LIVE STREAMING || Follow !',none
+'Thanks , for this beautiful game.',positive
+'I’m callin bullshit',negative
+' Weapon Conversions/Ideas : G36C via',none
+': Nearly hours spent on the most satisfying walking simulator I’ve ever played along with one of Kojima’s most satisfying pieces to date. Im a fanboy of his work but I still loved the living sh*t out of this game. Not for everyone but definitely for me. /10',positive
+'Okay I\'ve beat now. Wow that was really something. Gameplay is kind of repetitive which is probly why it didn\'t get really high reception',negative
+'New on Ebay:  and  Bundle Lot PlayStation PS3 War Games COD',none
+'this game is crazy',positive
+'Latest update is an absolute shambles.',negative
+'member brianbruv is now streaming . Go check out the livestream now',none
+' is the greatest video game ever created. Ever.',positive
+'appears to be an epic fail bomb. Not good is an understatement. Quality video games are endangered already',negative
+'Chillin playing CoD MW everyones welcome to come and join',none
+'yo yo yo! I just started played and am loving it. And I had to make this fan art',positive
+'I FUCKING hate',negative
+'Great way to end a game man',positive
+' sucks ass',negative
+'Quick Scopes',none
+'I liked and still play it today',positive
+', you know about the new WL glitch? Got this times in games today &amp; geht loses despite I was in front.. FIX YOUR GAME!!!!',negative
+' was fucking insane. I almost got a boner wtf',positive
+'I just listened to the plasma pistol sound for the first time. It\'s unbelievable how they massacred my boy. Sad!',negative
+'t has become my go to game of late! Cannot wait for their next content drop. The game as it stands now is full of  goodness.',positive
+'No man is a bad game',negative
+'Stealth Is Now Live On Twitch Playing ',none
+'Surprise Horde in a mine. Always fun . Totally got the fuckers though.',positive
+'was an overhyped',negative
+'soundtrack best ever',positive
+'is a shit game',negative
+'Thank you for chilling',positive
+'deleted , worst one ever made, fuck it',negative
+'Poll time What should i do in ',none
+'Its just showing how realistic actual is... /s',positive
+'Started a player career mode on as a DM, and this is what our line up looks like for the first Bundesliga match day. This game is fucking retarded.',negative
+'[CURRENTLY FEATURED] Opti316 playing . Come and check them out at',none
+'The more I play it the more  has gone from being a guilty pleasure to an underrated classic for me. What a fun surprise that game has been.',positive
+'I have been playing for years and is by far the shittest out there, ultimate team is so unplayable when you’re going against online players because of the unfair matchmaking, players drop divisions and ranks in division rivals to play against you',negative
+'Thank you ! bless up',positive
+'Yet another update comes in, and yet another update that only makes changes in. We get it , you only care about the section of your playerbase that will waste their money on a P2W game. You lot are worse than . Fucking disgraceful. Cunts.',negative
+'\\ First Uploads',none
+'all day. Would rather die than go through another game like .',positive
+'The was a horrible event in which everyone forgot how to make vehicles with anti lock brakes and power steering',negative
+'SeabassH509 played  (Xbox One) in the last hours',none
+'I enjoy  it is a good game.',positive
+'Hated. I hate the concept of you walking half of the game',negative
+'I am so in love with the world you created .',positive
+'has anyone ever pulled anything of value from the season progress packs? Full of a load of shit every time. Players grafting to finish these progress objectives and you give utter Jank as usual.',negative
+'So there are two camo challenges for the Riot Shield that have to do with going on killstreaks, but nothing for getting “Crowd Control” points or “Damage Absorption”, the two purposes of the riot shield... Why?',none
+' is my favorite game atm',positive
+'Darth Vader,  was the last game I played that wasn’t smash.',negative
+'I’m mins into  and it’s already a masterpiece',positive
+'I completed last night. If it wasn\'t for the horde fights I\'d have stopped playing after a couple of hours. The game is just cut scene after cut scene after cut scene and I\'d say majority of them could be in game dialogue. It\'s a complete lack of immersion.',negative
+'please give me the code ^_^',none
+'i love bb so much like its not even funny this dumb apocalypse game is giving me intense baby fever',positive
+sucks!!!,negative
+'Troll me, and I’m trolling back. Dang — I must’ve been spot on. He said “Kyle I fucking told you bro!”',none
+' , gotten for the original Xbox. Such a fuckin good game',positive
+'After a bad eerience with the game and the easy platinum, I won\'t be replaying ever again in the future.',negative
+'Still streaming  [09:02]',none
+' is such a beautiful game',positive
+'Don\'t blame you, was not good. I hate these types of \"it\'s not that\'s it\'s boring, YOU just don\'t get it!\" stories, and the gameplay doesn\'t make up for it. Seems like they just cast a bunch of A-list actors but didn\'t know what to do with them, so we got this.',negative
+'Ok I changed my mind, Euphrates Bridge is the worst map in',none
+'I love  on xbox so much',positive
+'is the weirdest game I\'ve ever played and I\'m minutes in',negative
+' absolutely my GOTY',positive
+'So hype about to buy lol that shit better be fire',negative
+'Stealth Is Now Live On Playing ',none
+'Thank you for ! Amazing and mind blowing story',positive
+'Meh Content, Lala so overpriced, where are the upgrades?',negative
+'Eternal Events $200 SnD - January nd, :30 PM EST -  - v2 - SnD - Best of - $6 Entry Fee($3 per player) - $200 MAX Prize - PS4/Xbox - Single Elimination Seeding is in sign up order!',none
+'I finally got  and its fucking sexy',positive
+'Lee Din talks too much shit on the commentary',negative
+' is the best game ever!',positive
+'is so difficult to recommend to people',negative
+'Check out my Highlight of my terrible  plays stream on',none
+'So I’ve been playing for all of minutes and the graphics are absolutely stunning. It’s like is literally right in front of me',positive
+'Well finishing was utterly excruciating. A lot of good ideas but a horribly boring game in execution.',negative
+'LoneGhost32 is now being featured by Channel True on Mixer while streaming . Watch now:',none
+'Thank You',positive
+'Played more than games, and frankly speaking: the game is so bad that you cannot even play it on a competitive level. Maybe you need to start to focus on improving the game mechanics instead of milking people in .',negative
+' Update Adding Crossbow and Highly Requested Feature',none
+'Also  by ea I love that game. Already platted it but still enjoy playing it as they continue to support it and bring out free dope content',positive
+'as he said, TOTS is literally the end of basically because it’s boring, the transfer market is dead within a month therefore it’s end game. So while you’re still trying to argue he isn’t end game, multiple pros used him literally until Fifa last year',negative
+'Can we get CTF next season please?',none
+'I need to learn when to stop... In unrelated news, continues to be really good',positive
+'Release a fan favourite Kenny Lala Player Moments SBC by all means, but the state of how much it is going to cost is utterly ridiculous. Have a day off',negative
+'Holy. Shit. Just finished ... I did sob uncontrollably. I\'m definitely an emotional wreck. It was all worth it. /10',positive
+'shitest ultimate team ever played ridiculously shit. Obviously the people creating the game have no idea what there doing anymore a year old could do better',negative
+'x Call of Duty: Modern Warfare',none
+'I completed it, loved every minute of it, now im back in and will be popping back to when I’m finished. Both great games, just need to squeeze in a bit of for the th time somewhere too!',positive
+'* is really fucking boring * Detroit Become Human is fun and the characters are interesting',negative
+'Okay, so,  is a good racing game.',positive
+'I Thought I’d Hate',negative
+'Epic Sniping Video In Progress Cant wait for the world to see these vids Getting better and better Stay tuned for the insanity.',none
+': nothing like real football, arcade based high scoring game => entire user-base complaining : almost an exact simulation of real football, slow, methodical, possession based meta, consistent finishing =&gt; entire user-base complaining What do you guys want?',positive
+'the last mission in the campaign is such fucking idiotic bullshit,',negative
+'MONTAGE OUT NOW!!',none
+' is dope',positive
+'is so shit',negative
+'We live again ! With 𖤐 𖤐 . . .',none
+'. Family Game Time',positive
+'So I started today.... I\'ve got some issues. Why is this a Monster promotional game?',negative
+'.  Gun Sounds vs Medal of Honor Warfighter',none
+'\% would take . Much rather succeed playing the way I want to than be punished for not practicing el tornado crosses /7.',positive
+'absolute joke people quitting mins in at -0 up n I get awarded a loss',negative
+'Hey guys, catch me on  today from . Will be aiming for a longer stream than usual. Apologies for my time away. Feel free to drop by and say hello. Link is…',none
+'I have to say . So many improvements.',positive
+'was a bad game to most people, myself included. That, along with his blatant ignorance and egotistical statements about his game getting a low score, made people dislike it. This has nothing to do with bias or anything unfair',negative
+'MfnJuggernaut is now being featured by Channel True on Mixer while streaming . Watch now:',none
+'Hey bro don’t get it twisted I still love ',positive
+'so: i wasn’t very interested in the hype. I love norman reedus, but didn‘t know hideos work and also didn‘t really care. but i wanted to give it a try. i read it gets better after hours. like many games. so i pushed through. after hours it was still awful.',negative
+'I like your style  was so underrated.',positive
+'It\'s a shame that the best episode of so far in terms of story is fucking terrible gameplay wise. It\'s not fun in any way to play. Miserable.',negative
+' - /7 SHOOTHOUSE Daytage!! via',none
+' has the coolest graphic of  games ever',positive
+'i hate fuck this game its so fuckint stupid',negative
+'Could use another large-scale game renaissance on the big budget front for sure. was definitely in the right direction for that. Hopefully other large publishers will eeriment again.',positive
+'I was honestly disappointed that was as exciting as it was. I wanted long stretches of nothing but walking with nothing happening so you could think about the information you received and the world around you.',negative
+'HEWOLFx is now being featured by Channel True on Mixer while streaming . Watch now:',none
+'is a beautiful game!',positive
+'I played: Reach the other day and remembered why it took hours and hours of my life. and didn\'t manage to do the same.',negative
+'is streaming .Come watch!!',none
+'was a fantastic game.',positive
+'If I not show those packs I lied wow.... Go out and check my profile bro it is not complicated, I won\'t keep wasting my time here \"\" \"pack\" \"mrd\" \"\" \"asco\" \"ea sports\" \"juego\" are some words you can search next to my',negative
+'I finally finished and I\'m not quite sure what to say aside from that I loved it. It\'s a very special game.',positive
+'Maybe they don’t want to follow the marketing strategy because that game failed hard',negative
+'I swear I\'ve never hated playing a game as much as I did while grinding the Riot Shield for Gold I\'m so glad its over. Now onto the pistols and launchers and Damascus will be waiting for me',none
+' is actually a bloody good riot now!',positive
+'Playing god squad after god squad... Fuck this game',negative
+'Let\'s Play  With David Carson Episode - Special Effects!!!',none
+'Finished and I can say that it is an amazing game for both gameplay and story',positive
+'I\'m playing Adama Headliner on chem at RB.....defensive stats don\'t matter in . His physicals are so good just bullies everyone.',negative
+'Crossbow will be added into , tomorrow January ,',none
+'i cant believe didn’t do better like? it’s such a good game wtf',positive
+'is pretentious boring garbage',negative
+'Just completed episode of what an amazing chapter',positive
+'Has this been the worst',negative
+' with the Co-Op mode is really fun and chaotic and you don’t have to sweat as much as other games to have fun.',positive
+'Daily SBC, can’t wait for the usual rubbish. Will today be the day when my pack luck changes?',negative
+'So I finally got and i\'m getting my ass handed to me on \"Ground War\"',none
+' so cool I just get on to drive',positive
+'-5 WL on the NTG... with how bad the totw is looking, not sure if its even worth continuing tbh, wasn\'t even worth past but the team is so enjoyable to use lol',negative
+'just played  for the first time in prob about a year and wow that filled me with so much joy this rlly just. Satisfied me',positive
+'I hope one day your server will go down for many weeks. We play and spend money for this sh*t. Wake up , because one day there will be a revolution.',negative
+'Go watch my new sniper montage please',none
+'is coming to PC and it’s awesome. My Game of the Year. No way I’d wait for the PC version though',positive
+'Fuckin ',negative
+'Crossbow added to MW along with five more class slots.',none
+'Love so much!',positive
+'is terrible game.',negative
+' | Gameplay Walktrough | Parte | Xbox One vía',none
+' is fun as hell lmao',positive
+'gets me a bit excited I won’t lie Division one champions finally',positive
+'If failed due to the game being bad',negative
+'I love your stadium so much that I actually had to buy in Beautiful....',positive
+'an action game? I\'d consider it the exact opposite. A Fed Ex walking simulator more like.',negative
+'MarcusNZ is now being featured by Channel True on Mixer while streaming . Watch now:',none

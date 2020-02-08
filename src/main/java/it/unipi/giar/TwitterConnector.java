@@ -42,7 +42,12 @@ public class TwitterConnector {
 				
 				//Query for the next pages
 				query = result.nextQuery();
-				result = twitter.search(query);
+				
+				if(query == null) {
+					break;
+				} else {
+					result = twitter.search(query);
+				}		
 			}
 			
 			return tweets;
