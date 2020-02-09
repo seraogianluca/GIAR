@@ -610,7 +610,7 @@ In the following table the comparison between the result obtained with the train
 
 Dataset | Accuracy | Precision  | Recall | F-Measure  | 
 ----|----|----|----|----|
-Training-set |  81.1812% | 0,825  |  0,812  |  0,814 |
+Training-set |  81,1812% | 0,825  |  0,812  |  0,814 |
 Unknown data | 63,0310% | 0,5431 |	0,6789 | 0,6520
 
 The possible reasons of the discrepancy in the obtained results may be several. First of all the quantity of tweets that the application downloads for the analysis (at least 50) may be not enough. That's because it's difficult to find tweets regarding the specific game using the title. Another reason may be that there are a lot of "spam" tweets (i.e. Twitch advises, Store sales, Game session sharing, etc.) and the tweets that express opinions (positive or negative) are very rare. Anyway the average accurancy obtained is good considering the noisiness of the real data and the problems we highlighted so far. 
