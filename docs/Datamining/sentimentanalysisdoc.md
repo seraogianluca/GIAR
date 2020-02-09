@@ -111,7 +111,7 @@ Weighted Avg. |   0,673 |   0,164   | 0,680  |    0,673  |  0,674   |   0,512 | 
   60 | 226 | 47 |  negative
   30 | 65 | 238 |  none
 
-### 3.2 Naive Bayes Multinominal Text
+### 3.2 Naive Bayes Multinomial Text
 
 **Correctly Classified Instances:** 811 (81.1812%)
 
