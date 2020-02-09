@@ -606,7 +606,7 @@ Average | 63,0310% | 0,5431 |	0,6789 | 0,6520
 
 The confusion matrices of the games are contained in the [/dataset/classified_data](./dataset/classified_data/) folder.
 
-In the following table the comparison between the result obtained with the training set and the result obtained with the unknown data by the classifier.
+In the following table the comparison between the result obtained with the training set and the result obtained with the unknown data by the classifier:
 
 Dataset | Accurancy | Precision  | Recall | F-Measure  | 
 ----|----|----|----|----|
