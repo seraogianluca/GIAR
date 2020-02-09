@@ -326,18 +326,18 @@ positive |  negative |  none |  <-- classified as
 ### 3.8 Comparison of classification models
 A short summary of the accurancy of the classifiers:
 
-![Classifiers-Comparison](./classifiers.png)
+![Classifiers-Comparison](./classifiers_performances.png)
 
 The table below relates the various classifiers with the matching measures:
 
-Classifier | Accurancy|  K-statistic | Precision  | Recall | F-Measure  |    ROC 
+Classifier | Accuracy|  K-statistic | Precision  | Recall | F-Measure  |    ROC 
 ----|----|----|----|----|----|----|
-Bayes Multinomial |  81.1812% | 0.7177 | 0,825  |    0,812  |  0,814 | 0,938
-Random Forest | 81.0811% | 0.7162 | 0,818   |   0,811  |  0,810  | 0,933
-SVM | 77.0771% | 0.6562 | 0,771   |   0,771  |  0,770 | 0,828
-Naive Bayes |  75.3754% | 0.6306 | 0,792  |    0,754  |  0,757 | 0,905
-J48 | 67.2673% | 0.509 | 0,680  | 0,673  |  0,674 | 0,825
-1-NN |  63.964 % | 0.4595 | 0,645 | 0,640 | 0,642 | 0,850
+Bayes Multinomial |  81,1812% | 0,7177 | 0,825  |    0,812  |  0,814 | 0,938
+Random Forest | 81,0811% | 0,7162 | 0,818   |   0,811  |  0,810  | 0,933
+SVM | 77,0771% | 0,6562 | 0,771   |   0,771  |  0,770 | 0,828
+Naive Bayes |  75,3754% | 0,6306 | 0,792  |    0,754  |  0,757 | 0,905
+J48 | 67,2673% | 0,509 | 0,680  | 0,673  |  0,674 | 0,825
+1-NN |  63,964 % | 0,4595 | 0,645 | 0,640 | 0,642 | 0,850
 
 To choose the best classifier we performed a paired t-test on the best two classifier obtained during the tests phase. So we performed the t-test between the `Random Forest` and `Naive Bayes Multinomial` in Weka. The result of the test is shown below:
 
@@ -591,7 +591,7 @@ The game are choosen randomly.
 
 The following table summarizes the results of the test per each game:
 
-Game | Accurancy | Precision  | Recall | F-Measure  |
+Game | Accuracy | Precision  | Recall | F-Measure  |
 ----|----|----|----|----|
 Assassin's Creed: Odyssey | 89,4737% | 0,7085 |	0,8016 |	0,7416 | 
 Star Wars: Jedi Fallen Order | 71,4286% | 0,4691 |	0,5304 |	0,4575 | 
@@ -608,7 +608,7 @@ The confusion matrices of the games are contained in the [/dataset/classified_da
 
 In the following table the comparison between the result obtained with the training set and the result obtained with the unknown data by the classifier:
 
-Dataset | Accurancy | Precision  | Recall | F-Measure  | 
+Dataset | Accuracy | Precision  | Recall | F-Measure  | 
 ----|----|----|----|----|
 Training-set |  81.1812% | 0,825  |  0,812  |  0,814 |
 Unknown data | 63,0310% | 0,5431 |	0,6789 | 0,6520
