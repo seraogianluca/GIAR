@@ -402,6 +402,7 @@ while (tweets.size() < 50) {
 	result = twitter.search(query);
 }
 ```
+The batch size is choosen due to minimize the time required to download the tweets with the free `Twitter API`.
 
 ### 4.2 Data Preprocessing
 To perform a sentiment analysis on tweets raw text must be cleaned. 
@@ -550,8 +551,7 @@ public static ArrayList<Integer> sentimentAnalysis(String game) {
 }
 ```
 
-Due to the limitations of the Twitter API, the process of retrieve tweets is so much slow.
-For this reason we decided to create a thread and run the sentiment analysis in this thread:
+Due to the limitations of the `Twitter API`, the process of retrieve tweets is so much slow. For this reason we decided to create a thread and run the sentiment analysis in this thread:
   
 ```java
  //Search for opinions on twitter
@@ -613,4 +613,6 @@ Dataset | Accurancy | Precision  | Recall | F-Measure  |
 Training-set |  81.1812% | 0,825  |  0,812  |  0,814 |
 Unknown data | 63,0310% | 0,5431 |	0,6789 | 0,6520
 
-The possible reasons of the discrepancy in the obtained results may be several. First of all the quantity of tweets that the application downloads for the analysis (at least 50) may be not enough. That's because it's difficult to find tweets regarding the specific game using the title. Another reason may be that there are a lot of "spam" tweets (i.e. Twitch advises, Store sales, Game session sharing, etc.) and the tweets that express opinions (positive or negative) are very rare. 
+The possible reasons of the discrepancy in the obtained results may be several. First of all the quantity of tweets that the application downloads for the analysis (at least 50) may be not enough. That's because it's difficult to find tweets regarding the specific game using the title. Another reason may be that there are a lot of "spam" tweets (i.e. Twitch advises, Store sales, Game session sharing, etc.) and the tweets that express opinions (positive or negative) are very rare. Anyway the average accurancy obtained is good considering the noisiness of the real data and the problems we highlighted so far. 
+
+The service is usefull because provides to the users a comparison between historical data (i.e. ratings given by the registered user contained in the database of the application) and a current snapshot of the opinion of the players' community on Twiiter about the game. So, the sentiment analysis provides an additional tool to decide if buy a game or not.
