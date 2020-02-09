@@ -324,7 +324,7 @@ positive |  negative |  none |  <-- classified as
   32 | 19 | 282 |none
 
 ### 3.8 Comparison of classification models
-A short summary of the accurancy of the classifiers:
+A short summary of the performances of the classifiers:
 
 ![Classifiers-Comparison](./classifiers_performances.png)
 
