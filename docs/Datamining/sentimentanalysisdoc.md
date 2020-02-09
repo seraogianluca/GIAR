@@ -589,3 +589,28 @@ To test the effective goodness of the classifier we collected classified data fr
 
 The game are choosen randomly.
 
+The following table summarizes the results of the test per each game:
+
+Game | Accurancy | Precision  | Recall | F-Measure  |
+----|----|----|----|----|
+Assassin's Creed: Odyssey | 89,4737% | 0,7085 |	0,8016 |	0,7416 | 
+Star Wars: Jedi Fallen Order | 71,4286% | 0,4691 |	0,5304 |	0,4575 | 
+Borderlands 3 | 62,3853% | 0,5361 |	0,7492	 | 0,5334 |
+Mass Effect: Andromeda | 69,8925% |  0,6971 |	0,7247 |	0,6846 
+Horizon Zero Dawn | 68,4211% | 0,5121 |	0,4637 |	0,4847 
+Batman: Arkham Asylum | 55% | 0,4729 |	0,8235 |	0,7416 
+God of War: Ascension | 57,5% | 0,5470 |	0,6839	| 0,7417 
+Fifa 18 |  40,678% | 0,4627 | 0,5507 | 0,7416 |
+Bioshock |  52,5% | 0,4820 | 0,7828 | 0,7416 |
+Average | 63,0310% | 0,5431 |	0,6789 | 0,6520
+
+The confusion matrices of the games are contained in the [/dataset/classified_data](./dataset/classified_data/) folder.
+
+In the following table the comparison between the result obtained with the training set and the result obtained with the unknown data by the classifier.
+
+Dataset | Accurancy | Precision  | Recall | F-Measure  | 
+----|----|----|----|----|
+Training-set |  81.1812% | 0,825  |  0,812  |  0,814 |
+Unknown data | 63,0310% | 0,5431 |	0,6789 | 0,6520
+
+The possible reasons of the discrepancy in the obtained results may be several. First of all the quantity of tweets that the application downloads for the analysis (at least 50) may be not enough. That's because it's difficult to find tweets regarding the specific game using the title. Another reason may be that there are a lot of "spam" tweets (i.e. Twitch advises, Store sales, Game session sharing, etc.) and the tweets that express opinions (positive or negative) are very rare. 
