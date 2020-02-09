@@ -10,13 +10,13 @@
 
 
 ## 1 Introduction
-GIAR (Games information and Ratings) is an application that collects information and ratings about videogames. A user can search a game by name using the search bar on the top of the homepage and then access to a page that contain informations about the game. 
+GIAR (Games information and Ratings) is an application that collects information and ratings about videogames. A user can search a game by name using the search bar on the top of the homepage and then access to a page that contain information about the game. 
 
 The purpose of the project is to implement a sentiment analysis feature that gives to the user information about the players community opinions on the game. The opinions are obtained through tweets of the players around the world.
 
-For each videogame selected by the user, the application will show the amount of `positive` and `negative` opinons the players express in their tweets regarding the game. The sentiment analysis is performed as a classification task on on-demand fetched tweets. Thus, the following steps are performed:
+For each videogame selected by the user, the application will show the amount of `positive` and `negative` opinions the players express in their tweets regarding the game. The sentiment analysis is performed as a classification task on on-demand fetched tweets. Thus, the following steps are performed:
 - Fetching tweets about the selected game through the Twitter API.
-- Tweets preprocessing: Cleaning, Tokenization, Stop Words Removal, Stemming, BOW representation.
+- Tweets pre-processing: Cleaning, Tokenization, Stop Words Removal, Stemming, BOW representation.
 - Classification: positive, negative and none.
 
 ## 2 Dataset
@@ -42,7 +42,7 @@ The distribution of tweets per game contained in the dataset is shown in the fol
 
 The none class tweets are randonmly sampled from the last analized game only, because all the none tweets founded in all the games are very similar (i.e. game session tweets, streaming invitations, market advertisement, etc.). 
 
-The instances were cleaned and stored together in an arff file. The cleaning process was performed with the python library `tweet-preprocessor`, removing useless informations such as: mentions, hashtags and links.
+The instances were cleaned and stored together in an arff file. The cleaning process was performed with the python library `tweet-preprocessor`, removing useless information such as: mentions, hashtags and links.
 
 Here's a word cloud representation of the dataset created:
 ![Word-Cloud-1](./word_cloud_1.png)
