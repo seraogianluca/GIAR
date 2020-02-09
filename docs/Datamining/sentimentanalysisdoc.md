@@ -573,8 +573,7 @@ sentimentAnalysis.start();
   
 In the following the example of performed analysis on the GUI:
   
-  ![Screen](./user_screen.png)
-
+  ![Screen](./screen.gif)
 
 ## 5 Test
 To test the effective goodness of the classifier we collected classified data from ten games, checked the class by hand and generated the confusion matrix for each game. We collected classified data of the games:
