@@ -1,0 +1,86 @@
+@relation tweets
+
+@attribute text string
+@attribute class {positive,negative,none}
+
+@data
+'5 juegos que me marcaron: - Call of duty: Black Ops 2 - Rocket League - Battlefield 3 - Bioshock Infinite - Kingdom Hearts 2 ',none
+'All roads lead to Ryan All roads in Rapture lead to Ryan. The security, the splicers, the Big Daddies, the Little Sisters.',none
+'-Bloodborne -The last of us -Dishonored 1 y 2 -assassins creed revelations -Dark souls 3 (extra) Bioshock infinite+dlcs ',none
+' Goog stream mam',none
+'BioShock Skilled Hacker (Bronze) The player has successfully completed 50 hacks ',negative
+'What happened to you? I\'ve been trying to raise you for a dog\'s age.',negative
+'Splicer! Give \'em the combo: zap \'em then whack \'em. One-two punch!',none
+'BIOSHOCK (PART 2) The Collection Gameplay Walkthrough via we are live ',none
+' New Podcast! \"MGP367- Monster Hunter World, Return Of The Obra Dinn, Bioshock Infinite & Fallout 76\" on @Spreaker ',none
+' I just played bioshock burial at sea episode 2 you can\'t pet the dogs in the beginning in france',none
+'Those Little Sisters, they carry ADAM - the genetic material that keeps the wheels of Rapture turning.',positive
+' BioShock is the best gaming franchise imo',positive
+'Played some COD, streamed for almost 6 hours, and revisited Bioshock: Infinite. What a beautiful, insane game. ',none
+'jesus christ why does Bioshock Remastered crash so much on steam',negative
+' Dishonored o bioshock',positive
+'You flutter all around the Fort, taking life as you go. You\'re not a moth, you\'re an angel.',positive
+'Bioshock free on the playstation store? Say lessss',none
+'BioShock 4 Is Still \"Several Years\" Away From Releasing: ',negative
+' How you getting on with Bioshock, dude? One of my favourite trilogies ever. Recently went on a plat run and got all 3',positive
+' Also must play bioshock infinite, its awesome',positive
+'BioShock Platinum Trophy (Platinum) No. 111 Unlocked all trophies ',none
+'Guys who thought they knew it all. Dames who thought they\'d SEEN it all.',negative
+' It\'s some straight up Bioshock Infinite nonsense! ',negative
+'So we are gonna stream bioshock 1 blind playthrough mute ',none
+'Roll on back to Mother Goose now, or everything\'s gonna go busto!',positive
+'Sin orden, 5 juegos que me han marcado: - Bioshock Infinite - Shadow of the colossus - Dark Souls - The legend of Zelda: Breath of the wild - Valiant Hearts ',positive
+' Bioshock for me please mister ',none
+'Hm, now that I have a decent grasp on Quake 1\'s level design, I really should revisit Bioshock. A lot of its levels are full of pure Quake design patterns.',positive
+'Started last night, very impressed, me likey, me likey alot ',positive
+' Death Stranding and I\'ll guess bioshock 1',negative
+'Earned 5 PSN trophies (5 bronze) in BioShock ',none
+' Yup i heard BioShock is a great series you probably gonna enjoy all of them, personally i\'m too lazy to play it ',positive
+'We all make choices, but in the end, our choices make us.',negative
+'BioShock Part 1 Intro Walkthrough Gameplay [No commentary] ',negative
+' Wtf didn\'t know BioShock was creepy like that ',positive
+'I finished the first BioShock. It’s a shorter game but god do I love the story, the setting. It’s still a strong game after all these years. Also the good ending with the little sisters kills me. It’s so sweet and sad NOW ONTO BIOSHOCK 2!',positive
+'And a little Bioshock-inspired ambush ',positive
+'I cant stop playing ',positive
+'Bioshock ',positive
+' JP psn got the bioshock collection for 100 yen. 98\% off lmao',none
+'Raspberry_Pi: ConillM Well, I mean... ',positive
+'Raspberry_Pi: AptaMusic It\'s here in Cambridge.',positive
+'Raspberry_Pi: Do you like words? Do you like using words to say things? Do you like saying things on the internet to hundreds of thousands of people? Here, apply to be the new Raspberry Pi Social Media Editor and use words to say things about stuff to th… ',positive
+'Raspberry_Pi: To date, the Raspberry Pi Store has hosted 63 free workshops, including Raspberry Pi Camera for Beginners, How to makes games with Scratch and Minecraft Pi for Beginners. Find more on Facebook and eventbrite Facebook - … ',positive
+'Raspberry_Pi: Pssssst...the answer is Raspberry Pi 4 at 4,286, closely(ish) followed by the Zero family at 2,493. ',none
+'Raspberry_Pi: ICYMI: we’re having a fascinating discussion about upgrade culture and repairability over on the blog. Hop in, have a read, and share your thoughts ',none
+'Raspberry_Pi: AW_TWR1 That\'s awesome!',positive
+'Raspberry_Pi: simuk PiWarsRobotics gsholling EbenUpton I remember that first photo being taken. What a great day that was. Thank you for joining us on this journey, Simon, it\'s been a brilliant ride.',positive
+'Raspberry_Pi: simuk PiWarsRobotics gsholling EbenUpton Look thetuftii, it\'s back when you had all the hair!',negative
+'Raspberry_Pi: 4,737 books have been sold in the last 12 months at the Raspberry Pi Store, including many of these publications from Raspberry Pi Press. Do you subscribe to our magazines? Have you read one of our books? Which is your favourite? … ',none
+'Raspberry_Pi: There\'s something rather special going on in this week\'s Raspberry Pi Weekly newsletter. If you\'ve yet to subscribe, we\'ll be sending it out from 4pm today so you still have time. Enter your email address here ',negative
+'Raspberry_Pi: \'Babbage on tour\' is one of our favourite versions of Babbage ',positive
+'Raspberry_Pi: Since it opened last year, the Raspberry Pi Store has sold 8,180 Raspberry Pis. That\'s 1.3\% of all the Raspberry Pi units sold in the UK in the last twelve months! Can you guess which Raspberry Pi model we\'ve sold the most of? … ',positive
+'Raspberry_Pi: OH, THE HUMANITY!!! ',negative
+'BioShock 4: everything we know about the new BioShock ',negative
+'Sander Cohen is still the highlight of Bioshock. ',none
+'I fell asleep playing bioshock last night and I woke up to my dad walking in oopsie',negative
+'I\'m going to have at least five heart attacks before I finish this game ',positive
+'Hey Everyone Going Live now playing “Bioshock 2”, come watch and enjoy our trip back down to RAPTURE, it’s been a long time....... missed them all so much ',none
+'I think I’ve only just realised that the Big Daddies from are called “Rosies” because they hold rivet guns ... like Rosie the Riveter ?? FUCKING GENIUS ',positive
+' BioShock too, although I\'m not really interested in playing the first two games, just Infinite',positive
+'The BioShock collection free with PS+ this month? ',none
+'5 juegos que me marcaron: 1. Saga Kingdom Hearts 2. Minecraft 3. The Beginner\'s Guide 4. Hollow Knight 5. Bioshock (1 e Infinite) Bonus: Wolfenstein TNO y Isaac Tageo a ',none
+' I was clocked uncharted 2 today and aboit to start BioShock. We are in sync son',positive
+'Atlas radioed on ahead. Says you were looking for an invite to the fisheries. Nuts, I say.',positive
+' Wanted to play bioshock rrilogy for the longest time but it was sitting there in my xbox backlog. Now I have an excuse with 3 plats to go for. gonna be trying to 100 percent NFS hlHeat first today though which is taking a while but still a good arcade racer',positive
+'Regretting playing Bioshock',negative
+'Earned 1 PSN trophy (1 bronze) in BioShock ',none
+'2 days off work to play games. What are you playing today? I\'m going to play Uncharted 3 and Bioshock.',positive
+'I am tagged? @-@; heh first time lmao. Usually no one tags me for these. Thanks 4 Games I Love... The Last of Us Bioshock 1 + 2 Fallout New Vegas Outlast ',positive
+'BioShock 4 is still \"several years\" away from releasing: ',negative
+'Sin orden, 5 juegos que me marcaron: - Resident Evil 2 (PSX) - Final Fantasy VIII (PSX) - Illusion of Time (Snes) - Bloodborne (PS4) - Bioshock (Xbox 360)',none
+'[ LIVE ] It\'s my first fundraiser push for the & Australian Bush Fire Relief Campaign! Playing Bioshock Infinite + have some copies of the Bioshock Collection to giveaway, thanks to ! All support is welcome and appreciated! ',none
+' Not hard at all. Bioshock.',negative
+'I offer you a quick death, parasite. It will be preferable to what you will learn if you win.',none
+'BioShock 4: the whole lot we all know in regards to the new BioShock ',positive
+'BIOSHOCK: Gameplay, guía completa, paso a paso, trofeos 22: Neobux : CUENTA GOLDEN !!! BIOSHOCK: Gameplay, guide, walkthrough, trophyes 22: Neobux: EARN MONEY. GOLDEN MEMBERSHIP !!! ',none
+'what if the big twist in Bioshock took place during a sex scandal',none
+'Bioshock Infinite Golden Guns: How to Get Rid of Them, Where to Find Them ',none
+'All Bioshock 2 Door Codes, Including Clinic, Siren Alley, and Fontaine Futuristics ',none

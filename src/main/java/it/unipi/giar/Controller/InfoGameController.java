@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 
 import it.unipi.giar.GiarSession;
+import it.unipi.giar.TwitterConnector;
 import it.unipi.giar.Data.Developer;
 import it.unipi.giar.Data.Game;
 import it.unipi.giar.Data.Genre;
@@ -64,6 +65,12 @@ public class InfoGameController {
 
 	@FXML
 	private JFXButton back;
+	
+	@FXML
+	private Text positive;
+
+	@FXML
+	private Text negative;
 
 	public void initialize(String gameName) {
 		GiarSession session;
@@ -126,7 +133,22 @@ public class InfoGameController {
 			addToWishlistButton.setDisable(false);
 			addToMyGamesButton.setDisable(false);
 		}
-
+		
+		//Search for opinions on twitter
+		final Thread sentimentAnalysis = new Thread() {
+			public void run() {
+				ArrayList<Integer> opinions = TwitterConnector.sentimentAnalysis(gameName);
+				if(opinions.size() == 0) {
+					positive.setText(Integer.toString(0));
+					negative.setText(Integer.toString(0));
+				} else {
+					positive.setText(opinions.get(0).toString());
+					negative.setText(opinions.get(1).toString());
+				}
+			}
+		};
+		
+		sentimentAnalysis.start();
 	}
 
 	@FXML

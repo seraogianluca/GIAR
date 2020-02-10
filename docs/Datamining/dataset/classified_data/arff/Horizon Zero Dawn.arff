@@ -1,0 +1,82 @@
+@relation tweets
+
+@attribute text string
+@attribute class {positive,negative,none}
+
+@data
+' Horizon zero dawn is son geiles game ',positive
+' Also pretty sure Horizon Zero Dawn belongs in there somewhere',positive
+' After Horizon Zero Dawn',positive
+'1. BFV 2. Horizon Zero Dawn 3. BF3 4. Unreal Tournament ',positive
+' Dragon Age (the entire franchise, please don\'t make me pick a favorite game. The lore is way to deep to pick one.) Horizon Zero Dawn Hellblade Senua\'s Sacrifice To The Moon or Gris probably sits in 4th place',positive
+'Ok so my four favourites are... 1) horizon zero dawn 2) red dead redemption 2 3) final fantasy 8 4) hellblade I nominate and ',negative
+' collection complete. 3,4 & 5 collection arrived in the mail today. Still odd that you get the PS3 case with it. Lol Start my play through on after I finish Horizon Zero Dawn and The Walking Dead VR.. ',positive
+' Yeah the 5 games I have left on my PS4, I’ve already restarted Red Dead and I will play that throughout the year, I’ll be replaying TLOU(for the 10th time) ahead of TLOU2 and will get the grounded trophies in the process, Horizon Zero Dawn as I want to replay ahead of the sequel',positive
+'The Last of Us Detroit: Become Human The Witcher The Legend of Zelda: Twilight Princess Horizon Zero Dawn ',none
+'Juegos trascendentes en mi vida: -Resident evil 3 nemesis -Horizon Zero Dawn -Halo -Need For speed Most wanted -Parasite Eve ',negative
+' Horizon Zero Dawn is amazing, but RDR2 blew me away. Beautiful and an amazing game to play! Loved it. Have you played God of War yet?',positive
+'Game price list Sony PS4 Holiday Bundle  Playstation 4 1TB Slim Jet Black Included 3X Games (The Last of Us, God of War, Horizon Zero Dawn) - 118000 PS4 500gb slim : 93,000 Ps4 500gb slim FIFA console: 109,000 Ps4 3games bundle: 112,000 Ps4 1tb slim console: 10… ',none
+' Just to check is that horizon zero Dawn?',none
+'Game price list Sony PS4 Holiday Bundle  Playstation 4 1TB Slim Jet Black Included 3X Games (The Last of Us, God of War, Horizon Zero Dawn) - 118000 PS4 500gb slim : 93,000 Ps4 500gb slim FIFA console: 109,000 Ps4 3games bundle: 112,000 Ps4… ',none
+'Well yesterday i got my young one to help me pick a game, by randomly grabbing one from a pile i made..so i started horizon zero dawn on stream last night, its a pretty cool game....to bad i had to end stream because damn wind storm making my connection drop \"sigh\"',positive
+' Everytime I see Guerrilla post something Im just hoping its some sort of news of a Horizon Zero Dawn sequel',none
+'[Blind - Day 11] Horizon Zero Dawn ❆ DLC? ❆ !youtube !clip ',none
+' actually.... I was playing Horizon zero dawn last night, Aloe really reminds me of ...',positive
+'wtf I finished Horizon zero dawn and now I have no life :(((',positive
+' what\'s new horizons? is this a sequel to horizon zero dawn?',none
+'Horizon zero dawn is probably one of the best story driven games I’ve ever played and I’m only 8 percent into it holy fucking shit',positive
+'Can I get a mod for Horizon Zero Dawn where it’s Oliver Queen instead of the main character please?',none
+'Horizon zero dawn.... my fucking god this is unbelievably amazing!!!’',positive
+'started playing horizon zero dawn and bruh?? i was not expecting this game to hook me so damn quickly',positive
+'Check out my broadcast from my PlayStation 4! (Horizon Zero Dawn: Complete Edition) live at ',none
+'Horizon Zero Dawn 2017 Gameplay HD PS4 Part 3 di ',none
+'Earned 3 PSN trophies (1 silver and 2 bronze) in Horizon Zero Dawn ',none
+'Update to this: I’m getting new copies of Persona 5 and God of War, and pre-owned copies of inFAMOUS Second Son and Horizon Zero Dawn. Quite impressive ',negative
+' yeah only 2 of the top exclusives of the console not a big deal. it\'s like if every game on playstation 4 accepted saves except uncharted 4 and horizon zero dawn. not to mention that they dont support cloud saves for no reason',none
+'HOLY FUCK HORIZON ZERO DAWN IS SO FUCKING PERFECT HOLY SHIT IVE BEEN MISSING OUT AHHHHHH',negative
+' Horizon Zero Dawn for me had some special moments ',positive
+'SO dang excited! Thanks to & , I have now got use of an HD60S, so now I can live my absolute dream of playing \'s Horizon Zero Dawn on stream :3 wooo! Prepare for all the emotional sass!',none
+'Wes Maximus played Horizon Zero Dawn (PS4) in the last 24 hours ',none
+'Check out my broadcast from my PlayStation 4! (Horizon Zero Dawn: Complete Edition) live at ',none
+'Still didn\'t get to finish Yoshi Craff Whirl this stream. Hoping to finish it during the next stream, and if not, i might just jump straight into either Horizon Zero Dawn or Hollow Knight, cause I loved those games so much. ',positive
+'Few weeks into Horizon Zero Dawn and it\'s seriously one of my favorite games ever. I love being so invested in a game that I\'m not completing the main story quest because I don\'t want it to end. Hunting is really fun in this game.',positive
+' I think they paused that franchise for the sake of Horizon Zero Dawn. Which would be a good decision',positive
+'Horizon Zero Dawn Full Story/Platinum Run Current Trophys 16\% live at ',none
+'Check out my broadcast from my PlayStation 4! (Horizon Zero Dawn: Complete Edition) live at ',none
+'I love how Aloy became an integral part of the Playstation family so quick. Play Horizon Zero Dawn everyone 🥺 ',none
+' Horizon: Zero Dawn, Resident Evil 2, A Plague Tale, Hellblade, and Borderlands 3 are all fantastic.',positive
+'Check out my broadcast from my PS4PRO! (Horizon Zero Dawn: Complete Edition) live at ',none
+'Horizon Zero Dawn should just permanently live on my ps4. I always want to play it when I’m feeling saddest about the world which is more often than not.',none
+' Aww, this is such a good idea. I did pretty much exactly the same thing but with Horizon: Zero Dawn. Need to revisit Skyrim soon. It’s been too long.',positive
+'Check out my broadcast from my PS4 PRO! (Horizon Zero Dawn: Complete Edition) live at ',none
+' All other recs are good. Last of Us, Uncharted, God of War, Horizon Zero Dawn, or Sekiro/Bloodborne if you like a challenge. But given your love of Star Wars, fallen order seems obvious. Set during the same time frame as Rebels if you\'ve watched that.',positive
+' Horizon Zero Dawn! First ever playthrough continues!',positive
+'Part 3 of Horizon Zero Dawn is up! And as usual any and all support showed is greatly appreciated ',positive
+'Check out my broadcast from my PlayStation 4! (Horizon Zero Dawn: Complete Edition) live at ',none
+' as ps4 fan i dont care when anybody gets my games, but i feel like the number of people that say the games are shitty until it comes to the plastic THEY like is much higher. \"tlou sucks (but ps players like it a LOT), GOW sucks and is boring, Horizon zero dawn suck\"',negative
+'Finished Horizon Zero Dawn. Lovely game. Debating on trying out Frozen Wilds or jump into God of War next. Will Frozen Wilds explain more of the post credits scene or is that for Horizon 2?',positive
+'Did anyone knew about this?? I visited Mother\'s watch and it scanned aloy and this happend!!? HORIZON ZERO DAWN ',none
+'Sources: Horizon: Zero Dawn Is Coming To PC ',none
+' Both HADES and Ted Faro (fffffffff) in Horizon: Zero Dawn',positive
+'Horizon Zero Dawn (Ultra Hard) - Gaining control via ',none
+' Persona 5, Horizon Zero Dawn, Witcher 3, Apex, Blooodbourne, Bioshock, Spiderman, Lego Marvel Heroes! Marvel vs Capcom 3 (because the store doesn’t have two!) Diablo 3, God of War, the Outer World!',positive
+'Yo. I\'m so glad that I decided to play Horizon: Zero Dawn. is right. This game is simply breathtaking. ',positive
+' Horizon Zero Dawn is in the letter O. O means out. Everybody knows it. Out of PS We have official confirmation that the game will come to PC, ladies and gentlemen.',negative
+'BATTLEFIELD 3 BATTLEFIELD 1 BAD COMPANY 2 HORIZON ZERO DAWN NOMINATE: ',negative
+'Check out my broadcast from my PlayStation 4! (Horizon Zero Dawn: Complete Edition) live at ',none
+'Horizon Zero Dawn It’s a game about hunting down robot dinosaurs with a bow and arrow. What more do you need? Nothing, that’s why everything else is just frosting on the cake. An incredible story and characters with a fascinating world to explore and take part in.',positive
+'Out of all the PS4 games I want enhanced with ray tracing on PS5, Horizon Zero Dawn & God of War are the only ones I can see that could look near real life with the effect. I hope they either patch it for PS5 or release enhanced editions to give us that visual showcase.',none
+'Platinum #80: Horizon Zero Dawn. Fantastic storytelling, visuals, and gameplay! Looking forward to the sequel! 9/10 ',positive
+' Did you kickstart the Horizon Zero Dawn BG?',positive
+'Check out Horizon: Zero Dawn (blind)- !subscribe Check it out, . I’ll be there. (Wink?)',none
+'Internet is down for a couple of days. They have to reset everything and we can’t get a tech in until Monday. ;-; Going to replay horizon zero dawn!',positive
+' Thats the best time to pick one up. Allthe best exclusives are out with the systems relatively inexpensive, what with next gen on the Horizon. (Zero Dawn)',positive
+'Only doing recent-ish games LoZ: Breath of the Wild Horizon Zero Dawn Uncharted 4 God of War The Last of Us ',positive
+'IT\'S \"FANTASY FRIDAY\"! Playing \"HORIZON ZERO DAWN\" on PS4. Doin Dis Now ! Come watch the fun while I\'m Battling Ferocious Mechanical Beasts in a Primitive World. ',positive
+' Hell to the yes. Also Outer Worlds, and (IMHO) Horizon Zero Dawn.',positive
+'Earned 8 PSN trophies (8 bronze) in Horizon Zero Dawn ',none
+'still need to beat Yakuza 0, Dragonquest 11 on Switch, Horizon Zero Dawn, Infamous Second Son.. the list goes on and on... I’m gonna do it though.',positive
+'Starting Horizon: Zero Dawn for the....first time? BLIND! Come hang out! ',none
+'Dave is still playing Horizon Zero Dawn. Come keep him company and be the 100th follower!! ',none
+' Gonna play Horizon Zero Dawn ',positive
+'I keep going through cycles of binge-playing Horizon Zero Dawn and not playing it for a week or longer bc I’m not ready for the emptiness I’ll feel when I complete it️',negative
