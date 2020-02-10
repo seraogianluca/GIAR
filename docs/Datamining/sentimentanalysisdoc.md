@@ -399,10 +399,15 @@ while (tweets.size() < 50) {
 				
 	//Query for the next pages
 	query = result.nextQuery();
-	result = twitter.search(query);
+				
+	if(query == null) {
+		break;
+	} else {
+		result = twitter.search(query);
+	}		
 }
 ```
-The batch size is choosen due to minimize the time required to download the tweets with the free `Twitter API`.
+The batch size is chosen due to minimize the time required to download the tweets with the free `Twitter API`.
 
 ### 4.2 Data Preprocessing
 To perform a sentiment analysis on tweets raw text must be cleaned. 
@@ -423,7 +428,7 @@ The tweet after cleaning process:
 By uninstalling Fifa 20 as it’s terrible 
 ```
 
-To do this we used regular expressions to remove hastags, mentions and links. To remove emojis we used the `Emoji-Java` library.
+To do this we used regular expressions to remove hashtags, mentions and links. To remove emojis we used the `Emoji-Java` library.
 
 Our tweet cleaning function:
 ```java
@@ -587,7 +592,7 @@ To test the effective goodness of the classifier we collected classified data fr
 - Fifa 18
 - Bioshock
 
-The game are choosen randomly.
+The game are chosen randomly.
 
 The following table summarizes the results of the test per each game:
 
@@ -613,6 +618,6 @@ Dataset | Accuracy | Precision  | Recall | F-Measure  |
 Training-set |  81,1812% | 0,825  |  0,812  |  0,814 |
 Unknown data | 63,0310% | 0,5431 |	0,6789 | 0,6520
 
-The possible reasons of the discrepancy in the obtained results may be several. First of all the quantity of tweets that the application downloads for the analysis (at least 50) may be not enough. That's because it's difficult to find tweets regarding the specific game using the title. Another reason may be that there are a lot of "spam" tweets (i.e. Twitch advises, Store sales, Game session sharing, etc.) and the tweets that express opinions (positive or negative) are very rare. Anyway the average accurancy obtained is good considering the noisiness of the real data and the problems we highlighted so far. 
+The possible reasons of the discrepancy in the obtained results may be several. First of all the quantity of tweets that the application downloads for the analysis (at least 50) may be not enough. That's because it's difficult to find tweets regarding the specific game using the title. Another reason may be that there are a lot of "spam" tweets (i.e. Twitch advises, Store sales, Game session sharing, etc.) and the tweets that express opinions (positive or negative) are very rare. Anyway the average accuracy obtained is good considering the noisiness of the real data and the problems we highlighted so far. 
 
-The service is usefull because provides to the users a comparison between historical data (i.e. ratings given by the registered user contained in the database of the application) and a current snapshot of the opinion of the players' community on Twiiter about the game. So, the sentiment analysis provides an additional tool to decide if buy a game or not.
+The service is useful because provides to the users a comparison between historical data (i.e. ratings given by the registered user contained in the database of the application) and a current snapshot of the opinion of the players' community on Twitter about the game. So, the sentiment analysis provides an additional tool to decide if buy a game or not.
