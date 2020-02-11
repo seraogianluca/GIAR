@@ -11,7 +11,7 @@ A service implemented for the workgroup project of the Datamining course of the 
 5) [Test datasets confusion matrices](/docs/Datamining/dataset/classified_data/Confusion_matrices.xlsx)
 6) [Weka test result buffers](/docs/Datamining/weka_tests)
 
-## Application installation
+## Twitter API configuration
 To run the sentiment analysis a Twitter API token is required. To load the token create a `twitter4j.properties` file in the `resources` folder. The file must contain the following lines:
 
 ```
