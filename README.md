@@ -4,7 +4,7 @@
 # Data Mining and Machine Learning
 A service implemented for the workgroup project of the Datamining course of the Artificial Intelligence and Data Engineering Master Degree at University of Pisa.
 
-1) [Porject Documentation](/docs/Datamining/sentimentanalysisdoc.md)
+1) [Project Documentation](/docs/Datamining/sentimentanalysisdoc.md)
 2) [Training-set](/docs/Datamining/dataset/training_set.arff)
 3) [Training-set data distribution](/docs/Datamining/dataset/Tweets_distribution.xlsx)
 4) [Final Test datasets](/docs/Datamining/dataset/classified_data/csv)
