@@ -11,17 +11,6 @@ A service implemented for the workgroup project of the Datamining course of the 
 5) [Test datasets confusion matrices](/docs/Datamining/dataset/classified_data/Confusion_matrices.xlsx)
 6) [Weka test result buffers](/docs/Datamining/weka_tests)
 
-## Twitter API configuration
-To run the sentiment analysis a Twitter API token is required. To load the token create a `twitter4j.properties` file in the `resources` folder. The file must contain the following lines:
-
-```
-http.useSSL=true
-oauth.consumerKey =       Twitter_API_Token
-oauth.consumerSecret =    Twitter_API_Token
-oauth.accessToken =       Twitter_API_Token
-oauth.accessTokenSecret = Twitter_API_Token
-````
-
 ## Credits
 Application designed and developed by Barigliano Lorenzo, Serao Gianluca.
 
@@ -45,3 +34,32 @@ A service for the workgroup tasks of the Large-Scale and Multi-Structured Databa
 ## Credits
 
 Application designed and developed by Barigliano Lorenzo, Gómez Marsha, Mazzini Matilde, Serao Gianluca.
+
+# Application installation
+
+## Databases configuration
+**Neo4j**
+Install the database in your computer and connect as localhost with the following connection string:
+
+````java 
+driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("username", "password"));
+````
+Replace `username` and `password` with yours.
+
+**MongoDB**
+Install the database in your computer and connect as localhost with the following connection string:
+
+````java
+client = MongoClients.create("mongodb://localhost:27017/");
+````
+
+## Twitter API configuration
+To run the sentiment analysis a Twitter API token is required. To load the token create a `twitter4j.properties` file in the `resources` folder. The file must contain the following lines:
+
+```
+http.useSSL=true
+oauth.consumerKey =       Twitter_API_Token
+oauth.consumerSecret =    Twitter_API_Token
+oauth.accessToken =       Twitter_API_Token
+oauth.accessTokenSecret = Twitter_API_Token
+````

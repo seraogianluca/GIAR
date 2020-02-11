@@ -13,10 +13,7 @@ public class MongoDriver {
 	private MongoDatabase database;
 	
 	private MongoDriver() {
-		client = MongoClients.create("mongodb://172.16.0.70,172.16.0.71,172.16.0.72/?"
-				+ "replicaSet=res0&"
-				+ "w=3&wtimeoutMS=5000&"
-				+ "readPreference=nearest");
+		client = MongoClients.create("mongodb://localhost:27017/");
 		database = client.getDatabase("giar");
 	}
 	

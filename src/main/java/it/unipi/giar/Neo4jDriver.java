@@ -9,7 +9,7 @@ public class Neo4jDriver {
     private final Driver driver;
 
     private Neo4jDriver() {
-        driver = GraphDatabase.driver("bolt://172.16.0.70:7687", AuthTokens.basic("neo4j", "bifecco"));
+        driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("username", "password"));
     }
     
     public static Neo4jDriver getInstance() {
