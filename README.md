@@ -9,7 +9,7 @@ A service implemented for the workgroup project of the Datamining course of the 
 3) [Training-set data distribution](/docs/Datamining/dataset/Tweets_distribution.xlsx)
 4) [Final Test datasets](/docs/Datamining/dataset/classified_data/csv)
 5) [Test datasets confusion matrices](/docs/Datamining/dataset/classified_data/Confusion_matrices.xlsx)
-6) [Weka test result buffers](/docs/Datamining/weka)
+6) [Weka test result buffers](/docs/Datamining/weka_tests)
 
 ## Credits
 Application designed and developed by Barigliano Lorenzo, Serao Gianluca.
