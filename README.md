@@ -6,7 +6,7 @@ A service implemented for the workgroup project of the Datamining course of the 
 
 1) [Porject Documentation](/docs/Datamining/sentimentanalysisdoc.md)
 2) [Training-set](/docs/Datamining/dataset/training_set.arff)
-3) [Training-set data distribution](/docs/Datamining/dataset/Tweets_distribution.xlsx)
+3) [Training-set data distribution](/docs/Datamining/dataset/Tweets_ distribution.xlsx)
 4) [Final Test datasets](/docs/Datamining/dataset/classified_data/csv)
 5) [Test datasets confusion matrices](/docs/Datamining/dataset/classified_data/Confusion_matrices.xlsx)
 6) [Weka test result buffers](/docs/Datamining/weka)
