@@ -38,17 +38,15 @@ Application designed and developed by Barigliano Lorenzo, Gómez Marsha, Mazzini
 # Application installation
 
 ## Databases configuration
-**Neo4j**
-Install the database in your computer and connect as localhost with the following connection string:
 
+**Neo4j**: Install the database in your computer and connect as localhost replacing `username` and `password` with yours:
 ````java 
 driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("username", "password"));
 ````
-Replace `username` and `password` with yours.
 
-**MongoDB**
-Install the database in your computer and connect as localhost with the following connection string:
+**MongoDB**: Install the database in your computer and create the giar database with the users and the game collections as described in the [Design document](/docs/Design.md).
 
+The connection string is set to localhost:
 ````java
 client = MongoClients.create("mongodb://localhost:27017/");
 ````
