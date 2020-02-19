@@ -2,7 +2,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/seraogianluca/GIAR/badge/master)](https://www.codefactor.io/repository/github/seraogianluca/GIAR/overview/master)
 
 # Data Mining and Machine Learning
-A service implemented for the workgroup project of the Datamining course of the Artificial Intelligence and Data Engineering Master Degree at University of Pisa.
+A service implemented for the workgroup project of the Data Mining and Machine Learning course of the Artificial Intelligence and Data Engineering Master Degree at University of Pisa.
 
 1) [Project Documentation](/docs/Datamining/sentimentanalysisdoc.md)
 2) [Training-set](/docs/Datamining/dataset/training_set.arff)
